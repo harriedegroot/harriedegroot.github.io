@@ -1,0 +1,152 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+}
+
+.main {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+}
+
+.sidebar {
+  display: flex;
+  height: 100%;
+}
+
+.sidebar .logo {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border: 1px solid white;
+  margin: 20px;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .logo > span {
+  font-size: 200px;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  background: white;
+  color: #5f6c72;
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-grow: 1;
+  padding: 15px;
+}
+
+.content .contact {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.content .contact .info .name {
+  background: black;
+  padding: 13px 5px 5px 13px;
+  color: white;
+}
+.firstname,
+.middlename,
+.sirname {
+  font-family: "Courier New", Courier, monospace;
+  line-height: 43px;
+  font-weight: 200;
+  font-size: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.info .middlename {
+  font-size: 28px;
+  margin: 0 5px 0 3px;
+}
+
+.headline {
+  font-size: 28px;
+  padding: 4px 0;
+  margin: 0;
+}
+
+.location {
+  color: #b4babd;
+  font-size: 28px;
+  padding: 0;
+  margin: 0;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+}
+
+.footnote {
+  color: #b4babd;
+  padding: 15px;
+  font-size: smaller;
+}
+
+.footer {
+  display: flex;
+  gap: 10px;
+  height: 120px;
+  width: 100%;
+  font-size: 14px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  justify-content: space-evenly;
+}
+.footer a {
+  color: white;
+  text-decoration: none;
+}
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+  text-decoration: underline;
+}
+
+.footer section {
+  margin: 0 15px;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .main {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .sidebar {
+    height: auto;
+  }
+
+  .content {
+    flex-grow: 100;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+  }
+}
