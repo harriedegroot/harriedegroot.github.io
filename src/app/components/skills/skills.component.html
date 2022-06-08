@@ -1,0 +1,18 @@
+<div class="container" *ngIf="chartOption">
+  <mat-chip-list class="tags" [multiple]="true" [selectable]="false">
+    <mat-chip class="chip" *ngFor="let tag of tags" [selected]="isTagSelected(tag)" (click)="toggleTag(tag)">{{tag}}
+    </mat-chip>
+  </mat-chip-list>
+  <div echarts [options]="chartOption" class="chart" (chartInit)="onChartInit($event)"></div>
+  <div class="timeslider" *ngIf="count > 0">
+    <mat-slider class="slider" [value]="currentStep" [min]="firstStep" [max]="count"
+      (input)="onSliderChange($event.value)">
+    </mat-slider>
+    <button mat-icon-button (click)="skip()">
+      <mat-icon>{{ currentStep === count ? 'fast_rewind' : 'fast_forward' }}</mat-icon>
+    </button>
+    <button mat-icon-button (click)="toggle()">
+      <mat-icon>{{ playing ? 'pause' : 'play_circle' }}</mat-icon>
+    </button>
+  </div>
+</div>
