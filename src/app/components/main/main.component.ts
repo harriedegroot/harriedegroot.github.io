@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PROFILE } from 'app/data/profile';
+import { PerfectScrollbarComponent, PerfectScrollbarConfig } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'app-main',
@@ -7,8 +8,10 @@ import { PROFILE } from 'app/data/profile';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  profile = PROFILE;
 
-  experience = PROFILE.experience ?? [];
+  scrollbarConfig: Partial<PerfectScrollbarConfig> = {};
+
   selectedSkillTags = [
     'Programming Language', 
     'Software Framework'
@@ -25,6 +28,10 @@ export class MainComponent implements OnInit {
     'Design Pattern',
   ];
 
+
+  @ViewChild(PerfectScrollbarComponent, { static: true })
+  scrollbar!: PerfectScrollbarComponent;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,5 +39,9 @@ export class MainComponent implements OnInit {
   
   onSkillsProgress(percent: number) {
     //console.log(`skills step: ${percent}%`);
+  }
+
+  scrollToBottom() {
+    this.scrollbar.directiveRef?.scrollToBottom(0, 200);
   }
 }

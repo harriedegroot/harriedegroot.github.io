@@ -65,6 +65,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public monthsToKeepZeroSkills = 12;
   @Input() public firstStep = 0; // NOTE: datapoint 0 has no data
   @Input() public hiddenTags: string[] = [];
+  @Input('scrollwheel') public scrollwheelEnabled: boolean = true;
   @Input() public invertScroll: boolean = true;
 
   public get playing(): boolean {
@@ -99,6 +100,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @HostListener("wheel", ["$event"])
   public onScroll(event: WheelEvent) {
+    if(!this.scrollwheelEnabled) return;
     let d = Math.abs(event.deltaX) > 1 ? event.deltaX : event.deltaY;
     if(this.invertScroll) {
       d *= -1;
