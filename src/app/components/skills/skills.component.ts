@@ -370,8 +370,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
             right: 20,
             bottom: 0,
             style: {
-              text: moment(date).format('MMMM YYYY'),
-              //font: 'bolder 48px sans-serif', 
+              text: moment(date).format('MMMM YYYY'),              
               font: 'bolder 3vw sans-serif', 
               fill: 'rgba(100, 100, 100, 0.75)',
             },
