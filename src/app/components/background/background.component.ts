@@ -69,7 +69,8 @@ export class BackgroundComponent implements OnInit {
   ngOnInit(): void {
     gsap.to('.particles', {
       opacity: 0.4,
-      duration: 40,
+      duration: 10,
+      delay: 8
     });
   }
 

@@ -1,4 +1,10 @@
-:host {
-    display: none;
-    color: #b4babd;
+
+.menu-container {
+    padding: 10px;
+    button {
+        font-weight: 100;
+        font-size: 28px;
+        text-transform: uppercase;
+        color: #b4babd;
+    }
 }
