@@ -102,7 +102,7 @@
           opacity: 0;
           display: flex;
           gap: 10px;
-          
+
           width: 100%;
           font-size: 1.25em;
           background-color: rgb(0, 0, 0);
@@ -114,17 +114,15 @@
           section {
               margin: 0 15px;
               text-align: center;
-              display:flex;
+              display: flex;
               justify-content: center;
               align-items: center;
               gap: 10px;
-              
 
               a {
                   display: inline-block;
                   color: white;
                   text-decoration: none;
-                  
 
                   &:hover,
                   &:visited {
@@ -146,4 +144,20 @@
       .footer {
           flex-direction: column;
       }
+  }
+
+  @media screen and (max-width: 400px) {
+    .firstname,
+    .middlename,
+    .sirname {
+        font-size: 28px !important;
+    }
+
+    .typed {
+        margin-left: 20px !important;
+        .headline ,
+        .location {
+            font-size: 24px !important;
+        }
+    }
   }

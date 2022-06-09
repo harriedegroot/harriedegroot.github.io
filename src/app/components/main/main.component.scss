@@ -6,7 +6,7 @@ section {
         position: absolute;
         bottom: 100px;
         color: #b4babd;
-        font-size: 48px;
+        font-size: 38px;
         font-weight: 100;
         opacity: 0;
         width: 100%;
@@ -28,7 +28,25 @@ section {
 @media screen and (max-width: 900px) {
     section {
         .next-section {
-            bottom: 235px;
+            bottom: 285px;
+        }
+    }
+}
+
+@media screen and (max-height: 750px) {
+    section {
+        .next-section {
+            .text {
+                display: none;
+            }
+        }
+    }
+}
+
+@media screen and (max-height: 650px) {
+    section {
+        .next-section {
+            display: none;
         }
     }
 }

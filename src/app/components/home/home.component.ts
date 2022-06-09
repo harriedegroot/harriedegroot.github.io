@@ -1,5 +1,5 @@
 import { Component, Input, NgZone, OnInit } from '@angular/core';
-import { faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Profile } from 'app/models/profile.model';
 import { gsap } from 'gsap';
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   emailIcon = faEnvelope;
   phoneIcon = faPhone;
   LinkedInIcon = faLinkedin;
+  GitHubIcon = faGithub;
   WhatsAppIcon = faWhatsapp;
 
   @Input() public profile?: Profile;
