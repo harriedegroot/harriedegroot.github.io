@@ -1,10 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PROFILE } from 'app/data/profile';
 import gsap from 'gsap';
-// import {
-//   PerfectScrollbarComponent,
-//   PerfectScrollbarConfig,
-// } from 'ngx-perfect-scrollbar';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 
 @Component({
@@ -14,8 +10,6 @@ import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 })
 export class MainComponent implements OnInit {
   profile = PROFILE;
-
-  // scrollbarConfig: Partial<PerfectScrollbarConfig> = {};
 
   selectedSkillTags = ['Programming Language', 'Software Framework'];
   hiddenSkillTags = [
@@ -30,61 +24,44 @@ export class MainComponent implements OnInit {
     'Design Pattern',
   ];
 
-  // @ViewChild(PerfectScrollbarComponent, { static: true })
-  // scrollbar!: PerfectScrollbarComponent;
-
   constructor() {}
 
   ngOnInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
+    gsap.from('.menu', {
+      y: -80,
+      duration: 2,
+      scale: 0.4,
+      ease: 'back',
+      delay: 2,
+    });
+
+    const nextSectionDelay = 10;
     gsap.to('.next-section', {
       opacity: 0.4,
       duration: 1,
-      //ease: 'bounce',
-      delay: 4.8,
+      delay: nextSectionDelay + 0.8,
     });
 
     gsap.from('.next-section', {
       y: -70,
       duration: 1,
       ease: 'bounce',
-      delay: 5,
+      delay: nextSectionDelay + 1,
     });
 
     var tl = gsap.timeline({
       repeat: -1,
       repeatDelay: 0,
-      delay: 6.5,
+      delay: nextSectionDelay + 1.5,
       yoyo: true,
     });
     tl.to('.next-section', {
       y: -30,
       duration: 2,
       ease: 'inOut',
-    });
-
-    let initialMenu = gsap.from('.menu', {
-      y: -80,
-      duration: 1.5,
-      scale: 0.4,
-      ease: 'back',
-      delay: 3,
-    });
-
-    let actionMenu = gsap.to('.menu', {
-      y: '-=60',
-      duration: 0.5,
-      ease: 'power2.in',
-      paused: true,
-    });
-
-    ScrollTrigger.create({
-      trigger: '.menu',
-      start: '10px top',
-      onEnter: () => actionMenu.play(),
-      onLeaveBack: () => actionMenu.reverse(),
     });
   }
 

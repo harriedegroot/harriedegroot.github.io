@@ -1,11 +1,9 @@
 <app-background class="background"></app-background>
 <app-menu class="menu" (click)="onMenuClick($event)"></app-menu>
-<!-- <perfect-scrollbar class="scrollbar" [config]="scrollbarConfig"> -->
 <div class="content">
     <section id="section-home">
         <app-home id="home" [profile]="profile"></app-home>
         <button class="next-section" (click)="onMenuClick('skills')" mat-stroked-button>
-            <!-- <div class="text" >skills</div> -->
             <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
         </button>
     </section>
@@ -15,4 +13,3 @@
             [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </section>
 </div>
-<!-- </perfect-scrollbar> -->

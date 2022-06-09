@@ -13,26 +13,25 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSliderModule } from '@angular/material/slider';
 import { HomeComponent } from './components/home/home.component';
-//import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-//import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
-//import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './components/menu/menu.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { NgParticlesModule } from 'ng-particles';
 
-// const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-//   suppressScrollX: true,
-// };
-
 @NgModule({
-  declarations: [AppComponent, MainComponent, SkillsComponent, HomeComponent, MenuComponent, BackgroundComponent],
+  declarations: [
+    AppComponent,
+    MainComponent,
+    SkillsComponent,
+    HomeComponent,
+    MenuComponent,
+    BackgroundComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // PerfectScrollbarModule,
     FontAwesomeModule,
     NgParticlesModule,
     NgxTypedJsModule,
@@ -46,12 +45,6 @@ import { NgParticlesModule } from 'ng-particles';
     MatIconModule,
     MatSliderModule,
   ],
-  // providers: [
-  //   {
-  //     provide: PERFECT_SCROLLBAR_CONFIG,
-  //     useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
-  //   },
-  // ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
