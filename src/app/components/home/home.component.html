@@ -6,9 +6,11 @@
             </div>
             <div class="info">
                 <div class="name">
-                    <span class="firstname">Harrie</span>
-                    <span class="middlename">de</span>
-                    <span class="sirname">Groot</span>
+                    <span>
+                        <span class="firstname">Harrie</span>
+                        <span class="middlename">de</span>
+                        <span class="sirname">Groot</span>
+                    </span>
                 </div>
                 <div class="typed">
                     <span *ngIf="!headlineCursor" class="headline">{{headline[headline.length-1]}}</span>
@@ -27,23 +29,23 @@
     </div>
     <!-- <div class="footnote">
         <span>C# | .NET | TypeScript | NodeJS | Angular | Azure | MSc. Artificial Intelligence</span>
-    </div>
+    </div> -->
     <div class="footer">
+        <section class="email">
+            <fa-icon [icon]="emailIcon"></fa-icon>
+            <a href="mailto:info@harriedegroot.com" target="_blank">info@harriedegroot.com</a>
+        </section>
         <section class="mobile">
-            <h4>Mobiel</h4>
+            <fa-icon [icon]="phoneIcon"></fa-icon>
             <a href="tel:0031652437812" target="_blank">+31 (0)6 52 43 78 12</a>
         </section>
         <section class="LinkedIn">
-            <h4>LinkedIn</h4>
+            <fa-icon [icon]="LinkedInIcon"></fa-icon>
             <a href="https://linkedin.com/in/harriedegroot" target="_blank">/harriedegroot</a>
         </section>
-        <section class="email">
-            <h4>E-mail</h4>
-            <a href="mailto:info@harriedegroot.com" target="_blank">info@harriedegroot.com</a>
-        </section>
         <section class="Whatsapp">
-            <h4>Whatsapp</h4>
-            <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank">stuur bericht</a>
+            <fa-icon [icon]="WhatsAppIcon"></fa-icon>
+            <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank">WhatsApp</a>
         </section>
-    </div> -->
+    </div>
 </div>

@@ -109,5 +109,8 @@
       }
     }
   },
-  "defaultProject": "harriedegroot"
+  "defaultProject": "harriedegroot",
+  "cli": {
+    "analytics": false
+  }
 }
