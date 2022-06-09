@@ -1,3 +1,5 @@
 <div class="background-container">
-    <ng-particles class="particles" [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"></ng-particles>
+    <div class="particles-container">
+        <ng-particles *ngIf="particlesOptions" class="particles" [id]="id" [options]="particlesOptions" [particlesInit]="particlesInit"></ng-particles>
+    </div>
 </div>
