@@ -1,5 +1,7 @@
+<app-background class="background"></app-background>
+<app-menu class="menu"></app-menu>
 <perfect-scrollbar class="scrollbar" [config]="scrollbarConfig">
-    <section>
+    <section class="section-home">
         <app-home id="home" [profile]="profile"></app-home>
         <button class="next-section" (click)="scrollToBottom()" mat-stroked-button>
             <div class="text" >skills</div>
@@ -7,7 +9,7 @@
         </button>
     </section>
 
-    <section>
+    <section class="section-skills">
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags" [scrollwheel]="false"
             [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </section>

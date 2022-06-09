@@ -18,19 +18,23 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MenuComponent } from './components/menu/menu.component';
+import { BackgroundComponent } from './components/background/background.component';
+import { NgParticlesModule } from 'ng-particles';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, SkillsComponent, HomeComponent],
+  declarations: [AppComponent, MainComponent, SkillsComponent, HomeComponent, MenuComponent, BackgroundComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     PerfectScrollbarModule,
     FontAwesomeModule,
+    NgParticlesModule,
     NgxTypedJsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
