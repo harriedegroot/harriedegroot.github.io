@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { PROFILE } from 'app/data/profile';
+import gsap from 'gsap';
 import { PerfectScrollbarComponent, PerfectScrollbarConfig } from 'ngx-perfect-scrollbar';
 
 @Component({
@@ -35,6 +36,18 @@ export class MainComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    gsap.to('.next-section', {
+      opacity: .4,
+      duration: 1,
+      //ease: 'bounce',
+      delay: 3.8
+    });
+    gsap.from('.next-section', {
+      y: -100,
+      duration: 1,
+      ease: 'bounce',
+      delay: 4
+    });
   }
   
   onSkillsProgress(percent: number) {
