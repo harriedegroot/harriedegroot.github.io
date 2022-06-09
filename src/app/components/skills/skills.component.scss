@@ -32,3 +32,16 @@
     }
   }
 }
+
+@media screen and (max-width: 900px) {
+  .container {
+    .tags {
+      margin: 20px 10px 20px 20px;
+    }
+    .timeslider {
+      .slider {
+        margin-left: 15px;
+      }
+    }
+  }
+}
