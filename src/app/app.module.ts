@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -28,6 +29,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     BrowserAnimationsModule,
     PerfectScrollbarModule,
+    NgxTypedJsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
     }),

@@ -28,6 +28,7 @@
     "moment": "^2.29.3",
     "ngx-echarts": "^8.0.1",
     "ngx-perfect-scrollbar": "^10.1.1",
+    "ngx-typed-js": "^2.1.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

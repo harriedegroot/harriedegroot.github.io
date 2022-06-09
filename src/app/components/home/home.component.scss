@@ -1,81 +1,104 @@
-//   .main {
-//     display: flex;
-//     align-items: stretch;
-//     height: 100vh;
-//   }
-
   .content {
-    background: white;
-    color: #5f6c72;
-    height: 100%;
-    width: 100%;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+      background: white;
+      color: #5f6c72;
+      height: 100%;
+      width: 100%;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .container {
+          display: flex;
+          align-items: center;
+          height: 100%;
+          flex-grow: 1;
+
+          .contact {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              width: 100%;
+              gap: 20px;
+
+              .avatar {
+                  border-radius: 100%;
+                  overflow: hidden;
+                  width: 0px;
+                  height: 0px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  // width: 150px;
+                  // height: 150px;
+                  //transform: scale(0);
+                  opacity: .9;
+
+                  >img {
+                      width: 165px;
+                      height: 165px;
+                  }
+              }
+
+              .info {
+                  min-height: 175px;
+                  width: 100%;
+                  .name {
+                      background: black;
+                      padding: 13px 0 5px 0;
+                      overflow: hidden;
+                      width: 400px;
+                      color: white;
+                      text-align: center;
+
+                      .firstname,
+                      .middlename,
+                      .sirname {
+                          font-family: "Courier New", Courier, monospace;
+                          line-height: 43px;
+                          font-weight: 200;
+                          font-size: 50px;
+                          margin: 0;
+                          padding: 0;
+                      }
+
+                      .middlename {
+                          font-size: 28px;
+                          margin: 0 5px 0 3px;
+                      }
+                  }
+
+                  .typed {
+
+                      margin: 20px 0 0 15px;
+                      display: flex;
+                      flex-direction: column;
+                      gap: 20px;
+
+                      .headline {
+                          display: block;
+                          font-size: 28px;
+                          font-weight: normal;
+                      }
+
+                      .location {
+                          display: block;
+                          color: #b4babd;
+                          font-size: 28px;
+                      }
+                  }
+
+
+                  //   .typing {
+                  //       padding-left: 10px;
+                  //   }
+              }
+          }
+      }
   }
-  
-  .container {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    flex-grow: 1;
-    // padding: 15px;
-  }
-  
-  .contact {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-  }
-  
-  .contact .info .name {
-    background: black;
-    padding: 13px 13px 5px 13px;
-    color: white;
-  }
-  .firstname,
-  .middlename,
-  .sirname {
-    font-family: "Courier New", Courier, monospace;
-    line-height: 43px;
-    font-weight: 200;
-    font-size: 50px;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .info .middlename {
-    font-size: 28px;
-    margin: 0 5px 0 3px;
-  }
-  
-  .headline {
-    font-size: 28px;
-    font-weight: normal;
-    padding: 4px 0;
-    margin: 10px 0 0 15px;
-  }
-  
-  .location {
-    color: #b4babd;
-    font-size: 28px;
-    padding: 0;
-    margin: 0;
-    margin-left: 16px;
-  }
-  
-  .avatar {
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-  }
-  
+
   @media screen and (max-width: 900px) {
-    .container {
-        padding: 5px;
-    }
+      .container {
+          padding: 5px;
+      }
   }
-  
