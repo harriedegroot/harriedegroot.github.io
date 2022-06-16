@@ -62,12 +62,12 @@ export class HomeComponent implements OnInit {
     gsap.to('.footer', {
       opacity: 1,
       duration: .7,
-      delay: 5
+      delay: 3.5
     });
     gsap.from('.footer', {
       y: 70,
       duration: .7,
-      delay: 5
+      delay: 3.5
     });
   }
 }
