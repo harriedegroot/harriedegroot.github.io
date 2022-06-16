@@ -29,8 +29,14 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                // width: 150px;
-                // height: 150px;
+
+                transition: border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
+
+                &:hover {
+                    border-radius: 7px;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    transform: scale(1.1) !important;
+                }
 
                 opacity: .9;
 
@@ -71,6 +77,16 @@
                     .middlename {
                         font-size: 28px;
                         margin: 0 5px 0 3px;
+                    }
+
+                    transition: border-radius 0.5s,
+                    box-shadow 0.5s,
+                    transform 0.5s;
+                    border-radius: 7px;
+                    &:hover {
+                        border-radius: 7px;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                        transform: scale(1.1) !important;
                     }
                 }
 
