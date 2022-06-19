@@ -1,0 +1,44 @@
+.container {
+    margin: 30px;
+    
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-weight: 100;
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 50px;
+    }
+
+    .gauges {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 30px;
+    
+        .gauge {
+            display: flex;
+    
+            flex: 1 0 25%;
+    
+            min-width: 250px;
+            min-height: 250px;
+        }
+    
+    }
+
+    .quote {
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 100;
+
+        mat-icon {
+            color: #c2185b;
+            font-size: 80px;
+            width: 80px;
+            height: 80px;
+        }
+    }
+}

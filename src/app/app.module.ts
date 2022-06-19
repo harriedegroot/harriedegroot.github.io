@@ -18,6 +18,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MenuComponent } from './components/menu/menu.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { NgParticlesModule } from 'ng-particles';
+import { AboutComponent } from './components/about/about.component';
+import { SpecialitiesComponent } from './components/specialities/specialities.component';
+import { CharasteristicsComponent } from './components/charasteristics/charasteristics.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { SectionComponent } from './components/section/section.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +33,12 @@ import { NgParticlesModule } from 'ng-particles';
     HomeComponent,
     MenuComponent,
     BackgroundComponent,
+    AboutComponent,
+    SpecialitiesComponent,
+    CharasteristicsComponent,
+    ProjectsComponent,
+    SectionComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

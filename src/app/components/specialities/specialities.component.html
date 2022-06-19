@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>specialties</h1>
+
+    <div class="ticker">
+        <!-- Artificial Intelligence | Software Architecture | Web Technology | Mobile Development | Game Development -->
+    </div>
+    <div class="gauges">
+        <div *ngFor="let specialty of specialties" echarts [options]="getGaugeOptions(specialty)" class="gauge"></div>
+    </div>
+
+    <div class="quote">
+        <mat-icon>format_quote</mat-icon>
+        <span>mastering a new tool is not the hard part, it's selecting the appropriate tool for the job</span>
+    </div>
+
+
+
+</div>
+
+
+

@@ -1,0 +1,92 @@
+//$text: black;
+//$text: #5f6c72;
+//$background: white;
+$text: white;
+$background: black;
+$accent: #c2185b;
+
+
+:host {
+    display: block;
+    background: $background;
+    color: $text;
+}
+
+.container {
+    min-height: calc(100vh - 54px); // footer
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+
+    .charasteristics {
+        display: flex;
+        flex-flow: row wrap;
+        gap: 30px;
+        height: 100%;
+        
+        .charasteristic {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            flex: 1 0 25%;
+            gap: 20px;
+            font-weight: 200;
+            padding: 30px;
+            min-width: 300px;
+            
+            // border: 1px solid $text;
+            border-radius: 10px;
+            
+            mat-icon {
+                font-size: 80px;
+                width: 80px;
+                height: 80px;
+                //color: $accent;
+                //color: black;
+                
+                padding: 20px;
+                border: 1px solid white;
+                //border: 1px solid $accent;
+                border-radius: 100%;
+            }
+    
+            h2 {
+                //color: $accent;
+                font-size: 1.8rem;
+                text-transform: uppercase;
+                font-weight: 100;
+                margin: 0;
+                padding: 0;
+            }
+    
+            p {
+                max-width: 300px;
+                text-align: center;
+                opacity: 0.8;
+            }
+
+            strong {
+                font-weight: normal;
+                color: $accent;
+            }
+        }
+    }
+
+    .quote {
+        margin: 60px 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        font-style: italic;
+        font-weight: 100;
+
+        mat-icon {
+            color: $accent;
+            font-size: 80px;
+            width: 80px;
+            height: 80px;
+        }
+    }
+}

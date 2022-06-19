@@ -1,6 +1,5 @@
 import { Component, Input, NgZone, OnInit } from '@angular/core';
-import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+
 import { Profile } from 'app/models/profile.model';
 import { gsap } from 'gsap';
 
@@ -14,16 +13,11 @@ export class HomeComponent implements OnInit {
   headlineCursor: boolean = true;
   locationCursor: boolean = false;
 
-  emailIcon = faEnvelope;
-  phoneIcon = faPhone;
-  LinkedInIcon = faLinkedin;
-  GitHubIcon = faGithub;
-  WhatsAppIcon = faWhatsapp;
-
   @Input() public profile?: Profile;
 
   @Input() headline: string[] = [
-    'Freelance Developer',
+    'MSc. Artificial Intelligence',
+    // 'Freelance Developer',
     'Freelance Full-Stack Developer',
     'Freelance Software Architect',
     'Freelance Software Engineer',
@@ -59,15 +53,17 @@ export class HomeComponent implements OnInit {
       delay: 2
     });
 
-    gsap.to('.footer', {
+    gsap.to('#home-footer', {
       opacity: 1,
       duration: .7,
-      delay: 3.5
+      delay: 2
+      // delay: 3.5
     });
-    gsap.from('.footer', {
+    gsap.from('#home-footer', {
       y: 70,
       duration: .7,
-      delay: 3.5
+      delay: 2
+      //delay: 3.5
     });
   }
 }

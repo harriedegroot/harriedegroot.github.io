@@ -1,0 +1,46 @@
+.container {   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 100%;
+
+    .icons {
+        display: flex;
+        flex-flow: row wrap;
+        //justify-content: space-between;
+        justify-content: center;
+        width: calc(100% - 100px);
+        margin-top: 60px;
+
+        gap: 30px;
+
+        mat-icon {
+            font-size: 80px;
+            width: 80px;
+            height: 80px;
+        }
+    }
+    .quote {
+        margin-top: 30px;
+        width: 100%;
+        max-width: 650px;
+        text-align: center;
+        font-size: 1.3rem;
+        //font-style: italic;
+        font-weight: 100;
+        line-height: 1.7rem;
+
+        mat-icon {
+            // color: #c2185b;
+            font-size: 80px;
+            width: 80px;
+            height: 80px;
+        }
+
+        strong {
+            color: #c2185b;
+            font-weight: normal;
+        }
+    }
+}

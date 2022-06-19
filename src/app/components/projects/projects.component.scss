@@ -1,0 +1,19 @@
+$text: white;
+$accent: black;
+$background: #c2185b;
+
+.container {
+    background-color: $background;
+    min-height: 200px;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        text-transform: uppercase;
+        font-weight: 2rem;
+    }
+
+}

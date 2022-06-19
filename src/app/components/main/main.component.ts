@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
       delay: 2,
     });
 
-    const nextSectionDelay = 10;
+    const nextSectionDelay = 3;
     gsap.to('.next-section', {
       opacity: 0.4,
       duration: 1,
@@ -70,8 +70,8 @@ export class MainComponent implements OnInit {
   }
 
   onMenuClick(item: string) {
-    const pages = ['skills'];
-    if (!pages.includes(item)) return;
+    //const pages = ['skills'];
+    //if (!pages.includes(item)) return;
 
     gsap.to(window, {
       duration: 0.2,

@@ -14,12 +14,12 @@
                 </div>
                 <div class="typed">
                     <span *ngIf="!headlineCursor" class="headline">{{headline[headline.length-1]}}</span>
-                    <ngx-typed-js *ngIf="headlineCursor" class="headline" [strings]="headline" [typeSpeed]="25" [backSpeed]="20"
+                    <ngx-typed-js *ngIf="headlineCursor" class="headline" [strings]="headline" [typeSpeed]="25" [backSpeed]="15"
                         [startDelay]="2500" [backDelay]="1000" [showCursor]="true" [loop]="false">
                         <span class="typing"></span>
                     </ngx-typed-js>
     
-                    <ngx-typed-js class="location" [strings]="location" [typeSpeed]="40" [backSpeed]="30"
+                    <ngx-typed-js class="location" [strings]="location" [typeSpeed]="35" [backSpeed]="25"
                         [startDelay]="3000" [showCursor]="false" [fadeOut]="true" [showCursor]="locationCursor">
                         <span class="typing"></span>
                     </ngx-typed-js>
@@ -27,26 +27,5 @@
             </div>
         </section>
     </div>
-    <div class="footer">
-        <section class="email">
-            <fa-icon [icon]="emailIcon"></fa-icon>
-            <a href="mailto:info@harriedegroot.com" target="_blank">info@harriedegroot.com</a>
-        </section>
-        <section class="mobile">
-            <fa-icon [icon]="phoneIcon"></fa-icon>
-            <a href="tel:0031652437812" target="_blank">+31 (0)6 52 43 78 12</a>
-        </section>
-        <section class="Whatsapp">
-            <fa-icon [icon]="WhatsAppIcon"></fa-icon>
-            <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank">WhatsApp</a>
-        </section>
-        <section class="LinkedIn">
-            <fa-icon [icon]="LinkedInIcon"></fa-icon>
-            <a href="https://linkedin.com/in/harriedegroot" target="_blank">LinkedIn</a>
-        </section>
-        <section class="GitHub">
-            <fa-icon [icon]="GitHubIcon"></fa-icon>
-            <a href="https://github.com/harriedegroot" target="_blank">GitHub</a>
-        </section>
-    </div>
+    <app-footer id="home-footer"></app-footer>
 </div>
