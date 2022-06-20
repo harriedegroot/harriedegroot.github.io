@@ -26,7 +26,7 @@
     border: none;
 }
 
-@media screen and (max-height: 650px) {
+@media screen and (max-width: 500px) {
     .next-section {
         display: none;
     }
