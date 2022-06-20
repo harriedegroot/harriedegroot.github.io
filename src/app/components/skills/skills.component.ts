@@ -6,7 +6,8 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  EventEmitter
+  EventEmitter,
+  ChangeDetectorRef
 } from '@angular/core';
 import { ECharts, EChartsOption } from 'echarts';
 import * as _ from 'lodash';
@@ -134,7 +135,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.forward();
   }
 
-  constructor() {}
+  constructor(private cdRef:ChangeDetectorRef) {}
 
   ngOnInit() {
     this._onInit = true;
@@ -143,7 +144,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.play();
+    //this.play();
   }
 
   ngOnDestroy(): void {
@@ -325,6 +326,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       await wait(this.stepWait);
     }
     this._playing = false;
+    this.cdRef.detectChanges();
   }
 
   private _update(data?: SkillDataPoint[], updateFrequency?: number) {
@@ -385,6 +387,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.chart?.setOption(option, { lazyUpdate: true, replaceMerge });
 
     this.progressEmitter.emit(this.progress);
+    //this.cdRef.detectChanges();
   }
 
   public isTagSelected(tag: string): boolean {
@@ -407,12 +410,14 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.currentStep = this.firstStep;
     }
     this._playing = true;
+    this.cdRef.detectChanges();
     this._animate();
   }
 
   public pause() {
     if (!this._playing) return;
     this._playing = false;
+    this.cdRef.detectChanges();
     this._update(undefined, 250);
   }
 
