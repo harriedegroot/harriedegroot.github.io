@@ -9,9 +9,7 @@
     .icons {
         display: flex;
         flex-flow: row wrap;
-        //justify-content: space-between;
         justify-content: center;
-        width: calc(100% - 100px);
         margin-top: 60px;
 
         gap: 30px;
@@ -28,12 +26,11 @@
         max-width: 650px;
         text-align: center;
         font-size: 1.3rem;
-        //font-style: italic;
         font-weight: 100;
         line-height: 1.7rem;
 
         mat-icon {
-            //display: none;
+            // display: none;
             // color: #c2185b;
             font-size: 80px;
             width: 80px;
