@@ -37,8 +37,6 @@ export class SectionComponent implements OnInit, AfterViewInit {
     return this._showNext;
   }
 
-  private _initialized: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {}
@@ -55,9 +53,7 @@ export class SectionComponent implements OnInit, AfterViewInit {
     if(this._visible != value) {
       this._visible = value;
       if(value) {
-        if(!this._initialized) {
-          this.showTitle();
-        }
+        this.showTitle();
         this.shownEmitter.emit();
       } else {
         this.hiddenEmitter.emit();
