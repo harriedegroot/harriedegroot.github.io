@@ -56,7 +56,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   private _destroyed: boolean = false;
 
   @Output('progress') public readonly progressEmitter = new EventEmitter<number>(); 
-  
+
+  @Input() public autoPlay: boolean = false;
   @Input() public increaseSpeed: number = 5; // % per month
   @Input() public decreaseSpeed: number = 3; // % per month
   @Input() public minProficiensy: number = 1;
@@ -144,7 +145,9 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    //this.play();
+    if(this.autoPlay) {
+      this.play();
+    }
   }
 
   ngOnDestroy(): void {

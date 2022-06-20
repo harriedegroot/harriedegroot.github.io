@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PROFILE } from 'app/data/profile';
 import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
+import { SkillsComponent } from '../skills/skills.component';
 
 @Component({
   selector: 'app-main',
@@ -23,6 +24,9 @@ export class MainComponent implements OnInit {
     //'Database',
     'Design Pattern',
   ];
+
+  @ViewChild(SkillsComponent, {static: true })
+  skills!: SkillsComponent;
 
   constructor() {}
 
@@ -65,19 +69,37 @@ export class MainComponent implements OnInit {
     });
   }
 
+  onShow(item: string) {
+    switch(item){
+      case 'home':
+        // start background inimation
+        break;
+      case 'skills':
+        this.skills.play();
+        break;
+    }
+  }
+
+  onHide(item: string) {
+    switch(item){
+      case 'home':
+        // stop background inimation
+        break;
+      case 'skills':
+        this.skills.pause();
+        break;
+    }
+  }
+
   onSkillsProgress(percent: number) {
     //console.log(`skills step: ${percent}%`);
   }
 
   navigateTo(item: string) {
-    //const pages = ['skills'];
-    //if (!pages.includes(item)) return;
-
     gsap.to(window, {
       duration: 0.2,
       scrollTo: '#' + item,
       ease: 'power2',
-      autoKill: true,
     });
   }
 }
