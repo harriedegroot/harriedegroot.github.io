@@ -2,7 +2,36 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { PROFILE } from 'app/data/profile';
 import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
+import { AboutComponent } from '../about/about.component';
+import { BackgroundComponent } from '../background/background.component';
 import { SkillsComponent } from '../skills/skills.component';
+
+function animateFrom(elem: any, direction: number = 1) {
+  direction = direction || 1;
+  var x = 0,
+      y = direction * 100;
+  if(elem.classList.contains("from-left")) {
+    x = -100;
+    y = 0;
+  } else if (elem.classList.contains("from-right")) {
+    x = 100;
+    y = 0;
+  }
+  elem.style.transform = "translate(" + x + "px, " + y + "px)";
+  elem.style.opacity = "0";
+  gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
+    duration: 1.25, 
+    x: 0,
+    y: 0, 
+    autoAlpha: 1, 
+    ease: "expo", 
+    overwrite: "auto",
+  });
+}
+
+function hide(elem: any) {
+  gsap.set(elem, {autoAlpha: 0});
+}
 
 @Component({
   selector: 'app-main',
@@ -24,6 +53,12 @@ export class MainComponent implements OnInit {
     //'Database',
     'Design Pattern',
   ];
+
+  @ViewChild(BackgroundComponent, {static: true })
+  background!: BackgroundComponent;
+
+  @ViewChild(AboutComponent, {static: true })
+  about!: AboutComponent;
 
   @ViewChild(SkillsComponent, {static: true })
   skills!: SkillsComponent;
@@ -67,12 +102,24 @@ export class MainComponent implements OnInit {
       duration: 2,
       ease: 'inOut',
     });
+
+    gsap.utils.toArray(".quote").forEach(function(elem: any) {
+      hide(elem);
+      ScrollTrigger.create({
+        trigger: elem,
+        onEnter: function() { animateFrom(elem) }, 
+        onEnterBack: function() { animateFrom(elem, -1) },
+        onLeave: function() { hide(elem) } // assure that the element is hidden when scrolled into view
+      });
+    });
   }
 
   onShow(item: string) {
     switch(item){
       case 'home':
-        // start background inimation
+        this.background.enabled = true;
+        break;
+      case 'about':
         break;
       case 'skills':
         this.skills.play();
@@ -83,7 +130,7 @@ export class MainComponent implements OnInit {
   onHide(item: string) {
     switch(item){
       case 'home':
-        // stop background inimation
+        this.background.enabled = false;
         break;
       case 'skills':
         this.skills.pause();

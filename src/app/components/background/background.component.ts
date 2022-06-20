@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Engine, MoveDirection, OutMode, ParticlesOptions } from 'tsparticles-engine';
 import { loadFull } from "tsparticles";
 import gsap from 'gsap';
@@ -12,6 +12,8 @@ export class BackgroundComponent implements OnInit {
   
   id = 'background_particles';
   particlesOptions?: any;
+
+  @Input() public enabled: boolean = true;
 
   constructor() {}
 
