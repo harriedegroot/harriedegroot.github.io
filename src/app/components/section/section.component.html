@@ -2,3 +2,6 @@
 <section [style.background]="background" [style.minHeight]="fullPage ? '100vh' : 'auto'">
     <ng-content></ng-content>
 </section>
+<button *ngIf="showNext" class="next-section" (click)="onNextClick()" mat-stroked-button>
+    <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
+</button>

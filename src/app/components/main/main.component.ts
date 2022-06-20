@@ -38,7 +38,7 @@ export class MainComponent implements OnInit {
       delay: 2,
     });
 
-    const nextSectionDelay = 3;
+    const nextSectionDelay = 2;
     gsap.to('.next-section', {
       opacity: 0.4,
       duration: 1,
@@ -69,13 +69,13 @@ export class MainComponent implements OnInit {
     //console.log(`skills step: ${percent}%`);
   }
 
-  onMenuClick(item: string) {
+  navigateTo(item: string) {
     //const pages = ['skills'];
     //if (!pages.includes(item)) return;
 
     gsap.to(window, {
       duration: 0.2,
-      scrollTo: '#section-' + item,
+      scrollTo: '#' + item,
       ease: 'power2',
       autoKill: true,
     });
