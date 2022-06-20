@@ -37,17 +37,13 @@
 }
 
 @media screen and (max-width: 900px) {
-    section {
-        .next-section {
-            bottom: 325px;
-        }
+    .next-section {
+        bottom: 200px;
     }
 }
 
 @media screen and (max-height: 650px) {
-    section {
-        .next-section {
-            display: none;
-        }
+    .next-section {
+        display: none;
     }
 }

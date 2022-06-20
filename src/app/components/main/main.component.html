@@ -13,15 +13,15 @@
     <!-- <section id="section-specialities">
         <app-specialities></app-specialities>
     </section> -->
-    <app-section id="section-charasteristics" [background]="'black'" [fullPage]="false">
-        <app-charasteristics></app-charasteristics>
-    </app-section>
     <app-section id="section-skills" [fullPage]="true" [title]="'skills'">
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags" [scrollwheel]="false"
-            [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
+        [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </app-section>
     <app-section>
         <app-projects></app-projects>
+    </app-section>
+    <app-section id="section-charasteristics" [background]="'black'" [fullPage]="false">
+        <app-charasteristics></app-charasteristics>
     </app-section>
 </main>
 <div>

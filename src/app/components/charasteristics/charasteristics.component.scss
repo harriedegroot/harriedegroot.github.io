@@ -15,7 +15,8 @@ $accent: #c2185b;
 .container {
     min-height: calc(100vh - 54px); // footer
     height: 100%;
-
+    padding: 30px;
+    
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -48,7 +49,7 @@ $accent: #c2185b;
                 
                 padding: 20px;
                 border: 1px solid white;
-                //border: 1px solid $accent;
+                border: 1px solid $accent;
                 border-radius: 100%;
             }
     
@@ -65,11 +66,12 @@ $accent: #c2185b;
                 max-width: 300px;
                 text-align: center;
                 opacity: 0.8;
+                font-size: larger;
             }
 
             strong {
                 font-weight: normal;
-                color: $accent;
+                //color: $accent;
             }
         }
     }
@@ -81,6 +83,7 @@ $accent: #c2185b;
         font-size: 1.5rem;
         font-style: italic;
         font-weight: 100;
+        line-height: 2rem;
 
         mat-icon {
             color: $accent;

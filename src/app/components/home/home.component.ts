@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    setTimeout(() => this.zone.run(() => this.headlineCursor = false), 10*1000);
+    setTimeout(() => this.zone.run(() => this.headlineCursor = false), 12*1000);
 
     gsap.to('.contact .avatar', {
       width: 150,

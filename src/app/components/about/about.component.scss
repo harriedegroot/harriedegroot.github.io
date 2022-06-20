@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
+    padding: 10px;
 
     .icons {
         display: flex;
@@ -32,6 +33,7 @@
         line-height: 1.7rem;
 
         mat-icon {
+            //display: none;
             // color: #c2185b;
             font-size: 80px;
             width: 80px;
