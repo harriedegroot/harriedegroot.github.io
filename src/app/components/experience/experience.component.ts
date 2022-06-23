@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
@@ -33,14 +33,18 @@ export class ExperienceComponent implements OnInit {
   public readonly categories = new Map<number, Set<string>>();
   public readonly projectsPerSkill = new Map<string, Set<Project>>();
 
-  constructor() {}
+  constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this._initialize();
+    //this.refresh();
   }
 
-  private _initialize() {
-    this.categories.clear();
+  public refresh(animate: boolean = true) {
+    if(animate) {
+      this.clear();
+    } else {
+      this.categories.clear();
+    }
     const skills = new Map<string, MinMax<Date>>();
     const enabled = new Set<string>()
     if (this.experience) {
@@ -78,13 +82,20 @@ export class ExperienceComponent implements OnInit {
       skills.add(name);
       this.categories.set(years, skills);
     }
+
+    this.cdRef.detectChanges();
+  }
+
+  public clear() {
+    this.categories.clear();
+    this.cdRef.detectChanges();
   }
 
   public onSliderChange(value: number) {
     if(this.proficiency !== value) {
       //value = Math.max(value, 1);
       this.proficiency = value;
-      this._initialize();
+      this.refresh(false);
     }
   }
 }

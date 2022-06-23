@@ -12,7 +12,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
   export const listAnimation = trigger('listAnimation', [
     transition('* <=> *', [
       query(':enter',
-        [style({ opacity: 0 }), stagger('100ms', animate('800ms ease-out', style({ opacity: 1 })))],
+        [style({ opacity: 0 }), stagger('80ms', animate('600ms ease-out', style({ opacity: 1 })))],
         { optional: true }
       ),
       query(':leave',

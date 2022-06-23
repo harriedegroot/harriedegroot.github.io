@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import { AboutComponent } from '../about/about.component';
 import { BackgroundComponent } from '../background/background.component';
+import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
 
 function animateFrom(elem: any, direction: number = 1) {
@@ -31,6 +32,10 @@ function animateFrom(elem: any, direction: number = 1) {
 
 function hide(elem: any) {
   gsap.set(elem, {autoAlpha: 0});
+}
+
+function asArray<T>(obj: T | T[]): T[] {
+  return Array.isArray(obj) ? obj as T[] : [obj as T]; 
 }
 
 @Component({
@@ -61,6 +66,9 @@ export class MainComponent implements OnInit {
 
   @ViewChild(AboutComponent, {static: true })
   about!: AboutComponent;
+
+  @ViewChild(ExperienceComponent, {static: true })
+  experience!: ExperienceComponent;
 
   @ViewChild(SkillsComponent, {static: true })
   skills!: SkillsComponent;
@@ -116,27 +124,37 @@ export class MainComponent implements OnInit {
     });
   }
 
-  onShow(item: string) {
-    switch(item){
-      case 'background':
-        this.background.enabled = true;
-        break;
-      case 'about':
-        break;
-      case 'skills':
-        this.skills.play();
-        break;
+  onShow(items: string | string[]) {
+    for(let item of asArray(items)) {
+      switch(item){
+        case 'background':
+          this.background.enabled = true;
+          break;
+        case 'about':
+          break;
+        case 'experience':
+          this.experience.refresh();
+          break;
+        case 'skills':
+          this.skills.play();
+          break;
+      }
     }
   }
 
-  onHide(item: string) {
-    switch(item){
-      case 'home':
-        this.background.enabled = false;
-        break;
-      case 'skills':
-        this.skills.pause();
-        break;
+  onHide(items: string | string[]) {
+    for(let item of asArray(items)) {
+      switch(item){
+        case 'home':
+          this.background.enabled = false;
+          break;
+        case 'experience':
+          this.experience.clear();
+          break;
+        case 'skills':
+          this.skills.pause();
+          break;
+      }
     }
   }
 
