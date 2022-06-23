@@ -77,13 +77,42 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 100,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
               name: '.Net 6',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.Net',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.Net Core',
               proficiency: 100,
               tags: ['Software Framework'],
             },
@@ -117,6 +146,11 @@ export const PROFILE: Profile = {
               name: 'MongoDB',
               proficiency: 50,
               tags: ['Database', 'NoSQL', 'Data'],
+            },
+            {
+              name: 'Python',
+              proficiency: 20,
+              tags: ['Programming Language'],
             },
             {
               name: 'Docker',
@@ -179,16 +213,29 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 80,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'embedded',
+              proficiency: 50,
+              tags: ['Software Development'],
+            },
+            {
               name: 'JavaScript',
               proficiency: 90,
               min: 50,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
               name: 'NodeJS',
               proficiency: 80,
-              speciality: true,
               tags: ['Software Framework'],
             },
             {
@@ -277,9 +324,23 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 100,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -699,6 +760,11 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'SendGrid',
               proficiency: 70,
               tags: ['Software Library' /*, "Email Provider" */],
@@ -748,7 +814,6 @@ export const PROFILE: Profile = {
             {
               name: 'C#',
               proficiency: 90,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -810,7 +875,6 @@ export const PROFILE: Profile = {
             {
               name: 'C#',
               proficiency: 85,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -884,9 +948,18 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 85,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -933,9 +1006,33 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 100,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -1029,9 +1126,23 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 80,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 80,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -1083,9 +1194,23 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 50,
+              tags: ['Software Development'],
+            },
+            {
               name: 'C#',
               proficiency: 70,
-              speciality: true,
               tags: ['Programming Language'],
             },
             {
@@ -1170,6 +1295,31 @@ export const PROFILE: Profile = {
           },
           technologies: [
             {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'MacroMedia Flash',
               proficiency: 100,
               min: 0,
@@ -1211,6 +1361,36 @@ export const PROFILE: Profile = {
             to: new Date('2013-05'),
           },
           technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
+              proficiency: 60,
+              tags: ['Software Development'],
+            },
             {
               name: 'Objective-C',
               description: 'iOS Development',

@@ -24,6 +24,7 @@ import { CharasteristicsComponent } from './components/charasteristics/charaster
 import { ProjectsComponent } from './components/projects/projects.component';
 import { SectionComponent } from './components/section/section.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ExperienceComponent } from './components/experience/experience.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { FooterComponent } from './components/footer/footer.component';
     ProjectsComponent,
     SectionComponent,
     FooterComponent,
+    ExperienceComponent,
   ],
   imports: [
     BrowserModule,

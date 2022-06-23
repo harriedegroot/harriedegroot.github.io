@@ -14,6 +14,7 @@ import * as _ from 'lodash';
 import { wait } from 'app/helpers/wait';
 import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
 import * as moment from 'moment';
+import { getMonthDifference } from 'app/helpers/date';
 
 interface SkillPoint {
   timespan: TimeSpan;
@@ -27,16 +28,6 @@ interface SkillDataPoint {
   value: number;
   skill: Skill;
 }
-
-function getMonthDifference(startDate?: Date, endDate?: Date): number {
-  if (startDate === undefined || endDate === undefined) return 0;
-  return (
-    endDate.getMonth() -
-    startDate.getMonth() +
-    12 * (endDate.getFullYear() - startDate.getFullYear())
-  );
-}
-
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',

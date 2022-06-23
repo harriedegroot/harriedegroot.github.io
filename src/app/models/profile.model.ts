@@ -93,7 +93,6 @@ export interface Skill {
   name: string;
   description?: string;
   proficiency?: number; // percentage?
-  speciality?: boolean;
   tags?: string[];
   projects?: Project[];
   activity?: TimeSpan[];

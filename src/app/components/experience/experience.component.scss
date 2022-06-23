@@ -1,0 +1,54 @@
+// $text: #5f6c72;
+$text: white;
+$accent: #c2185b;
+
+.container {
+    padding: 40px;
+
+    .title {
+        //display: flex;
+        align-content: center;
+        justify-items: center;
+        gap: 20px;
+        //justify-content: center;
+    
+        h2 {
+            color: $text;
+            line-height: 45px;
+        }
+        
+        .proficiency {
+            flex-grow: 1;
+            display: flex;
+            color: $text;
+
+            span {
+                width: 130px;
+                line-height: 45px;
+            }
+
+            mat-slider {
+                width: 100%
+            }
+        }
+    }
+    
+    .categories {
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+        gap: 30px;
+
+        .category {
+            min-width: 250px;
+            flex: 1 0 25%;
+            margin: 20px 0;
+            h3 {
+                margin: 0 0 7px 0;
+                padding: 0;
+                color: $accent;
+                font-weight: bold;
+            }
+        }
+    }
+}

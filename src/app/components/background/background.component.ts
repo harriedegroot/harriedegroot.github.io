@@ -2,11 +2,13 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Engine, MoveDirection, OutMode, ParticlesOptions } from 'tsparticles-engine';
 import { loadFull } from "tsparticles";
 import gsap from 'gsap';
+import { fadeAnimation } from 'app/helpers/animations';
 
 @Component({
   selector: 'app-background',
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.scss'],
+  animations: [fadeAnimation]
 })
 export class BackgroundComponent implements OnInit {
   

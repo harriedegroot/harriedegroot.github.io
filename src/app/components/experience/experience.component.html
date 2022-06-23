@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="title">
+        <!-- <h2>Experience</h2> -->
+        <div class="proficiency">
+            <span>min proficiency</span>
+            <mat-slider [value]="proficiency" [min]="0" [max]="100" (input)="onSliderChange($event.value ?? 0)">
+            </mat-slider>
+        </div>
+
+    </div>
+    <div class="categories">
+        <div *ngFor="let year of years" class="category">
+            <h3>{{year}}{{year > 1 ? '+ years' : '+ year'}}</h3>
+            <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(year)?.size">
+                <mat-chip class="chip" *ngFor="let skill of categories.get(year)" >{{skill}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+        <div *ngIf="categories.get(0)" class="category">
+            <h3>&lt;1 year</h3>
+            <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(0)?.size">
+                <mat-chip class="chip" *ngFor="let skill of categories.get(0)">{{skill}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+</div>

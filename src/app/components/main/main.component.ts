@@ -54,6 +54,8 @@ export class MainComponent implements OnInit {
     'Design Pattern',
   ];
 
+  excludeExperience = ['Mustache Templates'];
+
   @ViewChild(BackgroundComponent, {static: true })
   background!: BackgroundComponent;
 
@@ -116,7 +118,7 @@ export class MainComponent implements OnInit {
 
   onShow(item: string) {
     switch(item){
-      case 'home':
+      case 'background':
         this.background.enabled = true;
         break;
       case 'about':
