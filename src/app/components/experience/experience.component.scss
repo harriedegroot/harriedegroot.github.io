@@ -21,9 +21,10 @@ $accent: #c2185b;
             flex-grow: 1;
             display: flex;
             color: $text;
+            gap: 10px;
 
             span {
-                width: 130px;
+                white-space: nowrap;
                 line-height: 45px;
             }
 
