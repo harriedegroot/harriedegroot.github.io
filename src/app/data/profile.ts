@@ -214,7 +214,7 @@ export const PROFILE: Profile = {
           technologies: [
             {
               name: 'App development',
-              proficiency: 80,
+              proficiency: 100,
               tags: ['Software Development'],
             },
             {
@@ -335,6 +335,11 @@ export const PROFILE: Profile = {
             },
             {
               name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
               proficiency: 100,
               tags: ['Software Development'],
             },
@@ -1025,11 +1030,11 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Software Development'],
             },
-            {
-              name: 'Software Architect',
-              proficiency: 100,
-              tags: ['Software Development'],
-            },
+            // {
+            //   name: 'Software Architect',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
             {
               name: 'C#',
               proficiency: 100,
@@ -1314,11 +1319,11 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Software Development'],
             },
-            {
-              name: 'Software Architect',
-              proficiency: 100,
-              tags: ['Software Development'],
-            },
+            // {
+            //   name: 'Software Architect',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
             {
               name: 'MacroMedia Flash',
               proficiency: 100,
@@ -1386,11 +1391,11 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Software Development'],
             },
-            {
-              name: 'Software Architect',
-              proficiency: 60,
-              tags: ['Software Development'],
-            },
+            // {
+            //   name: 'Software Architect',
+            //   proficiency: 60,
+            //   tags: ['Software Development'],
+            // },
             {
               name: 'Objective-C',
               description: 'iOS Development',
