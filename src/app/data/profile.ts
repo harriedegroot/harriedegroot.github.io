@@ -329,6 +329,11 @@ export const PROFILE: Profile = {
               tags: ['Software Development'],
             },
             {
+              name: 'API development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
               name: 'front-end',
               proficiency: 100,
               tags: ['Software Development'],
@@ -350,6 +355,11 @@ export const PROFILE: Profile = {
             },
             {
               name: '.Net 6',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.Net',
               proficiency: 100,
               tags: ['Software Framework'],
             },
@@ -562,6 +572,11 @@ export const PROFILE: Profile = {
               proficiency: 90,
               tags: ['Software Architecture', "Design Pattern"],
             },
+            {
+              name: 'JSON',
+              proficiency: 100,
+              tags: ['Web Development'],
+            },
           ],
         },
         {
@@ -569,7 +584,8 @@ export const PROFILE: Profile = {
           description: '',
           timespan: {
             from: new Date('2018-01'),
-            to: new Date('2022-01'),
+            to: new Date('2018-12'),
+            //to: new Date('2022-01'),
           },
           technologies: [
             {
@@ -828,6 +844,11 @@ export const PROFILE: Profile = {
               tags: ['Software Framework'],
             },
             {
+              name: '.Net',
+              proficiency: 70,
+              tags: ['Software Framework'],
+            },
+            {
               name: 'Razor Pages',
               proficiency: 60,
               tags: ['Software Framework'],
@@ -884,6 +905,11 @@ export const PROFILE: Profile = {
             },
             {
               name: '.NET Core 2.1',
+              proficiency: 80,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.Net',
               proficiency: 80,
               tags: ['Software Framework'],
             },
@@ -973,6 +999,11 @@ export const PROFILE: Profile = {
               tags: ['Software Framework'],
             },
             {
+              name: '.Net',
+              proficiency: 70,
+              tags: ['Software Framework'],
+            },
+            {
               name: 'Entity Framework Core',
               description: 'Entity Framework Core',
               proficiency: 60,
@@ -989,11 +1020,11 @@ export const PROFILE: Profile = {
               proficiency: 80,
               tags: ['Software Framework'],
             },
-            {
-              name: 'php',
-              proficiency: 20,
-              tags: ['Programming Language'],
-            },
+            // {
+            //   name: 'php',
+            //   proficiency: 20,
+            //   tags: ['Programming Language'],
+            // },
             {
               name: 'RabbitMQ',
               proficiency: 40,
@@ -1042,6 +1073,11 @@ export const PROFILE: Profile = {
             },
             {
               name: '.NET Core/Standard',
+              proficiency: 50,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.Net',
               proficiency: 50,
               tags: ['Software Framework'],
             },
@@ -1151,6 +1187,11 @@ export const PROFILE: Profile = {
               tags: ['Programming Language'],
             },
             {
+              name: '.Net',
+              proficiency: 50,
+              tags: ['Software Framework'],
+            },
+            {
               name: 'Web API',
               proficiency: 50,
               tags: ['Software Framework'],
@@ -1217,6 +1258,11 @@ export const PROFILE: Profile = {
               name: 'C#',
               proficiency: 70,
               tags: ['Programming Language'],
+            },
+            {
+              name: '.Net',
+              proficiency: 50,
+              tags: ['Software Framework'],
             },
             {
               name: '.NET Framework',
@@ -1381,11 +1427,11 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Software Development'],
             },
-            {
-              name: 'front-end',
-              proficiency: 100,
-              tags: ['Software Development'],
-            },
+            // {
+            //   name: 'front-end',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
             {
               name: 'back-end',
               proficiency: 100,
@@ -1433,7 +1479,543 @@ export const PROFILE: Profile = {
             },
           ],
         },
-      ]
+        {
+          name: 'Tragpi: Quality App',
+          description: 'iPad application (business) to gain insight into the quality, cost and efficiency of hospitals',
+          timespan: {
+            from: new Date('2012-04'),
+            to: new Date('2012-08'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            // {
+            //   name: 'Game development',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
+            // {
+            //   name: 'front-end',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Objective-C',
+              description: 'iOS Development',
+              proficiency: 70,
+              tags: ['Programming Language', 'Mobile Development', 'iOS', 'Game Development'],
+            },
+            {
+              name: 'php',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 90,
+              tags: ['Database', 'Data'],
+            },
+          ],
+        },
+        {
+          name: 'G4T: Gaming for Training',
+          description: 'Serious game for e-learning & training',
+          role: "Designed and extended a scalable isometric gaming engine. Implemented the backend CMS used for generating content and tracking training progress.",
+          timespan: {
+            from: new Date('2011-09'),
+            to: new Date('2012-04'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            // {
+            //   name: 'Software Architect',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'php',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'JavaScript',
+              proficiency: 80,
+              min: 50,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 90,
+              tags: ['Database', 'Data'],
+            },
+            {
+              name: 'HTML',
+              proficiency: 90,
+              tags: ['Web Development'],
+            },
+            {
+              name: 'Isometric projection',
+              proficiency: 90,
+              tags: ['Algorithm', 'Game Development'],
+            },
+          ],
+        },
+        {
+          name: 'ANWB: In het Park',
+          description: 'Mobile app (Android & iOS) to promote dutch parks.',
+          role: 'Worked on both native apps and created the back-end CMS.',
+          timespan: {
+            from: new Date('2011-08'),
+            to: new Date('2011-09'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Mobile development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            // {
+            //   name: 'front-end',
+            //   proficiency: 100,
+            //   tags: ['Software Development'],
+            // },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            // {
+            //   name: 'Software Architect',
+            //   proficiency: 60,
+            //   tags: ['Software Development'],
+            // },
+            {
+              name: 'Objective-C',
+              description: 'iOS Development',
+              proficiency: 70,
+              tags: ['Programming Language', 'Mobile Development', 'iOS', 'Game Development'],
+            },
+            {
+              name: 'Java',
+              description: 'Android Development',
+              proficiency: 90,
+              min: 40,
+              tags: ['Programming Language', 'Mobile Development', 'Android', 'Game Development'],
+            },
+            {
+              name: 'php',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 90,
+              tags: ['Database', 'Data'],
+            },
+          ],
+        },
+        {
+          name: 'Ketnet: Pretshow',
+          description: 'Fun physics based puzzle game',
+          timespan: {
+            from: new Date('2010-10'),
+            to: new Date('2011-02'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'Box2D physics engine',
+              proficiency: 80,
+              tags: ['Game Development'],
+            },
+          ],
+        },
+        {
+          name: 'Ketnet: Wrappers op Wieltjes',
+          description: 'Explorational race game for kids',
+          role: "Designed and built a scalable isometric gaming engine. Took part in the development of the content loading mechanisms and render engine.",
+          timespan: {
+            from: new Date('2010-07'),
+            to: new Date('2011-01'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'Isometric projection',
+              proficiency: 80,
+              tags: ['Algorithm', 'Game Development'],
+            },
+          ],
+        },
+        {
+          name: 'Frans Muller: Shoecare Academy',
+          description: 'Online Training portal for professionals in the shoes business',
+          role: "Developed both the interactive front-end (Flash) and back-end CMS + API",
+          timespan: {
+            from: new Date('2010-04'),
+            to: new Date('2010-10'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'API development',
+              proficiency: 50,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 80,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 90,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'php',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'JavaScript',
+              proficiency: 70,
+              min: 50,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 85,
+              tags: ['Database', 'Data'],
+            },
+            {
+              name: 'HTML',
+              proficiency: 90,
+              tags: ['Web Development'],
+            },
+            {
+              name: 'CSS',
+              proficiency: 50,
+              tags: ['Web Development'],
+            },
+            {
+              name: 'JSON',
+              proficiency: 80,
+              tags: ['Web Development'],
+            },
+          ],
+        },
+        {
+          name: 'Noordhoff: Minigames',
+          description: 'Multiple educational minigames for Noordhoff\'s e-learning portal',
+          timespan: {
+            from: new Date('2010-01'),
+            to: new Date('2010-07'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 90,
+              tags: ['Software Development'],
+            },
+            // {
+            //   name: 'API development',
+            //   proficiency: 50,
+            //   tags: ['Software Development'],
+            // },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'php',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 85,
+              tags: ['Database', 'Data'],
+            },
+          ],
+        },
+        {
+          name: 'Postcode Loterij: Goodgames',
+          description: 'Multiple games for the Postcode Loterij - goodgames portal',
+          timespan: {
+            from: new Date('2010-03'),
+            to: new Date('2010-07'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },           
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+          ],
+        },
+        {
+          name: '7Games: Build & Bash',
+          description: 'Multi-player game',
+          timespan: {
+            from: new Date('2009-10'),
+            to: new Date('2010-02'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Game development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'MacroMedia Flash',
+              proficiency: 100,
+              min: 0,
+              tags: ['Software Framework', 'Game Development'],
+            },
+            {
+              name: 'ActionScript 3.0',
+              proficiency: 100,
+              tags: ['Programming Language', 'Game Development'],
+            },
+            {
+              name: 'Multi-player sync',
+              proficiency: 50,
+              tags: ['Algorithm', 'Game Development'],
+            },
+            {
+              name: 'Box2D physics engine',
+              proficiency: 75,
+              tags: ['Game Development'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      // ACHT Personal Websystems
+      company: {
+        name: 'acht - personal websystems',
+        description: 'Digital agency',
+        location: {
+          city: 'Ter Idzard',
+        },
+      },
+      roles: [
+        {
+          title: 'Co-founder (VOF) & web-developer',
+          type: EmploymentType.Owner,
+          timespan: {
+            from: new Date('2007-04'),
+            to: new Date('2011-03'),
+          },
+          description: 'web-developer for small web-applications',
+        },
+      ],
+      projects: [
+        {
+          name: 'ACHT-CMS + multiple web-application',
+          description: 'Created multiple web applications, many based on a in-house designed Content Management System built on top of an internal written object oriented php framework.',
+          timespan: {
+            from: new Date('2007-04'),
+            to: new Date('2011-03'),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 60,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 50,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'JavaScript',
+              proficiency: 50,
+              min: 50,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'php',
+              proficiency: 60,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'MySQL',
+              proficiency: 60,
+              tags: ['Database', 'Data'],
+            },
+            {
+              name: 'HTML',
+              proficiency: 70,
+              tags: ['Web Development'],
+            },
+            {
+              name: 'CSS',
+              proficiency: 40,
+              tags: ['Web Development'],
+            },
+          ],
+        },
+      ],
     },
   ],
   skills: [],
