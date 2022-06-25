@@ -1,3 +1,5 @@
+@import 'variables';
+
 .container {
   display: flex;
   position: relative;
@@ -36,7 +38,7 @@
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $mobile-width) {
   .container {
     .tags {
       margin: 20px 10px 20px 20px;

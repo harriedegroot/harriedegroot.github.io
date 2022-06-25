@@ -1,9 +1,8 @@
-// $text: #5f6c72;
-$text: white;
-$accent: #c2185b;
+@import 'variables';
 
 .container {
     padding: 40px;
+    // background: $secondary; // NOTE: defined in main template as a section background
 
     .title {
         //display: flex;
@@ -13,14 +12,14 @@ $accent: #c2185b;
         //justify-content: center;
     
         h2 {
-            color: $text;
+            color: $text-light;
             line-height: 45px;
         }
         
         .proficiency {
             flex-grow: 1;
             display: flex;
-            color: $text;
+            color: $text-light;
             gap: 10px;
 
             span {

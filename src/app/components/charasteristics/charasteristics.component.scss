@@ -1,15 +1,9 @@
-//$text: black;
-//$text: #5f6c72;
-//$background: white;
-$text: white;
-$background: black;
-$accent: #c2185b;
-
+@import 'variables';
 
 :host {
     display: block;
-    background: $background;
-    color: $text;
+    background: $background-dark;
+    color: $text-light;
 }
 
 .container {
@@ -78,7 +72,7 @@ $accent: #c2185b;
     }
 
     .quote-container {
-        background-color: rgb(35, 35, 35);  
+        background-color: $secondary;  
         padding: 0 25px 0 15px;  
     }
 

@@ -1,6 +1,8 @@
+@import 'variables';
+
 .content {
     position: absolute;
-    color: #5f6c72;
+    color: $text-secondary;
     height: 100%;
     width: 100%;
     min-height: 430px;
@@ -52,7 +54,7 @@
                 width: 100%;
 
                 .name {
-                    background: black;
+                    background: $background-dark;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -60,7 +62,7 @@
                     padding: 13px 0 5px 0;
                     overflow: hidden;
                     width: 405px;
-                    color: white;
+                    color: $text-light;
                     margin: 0 auto;
 
                     .firstname,
@@ -104,7 +106,7 @@
 
                     .location {
                         display: block;
-                        color: #b4babd;
+                        color: $text-tertairy;
                         font-size: 28px;
                         font-weight: 300;
                     }
@@ -119,7 +121,7 @@
     width: 100%;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $mobile-width) {
     .container {
         padding: 5px;
     }

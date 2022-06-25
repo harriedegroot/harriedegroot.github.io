@@ -14,7 +14,7 @@
     <!-- <section id="section-specialities">
         <app-specialities></app-specialities>
     </section> -->
-    <app-section id="section-experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.8)'"
+    <app-section id="section-experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.864)'"
         (next)="navigateTo('section-skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
         <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="80"
             [exclude]="excludeExperience"></app-experience>

@@ -1,9 +1,7 @@
-$text: white;
-$accent: black;
-$background: #c2185b;
+@import 'variables';
 
 .container {
-    background-color: $background;
+    background-color: $accent;
     min-height: 200px;
 
     display: flex;

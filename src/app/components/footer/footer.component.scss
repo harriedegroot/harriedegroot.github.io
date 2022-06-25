@@ -1,3 +1,5 @@
+@import 'variables';
+
 .footer {
     
     display: flex;
@@ -5,8 +7,8 @@
 
     width: 100%;
     font-size: 1.25em;
-    background-color: rgb(0, 0, 0);
-    color: white;
+    background-color: $background-dark;
+    color: $text-light;
 
     flex-direction: row;
     flex-wrap: nowrap;
@@ -30,13 +32,13 @@
 
         a {
             display: inline-block;
-            color: white;
+            color: $text-light;
             text-decoration: none;
             white-space: nowrap;
 
             &:hover,
             &:visited {
-                color: white;
+                color: $text-light;
                 text-decoration: none;
                 text-decoration: underline;
             }
@@ -44,7 +46,7 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $mobile-width) {
     .footer {
         justify-content: center;
         flex-direction: column;

@@ -1,3 +1,5 @@
+@import 'variables';
+
 .background {
     overflow: hidden;
     position: absolute;
@@ -23,7 +25,7 @@
 .next-section {
     position: absolute;
     bottom: 80px;
-    color: #b4babd;
+    color: $text-tertairy;
     font-size: 38px;
     font-weight: 100;
     opacity: 0;
@@ -37,7 +39,7 @@
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $mobile-width) {
     .next-section {
         bottom: 200px;
     }
