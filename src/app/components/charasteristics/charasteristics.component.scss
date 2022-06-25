@@ -13,20 +13,19 @@ $accent: #c2185b;
 }
 
 .container {
-    min-height: calc(100vh - 54px); // footer
-    height: 100%;
-    padding: 30px;
-    
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: stretch;
-
+    justify-content: space-between;
+    
     .charasteristics {
         display: flex;
         flex-flow: row wrap;
-        gap: 30px;
+        align-content: space-around;
+        //gap: 30px;
         height: 100%;
-        
+        flex-grow: 1;
+
         .charasteristic {
             display: flex;
             flex-flow: column nowrap;
@@ -78,15 +77,20 @@ $accent: #c2185b;
         }
     }
 
+    .quote-container {
+        background-color: rgb(35, 35, 35);  
+        padding: 0 25px 0 15px;  
+    }
+
     .quote {
-        margin: 20px 0;
+        padding: 0 0 40px 0;
         width: 100%;
         text-align: center;
         font-size: 1.5rem;
         font-style: italic;
         font-weight: 100;
         line-height: 2rem;
-
+        
         mat-icon {
             color: $accent;
             font-size: 80px;

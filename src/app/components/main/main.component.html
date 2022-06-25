@@ -1,36 +1,36 @@
 <app-background class="background"></app-background>
 <app-menu class="menu" (click)="navigateTo($event)"></app-menu>
 <main class="content">
-    <app-section id="section-home" [fullPage]="true" (shown)="onShow('background')" (hidden)="onHide('background')">
+    <app-section id="section-home" class="app-section" [fullPage]="true" (shown)="onShow('background')" (hidden)="onHide('background')">
         <app-home id="home" [profile]="profile"></app-home>
         <button class="next-section" (click)="navigateTo('section-about')" mat-stroked-button>
             <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
         </button>
     </app-section>
-    <app-section id="section-about" background="black" [fullPage]="true" [title]="'about'"
-        (next)="navigateTo('section-experience')" (shown)="onShow('about')" (hidden)="onHide('about')">
+    <app-section id="section-about" class="app-section" background="black" [fullPage]="true" [title]="'about'"
+        (next)="navigateTo('section-experience')" (shown)="onShow('about')" (hidden)="onHide('about')" [snapUp]="60">
         <app-about></app-about>
     </app-section>
     <!-- <section id="section-specialities">
         <app-specialities></app-specialities>
     </section> -->
-    <app-section id="section-experience" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.8)'"
+    <app-section id="section-experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.8)'"
         (next)="navigateTo('section-skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
         <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="80"
             [exclude]="excludeExperience"></app-experience>
     </app-section>
-    <app-section id="section-skills" [fullPage]="true" [title]="'skills'" (shown)="onShow('skills')"
+    <app-section id="section-skills" class="app-section" [fullPage]="true" [title]="'skills'" (shown)="onShow('skills')"
         (hidden)="onHide('skills')">
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </app-section>
-    <app-section id="section-projects" (next)="navigateTo('section-charasteristics')">
+    <app-section id="section-projects" class="app-section" (next)="navigateTo('section-charasteristics')">
         <app-projects></app-projects>
     </app-section>
-    <app-section id="section-charasteristics" [background]="'black'" [fullPage]="false">
+    <app-section id="section-charasteristics" class="app-section" [background]="'black'" [fullPage]="false" [snap]="true">
         <app-charasteristics></app-charasteristics>
     </app-section>
 </main>
-<div>
+<!-- <div>
     <app-footer id="footer"></app-footer>
-</div>
+</div> -->
