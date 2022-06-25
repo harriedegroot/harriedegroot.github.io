@@ -7,8 +7,16 @@
     font-size: 1.25em;
     background-color: rgb(0, 0, 0);
     color: white;
-    flex-flow: row wrap;
+
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
     justify-content: space-evenly;
+
+    &.wrap {
+        flex-flow: row wrap;
+    }
+    
     line-height: 45px;
 
     section {
@@ -24,6 +32,7 @@
             display: inline-block;
             color: white;
             text-decoration: none;
+            white-space: nowrap;
 
             &:hover,
             &:visited {
@@ -38,5 +47,6 @@
 @media screen and (max-width: 900px) {
     .footer {
         justify-content: center;
+        flex-direction: column;
     }
 }

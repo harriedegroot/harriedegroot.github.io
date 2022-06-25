@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +14,8 @@ export class FooterComponent implements OnInit {
   LinkedInIcon = faLinkedin;
   GitHubIcon = faGithub;
   WhatsAppIcon = faWhatsapp;
+
+  @Input() public wrap: boolean = false;
 
   constructor() { }
 
