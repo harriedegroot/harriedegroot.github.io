@@ -164,7 +164,7 @@ export class MainComponent implements OnInit {
 
   navigateTo(item: string) {
     gsap.to(window, {
-      duration: 0.2,
+      duration: 0.6,
       scrollTo: '#' + item,
       ease: 'power2',
     });
