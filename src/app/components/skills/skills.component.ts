@@ -53,7 +53,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public decreaseSpeed: number = 3; // % per month
   @Input() public minProficiensy: number = 1;
   @Input() public updateFrequency = 1000; // bar animation speed
-  @Input() public stepWait = 250; // waiting time between each step (ms)
+  @Input() public stepWait = 200; // waiting time between each step (ms)
   @Input() public maxRows = 50; // max visible rows
   @Input() public monthsToKeepZeroSkills = 12;
   @Input() public firstStep = 0; // NOTE: datapoint 0 has no data
