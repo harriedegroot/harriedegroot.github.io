@@ -16,6 +16,7 @@
             line-height: 45px;
         }
         
+        .period,
         .proficiency {
             flex-grow: 1;
             display: flex;
@@ -26,9 +27,16 @@
                 white-space: nowrap;
                 line-height: 45px;
             }
+            .label {
+                width: 70px;
+            }
+            .value {
+                width: 35px;
+            }
+            
 
             mat-slider {
-                width: 100%
+                flex-grow: 1;
             }
         }
     }

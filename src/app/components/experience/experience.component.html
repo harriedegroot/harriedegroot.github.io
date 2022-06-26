@@ -4,11 +4,17 @@
         <div class="proficiency">
             <!-- <span>min proficiency</span> -->
             <!-- <span>experience</span> -->
-            <span>proficiency</span>
-            <mat-slider [value]="proficiency" [min]="0" [max]="100" (input)="onSliderChange($event.value ?? 0)">
+            <span class="label">proficiency</span>
+            <mat-slider [value]="proficiency" [min]="0" [max]="100" (input)="onProficiencyChange($event.value ?? 0)">
             </mat-slider>
+            <span class="value">{{proficiency}}</span>
         </div>
-
+        <div class="period">
+            <span class="label">last used</span>
+            <mat-slider [tickInterval]="1" [value]="period" [min]="minYear" [max]="maxYear" (input)="onPeriodChange($event.value)" tickInterval="auto">
+            </mat-slider>
+            <span class="value">&gt; {{period}}</span>
+        </div>
     </div>
     <div class="categories">
         <div *ngFor="let year of years" class="category">

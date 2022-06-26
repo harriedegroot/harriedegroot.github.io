@@ -5,10 +5,17 @@ import { getMonthDifference } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
 import * as _ from 'lodash';
 
+function getYear(): number {
+  const date = new Date();
+  return date.getFullYear();
+}
+
 interface MinMax<T> {
   min: T;
   max: T;
 }
+
+const DEFAULT_PERIOD = 5; // last 5 years
 
 @Component({
   selector: 'app-experience',
@@ -20,23 +27,31 @@ export class ExperienceComponent implements OnInit {
   @Input() public hiddenTags: string[] = [];
   @Input() public experience: Experience[] = [];
   @Input() public proficiency: number = 100;
+  @Input() public period: number = getYear() - DEFAULT_PERIOD;
   @Input() public exclude: string[] = [];
-
+  
   public get years(): Uint16Array {
     return new Uint16Array(this.categories.keys())
-      .filter((years) => years > 0)
-      .sort()
-      .reverse();
+    .filter((years) => years > 0)
+    .sort()
+    .reverse();
   }
-
+  
   public readonly skills = new Set<string>();
   public readonly categories = new Map<number, Set<string>>();
   public readonly projectsPerSkill = new Map<string, Set<Project>>();
+  
+  public minYear: number = getYear() - DEFAULT_PERIOD;
+  public maxYear: number = getYear();
 
   constructor(private cdRef: ChangeDetectorRef) {}
 
   ngOnInit() {
     //this.refresh();
+
+    // min year
+    const projects = _.flatten(this.experience.map((e) => e.projects));
+    this.minYear = _.min(projects.map(p => p?.timespan?.from))?.getFullYear() ?? this.minYear;
   }
 
   public refresh(animate: boolean = true) {
@@ -75,6 +90,7 @@ export class ExperienceComponent implements OnInit {
     for (let [name, minMax] of skills) {
       if(!enabled.has(name)) continue;
       if(this.exclude.includes(name)) continue;
+      if(minMax.max.getFullYear() < this.period) continue;
 
       //const years = Math.floor(months / 12);
       const years = Math.floor(getMonthDifference(minMax.min, minMax.max) / 12);
@@ -91,10 +107,18 @@ export class ExperienceComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
-  public onSliderChange(value: number) {
+  public onProficiencyChange(value: number) {
     if(this.proficiency !== value) {
       //value = Math.max(value, 1);
       this.proficiency = value;
+      this.refresh(false);
+    }
+  }
+
+  public onPeriodChange(year: number | null) {
+    if(!year) return;
+    if(this.period !== year) {
+      this.period = year;
       this.refresh(false);
     }
   }

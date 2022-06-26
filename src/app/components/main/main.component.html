@@ -16,7 +16,7 @@
     </section> -->
     <app-section id="section-experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.864)'"
         (next)="navigateTo('section-skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
-        <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="80"
+        <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="70"
             [exclude]="excludeExperience"></app-experience>
     </app-section>
     <app-section id="section-skills" class="app-section" [fullPage]="true" [title]="'skills'" (shown)="onShow('skills')"
