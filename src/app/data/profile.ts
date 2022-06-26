@@ -102,17 +102,17 @@ export const PROFILE: Profile = {
               tags: ['Programming Language'],
             },
             {
-              name: '.Net 6',
+              name: '.NET 6',
               proficiency: 100,
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 100,
               tags: ['Software Framework'],
             },
             {
-              name: '.Net Core',
+              name: '.NET Core',
               proficiency: 100,
               tags: ['Software Framework'],
             },
@@ -353,13 +353,18 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Programming Language'],
             },
+            // {
+            //   name: '.NET 6',
+            //   proficiency: 100,
+            //   tags: ['Software Framework'],
+            // },
             {
-              name: '.Net 6',
+              name: '.NET Core',
               proficiency: 100,
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 100,
               tags: ['Software Framework'],
             },
@@ -554,17 +559,17 @@ export const PROFILE: Profile = {
             },
             {
               name: 'Mustache Templates',
-              proficiency: 80,
+              proficiency: 75,
               tags: ['Software Library', 'front-end'],
             },
             {
               name: 'MathJS',
-              proficiency: 80,
+              proficiency: 75,
               tags: ['Software Library', 'front-end'],
             },
             {
               name: 'Storage Explorer',
-              proficiency: 80,
+              proficiency: 75,
               tags: ['Development Tool', 'Data'],
             },
             {
@@ -844,7 +849,7 @@ export const PROFILE: Profile = {
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 70,
               tags: ['Software Framework'],
             },
@@ -905,11 +910,16 @@ export const PROFILE: Profile = {
             },
             {
               name: '.NET Core 2.1',
-              proficiency: 80,
+              proficiency: 75,
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET Core',
+              proficiency: 75,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.NET',
               proficiency: 80,
               tags: ['Software Framework'],
             },
@@ -999,7 +1009,12 @@ export const PROFILE: Profile = {
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET Core',
+              proficiency: 70,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.NET',
               proficiency: 70,
               tags: ['Software Framework'],
             },
@@ -1061,23 +1076,23 @@ export const PROFILE: Profile = {
               proficiency: 100,
               tags: ['Software Development'],
             },
-            // {
-            //   name: 'Software Architect',
-            //   proficiency: 100,
-            //   tags: ['Software Development'],
-            // },
+            {
+              name: 'Software Architect',
+              proficiency: 80,
+              tags: ['Software Development'],
+            },
             {
               name: 'C#',
               proficiency: 100,
               tags: ['Programming Language'],
             },
             {
-              name: '.NET Core/Standard',
+              name: '.NET Core',
               proficiency: 50,
               tags: ['Software Framework'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 50,
               tags: ['Software Framework'],
             },
@@ -1187,7 +1202,7 @@ export const PROFILE: Profile = {
               tags: ['Programming Language'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 50,
               tags: ['Software Framework'],
             },
@@ -1260,7 +1275,7 @@ export const PROFILE: Profile = {
               tags: ['Programming Language'],
             },
             {
-              name: '.Net',
+              name: '.NET',
               proficiency: 50,
               tags: ['Software Framework'],
             },
@@ -1698,7 +1713,7 @@ export const PROFILE: Profile = {
             },
             {
               name: 'Box2D physics engine',
-              proficiency: 80,
+              proficiency: 75,
               tags: ['Game Development'],
             },
           ],
