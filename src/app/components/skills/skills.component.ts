@@ -401,6 +401,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   public play() {
     if (this._playing) return;
     if (this.currentStep === this.count) {
+      this._redraw = true;
       this.currentStep = this.firstStep;
     }
     this._playing = true;

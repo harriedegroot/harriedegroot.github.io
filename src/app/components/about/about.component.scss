@@ -12,7 +12,8 @@
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        margin-top: 60px;
+        margin-top: 50px;
+        margin-bottom: 10px;
 
         gap: 30px;
 
@@ -23,7 +24,6 @@
         }
     }
     .quote {
-        margin-top: 30px;
         width: 100%;
         max-width: 650px;
         text-align: center;
