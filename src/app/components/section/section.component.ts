@@ -43,7 +43,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() fullPage: boolean = false;
   @Input() title?: string;
   @Input() snap: boolean = true;
-  @Input() snapUp: number = 50;
+  @Input() snapUp: number = 30;
   @Input() snapDown: number = 15;
 
   private _visible: boolean = false;
