@@ -6,13 +6,15 @@
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
+    min-height: calc(100vh - 100px);
     padding: 20px;
+    gap: 30px;
 
     .icons {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
-        margin-top: 50px;
+        margin-top: 20px;
         margin-bottom: 10px;
 
         gap: 30px;
