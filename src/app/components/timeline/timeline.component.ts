@@ -1,5 +1,4 @@
 import {
-  ChangeDetectorRef,
   Component,
   ContentChildren,
   Input,
@@ -28,23 +27,23 @@ export class TimelineComponent {
     this.update();
   }
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  constructor() {}
 
   private update(): void {
     if (!this.contents) return;
 
     if (this.alternate) {
-      if (this.side === 'left') {
-        this.contents.forEach((content, index) => {
-          content.left = !(index & 1);
-          content.right = !content.left;
-        });
-      } else {
-        this.contents.forEach((content, index) => {
-          content.left = !!(index & 1);
-          content.right = !content.left;
-        });
-      }
+      let ignore = 0;
+      const left = this.side === 'left';
+
+      this.contents.forEach((content, index) => {
+        if (content.alternate === false) {
+          ignore++;
+        } 
+        const odd = Boolean((index + ignore) & 1);
+        content.left = left ? !odd : odd;
+        content.right = left ? odd : !odd;
+      });
     } else {
       this.contents.forEach((content) => {
         content.left = this.side === 'left';
@@ -52,6 +51,5 @@ export class TimelineComponent {
       });
     }
     this.contents.forEach((content) => (content.alternate = this.alternate));
-    this.cdRef.detectChanges();
   }
 }

@@ -11,9 +11,31 @@
     justify-content: center;
 }
 
+app-timeline-label {
+    font-weight: bold;
+    font-style: italic;
+}
+
 app-timeline-content {
     span {
         display: block;
         padding-bottom: 20px;
     }
+}
+
+.year-marker {
+    > span {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: large;
+        border: 2px solid white;
+        border-radius: 100%;
+    }
+}
+
+.spacer {
+    height: 30px;
 }

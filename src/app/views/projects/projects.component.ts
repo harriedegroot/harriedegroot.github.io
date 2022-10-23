@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Experience } from 'app/models/profile.model';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
@@ -8,6 +9,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class ProjectsComponent implements OnInit {
 
+  @Input() public experience?: Experience[];
+  
   get mobile(): boolean {
     return this.deviceDetectorService.isMobile();
   }

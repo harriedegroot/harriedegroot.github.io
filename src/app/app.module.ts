@@ -27,6 +27,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ExperienceComponent } from './views/experience/experience.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { TimelineContentComponent } from './components/timeline/timeline-content.component';
+import { TimelineLabelComponent } from './components/timeline/timeline-label.component';
+import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { TimelineContentComponent } from './components/timeline/timeline-content
     ExperienceComponent,
     TimelineComponent,
     TimelineContentComponent,
-    ProjectComponent,
+    TimelineLabelComponent,
+    TimelineMarkerComponent,
   ],
   imports: [
     BrowserModule,

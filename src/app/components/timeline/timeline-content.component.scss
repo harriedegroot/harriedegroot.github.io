@@ -2,23 +2,65 @@ $gap: 30px;
 $circle-radius: 10px;
 $circle-border: 2px;
 
+:host {
+    display: block;
+    position: relative;
+}
+
+.label-container {
+    //background: green;
+    position: absolute;
+
+    display: flex;
+    
+    &.left {
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        left: 0;
+        right: auto;
+        padding-right: $gap;
+        width: calc(100% - $gap);
+        &.alternate {
+            width: calc(50% - $gap);
+        }
+    }
+
+    &.right {
+        left: auto;
+        padding-left: $gap + 1px;
+        width: calc(100% - $gap - 1px);
+        
+        &.alternate {
+            right: -50%;
+            width: calc(50% - $gap - 1px);
+        }
+    }
+}
+
 .content-container {
     display: block;
     position: relative;
+    height: 100%;
+
+    //background: blue;
 
     // line
-    &:before {
+    &.line::before {
         content: '';
         position: absolute;
         width: 0px;
-        top: (2 * $circle-radius) + (2 * $circle-border);
+        top: 0;
         bottom: 0;
         border-left: 1px dotted white;
-        z-index: 1;
+        z-index: 1;    
+    }
+    &.line.indicator:before {
+        top: (2 * $circle-radius) + (2 * $circle-border);
     }
 
     // circle on the timeline
-    &::after {
+    &.indicator::after {
         content: '';
         position: absolute;
         width: 2 * $circle-radius;

@@ -9,4 +9,6 @@ export class TimelineContentComponent {
   @Input() left: boolean = false;
   @Input() right: boolean = false;
   @Input() alternate: boolean = true;
+  @Input() line: boolean = true;
+  @Input() indicator: boolean = true;
 }

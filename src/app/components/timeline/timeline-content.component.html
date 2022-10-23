@@ -1,6 +1,14 @@
+<div class="label-container" 
+    [class.left]="right"
+    [class.right]="left"
+    [class.alternate]="alternate">
+    <ng-content select="app-timeline-label"></ng-content>
+</div>
 <div class="content-container" 
     [class.left]="left"
     [class.right]="right"
+    [class.line]="line"
+    [class.indicator]="indicator"
     [class.alternate]="alternate">
     <ng-content></ng-content>
 </div>
