@@ -1980,7 +1980,7 @@ export const PROFILE: Profile = {
       ],
       projects: [
         {
-          name: 'ACHT-CMS + multiple web-application',
+          name: 'ACHT-CMS | multiple web-applications',
           description: 'Created multiple web applications, many based on a in-house designed Content Management System built on top of an internal written object oriented php framework.',
           timespan: {
             from: new Date('2007-04'),
