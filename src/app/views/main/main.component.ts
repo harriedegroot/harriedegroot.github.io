@@ -3,7 +3,7 @@ import { PROFILE } from 'app/data/profile';
 import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import { AboutComponent } from '../about/about.component';
-import { BackgroundComponent } from '../background/background.component';
+import { BackgroundComponent } from '../../components/background/background.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
 
