@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'app-projects',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  get mobile(): boolean {
+    return this.deviceDetectorService.isMobile();
+  }
+
+  constructor(private deviceDetectorService:DeviceDetectorService) { }
 
   ngOnInit(): void {
   }

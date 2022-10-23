@@ -3,15 +3,17 @@
 .container {
     background-color: $accent;
     min-height: 200px;
+    padding: 30px;
 
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
+}
 
-    p {
-        text-transform: uppercase;
-        font-weight: 2rem;
+app-timeline-content {
+    span {
+        display: block;
+        padding-bottom: 20px;
     }
-
 }

@@ -25,6 +25,8 @@ import { ProjectsComponent } from './views/projects/projects.component';
 import { SectionComponent } from './components/section/section.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ExperienceComponent } from './views/experience/experience.component';
+import { TimelineComponent } from './components/timeline/timeline.component';
+import { TimelineContentComponent } from './components/timeline/timeline-content.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,9 @@ import { ExperienceComponent } from './views/experience/experience.component';
     SectionComponent,
     FooterComponent,
     ExperienceComponent,
+    TimelineComponent,
+    TimelineContentComponent,
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,

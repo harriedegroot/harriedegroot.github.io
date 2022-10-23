@@ -1,0 +1,70 @@
+$gap: 30px;
+$circle-radius: 10px;
+$circle-border: 2px;
+
+.content-container {
+    display: block;
+    position: relative;
+
+    // line
+    &:before {
+        content: '';
+        position: absolute;
+        width: 0px;
+        top: (2 * $circle-radius) + (2 * $circle-border);
+        bottom: 0;
+        border-left: 1px dotted white;
+        z-index: 1;
+    }
+
+    // circle on the timeline
+    &::after {
+        content: '';
+        position: absolute;
+        width: 2 * $circle-radius;
+        height: 2 * $circle-radius;
+        top: 0;
+        border: $circle-border solid white;
+        border-radius: 100%;
+        z-index: 1;
+    }
+
+    &.left {
+        left: 0;
+        right: auto;
+        padding-right: $gap;
+        width: calc(100% - $gap);
+        &.alternate {
+            width: calc(50% - $gap);
+        }
+
+        // line
+        &::before {
+            right: -1px;
+        }
+        // timeline circle placement
+        &::after {
+            right: -($circle-radius + $circle-border);
+        }
+    }
+
+    &.right {
+        left: auto;
+        padding-left: $gap + 1px;
+        width: calc(100% - $gap - 1px);
+        
+        &.alternate {
+            right: -50%;
+            width: calc(50% - $gap - 1px);
+        }
+
+        // line
+        &::before {
+            left: 0;
+        }
+        // timeline circle placement
+        &::after {
+            left: -($circle-radius + $circle-border);
+        }
+    }
+}
