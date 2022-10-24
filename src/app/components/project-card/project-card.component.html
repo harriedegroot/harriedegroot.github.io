@@ -7,6 +7,12 @@
         <span class="role-type" *ngIf="typeLabel">{{typeLabel}}</span>
         <h3 *ngIf="company" class="company-name">{{project.company?.name ?? ''}}</h3>
     </div>
+    <div class="location" *ngIf="project.company?.location">
+        <fa-icon class="pin-icon" [icon]="iconLocation"></fa-icon>
+        <span class="city" *ngIf="project.company?.location?.city">{{project.company?.location?.city}}</span>
+        <span *ngIf="project.company?.location?.city && project.company?.location?.country"> · </span>
+        <span class="country" *ngIf="project.company?.location?.country">{{project.company?.location?.country}}</span>
+    </div>
 
     <div class="content">
         <p class="description">{{project.description}}</p>

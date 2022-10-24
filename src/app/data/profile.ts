@@ -51,6 +51,7 @@ export const PROFILE: Profile = {
         description: 'Fossil-free living within one generation',
         location: {
           city: 'Amsterdam',
+          country: 'Netherlands',
         },
         contact: {
           website: 'https://vattenfall.nl',
@@ -72,7 +73,7 @@ export const PROFILE: Profile = {
       projects: [
         {
           name: 'Vattenfall.nl - SalesFlow',
-          description: ' Vattenfall.nl SalesFlow.',
+          description: 'Part of the team working on the Vattenfall.nl SalesFlow integration.',
           website: "https://www.vattenfall.nl",
           current: true,
           timespan: {
@@ -161,6 +162,7 @@ export const PROFILE: Profile = {
         description: '',
         location: {
           city: 'Tolbert',
+          country: 'Netherlands',
         },
         contact: {
           website: 'https://wiertsema.nl',
@@ -181,7 +183,7 @@ export const PROFILE: Profile = {
       projects: [
         {
           name: 'Wiertsema - Geo ICT',
-          description: 'Part of the team working on a web-based GIS platform to facilitate efficient data analysis.',
+          description: 'Working on a web-based GIS platform to facilitate efficient data analysis.',
           website: "https://www.wiertsema.nl",
           current: true,
           timespan: {
@@ -298,6 +300,7 @@ export const PROFILE: Profile = {
           'Control, automate and monitor your entire smart home with Homey.',
         location: {
           city: 'Enschede',
+          country: 'Netherlands',
         },
         contact: {
           website: 'https://athom.nl',
@@ -319,7 +322,9 @@ export const PROFILE: Profile = {
         {
           name: 'Homey Pro - BluFi',
           description:
-            'Internal development for both the Homey Pro and the Homey app.',
+            'Internal development for both the new Homey Pro and the Homey app.',
+          responsibility: 'Build the BluFi intergration and network stack for the new Homey OS (Rasberry Pi). Created a PoC for the BluFi Homey App setup wizard (React Native).',
+          website: "https://homey.app/nl-nl/homey-pro/",
           timespan: {
             from: new Date('2022-04-01'),
             to: new Date('2022-07-01'),
@@ -383,6 +388,11 @@ export const PROFILE: Profile = {
               proficiency: 70,
               tags: ['MessageBus', 'Data'],
             },
+            {
+              name: 'Raspberry PI',
+              proficiency: 50,
+              tags: ['embedded'],
+            },
             // {
             //   name: 'BlueTooth',
             //   proficiency: 30,
@@ -428,9 +438,19 @@ export const PROFILE: Profile = {
       ],
       projects: [
         {
-          name: 'Enter Boost',
+          name: 'Enter Software - Enter Boost',
           description:
             'A low-code platform for SMB to create complex business applications',
+            responsibility:
+            'In the role of Senior Software Architect and Lead Developer: ' +
+            'Developed the data-driven engine and core of EnterBoost (C#.NET). ' +
+            'Designed and implemented the layout render engine (TS Angular). ' +
+            'Created many flexible Azure cloud-based applications (see projects). ' +
+            'Management of the development processes and technical decisions. ' +
+            'Involved in hiring and responsible for trainnig and mentoring fellow software engineers. ' +
+            'Responsible for the CI/CD pipeline, quality control and deployment of the software. ' +
+            'Translate customer needs into valuable software.',
+          website: "https://www.enterboost.com/",
           timespan: {
             from: new Date('2017-09'),
             to: new Date('2022-04-01'),
@@ -1063,6 +1083,7 @@ export const PROFILE: Profile = {
         description: '',
         location: {
           city: 'Leeuwarden',
+          country: 'Netherlands',
         },
         contact: {},
       },
@@ -1258,6 +1279,7 @@ export const PROFILE: Profile = {
         description: '',
         location: {
           city: 'Leeuwarden',
+          country: 'Netherlands',
         },
         contact: {},
       },
@@ -1437,6 +1459,7 @@ export const PROFILE: Profile = {
         description: '',
         location: {
           city: 'Groningen',
+          country: 'Netherlands',
         },
         contact: {},
       },
@@ -2078,6 +2101,7 @@ export const PROFILE: Profile = {
         description: 'Digital agency',
         location: {
           city: 'Ter Idzard',
+          country: 'Netherlands',
         },
       },
       roles: [

@@ -6,10 +6,12 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
+import { faLocationPin } from '@fortawesome/free-solid-svg-icons';
 import { EmploymentType, Project, Skill } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
   selector: 'app-project-card',
@@ -24,8 +26,19 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   @Input() chips: boolean = true;
   @Input() expanded: boolean = false;
 
+  private _technologiesEl?: ElementRef | undefined;
+  public get technologiesEl(): ElementRef | undefined {
+    return this._technologiesEl;
+  }
   @ViewChild('technologiesEl')
-  technologiesEl?: ElementRef;
+  public set technologiesEl(value: ElementRef | undefined) {
+    if(this._technologiesEl != value) {
+      this._technologiesEl = value;
+      this._detectMoreTech();
+    }
+  }
+
+  iconLocation = faLocationPin as IconProp;
 
   private _technologies?: Skill[];
   get technologies(): Skill[] {
@@ -45,27 +58,27 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
 
   get showMore(): boolean {
     if (this.expanded) return false;
-    return this.hasMoreTechnologies || !!this.project?.website;
+    return this.hasMoreTechnologies; // || !!this.project?.website;
   }
 
-  private _hasMoreTechnologies?: boolean;
-  get hasMoreTechnologies(): boolean {
-    if (this._hasMoreTechnologies === undefined) {
-      const el = this.technologiesEl?.nativeElement;
-      this._hasMoreTechnologies = el?.scrollHeight > 80;
-    }
-    return this._hasMoreTechnologies;
-  }
-
+  hasMoreTechnologies: boolean = false;
+  
   private readonly destroyed$ = new Subject<void>();
 
-  constructor(private device: DeviceService) {
+  constructor(device: DeviceService) {
     device.resize$
       .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => (this._hasMoreTechnologies = undefined));
+      .subscribe(() => this._detectMoreTech());
   }
 
   ngOnInit(): void {}
+
+  private _detectMoreTech() {
+    setTimeout(() => {
+      const el = this.technologiesEl?.nativeElement;
+      this.hasMoreTechnologies = el?.scrollHeight > 80;
+    });
+  }
 
   goto(url: string) {
     window.open(url, '_blank');
