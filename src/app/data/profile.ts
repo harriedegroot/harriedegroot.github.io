@@ -71,8 +71,9 @@ export const PROFILE: Profile = {
       ],
       projects: [
         {
-          name: 'SalesFlow',
-          description: 'SalesFlow app.',
+          name: 'Vattenfall.nl - SalesFlow',
+          description: ' Vattenfall.nl SalesFlow.',
+          website: "https://www.vattenfall.nl",
           current: true,
           timespan: {
             from: new Date('2022-08-01'),
@@ -144,6 +145,11 @@ export const PROFILE: Profile = {
                 'DevOps',
               ],
             },
+            {
+              name: 'Angular NX',
+              proficiency: 50,
+              tags: ['Development Tool'],
+            },
           ],
         },
       ],
@@ -174,8 +180,9 @@ export const PROFILE: Profile = {
       ],
       projects: [
         {
-          name: 'Geo ICT',
-          description: '',
+          name: 'Wiertsema - Geo ICT',
+          description: 'Part of the team working on a web-based GIS platform to facilitate efficient data analysis.',
+          website: "https://www.wiertsema.nl",
           current: true,
           timespan: {
             from: new Date('2022-04-01'),
@@ -310,7 +317,7 @@ export const PROFILE: Profile = {
       ],
       projects: [
         {
-          name: 'Product development',
+          name: 'Homey Pro - BluFi',
           description:
             'Internal development for both the Homey Pro and the Homey app.',
           timespan: {
@@ -937,7 +944,7 @@ export const PROFILE: Profile = {
         {
           name: 'HelloStrik / SpecStrik',
           description: 'Management system for sales and quality control of provisions.',
-          role: "Designed and implemented the architecture for product management and quality control.",
+          responsibility: "Designed and implemented the architecture for product management and quality control.",
           timespan: {
             from: new Date('2017-08'),
             to: new Date('2019-10'),
@@ -1003,7 +1010,7 @@ export const PROFILE: Profile = {
         {
           name: 'Wierda Vermogensbeheer - Invoice Automation',
           description: 'Invoice Automation System: ...',
-          role: "Designed and implemented the architecture of the app framework.",
+          responsibility: "Designed and implemented the architecture of the app framework.",
           timespan: {
             from: new Date('2017-10'),
             to: new Date('2018-01'),
@@ -1088,7 +1095,7 @@ export const PROFILE: Profile = {
         {
           name: 'WebsiteBuilder - Control Panel',
           description: 'Project to re-developed the entire control panel associated with sitebuilder.com, serving 1.5 million users a year. This multi branded control panel allows customers to manage all services related to their website e.g. domains, email, add-ons and invoicing.',
-          role: "Refactored the control panel from a PHP legacy framework to a state of the art framework using .NET Core 2.1 in the backend that is able to serve all our customers.",
+          responsibility: "Refactored the control panel from a PHP legacy framework to a state of the art framework using .NET Core 2.1 in the backend that is able to serve all our customers.",
           timespan: {
             from: new Date('2016-10'),
             to: new Date('2017-08'),
@@ -1156,7 +1163,7 @@ export const PROFILE: Profile = {
         {
           name: 'MySocialSuite - social inbox',
           description: 'MySocialSuite is a complete social media management platform for businesses and individuals. Manage multiple social profiles, measure growth, gain powerful analytics and collaborate with your team.',
-          role: "Designed and implemented the architecture for the Social Inbox. Built the backbone for consuming live streaming data from multiple social feeds, implemented the interface and developed connectors for content providers.",
+          responsibility: "Designed and implemented the architecture for the Social Inbox. Built the backbone for consuming live streaming data from multiple social feeds, implemented the interface and developed connectors for content providers.",
           timespan: {
             from: new Date('2016-02'),
             to: new Date('2016-08'),
@@ -1281,7 +1288,7 @@ export const PROFILE: Profile = {
         {
           name: 'Impress.ly',
           description: 'Mobile website building platform.',
-          role: "Designed and developed a no-code web application to build your own mobile websites.",
+          responsibility: "Designed and developed a no-code web application to build your own mobile websites.",
           timespan: {
             from: new Date('2015-12'),
             to: new Date('2016-02'),
@@ -1354,7 +1361,7 @@ export const PROFILE: Profile = {
         {
           name: 'AppMachine',
           description: 'AppMachine is a ground breaking do it yourself app building platform that allows technical and non-technical people around the world to create native apps for iOS and Android without the need of any technical or coding skills.',
-          role: "Member of a great team working on the client, server & mobile development of the full Appmachine platform and related products. Took part in the design and creation of many facets of the software. Designed and implemented the Android architecture from the ground up.",
+          responsibility: "Member of a great team working on the client, server & mobile development of the full Appmachine platform and related products. Took part in the design and creation of many facets of the software. Designed and implemented the Android architecture from the ground up.",
           timespan: {
             from: new Date('2013-06'),
             to: new Date('2015-12'),
@@ -1460,7 +1467,7 @@ export const PROFILE: Profile = {
         {
           name: 'Sanoma: DuckTypen',
           description: 'Typing course game platform with DuckTales figures.',
-          role: "Responsible for the main gaming engine. Created the interfaces and communication layers between the minigames. Built the progress tracking system, level loading, CMS and APIs. Animated the main menu and programmed some of the many typing mini-games.",
+          responsibility: "Responsible for the main gaming engine. Created the interfaces and communication layers between the minigames. Built the progress tracking system, level loading, CMS and APIs. Animated the main menu and programmed some of the many typing mini-games.",
           timespan: {
             from: new Date('2013-01'),
             to: new Date('2013-06'),
@@ -1654,7 +1661,7 @@ export const PROFILE: Profile = {
         {
           name: 'G4T: Gaming for Training',
           description: 'Serious game for e-learning & training',
-          role: "Designed and extended a scalable isometric gaming engine. Implemented the backend CMS used for generating content and tracking training progress.",
+          responsibility: "Designed and extended a scalable isometric gaming engine. Implemented the backend CMS used for generating content and tracking training progress.",
           timespan: {
             from: new Date('2011-09'),
             to: new Date('2012-04'),
@@ -1727,7 +1734,7 @@ export const PROFILE: Profile = {
         {
           name: 'ANWB: In het Park',
           description: 'Mobile app (Android & iOS) to promote dutch parks.',
-          role: 'Worked on both native apps and created the back-end CMS.',
+          responsibility: 'Worked on both native apps and created the back-end CMS.',
           timespan: {
             from: new Date('2011-08'),
             to: new Date('2011-09'),
@@ -1827,7 +1834,7 @@ export const PROFILE: Profile = {
         {
           name: 'Ketnet: Wrappers op Wieltjes',
           description: 'Explorational race game for kids',
-          role: "Designed and built a scalable isometric gaming engine. Took part in the development of the content loading mechanisms and render engine.",
+          responsibility: "Designed and built a scalable isometric gaming engine. Took part in the development of the content loading mechanisms and render engine.",
           timespan: {
             from: new Date('2010-07'),
             to: new Date('2011-01'),
@@ -1864,7 +1871,7 @@ export const PROFILE: Profile = {
         {
           name: 'Frans Muller: Shoecare Academy',
           description: 'Online Training portal for professionals in the shoes business',
-          role: "Developed both the interactive front-end (Flash) and back-end CMS + API",
+          responsibility: "Developed both the interactive front-end (Flash) and back-end CMS + API",
           timespan: {
             from: new Date('2010-04'),
             to: new Date('2010-10'),

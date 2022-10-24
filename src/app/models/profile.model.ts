@@ -81,7 +81,8 @@ export interface Role {
 export interface Project {
   name: string;
   description: string;
-  role?: string;
+  role?: Role
+  responsibility?: string;
   company?: Company;
   technologies?: Skill[];
   website?: string;

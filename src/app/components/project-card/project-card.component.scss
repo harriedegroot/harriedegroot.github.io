@@ -1,65 +1,111 @@
 @import 'variables';
 
-.header {
-    margin-bottom: 10px;
+$transition: .5s ease-in;
 
-    .project-name {
-        color: $accent;
-        margin: 0px;
-        padding: 0px;
+.container {
+    .header {
+        margin-bottom: 0px;
+
+        .project-name {
+            color: $accent;
+            margin: 0px;
+            padding: 0px;
+        }
     }
-}
 
-.sub-header {
-    .role {
-        display: inline-block;
+    .sub-header {
+
+        margin-bottom: 10px;
+
+        .role {
+            color: $text-dark;
+            margin: 0px;
+            padding: 0px;
+
+            // overflow: hidden;
+            // max-height: 0;
+            // transition: $transition;
+        }
+
+        .role-type {
+            border-radius: 7px;
+            background: $text-tertairy;
+            color: $text-light;
+            padding: 3px 7px;
+            font-size: smaller;
+            margin-right: 3px;
+        }
+
+        .company-name {
+            display: inline-block;
+            color: $text-secondary;
+            margin: 0px;
+            padding: 0px;
+
+            &::before {
+                content: '@'
+            }
+        }
+    }
+
+    .content {
         color: $text-dark;
-        margin: 0px;
-        padding: 0px;
-    }
-    .company-name {
-        color: $text-secondary;
-        margin: 0px;
-        padding: 0px;
 
-        &::before {
-            content: '@'
+        // overflow: hidden;
+        // max-height: 43px;
+        // transition: $transition;
+
+        .goto {
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid $accent;
+
+            opacity: 0;
+            display: none;
         }
     }
-}
 
-.description {
-    color: $text-dark;
-}
+    .technologies {
+        overflow: hidden;
+        max-height: 75px;
+        transition: $transition;
 
-.technologies {
-    overflow: hidden;
-    max-height: 0;
-
-    transition: max-height .5s ease-out;
-
-    .chip {
-        font-size: smaller;
+        .chip {
+            font-size: smaller;
+        }
     }
 
-    // &.tags {
-    //     display: inline-block;
-    //     list-style: none;
-    //     padding: 0;
-    //     margin: 0;
-        
-    //     .tag:not(:first-child) {
-    //         padding-left: 3px;
-    //         font-style: italic;
-    //         display: inline;
-    //     }
-    // }
-}
+    .more {
+        cursor: pointer;
+        color: $accent;
+        text-decoration: underline;
 
-:host {
-    &:hover {
+        margin-top: 5px;
+        display: inline-block;
+    }
+
+    &.expanded {
+        .content {
+            .goto {
+                opacity: 1;
+                display: inline-block;
+            }
+        }
         .technologies {
-            max-height: 500px;
+            max-height: 600px;
         }
     }
 }
+
+
+
+
+// :host {
+//     &:hover {
+//         // .role,
+//         // .content,
+//         .technologies {
+//             max-height: 600px;
+//         }
+//     }
+// }

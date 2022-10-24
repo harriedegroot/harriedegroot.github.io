@@ -1,19 +1,26 @@
-<div class="header">
-    <h2 class="project-name">{{project.name }}</h2>
-</div>
-<div class="sub-header">
-    <h3 *ngIf="role && project.role" class="role">{{project.role}}</h3>
-    <h3 *ngIf="company" class="company-name">{{project.company?.name ?? ''}}</h3>
-</div>
+<div class="container" [class.expanded]="expanded" (click)="expanded = true">
+    <div class="header">
+        <h2 class="project-name">{{project.name }}</h2>
+    </div>
+    <div class="sub-header">
+        <!-- <h3 *ngIf="role && project.role?.title" class="role">{{project.role?.title}}</h3> -->
+        <span class="role-type" *ngIf="typeLabel">{{typeLabel}}</span>
+        <h3 *ngIf="company" class="company-name">{{project.company?.name ?? ''}}</h3>
+    </div>
 
-<p class="description">{{project.description}}</p>
+    <div class="content">
+        <p class="description">{{project.description}}</p>
+        <p class="responsibility">{{project.responsibility}}</p>
+        <button class="goto" mat-stroked-button *ngIf="project.website" color="primary"
+            (click)="goto(project.website);$event.stopImmediatePropagation()">Show project</button>
+    </div>
 
-<div class="technologies" *ngIf="technologies">
-    <mat-chip-list *ngIf="chips" class="chips" [multiple]="true" [selectable]="false">
-        <mat-chip class="chip" *ngFor="let tag of technologies" [style.opacity]=".01*(tag.proficiency ?? 100)">{{tag.name}}</mat-chip>
-    </mat-chip-list>
-    
-    <ul *ngIf="!chips" class="tags">
-        <li class="tag" *ngFor="let tag of technologies">{{tag.name}}</li>
-    </ul>
+    <div class="technologies" #technologiesEl *ngIf="technologies">
+        <mat-chip-list *ngIf="chips" class="chips" [multiple]="true" [selectable]="false">
+            <mat-chip class="chip" *ngFor="let tag of technologies" [style.opacity]=".01*(tag.proficiency ?? 100)">
+                {{tag.name}}</mat-chip>
+        </mat-chip-list>
+    </div>
+
+    <span class="more" *ngIf="showMore">...see more</span>
 </div>

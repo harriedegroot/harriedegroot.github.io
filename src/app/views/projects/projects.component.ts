@@ -46,7 +46,7 @@ export class ProjectsComponent implements OnInit {
             ({
               ...p,
               company: p.company ?? e.company,
-              role: _.first(e.roles ?? [])?.title,
+              role: p.role ?? _.first(e.roles ?? []),
             } as Project)
         )
       ) ?? [];
