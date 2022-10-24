@@ -3,6 +3,7 @@ $timeline-line-color: darkgrey;
 $timeline-line-style: dotted;
 $timeline-line-width: 1px;
 
+$timeline-indicator-top: 20px;
 $timeline-indicator-radius: 12px;
 $timeline-indicator-border-width: 2px;
 $timeline-indicator-border-style: solid;
@@ -19,15 +20,18 @@ $timeline-indicator-border-color: darkgrey;
 }
 
 .label-container {
-
+    //border: 1px solid green;
+    
     display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: $timeline-indicator-top;
 
     &.alternate {
         position: absolute;
     }
     
     &.left {
-        align-items: flex-end;
         justify-content: flex-end;
                 
         left: 0;
@@ -48,6 +52,14 @@ $timeline-indicator-border-color: darkgrey;
             width: calc(50% - $timeline-gap - $timeline-line-width);
         }
     }
+
+    fa-icon {
+        color: $timeline-indicator-border-color;
+        font-size: 30px;
+        height: 2 * $timeline-indicator-radius;
+        position: absolute;
+        top: $timeline-indicator-border-width;
+    }
 }
 
 .content-container {
@@ -55,20 +67,52 @@ $timeline-indicator-border-color: darkgrey;
     position: relative;
     height: 100%;
 
+    .line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width:0;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            width: 0px;
+            top: 0;
+            bottom: 0;
+            border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
+        }
+    }
+
+    &.indicator .line {
+        &::before {
+            content: '';
+            position: absolute;
+            width: 0px;
+            top: 0;
+            height: $timeline-indicator-top;
+            border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
+        }
+
+        &::after {
+            top: $timeline-indicator-top + (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width);
+        }
+    }
+
     //background: blue;
 
     // line
-    &.line::before {
-        content: '';
-        position: absolute;
-        width: 0px;
-        top: 0;
-        bottom: 0;
-        border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
-    }
-    &.line.indicator:before {
-        top: (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width);
-    }
+    // &.line::before {
+    //     content: '';
+    //     position: absolute;
+    //     width: 0px;
+    //     top: 0;
+    //     bottom: 0;
+    //     border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
+    // }
+    // &.line.indicator:before {
+    //     top: (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width) + $timeline-indicator-top;
+    // }
 
     // indicator on the timeline
     &.indicator::after {
@@ -76,7 +120,7 @@ $timeline-indicator-border-color: darkgrey;
         position: absolute;
         width: 2 * $timeline-indicator-radius;
         height: 2 * $timeline-indicator-radius;
-        top: 0;
+        top: $timeline-indicator-top;
         border: $timeline-indicator-border-width $timeline-indicator-border-style $timeline-indicator-border-color;
         border-radius: 100%;
         background: $timeline-indicator-background;
@@ -94,8 +138,9 @@ $timeline-indicator-border-color: darkgrey;
         }
 
         // line
-        &::before {
-            right: -1 * $timeline-line-width;
+        .line {
+            left: auto;
+            right: 0;
         }
         // timeline indicator placement
         &::after {
@@ -115,8 +160,9 @@ $timeline-indicator-border-color: darkgrey;
         }
 
         // line
-        &::before {
+        .line {
             left: 0;
+            right: auto;
         }
         // timeline indicator placement
         &::after {

@@ -1,52 +1,16 @@
 <div class="container">
     <app-timeline [alternate]="!mobile">
-        
         <ng-container *ngFor="let project of projects; let i = index">
             <ng-container *ngIf="nextYear(i, project.timespan?.to)">
                 <app-timeline-marker class="year-marker">
                     <span>{{ project.timespan?.to | date:"YYYY" }}</span>
                 </app-timeline-marker>
-                <app-timeline-content class="spacer" [indicator]="false" [alternate]="false"></app-timeline-content>
+                <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
             </ng-container>
-            <app-timeline-content>
+            <app-timeline-item>
                 <app-timeline-label>{{ project.timespan?.from | date:"MMM YYYY" }} - {{ project.timespan?.to | date:"MMM YYYY" }}</app-timeline-label>
                 <app-project-card [project]="project"></app-project-card>
-            </app-timeline-content>
+            </app-timeline-item>
         </ng-container>
-
-        <!-- <app-timeline-content>
-            <app-timeline-label>okt. 2022</app-timeline-label>
-            <span> single line 1</span>
-        </app-timeline-content>
-        <app-timeline-content>
-            <app-timeline-label>okt. 2022</app-timeline-label>
-            <span> single line 2</span>
-        </app-timeline-content>
-        <app-timeline-content>
-            <app-timeline-label>okt. 2022</app-timeline-label>
-            <span> single line 3</span>
-        </app-timeline-content> -->
-
-        <!-- <app-timeline-content>
-            <app-timeline-label>okt. 2022</app-timeline-label>
-            <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </span>
-        </app-timeline-content>
-        <app-timeline-content>
-            <app-timeline-label>jan. 2021</app-timeline-label>
-            <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </span>
-        </app-timeline-content>
-        <app-timeline-marker class="year-marker">
-            <span>2019</span>
-        </app-timeline-marker>
-        <app-timeline-content class="spacer" [indicator]="false" [alternate]="false"></app-timeline-content>
-        <app-timeline-content [line]="false">
-            <span>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </span>
-        </app-timeline-content> -->
     </app-timeline>
 </div>

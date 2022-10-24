@@ -18,13 +18,11 @@ app-timeline {
 }
 
 app-timeline-label {
-    //font-weight: bold;
-    //font-style: italic;
-    //border: 1px solid $accent;
     background: $accent;
     color: $text-light;
     border-radius: 7px;
     padding: 3px 7px;
+    margin:0 5px;
 }
 
 app-timeline-content {
@@ -55,5 +53,24 @@ app-timeline-content {
 
 app-project-card {
     display: block;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
+
+    // &::before {
+    //     content: '';
+    //     height: 0;
+        
+    //     position: absolute;
+    //     left: 18px;
+    //     right: 18px;
+    //     top: 33px;
+        
+    //     border-top: 1px dashed $accent;
+    // }
+
+    &::ng-deep {
+        h2 {
+            border-bottom: 1px dashed $accent;
+            display: inline-block;
+        }
+    }
 }

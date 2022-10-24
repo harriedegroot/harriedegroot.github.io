@@ -4,7 +4,7 @@ import {
   Input,
   QueryList,
 } from '@angular/core';
-import { TimelineContentComponent } from './timeline-content.component';
+import { TimelineContentComponent } from './timeline-item.component';
 
 export type Side = 'left' | 'right';
 

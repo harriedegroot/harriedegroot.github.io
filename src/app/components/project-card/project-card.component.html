@@ -1,5 +1,7 @@
 <div class="header">
     <h2 class="project-name">{{project.name }}</h2>
+</div>
+<div class="sub-header">
     <h3 *ngIf="role && project.role" class="role">{{project.role}}</h3>
     <h3 *ngIf="company" class="company-name">{{project.company?.name ?? ''}}</h3>
 </div>

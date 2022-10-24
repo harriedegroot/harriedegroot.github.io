@@ -26,7 +26,7 @@ import { SectionComponent } from './components/section/section.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ExperienceComponent } from './views/experience/experience.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
-import { TimelineContentComponent } from './components/timeline/timeline-content.component';
+import { TimelineContentComponent } from './components/timeline/timeline-item.component';
 import { TimelineLabelComponent } from './components/timeline/timeline-label.component';
 import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';

@@ -1,11 +1,17 @@
-import { ChangeDetectorRef, Component, Input } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, ViewChild } from '@angular/core';
+import { faCaretLeft, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 @Component({
-  selector: 'app-timeline-content',
-  templateUrl: './timeline-content.component.html',
-  styleUrls: ['./timeline-content.component.scss'],
+  selector: 'app-timeline-item',
+  templateUrl: './timeline-item.component.html',
+  styleUrls: ['./timeline-item.component.scss'],
 })
 export class TimelineContentComponent {
+
+  public readonly iconLeft = faCaretLeft as IconProp;
+  public readonly iconRight = faCaretRight as IconProp;
+
   private _left: boolean = false;
   public get left(): boolean {
     return this._left;
@@ -38,7 +44,7 @@ export class TimelineContentComponent {
       this.cdRef.detectChanges();
     }
   }
-  
+
   @Input() line: boolean = true;
   @Input() indicator: boolean = true;
 

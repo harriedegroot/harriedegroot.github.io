@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-timeline-label',
   templateUrl: './timeline-label.component.html',
-  styleUrls: ['./timeline-label.component.scss']
+  styleUrls: ['./timeline-label.component.scss'],
 })
 export class TimelineLabelComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
