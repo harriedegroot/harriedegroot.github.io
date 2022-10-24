@@ -47,9 +47,8 @@ export const PROFILE: Profile = {
     {
       // Vattenfall
       company: {
-        name: 'Vattenfall B.V.',
-        description:
-          'Iets met sustainable energy',
+        name: 'Vattenfall',
+        description: 'Fossil-free living within one generation',
         location: {
           city: 'Amsterdam',
         },

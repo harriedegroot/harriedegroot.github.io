@@ -1,10 +1,11 @@
 $timeline-gap: 30px;
 $timeline-line-margin: 30px;
 $timeline-line-color: darkgrey;
-$timeline-line-style: dotted;
+$timeline-line-style: solid;
 $timeline-line-width: 1px;
 
 $timeline-indicator-top: 20px;
+$timeline-indicator-gap: 6px;
 $timeline-indicator-radius: 12px;
 $timeline-indicator-border-width: 2px;
 $timeline-indicator-border-style: solid;
@@ -13,7 +14,6 @@ $timeline-indicator-border-color: darkgrey;
 
 @import 'variables';
 
-
 :host {
     display: block;
     position: relative;
@@ -21,13 +21,10 @@ $timeline-indicator-border-color: darkgrey;
 }
 
 .label-container {
-    //border: 1px solid green;
-    
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    //margin-top: $timeline-indicator-top - 3px;
-
+    
     &.alternate {
         position: absolute;
     }
@@ -100,21 +97,6 @@ $timeline-indicator-border-color: darkgrey;
         }
     }
 
-    //background: blue;
-
-    // line
-    // &.line::before {
-    //     content: '';
-    //     position: absolute;
-    //     width: 0px;
-    //     top: 0;
-    //     bottom: 0;
-    //     border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
-    // }
-    // &.line.indicator:before {
-    //     top: (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width) + $timeline-indicator-top;
-    // }
-
     // indicator on the timeline
     &.indicator::after {
         content: '';
@@ -125,6 +107,30 @@ $timeline-indicator-border-color: darkgrey;
         border: $timeline-indicator-border-width $timeline-indicator-border-style $timeline-indicator-border-color;
         border-radius: 100%;
         background: $timeline-indicator-background;
+    }
+
+    // indicator line
+    &.indicator.indicator-line {
+        &::before {
+            content: '';
+            position: absolute;
+            width: $timeline-gap - $timeline-indicator-radius - (2 * $timeline-indicator-gap);
+            height: 0;
+            
+            top: $timeline-indicator-top + $timeline-indicator-radius;
+            border-top: 1px dotted $timeline-indicator-border-color;
+            background: $timeline-indicator-background;
+        }
+
+        &.left::before {
+            left: auto;
+            right: $timeline-indicator-radius + $timeline-indicator-gap;
+        }
+
+        &.right::before {
+            left: $timeline-indicator-radius + $timeline-indicator-gap;
+            right: auto;
+        }
     }
 
     &.left {

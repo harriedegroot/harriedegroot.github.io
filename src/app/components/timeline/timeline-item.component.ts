@@ -47,6 +47,7 @@ export class TimelineContentComponent {
 
   @Input() line: boolean = true;
   @Input() indicator: boolean = true;
+  @Input() indicatorLine: boolean = true;
 
   constructor(private cdRef: ChangeDetectorRef) {}
 }

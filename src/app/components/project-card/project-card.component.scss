@@ -33,6 +33,14 @@
 }
 
 .technologies {
+    overflow: hidden;
+    max-height: 0;
+
+    transition: max-height .5s ease-out;
+
+    .chip {
+        font-size: smaller;
+    }
 
     // &.tags {
     //     display: inline-block;
@@ -46,4 +54,12 @@
     //         display: inline;
     //     }
     // }
+}
+
+:host {
+    &:hover {
+        .technologies {
+            max-height: 500px;
+        }
+    }
 }

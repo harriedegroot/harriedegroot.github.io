@@ -8,12 +8,12 @@
 
 <p class="description">{{project.description}}</p>
 
-<ng-container *ngIf="technologies">
-    <mat-chip-list *ngIf="chips" class="technologies chips" [multiple]="true" [selectable]="false">
-        <mat-chip class="chip" *ngFor="let tag of project.technologies" [style.opacity]=".01*(tag.proficiency ?? 100)">{{tag.name}}</mat-chip>
+<div class="technologies" *ngIf="technologies">
+    <mat-chip-list *ngIf="chips" class="chips" [multiple]="true" [selectable]="false">
+        <mat-chip class="chip" *ngFor="let tag of technologies" [style.opacity]=".01*(tag.proficiency ?? 100)">{{tag.name}}</mat-chip>
     </mat-chip-list>
     
-    <ul *ngIf="!chips" class="technologies tags">
-        <li class="tag" *ngFor="let tag of project.technologies">{{tag.name}}</li>
+    <ul *ngIf="!chips" class="tags">
+        <li class="tag" *ngFor="let tag of technologies">{{tag.name}}</li>
     </ul>
-</ng-container>
+</div>
