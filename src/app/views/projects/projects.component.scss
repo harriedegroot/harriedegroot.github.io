@@ -37,6 +37,7 @@ $overlay-color: white;
 }
 
 app-timeline {
+    width: 100vw;
     max-width: 900px;
     margin: 30px;
 }
@@ -46,7 +47,7 @@ app-timeline-label {
     color: $text-light;
     border-radius: 7px;
     padding: 3px 7px;
-    //margin: 0 5px;
+    margin: 20px 0 15px 0;
 }
 
 app-timeline-content {
@@ -57,7 +58,7 @@ app-timeline-content {
 }
 
 .year-marker {
-    >span {
+    .year {
         width: 60px;
         height: 60px;
         display: flex;

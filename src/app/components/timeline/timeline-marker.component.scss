@@ -1,4 +1,16 @@
-:host {
+.container {
     display:flex;
-    justify-content: center;
+    padding: 3px;
+    
+    &.left {
+        justify-content: flex-start;
+    }
+    
+    &.right {
+        justify-content: flex-end;
+    }
+    
+    &.alternate {
+        justify-content: center;
+    }
 }

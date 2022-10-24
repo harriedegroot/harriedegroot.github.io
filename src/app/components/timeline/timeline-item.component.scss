@@ -1,4 +1,5 @@
 $timeline-gap: 30px;
+$timeline-line-margin: 30px;
 $timeline-line-color: darkgrey;
 $timeline-line-style: dotted;
 $timeline-line-width: 1px;
@@ -16,7 +17,7 @@ $timeline-indicator-border-color: darkgrey;
 :host {
     display: block;
     position: relative;
-    //background: red;
+    margin: 0 $timeline-line-margin;
 }
 
 .label-container {
@@ -25,7 +26,7 @@ $timeline-indicator-border-color: darkgrey;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    margin-top: $timeline-indicator-top;
+    //margin-top: $timeline-indicator-top - 3px;
 
     &.alternate {
         position: absolute;

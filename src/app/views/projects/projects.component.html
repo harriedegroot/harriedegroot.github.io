@@ -3,7 +3,7 @@
         <ng-container *ngFor="let project of projects; let i = index">
             <ng-container *ngIf="nextYear(i, project.timespan?.to)">
                 <app-timeline-marker class="year-marker">
-                    <span>{{ project.timespan?.to | date:"YYYY" }}</span>
+                    <span class="year">{{ project.timespan?.to | date:"YYYY" }}</span>
                 </app-timeline-marker>
                 <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
             </ng-container>

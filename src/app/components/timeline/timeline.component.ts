@@ -1,10 +1,12 @@
 import {
+  AfterViewInit,
   Component,
   ContentChildren,
   Input,
   QueryList,
 } from '@angular/core';
 import { TimelineContentComponent } from './timeline-item.component';
+import { TimelineMarkerComponent } from './timeline-marker.component';
 
 export type Side = 'left' | 'right';
 
@@ -13,31 +15,30 @@ export type Side = 'left' | 'right';
   templateUrl: './timeline.component.html',
   styleUrls: ['./timeline.component.scss'],
 })
-export class TimelineComponent {
+export class TimelineComponent implements AfterViewInit{
   @Input() side: Side = 'right';
   @Input() alternate: boolean = true;
 
-  private _contents?: QueryList<TimelineContentComponent> | undefined;
-  public get contents(): QueryList<TimelineContentComponent> | undefined {
-    return this._contents;
-  }
   @ContentChildren(TimelineContentComponent)
-  public set contents(value: QueryList<TimelineContentComponent> | undefined) {
-    if(this._contents !== value) {
-      this._contents = this.update(value);
-    }
-  }
+  public contents: QueryList<TimelineContentComponent> | undefined;
+
+  @ContentChildren(TimelineMarkerComponent)
+  public markers: QueryList<TimelineMarkerComponent> | undefined;
 
   constructor() {}
 
-  private update(value: QueryList<TimelineContentComponent> | undefined): QueryList<TimelineContentComponent> | undefined {
-    if (!value) return undefined;
+  ngAfterViewInit(): void {
+    this.update();
+  }
+
+  private update(): void {
+    if (!this.contents) return;
 
     if (this.alternate) {
       let ignore = 0;
       const left = this.side === 'left';
 
-      value.forEach((content, index) => {
+      this.contents.forEach((content, index) => {
         if (content.alternate === false) {
           ignore++;
         } 
@@ -46,12 +47,12 @@ export class TimelineComponent {
         content.right = left ? odd : !odd;
       });
     } else {
-      value.forEach((content) => {
+      this.contents.forEach((content) => {
         content.left = this.side === 'left';
         content.right = this.side === 'right';
       });
     }
-    value.forEach((content) => (content.alternate = this.alternate));
-    return value;
+    this.contents.forEach((content) => (content.alternate = this.alternate));
+    this.markers?.forEach((marker) => (marker.alternate = this.alternate));
   }
 }
