@@ -25,7 +25,7 @@
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </app-section>
     <app-section id="section-projects" class="app-section" (next)="navigateTo('section-charasteristics')">
-        <app-projects></app-projects>
+        <app-projects [experience]="profile.experience"></app-projects>
     </app-section>
     <app-section id="section-charasteristics" class="app-section" [background]="'black'" [fullPage]="false" [snap]="true" [snapDown]="0">
         <app-charasteristics></app-charasteristics>

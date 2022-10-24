@@ -1,14 +1,23 @@
-<div class="label-container" 
-    [class.left]="right"
-    [class.right]="left"
-    [class.alternate]="alternate">
-    <ng-content select="app-timeline-label"></ng-content>
-</div>
+<ng-container *ngIf="alternate">
+    <ng-container *ngTemplateOutlet="label"></ng-container>
+</ng-container>
 <div class="content-container" 
     [class.left]="left"
     [class.right]="right"
     [class.line]="line"
     [class.indicator]="indicator"
     [class.alternate]="alternate">
+    <ng-container *ngIf="!alternate">
+        <ng-container *ngTemplateOutlet="label"></ng-container>
+    </ng-container>
     <ng-content></ng-content>
 </div>
+
+<ng-template #label>
+    <div class="label-container"
+        [class.left]="alternate ? right : left"
+        [class.right]="alternate ? left : right"
+        [class.alternate]="alternate">
+        <ng-content select="app-timeline-label"></ng-content>
+    </div>
+</ng-template>

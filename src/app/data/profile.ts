@@ -45,6 +45,109 @@ export const PROFILE: Profile = {
   //specialities: [], // TODO: read from skills
   experience: [
     {
+      // Vattenfall
+      company: {
+        name: 'Vattenfall B.V.',
+        description:
+          'Iets met sustainable energy',
+        location: {
+          city: 'Amsterdam',
+        },
+        contact: {
+          website: 'https://vattenfall.nl',
+        },
+      },
+      roles: [
+        {
+          title: 'Freelance Software Engineer',
+          type: EmploymentType.Freelance,
+          timespan: {
+            from: new Date('2022-09-01'),
+            to: new Date(),
+          },
+          description:
+            'Freelance developer for the SalesFlow application.',
+        },
+      ],
+      projects: [
+        {
+          name: 'SalesFlow',
+          description: 'SalesFlow app.',
+          timespan: {
+            from: new Date('2022-09-01'),
+            to: new Date(),
+          },
+          technologies: [
+            {
+              name: 'App development',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'Software Architect',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'front-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'back-end',
+              proficiency: 100,
+              tags: ['Software Development'],
+            },
+            {
+              name: 'C#',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: '.NET 6',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.NET',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: '.NET Core',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: 'Typescript',
+              proficiency: 100,
+              tags: ['Programming Language'],
+            },
+            {
+              name: 'Angular 2+',
+              proficiency: 100,
+              tags: ['Software Framework'],
+            },
+            {
+              name: 'CosmosDB',
+              proficiency: 10,
+              tags: ['Database', 'Data'],
+            },
+            {
+              name: 'Azure DevOps',
+              proficiency: 30,
+              tags: [
+                'Azure',
+                'Software Architecture',
+                'Development Tool',
+                'DevOps',
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    {
       // Wiertsema
       company: {
         name: 'Wiertsema & Partners B.V.',
@@ -209,7 +312,7 @@ export const PROFILE: Profile = {
             'Internal development for both the Homey Pro and the Homey app.',
           timespan: {
             from: new Date('2022-04-01'),
-            to: new Date(),
+            to: new Date('2022-07-01'),
           },
           technologies: [
             {

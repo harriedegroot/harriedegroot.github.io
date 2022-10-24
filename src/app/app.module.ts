@@ -29,6 +29,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { TimelineContentComponent } from './components/timeline/timeline-content.component';
 import { TimelineLabelComponent } from './components/timeline/timeline-label.component';
 import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
+import { ProjectCardComponent } from './components/project-card/project-card.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TimelineMarkerComponent } from './components/timeline/timeline-marker.c
     TimelineContentComponent,
     TimelineLabelComponent,
     TimelineMarkerComponent,
+    ProjectCardComponent,
   ],
   imports: [
     BrowserModule,

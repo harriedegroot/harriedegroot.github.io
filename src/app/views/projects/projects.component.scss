@@ -1,7 +1,9 @@
 @import 'variables';
 
 .container {
-    background-color: $accent;
+    //background-color: $accent;
+    background-color: white;
+    color: $text-dark;
     min-height: 200px;
     padding: 30px;
 
@@ -11,9 +13,18 @@
     justify-content: center;
 }
 
+app-timeline {
+    max-width: 900px;
+}
+
 app-timeline-label {
-    font-weight: bold;
-    font-style: italic;
+    //font-weight: bold;
+    //font-style: italic;
+    //border: 1px solid $accent;
+    background: $accent;
+    color: $text-light;
+    border-radius: 7px;
+    padding: 3px 7px;
 }
 
 app-timeline-content {
@@ -25,17 +36,24 @@ app-timeline-content {
 
 .year-marker {
     > span {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: large;
-        border: 2px solid white;
+        font-size: 16px;
+        //border: 2px solid $accent;
+        color: $text-light;
+        background-color: $accent;
         border-radius: 100%;
     }
 }
 
 .spacer {
     height: 30px;
+}
+
+app-project-card {
+    display: block;
+    padding-bottom: 40px;
 }

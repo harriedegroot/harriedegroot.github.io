@@ -1,39 +1,51 @@
-$gap: 30px;
-$circle-radius: 10px;
-$circle-border: 2px;
+$timeline-gap: 30px;
+$timeline-line-color: darkgrey;
+$timeline-line-style: dotted;
+$timeline-line-width: 1px;
+
+$timeline-indicator-radius: 12px;
+$timeline-indicator-border-width: 2px;
+$timeline-indicator-border-style: solid;
+$timeline-indicator-background: transparent;
+$timeline-indicator-border-color: darkgrey;
+
+@import 'variables';
+
 
 :host {
     display: block;
     position: relative;
+    //background: red;
 }
 
 .label-container {
-    //background: green;
-    position: absolute;
 
     display: flex;
+
+    &.alternate {
+        position: absolute;
+    }
     
     &.left {
         align-items: flex-end;
         justify-content: flex-end;
-
+                
         left: 0;
         right: auto;
-        padding-right: $gap;
-        width: calc(100% - $gap);
+        padding-right: $timeline-gap;
+        width: calc(100% - $timeline-gap);
         &.alternate {
-            width: calc(50% - $gap);
+            width: calc(50% - $timeline-gap);
         }
     }
 
     &.right {
         left: auto;
-        padding-left: $gap + 1px;
-        width: calc(100% - $gap - 1px);
+        right: 0;
+        width: calc(100% - $timeline-gap - $timeline-line-width);
         
         &.alternate {
-            right: -50%;
-            width: calc(50% - $gap - 1px);
+            width: calc(50% - $timeline-gap - $timeline-line-width);
         }
     }
 }
@@ -52,61 +64,63 @@ $circle-border: 2px;
         width: 0px;
         top: 0;
         bottom: 0;
-        border-left: 1px dotted white;
-        z-index: 1;    
+        border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
     }
     &.line.indicator:before {
-        top: (2 * $circle-radius) + (2 * $circle-border);
+        top: (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width);
     }
 
-    // circle on the timeline
+    // indicator on the timeline
     &.indicator::after {
         content: '';
         position: absolute;
-        width: 2 * $circle-radius;
-        height: 2 * $circle-radius;
+        width: 2 * $timeline-indicator-radius;
+        height: 2 * $timeline-indicator-radius;
         top: 0;
-        border: $circle-border solid white;
+        border: $timeline-indicator-border-width $timeline-indicator-border-style $timeline-indicator-border-color;
         border-radius: 100%;
-        z-index: 1;
+        background: $timeline-indicator-background;
     }
 
     &.left {
+        text-align: end;
+
         left: 0;
         right: auto;
-        padding-right: $gap;
-        width: calc(100% - $gap);
+        padding-right: $timeline-gap;
+        width: calc(100% - $timeline-gap);
         &.alternate {
-            width: calc(50% - $gap);
+            width: calc(50% - $timeline-gap);
         }
 
         // line
         &::before {
-            right: -1px;
+            right: -1 * $timeline-line-width;
         }
-        // timeline circle placement
+        // timeline indicator placement
         &::after {
-            right: -($circle-radius + $circle-border);
+            right: -($timeline-indicator-radius + $timeline-indicator-border-width);
         }
     }
 
     &.right {
         left: auto;
-        padding-left: $gap + 1px;
-        width: calc(100% - $gap - 1px);
+        right: 0;
+        padding-left: $timeline-gap + $timeline-line-width;
+        width: calc(100% - $timeline-gap - $timeline-line-width);
         
         &.alternate {
             right: -50%;
-            width: calc(50% - $gap - 1px);
+            width: calc(50% - $timeline-gap - $timeline-line-width);
         }
 
         // line
         &::before {
             left: 0;
         }
-        // timeline circle placement
+        // timeline indicator placement
         &::after {
-            left: -($circle-radius + $circle-border);
+            left: -($timeline-indicator-radius + $timeline-indicator-border-width);
         }
     }
 }

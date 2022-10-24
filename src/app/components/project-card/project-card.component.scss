@@ -1,0 +1,46 @@
+@import 'variables';
+
+.header {
+    margin-bottom: 10px;
+
+    .project-name {
+        color: $accent;
+        margin: 0px;
+        padding: 0px;
+    }
+    .role {
+        display: inline-block;
+        color: $text-dark;
+        margin: 0px;
+        padding: 0px;
+    }
+    .company-name {
+        color: $text-secondary;
+        margin: 0px;
+        padding: 0px;
+
+        &::before {
+            content: '@'
+        }
+    }
+}
+
+.description {
+    color: $text-dark;
+}
+
+.technologies {
+
+    // &.tags {
+    //     display: inline-block;
+    //     list-style: none;
+    //     padding: 0;
+    //     margin: 0;
+        
+    //     .tag:not(:first-child) {
+    //         padding-left: 3px;
+    //         font-style: italic;
+    //         display: inline;
+    //     }
+    // }
+}

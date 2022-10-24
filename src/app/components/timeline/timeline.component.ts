@@ -23,8 +23,10 @@ export class TimelineComponent {
   }
   @ContentChildren(TimelineContentComponent)
   public set contents(value: QueryList<TimelineContentComponent> | undefined) {
-    this._contents = value;
-    this.update();
+    if(this._contents !== value) {
+      this._contents = value;
+      this.update();
+    }
   }
 
   constructor() {}
