@@ -8,7 +8,13 @@
                 <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
             </ng-container>
             <app-timeline-item>
-                <app-timeline-label>{{ project.timespan?.from | date:"MMM YYYY" }} - {{ project.timespan?.to | date:"MMM YYYY" }}</app-timeline-label>
+                <app-timeline-label>
+                    <span>{{ project.timespan?.from | date:"MMM YYYY" }}</span>
+                    <span> - </span>
+                    <span>{{ project.current ? 'Present' : project.timespan?.to | date:"MMM YYYY" }}</span>
+                    <span> · </span>
+                    <span>{{duration(project.timespan)}}</span>
+                </app-timeline-label>
                 <app-project-card [project]="project"></app-project-card>
             </app-timeline-item>
         </ng-container>

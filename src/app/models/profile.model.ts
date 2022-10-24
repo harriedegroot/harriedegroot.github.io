@@ -73,6 +73,7 @@ export interface Experience {
 export interface Role {
   title: string;
   type: EmploymentType;
+  present?: boolean;
   timespan: TimeSpan;
   description: string | string[];
 }
@@ -86,6 +87,7 @@ export interface Project {
   website?: string;
   youtube?: string;
   image?: string;
+  current?: boolean;
   timespan?: TimeSpan;
 }
 

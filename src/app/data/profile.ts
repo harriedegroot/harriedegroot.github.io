@@ -60,8 +60,9 @@ export const PROFILE: Profile = {
         {
           title: 'Freelance Software Engineer',
           type: EmploymentType.Freelance,
+          present: true,
           timespan: {
-            from: new Date('2022-09-01'),
+            from: new Date('2022-08-01'),
             to: new Date(),
           },
           description:
@@ -72,8 +73,9 @@ export const PROFILE: Profile = {
         {
           name: 'SalesFlow',
           description: 'SalesFlow app.',
+          current: true,
           timespan: {
-            from: new Date('2022-09-01'),
+            from: new Date('2022-08-01'),
             to: new Date(),
           },
           technologies: [
@@ -162,8 +164,9 @@ export const PROFILE: Profile = {
         {
           title: 'Freelance Software Engineer',
           type: EmploymentType.Freelance,
+          present: true,
           timespan: {
-            from: new Date('2022-05-01'),
+            from: new Date('2022-04-01'),
             to: new Date(),
           },
           description: 'Freelance developer',
@@ -173,8 +176,9 @@ export const PROFILE: Profile = {
         {
           name: 'Geo ICT',
           description: '',
+          current: true,
           timespan: {
-            from: new Date('2022-05-01'),
+            from: new Date('2022-04-01'),
             to: new Date(),
           },
           technologies: [
@@ -298,7 +302,7 @@ export const PROFILE: Profile = {
           type: EmploymentType.Freelance,
           timespan: {
             from: new Date('2022-04-01'),
-            to: new Date(),
+            to: new Date('2022-06-30'),
           },
           description:
             'Freelance developer for Homey products and related services.',

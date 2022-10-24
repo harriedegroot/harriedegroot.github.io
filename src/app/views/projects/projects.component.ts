@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Experience, Project } from 'app/models/profile.model';
+import { Experience, Project, TimeSpan } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
+import * as moment from 'moment';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Observable } from 'rxjs';
 
@@ -11,6 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
+
   @Input() public experience?: Experience[];
 
   public projects?: Project[];
@@ -70,5 +72,17 @@ export class ProjectsComponent implements OnInit {
       }
     }
     return this._yearCache.get(idx) ?? false;
+  }
+
+  duration(timespan?: TimeSpan): string {
+    if(!timespan?.from || !timespan.to) return '';
+    const diff = moment(timespan.to).endOf('month').diff(moment(timespan.from).startOf('month'));
+    const years = moment.duration(diff).years();
+    const months = moment.duration(diff).months();
+    
+    return [
+      years ? `${years} ${years > 1 ? 'yrs' : 'yr' }` : null,
+      months ? `${months} ${months > 1 ? 'mos' : 'mo' }` : null
+    ].filter(x => x !== null).join(' ');
   }
 }
