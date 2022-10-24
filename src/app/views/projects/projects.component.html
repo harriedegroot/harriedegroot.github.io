@@ -1,5 +1,5 @@
 <div class="container" [class.show-more]="!showAll">
-    <app-timeline [alternate]="!mobile">
+    <app-timeline [alternate]="!(mobile$ | async)">
         <ng-container *ngFor="let project of projects; let i = index">
             <ng-container *ngIf="nextYear(i, project.timespan?.to)">
                 <app-timeline-marker class="year-marker">

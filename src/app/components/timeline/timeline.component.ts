@@ -17,10 +17,38 @@ export type Side = 'left' | 'right';
 })
 export class TimelineComponent implements AfterViewInit{
   @Input() side: Side = 'right';
-  @Input() alternate: boolean = true;
 
+  private readonly _register = new Map<number, boolean>();
+  private _initialized: boolean = false;
+
+  private _alternate: boolean = true;
+  public get alternate(): boolean {
+    return this._alternate;
+  }
+  @Input() public set alternate(value: boolean) {
+    if(this._alternate !== value) {
+      this._alternate = value;
+      if(this._initialized) {
+        this.update();
+      }
+    }
+  }
+
+  private _contents: QueryList<TimelineContentComponent> | undefined;
+  public get contents(): QueryList<TimelineContentComponent> | undefined {
+    return this._contents;
+  }
   @ContentChildren(TimelineContentComponent)
-  public contents: QueryList<TimelineContentComponent> | undefined;
+  public set contents(value: QueryList<TimelineContentComponent> | undefined) {
+    if(this._contents != value) {
+      this._contents = value;
+
+      this.register();
+      if(this._initialized) {
+        this.update();
+      }
+    }
+  }
 
   @ContentChildren(TimelineMarkerComponent)
   public markers: QueryList<TimelineMarkerComponent> | undefined;
@@ -29,6 +57,11 @@ export class TimelineComponent implements AfterViewInit{
 
   ngAfterViewInit(): void {
     this.update();
+    this._initialized = true;
+  }
+
+  private register() {
+    this.contents?.forEach((content, idx) => this._register.set(idx, content.alternate));
   }
 
   private update(): void {
@@ -39,7 +72,7 @@ export class TimelineComponent implements AfterViewInit{
       const left = this.side === 'left';
 
       this.contents.forEach((content, index) => {
-        if (content.alternate === false) {
+        if (!this._register.get(index)) {
           ignore++;
         } 
         const odd = Boolean((index + ignore) & 1);

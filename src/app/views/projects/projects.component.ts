@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Experience, Project } from 'app/models/profile.model';
+import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -13,16 +15,17 @@ export class ProjectsComponent implements OnInit {
 
   public projects?: Project[];
 
-  get mobile(): boolean {
-    return this.deviceDetectorService.isMobile();
+  get mobile$(): Observable<boolean> {
+    return this.device.isMobile$;
+    //return this.deviceDetectorService.isMobile();
   }
 
   @Input() showAll: boolean = false;
-  
+
   private _currentYear?: number;
   private readonly _yearCache = new Map<number, boolean>();
 
-  constructor(private deviceDetectorService: DeviceDetectorService) {}
+  constructor(private device: DeviceService) {}
 
   ngOnInit(): void {}
 
