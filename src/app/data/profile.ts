@@ -73,7 +73,7 @@ export const PROFILE: Profile = {
       projects: [
         {
           name: 'Vattenfall.nl - SalesFlow',
-          description: 'Part of the team working on the Vattenfall.nl SalesFlow integration.',
+          description: 'Part of the team implementing the Vattenfall.nl SalesFlow integration.',
           website: "https://www.vattenfall.nl",
           current: true,
           timespan: {
@@ -844,7 +844,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'ADST - Human Resource Planning',
-          description: 'Human Resource Planning application build on Enter Boost',
+          description: 'Human Resource Planning application build with EnterBoost.',
           timespan: {
             from: new Date('2021-10'),
             to: new Date('2021-12'),
@@ -880,7 +880,7 @@ export const PROFILE: Profile = {
         },
         {
           name: '706 Seating Group - Product Management',
-          description: 'Product Management application build on Enter Boost',
+          description: 'Product Management application build with EnterBoost.',
           timespan: {
             from: new Date('2020-11'),
             to: new Date('2021-05'),
@@ -913,7 +913,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - WMS',
-          description: 'WMS application build on Enter Boost',
+          description: 'WMS application build with EnterBoost.',
           timespan: {
             from: new Date('2018-03'),
             to: new Date('2021-03'),
@@ -921,7 +921,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - Tracking',
-          description: 'Order Tracking portal build on Enter Boost',
+          description: 'Order Tracking portal build with EnterBoost.',
           timespan: {
             from: new Date('2018-01'),
             to: new Date('2021-02'),
@@ -965,7 +965,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - CRM',
-          description: 'CRM application build on Enter Boost',
+          description: 'CRM application build with EnterBoost.',
           timespan: {
             from: new Date('2017-10'),
             to: new Date('2020-04'),
@@ -1032,7 +1032,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Allure Energy - CRM',
-          description: 'CRM build with EnterBoost',
+          description: 'CRM application build with EnterBoost.',
           timespan: {
             from: new Date('2019-01'),
             to: new Date('2019-04'),
@@ -1040,7 +1040,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Wierda Vermogensbeheer - Invoice Automation',
-          description: 'Invoice Automation System: ...',
+          description: 'Invoice Automation System: From a complex process to super-fast error-free invoicing',
           responsibility: "Designed and implemented the architecture of the app framework.",
           website: "https://mannenvanwaarde.nl/cases/wierda-vermogensbeheer/",
           timespan: {
