@@ -1,20 +1,44 @@
 @import 'variables';
 
+$overlay-color: white;
+
 .container {
     //background-color: $accent;
     background-color: white;
     color: $text-dark;
-    min-height: 200px;
-    padding: 30px;
-
+    min-height: 100vh;
+    height: 100%;
+    
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
+    &.show-more {
+        max-height: 100vh;
+        overflow: hidden;
+    }
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 30vh;
+    max-height: 200px;
+    background: linear-gradient(0deg, $overlay-color 0%, $overlay-color 40%, rgb(0,0,0,0) 100%);
+    //background: red;
+
+    display: flex;
     justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 30px;
 }
 
 app-timeline {
     max-width: 900px;
+    margin: 30px;
 }
 
 app-timeline-label {
@@ -22,7 +46,7 @@ app-timeline-label {
     color: $text-light;
     border-radius: 7px;
     padding: 3px 7px;
-    margin:0 5px;
+    //margin: 0 5px;
 }
 
 app-timeline-content {
@@ -33,7 +57,7 @@ app-timeline-content {
 }
 
 .year-marker {
-    > span {
+    >span {
         width: 60px;
         height: 60px;
         display: flex;
@@ -48,7 +72,7 @@ app-timeline-content {
 }
 
 .spacer {
-    height: 30px;
+    height: 20px;
 }
 
 app-project-card {
@@ -58,12 +82,12 @@ app-project-card {
     // &::before {
     //     content: '';
     //     height: 0;
-        
+
     //     position: absolute;
     //     left: 18px;
     //     right: 18px;
     //     top: 33px;
-        
+
     //     border-top: 1px dashed $accent;
     // }
 

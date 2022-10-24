@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [class.show-more]="!showAll">
     <app-timeline [alternate]="!mobile">
         <ng-container *ngFor="let project of projects; let i = index">
             <ng-container *ngIf="nextYear(i, project.timespan?.to)">
@@ -13,4 +13,7 @@
             </app-timeline-item>
         </ng-container>
     </app-timeline>
+    <div class="overlay" *ngIf="!showAll">
+        <button mat-raised-button color="primary" (click)="showAll = !showAll">SHOW MORE</button>
+    </div>
 </div>

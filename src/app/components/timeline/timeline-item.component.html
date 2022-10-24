@@ -18,8 +18,8 @@
         [class.left]="alternate ? right : left"
         [class.right]="alternate ? left : right"
         [class.alternate]="alternate">
-        <fa-icon *ngIf="left && indicator" [icon]="iconLeft" transform="up-2"></fa-icon>
+        <!-- <fa-icon *ngIf="left && indicator" [icon]="iconLeft" transform="up-2"></fa-icon> -->
         <ng-content select="app-timeline-label"></ng-content>
-        <fa-icon *ngIf="right && indicator" [icon]="iconRight" transform="up-2"></fa-icon>
+        <!-- <fa-icon *ngIf="right && indicator" [icon]="iconRight" transform="up-2"></fa-icon> -->
     </div>
 </ng-template>

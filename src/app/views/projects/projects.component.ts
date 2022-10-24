@@ -17,6 +17,8 @@ export class ProjectsComponent implements OnInit {
     return this.deviceDetectorService.isMobile();
   }
 
+  @Input() showAll: boolean = false;
+  
   private _currentYear?: number;
   private readonly _yearCache = new Map<number, boolean>();
 

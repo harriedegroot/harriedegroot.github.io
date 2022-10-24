@@ -24,7 +24,7 @@
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </app-section>
-    <app-section id="section-projects" class="app-section" (next)="navigateTo('section-charasteristics')">
+    <app-section id="section-projects" class="app-section" [fullPage]="true">
         <app-projects [experience]="profile.experience"></app-projects>
     </app-section>
     <app-section id="section-charasteristics" class="app-section" [background]="'black'" [fullPage]="false" [snap]="true" [snapDown]="0">
