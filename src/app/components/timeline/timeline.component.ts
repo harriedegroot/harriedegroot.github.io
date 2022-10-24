@@ -24,21 +24,20 @@ export class TimelineComponent {
   @ContentChildren(TimelineContentComponent)
   public set contents(value: QueryList<TimelineContentComponent> | undefined) {
     if(this._contents !== value) {
-      this._contents = value;
-      this.update();
+      this._contents = this.update(value);
     }
   }
 
   constructor() {}
 
-  private update(): void {
-    if (!this.contents) return;
+  private update(value: QueryList<TimelineContentComponent> | undefined): QueryList<TimelineContentComponent> | undefined {
+    if (!value) return undefined;
 
     if (this.alternate) {
       let ignore = 0;
       const left = this.side === 'left';
 
-      this.contents.forEach((content, index) => {
+      value.forEach((content, index) => {
         if (content.alternate === false) {
           ignore++;
         } 
@@ -47,11 +46,12 @@ export class TimelineComponent {
         content.right = left ? odd : !odd;
       });
     } else {
-      this.contents.forEach((content) => {
+      value.forEach((content) => {
         content.left = this.side === 'left';
         content.right = this.side === 'right';
       });
     }
-    this.contents.forEach((content) => (content.alternate = this.alternate));
+    value.forEach((content) => (content.alternate = this.alternate));
+    return value;
   }
 }
