@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { faLocationPin } from '@fortawesome/free-solid-svg-icons';
+import { faLocationPin, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { EmploymentType, Project, Skill } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
@@ -39,6 +39,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   iconLocation = faLocationPin as IconProp;
+  iconExternal = faArrowUpRightFromSquare as IconProp;
 
   private _technologies?: Skill[];
   get technologies(): Skill[] {

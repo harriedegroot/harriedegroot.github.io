@@ -18,7 +18,10 @@
         <p class="description">{{project.description}}</p>
         <p class="responsibility">{{project.responsibility}}</p>
         <button class="goto" mat-stroked-button *ngIf="project.website" color="primary"
-            (click)="goto(project.website);$event.stopImmediatePropagation()">Show project</button>
+            (click)="goto(project.website);$event.stopImmediatePropagation()">
+            <fa-icon class="external-icon" [icon]="iconExternal"></fa-icon>
+            <span>Show project</span>
+        </button>
     </div>
 
     <div class="technologies" #technologiesEl *ngIf="technologies">

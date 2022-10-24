@@ -183,7 +183,7 @@ export const PROFILE: Profile = {
       projects: [
         {
           name: 'Wiertsema - Geo ICT',
-          description: 'Working on a web-based GIS platform to facilitate efficient data analysis.',
+          description: 'Web-based GIS platform to facilitate efficient data analysis.',
           website: "https://www.wiertsema.nl",
           current: true,
           timespan: {
@@ -287,6 +287,11 @@ export const PROFILE: Profile = {
               description: 'Git - Source Control',
               proficiency: 90,
               tags: ['CI/CD', 'DevOps', 'Project Management'],
+            },
+            {
+              name: 'MQTT',
+              proficiency: 100,
+              tags: ['MessageBus', 'Software Architecture', 'Data'],
             },
           ],
         },
@@ -719,7 +724,8 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Tuinplus - Wharehouse optimization',
-          description: '',
+          description: 'Logistical process improvement and insight through warehouse simulations.',
+          website: "https://mannenvanwaarde.nl/cases/innovatieve-warehouse-oplossing-bij-tuinplus/",
           timespan: {
             from: new Date('2018-01'),
             to: new Date('2018-12'),
@@ -838,7 +844,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'ADST - Human Resource Planning',
-          description: '',
+          description: 'Human Resource Planning application build on Enter Boost',
           timespan: {
             from: new Date('2021-10'),
             to: new Date('2021-12'),
@@ -853,7 +859,8 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - Experience',
-          description: '',
+          description: 'User-friendly app: Scan, shop deliver, the optimal customer experience through the use of software.',
+          website: "https://mannenvanwaarde.nl/cases/gebruiksvriendelijke-app-de-eekhoorn/",
           timespan: {
             from: new Date('2019-11'),
             to: new Date('2021-12'),
@@ -873,7 +880,7 @@ export const PROFILE: Profile = {
         },
         {
           name: '706 Seating Group - Product Management',
-          description: '',
+          description: 'Product Management application build on Enter Boost',
           timespan: {
             from: new Date('2020-11'),
             to: new Date('2021-05'),
@@ -888,7 +895,8 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Richmond - Digital Chain Integration',
-          description: '',
+          description: 'Digital chain integration: From order-driven to stock-driven and improving delivery reliability.',
+          website: "https://mannenvanwaarde.nl/cases/digitale-ketenintegratie-bij-richmond-interiors/",
           timespan: {
             from: new Date('2020-06'),
             to: new Date('2021-05'),
@@ -896,7 +904,8 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Luinstra - Hour Management',
-          description: '',
+          description: 'Digitization: From paper job sheets and timesheets to digital registration in the field.',
+          website: "https://mannenvanwaarde.nl/cases/luinstra-watermanagement/",
           timespan: {
             from: new Date('2020-04'),
             to: new Date('2021-04'),
@@ -904,7 +913,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - WMS',
-          description: '',
+          description: 'WMS application build on Enter Boost',
           timespan: {
             from: new Date('2018-03'),
             to: new Date('2021-03'),
@@ -912,7 +921,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - Tracking',
-          description: '',
+          description: 'Order Tracking portal build on Enter Boost',
           timespan: {
             from: new Date('2018-01'),
             to: new Date('2021-02'),
@@ -947,7 +956,8 @@ export const PROFILE: Profile = {
         },
         {
           name: 'De Vries Trappen - Planning',
-          description: '',
+          description: 'Planning tool to maintain an overview per construction phase.',
+          website: "https://mannenvanwaarde.nl/cases/de-vries-trappen-planningstool/",
           timespan: {
             from: new Date('2019-04'),
             to: new Date('2020-12'),
@@ -955,7 +965,7 @@ export const PROFILE: Profile = {
         },
         {
           name: 'Eekhoorn - CRM',
-          description: '',
+          description: 'CRM application build on Enter Boost',
           timespan: {
             from: new Date('2017-10'),
             to: new Date('2020-04'),
@@ -965,6 +975,7 @@ export const PROFILE: Profile = {
           name: 'HelloStrik / SpecStrik',
           description: 'Management system for sales and quality control of provisions.',
           responsibility: "Designed and implemented the architecture for product management and quality control.",
+          website: "https://mannenvanwaarde.nl/cases/anders-denken-anders-doen-voor-strik-ingredients/",
           timespan: {
             from: new Date('2017-08'),
             to: new Date('2019-10'),
@@ -1031,6 +1042,7 @@ export const PROFILE: Profile = {
           name: 'Wierda Vermogensbeheer - Invoice Automation',
           description: 'Invoice Automation System: ...',
           responsibility: "Designed and implemented the architecture of the app framework.",
+          website: "https://mannenvanwaarde.nl/cases/wierda-vermogensbeheer/",
           timespan: {
             from: new Date('2017-10'),
             to: new Date('2018-01'),
@@ -1117,6 +1129,7 @@ export const PROFILE: Profile = {
           name: 'WebsiteBuilder - Control Panel',
           description: 'Project to re-developed the entire control panel associated with sitebuilder.com, serving 1.5 million users a year. This multi branded control panel allows customers to manage all services related to their website e.g. domains, email, add-ons and invoicing.',
           responsibility: "Refactored the control panel from a PHP legacy framework to a state of the art framework using .NET Core 2.1 in the backend that is able to serve all our customers.",
+          website: "https://app.websitebuilder.com/",
           timespan: {
             from: new Date('2016-10'),
             to: new Date('2017-08'),
@@ -1185,6 +1198,7 @@ export const PROFILE: Profile = {
           name: 'MySocialSuite - social inbox',
           description: 'MySocialSuite is a complete social media management platform for businesses and individuals. Manage multiple social profiles, measure growth, gain powerful analytics and collaborate with your team.',
           responsibility: "Designed and implemented the architecture for the Social Inbox. Built the backbone for consuming live streaming data from multiple social feeds, implemented the interface and developed connectors for content providers.",
+          website: "https://www.youtube.com/watch?v=GjVoq7tdLbk",
           timespan: {
             from: new Date('2016-02'),
             to: new Date('2016-08'),
@@ -1311,6 +1325,7 @@ export const PROFILE: Profile = {
           name: 'Impress.ly',
           description: 'Mobile website building platform.',
           responsibility: "Designed and developed a no-code web application to build your own mobile websites.",
+          website: "https://www.youtube.com/watch?v=m7rO-lC2ZEM",
           timespan: {
             from: new Date('2015-12'),
             to: new Date('2016-02'),
@@ -1384,6 +1399,7 @@ export const PROFILE: Profile = {
           name: 'AppMachine',
           description: 'AppMachine is a ground breaking do it yourself app building platform that allows technical and non-technical people around the world to create native apps for iOS and Android without the need of any technical or coding skills.',
           responsibility: "Member of a great team working on the client, server & mobile development of the full Appmachine platform and related products. Took part in the design and creation of many facets of the software. Designed and implemented the Android architecture from the ground up.",
+          website: "https://www.appmachine.com/",
           timespan: {
             from: new Date('2013-06'),
             to: new Date('2015-12'),
@@ -1491,6 +1507,7 @@ export const PROFILE: Profile = {
           name: 'Sanoma: DuckTypen',
           description: 'Typing course game platform with DuckTales figures.',
           responsibility: "Responsible for the main gaming engine. Created the interfaces and communication layers between the minigames. Built the progress tracking system, level loading, CMS and APIs. Animated the main menu and programmed some of the many typing mini-games.",
+          website: "https://www.ducktypen.nl/",
           timespan: {
             from: new Date('2013-01'),
             to: new Date('2013-06'),
@@ -1558,6 +1575,7 @@ export const PROFILE: Profile = {
         {
           name: 'Whaudio - Guess what!',
           description: 'Social sound guessing game (iPhone app)',
+          website: "https://www.youtube.com/watch?v=0sJCU0scfUw",
           timespan: {
             from: new Date('2013-04'),
             to: new Date('2013-05'),
@@ -1758,6 +1776,7 @@ export const PROFILE: Profile = {
           name: 'ANWB: In het Park',
           description: 'Mobile app (Android & iOS) to promote dutch parks.',
           responsibility: 'Worked on both native apps and created the back-end CMS.',
+          website: "https://www.youtube.com/watch?v=dcHGFQC51Ok",
           timespan: {
             from: new Date('2011-08'),
             to: new Date('2011-09'),
@@ -1821,6 +1840,7 @@ export const PROFILE: Profile = {
         {
           name: 'Ketnet: Pretshow',
           description: 'Fun physics based puzzle game',
+          website: "https://www.youtube.com/watch?v=7-psmhW8Q0I",
           timespan: {
             from: new Date('2010-10'),
             to: new Date('2011-02'),
@@ -1858,6 +1878,7 @@ export const PROFILE: Profile = {
           name: 'Ketnet: Wrappers op Wieltjes',
           description: 'Explorational race game for kids',
           responsibility: "Designed and built a scalable isometric gaming engine. Took part in the development of the content loading mechanisms and render engine.",
+          website: "https://www.youtube.com/watch?v=LAqWOmJY3iY",
           timespan: {
             from: new Date('2010-07'),
             to: new Date('2011-01'),
@@ -1972,6 +1993,7 @@ export const PROFILE: Profile = {
         {
           name: 'Noordhoff: Minigames',
           description: 'Multiple educational minigames for Noordhoff\'s e-learning portal',
+          website: "https://www.youtube.com/watch?v=Udr5OTy5wC4",
           timespan: {
             from: new Date('2010-01'),
             to: new Date('2010-07'),
