@@ -12,6 +12,9 @@ $timeline-indicator-border-style: solid;
 $timeline-indicator-background: transparent;
 $timeline-indicator-border-color: darkgrey;
 
+$timeline-content-top: 25px;
+$timeline-content-bottom: 25px;
+
 @import 'variables';
 
 :host {
@@ -27,6 +30,7 @@ $timeline-indicator-border-color: darkgrey;
     
     &.alternate {
         position: absolute;
+        top: $timeline-content-top;
     }
     
     &.left {
@@ -64,7 +68,14 @@ $timeline-indicator-border-color: darkgrey;
     display: block;
     position: relative;
     height: 100%;
+    
+    //border: 1px solid red;
 
+    .inner-container {
+        padding-top: $timeline-content-top;
+        padding-bottom: $timeline-content-bottom;
+    }
+    
     .line {
         position: absolute;
         top: 0;
@@ -88,12 +99,12 @@ $timeline-indicator-border-color: darkgrey;
             position: absolute;
             width: 0px;
             top: 0;
-            height: $timeline-indicator-top;
+            height: $timeline-indicator-top + $timeline-content-top;
             border-left: $timeline-line-width $timeline-line-style $timeline-line-color;
         }
 
         &::after {
-            top: $timeline-indicator-top + (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width);
+            top: $timeline-indicator-top + (2 * $timeline-indicator-radius) + (2 * $timeline-indicator-border-width) + $timeline-content-top;
         }
     }
 
@@ -103,7 +114,7 @@ $timeline-indicator-border-color: darkgrey;
         position: absolute;
         width: 2 * $timeline-indicator-radius;
         height: 2 * $timeline-indicator-radius;
-        top: $timeline-indicator-top;
+        top: $timeline-indicator-top + $timeline-content-top;
         border: $timeline-indicator-border-width $timeline-indicator-border-style $timeline-indicator-border-color;
         border-radius: 100%;
         background: $timeline-indicator-background;
@@ -117,7 +128,7 @@ $timeline-indicator-border-color: darkgrey;
             width: $timeline-gap - $timeline-indicator-radius - (2 * $timeline-indicator-gap);
             height: 0;
             
-            top: $timeline-indicator-top + $timeline-indicator-radius;
+            top: $timeline-indicator-top + $timeline-indicator-radius + $timeline-content-top;
             border-top: 1px dotted $timeline-indicator-border-color;
             background: $timeline-indicator-background;
         }

@@ -7,11 +7,13 @@
     [class.indicator]="indicator"
     [class.indicator-line]="indicatorLine"
     [class.alternate]="alternate">
-    <ng-container *ngIf="!alternate">
-        <ng-container *ngTemplateOutlet="label"></ng-container>
-    </ng-container>
-    <div class="line" *ngIf="line"></div>
-    <ng-content></ng-content>
+    <div class="inner-container">
+        <ng-container *ngIf="!alternate">
+            <ng-container *ngTemplateOutlet="label"></ng-container>
+        </ng-container>
+        <div class="line" *ngIf="line"></div>
+        <ng-content></ng-content>
+    </div>
 </div>
 
 <ng-template #label>

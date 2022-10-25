@@ -1,24 +1,25 @@
 <div class="container" [class.show-more]="!showAll">
-    <app-timeline [alternate]="!(mobile$ | async)">
-        <ng-container *ngFor="let project of projects; let i = index">
-            <ng-container *ngIf="nextYear(i, project.timespan?.to)">
-                <app-timeline-marker class="year-marker">
-                    <span class="year">{{ project.timespan?.to | date:"YYYY" }}</span>
-                </app-timeline-marker>
-                <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
+    <div class="timeline-container">
+        <app-timeline [alternate]="!(mobile$ | async)">
+            <ng-container *ngFor="let project of projects; let i = index">
+                <ng-container *ngIf="nextYear(i, project.timespan?.to)">
+                    <app-timeline-marker class="year-marker">
+                        <span class="year">{{ project.timespan?.to | date:"YYYY" }}</span>
+                    </app-timeline-marker>
+                </ng-container>
+                <app-timeline-item>
+                    <app-timeline-label>
+                        <span>{{ project.timespan?.from | date:"MMM YYYY" }}</span>
+                        <span> - </span>
+                        <span>{{ project.current ? 'Present' : project.timespan?.to | date:"MMM YYYY" }}</span>
+                        <span> · </span>
+                        <span>{{duration(project.timespan)}}</span>
+                    </app-timeline-label>
+                    <app-project-card [project]="project"></app-project-card>
+                </app-timeline-item>
             </ng-container>
-            <app-timeline-item>
-                <app-timeline-label>
-                    <span>{{ project.timespan?.from | date:"MMM YYYY" }}</span>
-                    <span> - </span>
-                    <span>{{ project.current ? 'Present' : project.timespan?.to | date:"MMM YYYY" }}</span>
-                    <span> · </span>
-                    <span>{{duration(project.timespan)}}</span>
-                </app-timeline-label>
-                <app-project-card [project]="project"></app-project-card>
-            </app-timeline-item>
-        </ng-container>
-    </app-timeline>
+        </app-timeline>
+    </div>
     <div class="overlay" *ngIf="!showAll">
         <button mat-raised-button color="primary" (click)="showAll = !showAll">SHOW MORE</button>
     </div>

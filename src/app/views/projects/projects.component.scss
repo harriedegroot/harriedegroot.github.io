@@ -7,16 +7,19 @@ $overlay-color: white;
     color: $text-dark;
     min-height: 100vh;
     height: 100%;
-    padding: 20px;
     
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-
+    
     &.show-more {
         max-height: 100vh;
         overflow: hidden;
     }
+}
+
+.timeline-container {
+    margin: 15px;
 }
 
 .overlay {
@@ -66,15 +69,6 @@ app-timeline-content {
         background-color: $accent;
         border-radius: 100%;
     }
-}
-
-.spacer {
-    height: 20px;
-}
-
-app-project-card {
-    display: block;
-    padding-bottom: 40px;
 }
 
 :host::ng-deep {
