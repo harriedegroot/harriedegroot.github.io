@@ -723,7 +723,7 @@ export const PROFILE: Profile = {
           ],
         },
         {
-          name: 'Tuinplus - Wharehouse optimization',
+          name: 'Tuinplus - Warehouse optimization',
           description: 'Logistical process improvement and insight through warehouse simulations.',
           website: "https://mannenvanwaarde.nl/cases/innovatieve-warehouse-oplossing-bij-tuinplus/",
           timespan: {
