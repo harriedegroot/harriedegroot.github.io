@@ -7,23 +7,24 @@
     height: 100vh;
     z-index: -1;
 }
-.menu {
+#main-menu {
     position: absolute;
     z-index: 99;
     top: 10px;
+    left: 10px;
     right: 10px;
+    opacity: 0;
 }
 .content {
     width: 100%;
 }
 
-#section-home {
+#home {
     background: none;
     display: block;
 } 
 
 .section-title {
-    
     text-align: center;
     padding: 25px 0 20px 0;
     text-transform: uppercase;
@@ -44,16 +45,6 @@
     &.dark {
         background: black;
     }
-}
-
-.section-title-alt {
-    color: $accent;
-    text-align: center;
-    padding: 30px 0 20px 0;
-    text-transform: uppercase;
-    font-size: xx-large;
-    margin: 0;
-    font-weight: lighter;
 }
 
 .next-section {

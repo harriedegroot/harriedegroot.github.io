@@ -79,13 +79,20 @@ export class MainComponent implements OnInit {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-    gsap.from('.menu', {
-      y: -80,
-      duration: 2,
-      scale: 0.4,
-      ease: 'back',
-      delay: 2,
+    // gsap.from('.menu', {
+    //   y: -80,
+    //   duration: 1,
+    //   scale: 0.4,
+    //   ease: 'back',
+    //   delay: 2,
+    // });
+    gsap.to('#main-menu', {
+      opacity: 1,
+      duration: .7,
+      delay: 2
+      // delay: 3.5
     });
+
 
     const nextSectionDelay = 2;
     gsap.to('.next-section', {
@@ -156,10 +163,6 @@ export class MainComponent implements OnInit {
           break;
       }
     }
-  }
-
-  onSkillsProgress(percent: number) {
-    //console.log(`skills step: ${percent}%`);
   }
 
   navigateTo(item: string) {

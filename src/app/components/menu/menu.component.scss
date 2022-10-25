@@ -1,11 +1,28 @@
+@import 'variables';
 
 .menu-container {
-    display: none;
-    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-flow: row wrap;
+
+    max-width: 730px;
+    margin: 0 auto;
+    
     button {
         font-weight: 100;
-        font-size: 20px;
+        font-size: 18px;
         text-transform: uppercase;
         color: #b4babd;
+        transition: color .4s ease-in;
+        
+        padding: 0px 4px;
+
+        &:hover {
+            color: $accent;
+
+            border-bottom: 1px solid $accent;
+            border-radius: 0;
+        }
     }
 }
