@@ -71,6 +71,10 @@ app-timeline-content {
     }
 }
 
+.spacer {
+    height: 10px;
+}
+
 :host::ng-deep {
     .left {
         app-project-card {

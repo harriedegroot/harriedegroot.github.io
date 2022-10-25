@@ -3,9 +3,11 @@
         <app-timeline [alternate]="!(mobile$ | async)">
             <ng-container *ngFor="let project of projects; let i = index">
                 <ng-container *ngIf="nextYear(i, project.timespan?.to)">
+                    <app-timeline-item *ngIf="i > 0" class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
                     <app-timeline-marker class="year-marker">
                         <span class="year">{{ project.timespan?.to | date:"YYYY" }}</span>
                     </app-timeline-marker>
+                    <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
                 </ng-container>
                 <app-timeline-item>
                     <app-timeline-label>
