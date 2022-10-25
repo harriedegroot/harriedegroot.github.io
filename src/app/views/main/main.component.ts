@@ -10,32 +10,36 @@ import { SkillsComponent } from '../skills/skills.component';
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
   var x = 0,
-      y = direction * 100;
-  if(elem.classList.contains("from-left")) {
+    y = direction * 100;
+  if (elem.classList.contains('from-left')) {
     x = -100;
     y = 0;
-  } else if (elem.classList.contains("from-right")) {
+  } else if (elem.classList.contains('from-right')) {
     x = 100;
     y = 0;
   }
-  elem.style.transform = "translate(" + x + "px, " + y + "px)";
-  elem.style.opacity = "0";
-  gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
-    duration: 1.25, 
-    x: 0,
-    y: 0, 
-    autoAlpha: 1, 
-    ease: "expo", 
-    overwrite: "auto",
-  });
+  elem.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+  elem.style.opacity = '0';
+  gsap.fromTo(
+    elem,
+    { x: x, y: y, autoAlpha: 0 },
+    {
+      duration: 1.25,
+      x: 0,
+      y: 0,
+      autoAlpha: 1,
+      ease: 'expo',
+      overwrite: 'auto',
+    }
+  );
 }
 
 function hide(elem: any) {
-  gsap.set(elem, {autoAlpha: 0});
+  gsap.set(elem, { autoAlpha: 0 });
 }
 
 function asArray<T>(obj: T | T[]): T[] {
-  return Array.isArray(obj) ? obj as T[] : [obj as T]; 
+  return Array.isArray(obj) ? (obj as T[]) : [obj as T];
 }
 
 @Component({
@@ -61,16 +65,16 @@ export class MainComponent implements OnInit {
 
   excludeExperience = ['Mustache Templates'];
 
-  @ViewChild(BackgroundComponent, {static: true })
+  @ViewChild(BackgroundComponent, { static: true })
   background!: BackgroundComponent;
 
-  @ViewChild(AboutComponent, {static: true })
+  @ViewChild(AboutComponent, { static: true })
   about!: AboutComponent;
 
-  @ViewChild(ExperienceComponent, {static: true })
+  @ViewChild(ExperienceComponent, { static: true })
   experience!: ExperienceComponent;
 
-  @ViewChild(SkillsComponent, {static: true })
+  @ViewChild(SkillsComponent, { static: true })
   skills!: SkillsComponent;
 
   constructor() {}
@@ -79,20 +83,13 @@ export class MainComponent implements OnInit {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
-    // gsap.from('.menu', {
-    //   y: -80,
-    //   duration: 1,
-    //   scale: 0.4,
-    //   ease: 'back',
-    //   delay: 2,
-    // });
-    gsap.to('#main-menu', {
-      opacity: 1,
-      duration: .7,
-      delay: 2
+    gsap.from('#main-menu', {
+      top: -50,
+      opacity: 0,
+      duration: 0.7,
+      delay: 2,
       // delay: 3.5
     });
-
 
     const nextSectionDelay = 2;
     gsap.to('.next-section', {
@@ -120,20 +117,27 @@ export class MainComponent implements OnInit {
       ease: 'inOut',
     });
 
-    gsap.utils.toArray(".quote").forEach(function(elem: any) {
+    gsap.utils.toArray('.quote').forEach(function (elem: any) {
       hide(elem);
       ScrollTrigger.create({
         trigger: elem,
-        onEnter: function() { animateFrom(elem) }, 
-        onEnterBack: function() { animateFrom(elem, -1) },
-        onLeave: function() { hide(elem) } // assure that the element is hidden when scrolled into view
+        onEnter: function () {
+          animateFrom(elem);
+        },
+        onEnterBack: function () {
+          animateFrom(elem, -1);
+        },
+        onLeave: function () {
+          hide(elem);
+        }, // assure that the element is hidden when scrolled into view
       });
     });
   }
 
+
   onShow(items: string | string[]) {
-    for(let item of asArray(items)) {
-      switch(item){
+    for (let item of asArray(items)) {
+      switch (item) {
         case 'background':
           this.background.enabled = true;
           break;
@@ -146,12 +150,25 @@ export class MainComponent implements OnInit {
           this.skills.play();
           break;
       }
+
+      this._continueNavigation(item);
+    }
+  }
+
+  private _timeout?: NodeJS.Timeout
+  private _continueNavigation(item: string) {
+    if(this._timeout) clearTimeout(this._timeout);
+    if (this._target && this._target != item) {
+      this._timeout = setTimeout(() => {
+        this.navigateTo(this._target);
+        this._target = undefined;
+      }, 500);
     }
   }
 
   onHide(items: string | string[]) {
-    for(let item of asArray(items)) {
-      switch(item){
+    for (let item of asArray(items)) {
+      switch (item) {
         case 'home':
           this.background.enabled = false;
           break;
@@ -165,7 +182,10 @@ export class MainComponent implements OnInit {
     }
   }
 
-  navigateTo(item: string) {
-    document.getElementById(item)?.scrollIntoView({ behavior: "smooth" });
+  private _target?: string;
+  navigateTo(item?: string) {
+    this._target = item;
+    if(!item) return;
+    document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

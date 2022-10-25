@@ -26,7 +26,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly id: string = `section_${this._idx}`;
 
   get height() {
-    return this.fullPage ? '100vh' : 'auto';
+    return this.fullPage || !this.visible ? '100vh' : 'auto';
   }
 
   @Output('shown') public readonly shownEmitter = new EventEmitter<void>();
