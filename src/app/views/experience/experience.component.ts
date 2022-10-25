@@ -1,4 +1,3 @@
-
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference } from 'app/helpers/date';
@@ -21,7 +20,7 @@ const DEFAULT_PERIOD = 5; // last 5 years
   selector: 'app-experience',
   templateUrl: './experience.component.html',
   styleUrls: ['./experience.component.scss'],
-  animations: [fadeAnimation, listAnimation]
+  animations: [fadeAnimation, listAnimation],
 })
 export class ExperienceComponent implements OnInit {
   @Input() public hiddenTags: string[] = [];
@@ -29,18 +28,20 @@ export class ExperienceComponent implements OnInit {
   @Input() public proficiency: number = 100;
   @Input() public period: number = getYear() - DEFAULT_PERIOD;
   @Input() public exclude: string[] = [];
-  
+  @Input() public minOpacity:number = 0.1;
+
   public get years(): Uint16Array {
     return new Uint16Array(this.categories.keys())
-    .filter((years) => years > 0)
-    .sort()
-    .reverse();
+      .filter((years) => years > 0)
+      .sort()
+      .reverse();
   }
-  
+
   public readonly skills = new Set<string>();
-  public readonly categories = new Map<number, Set<string>>();
+  public readonly categories = new Map<number, Set<Skill>>();
+  public readonly sorted = new Map<number, Skill[]>();
   public readonly projectsPerSkill = new Map<string, Set<Project>>();
-  
+
   public minYear: number = getYear() - DEFAULT_PERIOD;
   public maxYear: number = getYear();
 
@@ -51,17 +52,19 @@ export class ExperienceComponent implements OnInit {
 
     // min year
     const projects = _.flatten(this.experience.map((e) => e.projects));
-    this.minYear = _.min(projects.map(p => p?.timespan?.from))?.getFullYear() ?? this.minYear;
+    this.minYear =
+      _.min(projects.map((p) => p?.timespan?.from))?.getFullYear() ??
+      this.minYear;
   }
 
   public refresh(animate: boolean = true) {
-    if(animate) {
+    if (animate) {
       this.clear();
     } else {
       this.categories.clear();
     }
-    const skills = new Map<string, MinMax<Date>>();
-    const enabled = new Set<string>()
+    const skills = new Map<string, { skill: Skill; minMax: MinMax<Date> }>();
+    const enabled = new Set<string>();
     if (this.experience) {
       const projects = _.flatten(this.experience.map((e) => e.projects));
       for (let project of projects) {
@@ -72,43 +75,52 @@ export class ExperienceComponent implements OnInit {
           }
           if ((tech.proficiency ?? 0) >= this.proficiency) {
             enabled.add(tech.name);
+          }
+
+          let { skill, minMax } = skills.get(tech.name) ?? {
+            skill: tech,
+            minMax: { min: project.timespan.from, max: project.timespan.to },
           };
 
-          let minMax = skills.get(tech.name) ?? { min: project.timespan.from, max: project.timespan.to };
-          minMax.min = project.timespan.from < minMax.min ? project.timespan.from : minMax.min;
-          minMax.max = project.timespan.to > minMax.max ? project.timespan.to : minMax.max;
-          
-          // months += getMonthDifference(
-          //   project.timespan?.from,
-          //   project.timespan?.to
-          // );
-          skills.set(tech.name, minMax);
+          minMax.min =
+            project.timespan.from < minMax.min
+              ? project.timespan.from
+              : minMax.min;
+          minMax.max =
+            project.timespan.to > minMax.max ? project.timespan.to : minMax.max;
+          skills.set(tech.name, { skill, minMax });
         }
       }
     }
 
-    for (let [name, minMax] of skills) {
-      if(!enabled.has(name)) continue;
-      if(this.exclude.includes(name)) continue;
-      if(minMax.max.getFullYear() < this.period) continue;
+    for (let [name, { skill, minMax }] of skills) {
+      if (!enabled.has(name)) continue;
+      if (this.exclude.includes(name)) continue;
+      if (minMax.max.getFullYear() < this.period) continue;
 
       //const years = Math.floor(months / 12);
       const years = Math.floor(getMonthDifference(minMax.min, minMax.max) / 12);
-      const skills = this.categories.get(years) ?? new Set<string>();
-      skills.add(name);
+      const skills = this.categories.get(years) ?? new Set<Skill>();
+      skills.add(skill);
       this.categories.set(years, skills);
     }
+
+    this.categories.forEach((value, key) => {
+      const sorted = _.sortBy(Array.from(value), (skill) => skill.proficiency);
+      return this.sorted.set(key, _.reverse(sorted));
+    });
 
     this.cdRef.detectChanges();
   }
 
   public clear() {
     this.categories.clear();
+    this.sorted.clear();
     this.cdRef.detectChanges();
   }
 
   public onProficiencyChange(value: number) {
-    if(this.proficiency !== value) {
+    if (this.proficiency !== value) {
       //value = Math.max(value, 1);
       this.proficiency = value;
       this.refresh(false);
@@ -116,10 +128,20 @@ export class ExperienceComponent implements OnInit {
   }
 
   public onPeriodChange(year: number | null) {
-    if(!year) return;
-    if(this.period !== year) {
+    if (!year) return;
+    if (this.period !== year) {
       this.period = year;
       this.refresh(false);
     }
+  }
+
+  
+  getSkills(year: number, sort: boolean = true): Iterable<Skill> {
+    return (sort ? this.sorted : this.categories).get(year) ?? [];
+  }
+
+  skillOpacity(skill: Skill) {
+    if(this.minOpacity >= 1) return 1; 
+    return skill ? Math.max(0.01 * (skill.proficiency ?? 100), this.minOpacity) : 0;
   }
 }

@@ -61,6 +61,11 @@
     }
 }
 
+mat-chip:hover {
+    opacity: 1 !important;
+    background: $accent;
+}
+
 @media screen and (max-width: $mobile-width) {
     .container {
         .categories {

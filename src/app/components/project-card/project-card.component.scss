@@ -112,7 +112,10 @@ $transition: .5s ease-in;
     }
 }
 
-
+mat-chip:hover {
+    opacity: 1 !important;
+    background: $accent;
+}
 
 
 // :host {

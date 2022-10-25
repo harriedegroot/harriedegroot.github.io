@@ -11,7 +11,8 @@
         </div>
         <div class="period">
             <span class="label">last used</span>
-            <mat-slider [tickInterval]="1" [value]="period" [min]="minYear" [max]="maxYear" (input)="onPeriodChange($event.value)" tickInterval="auto">
+            <mat-slider [tickInterval]="1" [value]="period" [min]="minYear" [max]="maxYear"
+                (input)="onPeriodChange($event.value)" tickInterval="auto">
             </mat-slider>
             <span class="value">&gt; {{period}}</span>
         </div>
@@ -20,14 +21,16 @@
         <div *ngFor="let year of years" class="category">
             <h3>{{year}}{{year > 1 ? '+ years' : '+ year'}}</h3>
             <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(year)?.size">
-                <mat-chip class="chip" *ngFor="let skill of categories.get(year)" >{{skill}}
+                <mat-chip class="chip" *ngFor="let skill of getSkills(year)" [style.opacity]="skillOpacity(skill)">
+                    {{skill.name}}
                 </mat-chip>
             </mat-chip-list>
         </div>
         <div *ngIf="categories.get(0)" class="category">
             <h3>&lt;1 year</h3>
             <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(0)?.size">
-                <mat-chip class="chip" *ngFor="let skill of categories.get(0)">{{skill}}
+                <mat-chip class="chip" *ngFor="let skill of getSkills(0)" [style.opacity]="skillOpacity(skill)">
+                    {{skill.name}}
                 </mat-chip>
             </mat-chip-list>
         </div>
