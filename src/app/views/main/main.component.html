@@ -1,35 +1,43 @@
 <app-background class="background"></app-background>
 <app-menu class="menu" (click)="navigateTo($event)"></app-menu>
 <main class="content">
+    
     <app-section id="section-home" class="app-section" [fullPage]="true" (shown)="onShow('background')" (hidden)="onHide('background')">
         <app-home id="home" [profile]="profile"></app-home>
         <button class="next-section" (click)="navigateTo('section-about')" mat-stroked-button>
             <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
         </button>
     </app-section>
+
     <app-section id="section-about" class="app-section" background="black" [fullPage]="true" [title]="'about'"
         (next)="navigateTo('section-experience')" (shown)="onShow('about')" (hidden)="onHide('about')">
         <app-about></app-about>
     </app-section>
-    <!-- <section id="section-specialities">
-        <app-specialities></app-specialities>
-    </section> -->
+    
+    <h2 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'">Experience</h2>
     <app-section id="section-experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.864)'"
         (next)="navigateTo('section-skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
         <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="70"
             [exclude]="excludeExperience"></app-experience>
     </app-section>
+
+    <h2 class="section-title dark">Skills</h2>
     <app-section id="section-skills" class="app-section" [fullPage]="true" [title]="'skills'" (shown)="onShow('skills')"
         (hidden)="onHide('skills')">
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags" (progress)="onSkillsProgress($event)"></app-skills>
     </app-section>
+
+    <h2 class="section-title light">Projects</h2>
     <app-section id="section-projects" class="app-section" [fullPage]="true">
         <app-projects [experience]="profile.experience"></app-projects>
     </app-section>
+
+    <h2 class="section-title dark">Charasteristics</h2>
     <app-section id="section-charasteristics" class="app-section" [background]="'black'" [fullPage]="false" [snap]="true" [snapDown]="0">
         <app-charasteristics></app-charasteristics>
     </app-section>
+    
 </main>
 <!-- <div>
     <app-footer id="footer"></app-footer>
