@@ -12,6 +12,7 @@ import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
 import { Subject, takeUntil } from 'rxjs';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 @Component({
   selector: 'app-project-card',
@@ -66,7 +67,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   
   private readonly destroyed$ = new Subject<void>();
 
-  constructor(device: DeviceService) {
+  constructor(device: DeviceService, private ga: GoogleAnalyticsService) {
     device.resize$
       .pipe(takeUntil(this.destroyed$))
       .subscribe(() => this._detectMoreTech());

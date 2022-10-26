@@ -7,6 +7,7 @@ import { BackgroundComponent } from '../../components/background/background.comp
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { ActivatedRoute } from '@angular/router';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -78,7 +79,7 @@ export class MainComponent implements OnInit {
   @ViewChild(SkillsComponent, { static: true })
   skills!: SkillsComponent;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private ga: GoogleAnalyticsService) {}
 
   ngOnInit(): void {
     this.route.fragment.subscribe((fragment) =>
@@ -156,6 +157,10 @@ export class MainComponent implements OnInit {
       }
 
       this._continueNavigation(item);
+
+      if(item !== 'background') {
+        this.ga.pageView("#"+item, item);
+      }
     }
   }
 

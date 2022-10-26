@@ -1,8 +1,10 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
 import * as _ from 'lodash';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 function getYear(): number {
   const date = new Date();
@@ -22,7 +24,7 @@ const DEFAULT_PERIOD = 5; // last 5 years
   styleUrls: ['./experience.component.scss'],
   animations: [fadeAnimation, listAnimation],
 })
-export class ExperienceComponent implements OnInit {
+export class ExperienceComponent implements OnInit, OnDestroy {
   @Input() public hiddenTags: string[] = [];
   @Input() public experience: Experience[] = [];
   @Input() public proficiency: number = 100;
@@ -30,6 +32,9 @@ export class ExperienceComponent implements OnInit {
   @Input() public exclude: string[] = [];
   @Input() public minOpacity:number = 0.1;
 
+  @Output('proficiency') public readonly onProficiencyChange$ = new EventEmitter<number>();
+  @Output('period') public readonly onPeriodChange$ = new EventEmitter<number>();
+  
   public get years(): Uint16Array {
     return new Uint16Array(this.categories.keys())
       .filter((years) => years > 0)
@@ -45,7 +50,9 @@ export class ExperienceComponent implements OnInit {
   public minYear: number = getYear() - DEFAULT_PERIOD;
   public maxYear: number = getYear();
 
-  constructor(private cdRef: ChangeDetectorRef) {}
+  private readonly destroyed$ = new Subject<void>();
+
+  constructor(private cdRef: ChangeDetectorRef, private ga: GoogleAnalyticsService) {}
 
   ngOnInit() {
     //this.refresh();
@@ -55,6 +62,16 @@ export class ExperienceComponent implements OnInit {
     this.minYear =
       _.min(projects.map((p) => p?.timespan?.from))?.getFullYear() ??
       this.minYear;
+
+    this.onProficiencyChange$.pipe(
+      takeUntil(this.destroyed$),
+      debounceTime(1000)
+    ).subscribe(value => this.ga.event("proficiency_change", "experience", "proficiency", value, true));
+
+    this.onPeriodChange$.pipe(
+      takeUntil(this.destroyed$),
+      debounceTime(1000)
+    ).subscribe(value => this.ga.event("period_change", "experience", "year", value, true));
   }
 
   public refresh(animate: boolean = true) {
@@ -124,6 +141,7 @@ export class ExperienceComponent implements OnInit {
       //value = Math.max(value, 1);
       this.proficiency = value;
       this.refresh(false);
+      this.onProficiencyChange$.emit(value);
     }
   }
 
@@ -132,6 +150,7 @@ export class ExperienceComponent implements OnInit {
     if (this.period !== year) {
       this.period = year;
       this.refresh(false);
+      this.onPeriodChange$.emit(year);
     }
   }
 
@@ -143,5 +162,10 @@ export class ExperienceComponent implements OnInit {
   skillOpacity(skill: Skill) {
     if(this.minOpacity >= 1) return 1; 
     return skill ? Math.max(0.01 * (skill.proficiency ?? 100), this.minOpacity) : 0;
+  }
+
+  ngOnDestroy(): void {
+      this.destroyed$.next();
+      this.destroyed$.complete();
   }
 }
