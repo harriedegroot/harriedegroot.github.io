@@ -30,6 +30,9 @@ import { TimelineContentComponent } from './components/timeline/timeline-item.co
 import { TimelineLabelComponent } from './components/timeline/timeline-label.component';
 import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
+import { environment } from 'environments/environment';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+
 
 @NgModule({
   declarations: [
@@ -55,6 +58,8 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgxGoogleAnalyticsModule.forRoot(environment.googleAnalytics),
+    NgxGoogleAnalyticsRouterModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     NgParticlesModule,

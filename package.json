@@ -32,6 +32,7 @@
     "ng-particles": "^3.3.3",
     "ngx-device-detector": "^4.0.1",
     "ngx-echarts": "^14.0.0",
+    "ngx-google-analytics": "^14.0.1",
     "ngx-typed-js": "^2.1.1",
     "rxjs": "~7.5.7",
     "tslib": "^2.4.0",
