@@ -18,7 +18,7 @@
     <h2 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'">Experience</h2>
     <app-section id="experience" class="app-section" [fullPage]="true" [title]="'experience'" [background]="'rgba(0, 0, 0, 0.864)'"
         (next)="navigateTo('skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
-        <app-experience [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="70"
+        <app-experience [minOpacity]="1" [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="70"
             [exclude]="excludeExperience"></app-experience>
     </app-section>
 
