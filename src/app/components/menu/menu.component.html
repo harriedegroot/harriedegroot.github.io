@@ -1,5 +1,7 @@
 <nav class="menu-container">
-    <button *ngFor="let section of sections" (click)="onClick(section);$event.stopImmediatePropagation()" mat-stroked-button>
-        <div class="text">{{section}}</div>
-    </button>
+    <ng-container *ngFor="let section of sections; let i = index">
+        <button  (click)="onClick(section);$event.stopImmediatePropagation()" mat-stroked-button>
+            <div class="text">{{section}}</div>
+        </button>
+    </ng-container>
 </nav>

@@ -12,7 +12,8 @@ export class MenuComponent implements OnInit {
     'experience',
     'skills',
     'projects',
-    'charasteristics',
+    //'charasteristics',
+    'personality',
     'contact'
   ];
   @Output('click') public readonly clickEmitter = new EventEmitter<string>();

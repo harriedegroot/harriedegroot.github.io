@@ -5,16 +5,13 @@
     justify-content: space-evenly;
     align-items: center;
     flex-flow: row wrap;
-    gap: 2px;
-
+    
     max-width: 500px;
     margin: 0 auto;
+    gap: 5px;
     
     button {
-        font-weight: 100;
-        font-size: 12px;
-        text-transform: uppercase;
-        color: #b4babd;
+        
         transition: color .4s ease-in;
         height: 30px;
         min-width: 0;
@@ -39,5 +36,13 @@
             }
             
         }
+    }
+
+    .text {
+        font-weight: 100;
+        font-size: 12px;
+        //font-size: 3vw;
+        text-transform: uppercase;
+        color: #b4babd;
     }
 }
