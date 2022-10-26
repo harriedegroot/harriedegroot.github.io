@@ -1,6 +1,6 @@
 <nav class="menu-container">
     <ng-container *ngFor="let section of sections; let i = index">
-        <a [routerLink]="['/']" fragment="{{section}}" class="item text" gaEvent="menu_click_{{section}}" gaCategory="main_menu">
+        <a [routerLink]="['/']" fragment="{{section}}" class="item text" gaEvent="menu_click_{{section}}" gaCategory="navigation">
             {{section}}
         </a>
     </ng-container>
