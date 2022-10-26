@@ -6,6 +6,7 @@ import { AboutComponent } from '../about/about.component';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
+import { ActivatedRoute } from '@angular/router';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -77,9 +78,13 @@ export class MainComponent implements OnInit {
   @ViewChild(SkillsComponent, { static: true })
   skills!: SkillsComponent;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.fragment.subscribe((fragment) =>
+      fragment ? this.navigateTo(fragment) : null
+    );
+
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
@@ -134,7 +139,6 @@ export class MainComponent implements OnInit {
     });
   }
 
-
   onShow(items: string | string[]) {
     for (let item of asArray(items)) {
       switch (item) {
@@ -155,14 +159,14 @@ export class MainComponent implements OnInit {
     }
   }
 
-  private _timeout?: NodeJS.Timeout
+  private _timeout?: NodeJS.Timeout;
   private _continueNavigation(item: string) {
-    if(this._timeout) clearTimeout(this._timeout);
+    if (this._timeout) clearTimeout(this._timeout);
     if (this._target && this._target != item) {
       this._timeout = setTimeout(() => {
         this.navigateTo(this._target);
         this._target = undefined;
-      }, 500);
+      }, 600);
     }
   }
 
@@ -185,7 +189,7 @@ export class MainComponent implements OnInit {
   private _target?: string;
   navigateTo(item?: string) {
     this._target = item;
-    if(!item) return;
+    if (!item) return;
     document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
   }
 }

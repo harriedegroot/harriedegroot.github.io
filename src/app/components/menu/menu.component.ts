@@ -16,13 +16,8 @@ export class MenuComponent implements OnInit {
     'personality',
     'contact'
   ];
-  @Output('click') public readonly clickEmitter = new EventEmitter<string>();
-
+  
   constructor() {}
 
   ngOnInit(): void {}
-
-  onClick(item: string) {
-    this.clickEmitter.emit(item);
-  }
 }
