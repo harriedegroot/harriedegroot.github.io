@@ -1,22 +1,22 @@
-<div class="footer" [class.wrap]="wrap" [gaCategory]="category">
+<div class="footer" [class.wrap]="wrap">
     <section class="email">
         <fa-icon [icon]="emailIcon"></fa-icon>
-        <a href="mailto:info@harriedegroot.com" target="_blank" gaEvent gaAction="click_email">info@harriedegroot.com</a>
+        <a href="mailto:info@harriedegroot.com" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_email">info@harriedegroot.com</a>
     </section>
     <section class="mobile">
         <fa-icon [icon]="phoneIcon"></fa-icon>
-        <a href="tel:0031652437812" target="_blank" gaEvent gaAction="click_phone">+31 (0)6 52 43 78 12</a>
+        <a href="tel:0031652437812" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_phone">+31 (0)6 52 43 78 12</a>
     </section>
     <section class="Whatsapp">
         <fa-icon [icon]="WhatsAppIcon"></fa-icon>
-        <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank" gaEvent gaAction="click_whatsapp">WhatsApp</a>
+        <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_whatsapp">WhatsApp</a>
     </section>
     <section class="LinkedIn">
         <fa-icon [icon]="LinkedInIcon"></fa-icon>
-        <a href="https://linkedin.com/in/harriedegroot" target="_blank" gaEvent gaAction="click_linkedin">LinkedIn</a>
+        <a href="https://linkedin.com/in/harriedegroot" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_linkedin">LinkedIn</a>
     </section>
     <section class="GitHub">
         <fa-icon [icon]="GitHubIcon"></fa-icon>
-        <a href="https://github.com/harriedegroot" target="_blank" gaEvent gaAction="click_github">GitHub</a>
+        <a href="https://github.com/harriedegroot" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_github">GitHub</a>
     </section>
 </div>

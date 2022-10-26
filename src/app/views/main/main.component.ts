@@ -159,7 +159,7 @@ export class MainComponent implements OnInit {
       this._continueNavigation(item);
 
       if(item !== 'background') {
-        this.ga.pageView("#"+item, item);
+        this.ga.pageView(item, item);
       }
     }
   }

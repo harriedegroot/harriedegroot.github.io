@@ -66,12 +66,12 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.onProficiencyChange$.pipe(
       takeUntil(this.destroyed$),
       debounceTime(1000)
-    ).subscribe(value => this.ga.event("proficiency_change", "experience", "proficiency", value, true));
+    ).subscribe(value => this.ga.event("experience_proficiency_change", "experience", "proficiency", value, true));
 
     this.onPeriodChange$.pipe(
       takeUntil(this.destroyed$),
       debounceTime(1000)
-    ).subscribe(value => this.ga.event("period_change", "experience", "year", value, true));
+    ).subscribe(value => this.ga.event("experience_period_change", "experience", "year", value, true));
   }
 
   public refresh(animate: boolean = true) {

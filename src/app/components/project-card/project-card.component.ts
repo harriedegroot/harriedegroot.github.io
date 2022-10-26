@@ -83,6 +83,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   goto(url: string) {
+    this.ga.event("open_project", "project", )
     window.open(url, '_blank');
   }
 
