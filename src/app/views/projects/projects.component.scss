@@ -36,6 +36,8 @@ $overlay-color: white;
     justify-content: center;
     align-items: flex-end;
     padding-bottom: 30px;
+
+    pointer-events: none;
 }
 
 app-timeline {
