@@ -14,10 +14,16 @@ export class MenuComponent implements OnInit {
     'projects',
     //'charasteristics',
     'personality',
-    'contact'
+    'contact',
   ];
-  
+
+  @Output('click') public readonly click$ = new EventEmitter<string>();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  onClick(section: string) {
+    this.click$.emit(section);
+  }
 }

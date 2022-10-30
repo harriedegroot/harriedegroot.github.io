@@ -6,8 +6,8 @@ import { AboutComponent } from '../about/about.component';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
-import { ActivatedRoute } from '@angular/router';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { ScrollingService } from 'app/services/scrolling.service';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -79,13 +79,16 @@ export class MainComponent implements OnInit {
   @ViewChild(SkillsComponent, { static: true })
   skills!: SkillsComponent;
 
-  constructor(private route: ActivatedRoute, private ga: GoogleAnalyticsService) {}
+  constructor(
+    private ga: GoogleAnalyticsService,
+    private scrollingService: ScrollingService,
+  ) {}
 
   ngOnInit(): void {
-    this.route.fragment.subscribe((fragment) =>
-      fragment ? this.navigateTo(fragment) : null
-    );
+    this.initAnimations();
+  }
 
+  private initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
 
@@ -135,7 +138,7 @@ export class MainComponent implements OnInit {
         },
         onLeave: function () {
           hide(elem);
-        }, // assure that the element is hidden when scrolled into view
+        },
       });
     });
   }
@@ -156,23 +159,10 @@ export class MainComponent implements OnInit {
           break;
       }
 
-      this._continueNavigation(item);
-
-      if(item !== 'background') {
+      if (item !== 'background') {
         this.ga.pageView(item, item);
-        this.ga.event("show_section_"+item, "navigation");
+        this.ga.event('show_section_' + item, 'navigation');
       }
-    }
-  }
-
-  private _timeout?: NodeJS.Timeout;
-  private _continueNavigation(item: string) {
-    if (this._timeout) clearTimeout(this._timeout);
-    if (this._target && this._target != item) {
-      this._timeout = setTimeout(() => {
-        this.navigateTo(this._target);
-        this._target = undefined;
-      }, 600);
     }
   }
 
@@ -192,10 +182,9 @@ export class MainComponent implements OnInit {
     }
   }
 
-  private _target?: string;
-  navigateTo(item?: string) {
-    this._target = item;
-    if (!item) return;
-    document.getElementById(item)?.scrollIntoView({ behavior: 'smooth' });
+  navigateTo(item: string) {
+    this.scrollingService.scrollTo(item);
+    //this.scrollingService.smoothScrollTo(item);
+    this.onShow(item);
   }
 }
