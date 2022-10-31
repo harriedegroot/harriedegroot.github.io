@@ -182,9 +182,12 @@ export class MainComponent implements OnInit {
     }
   }
 
-  navigateTo(item: string) {
-    this.scrollingService.scrollTo(item);
-    //this.scrollingService.smoothScrollTo(item);
+  navigateTo(item: string, smooth: boolean = true) {
+    if(smooth) {
+      this.scrollingService.smoothScrollTo(item);
+    } else {
+      this.scrollingService.scrollTo(item);
+    }
     this.onShow(item);
   }
 }
