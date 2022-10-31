@@ -1,7 +1,11 @@
-<nav class="menu-container">
+<button class="hamburger" mat-icon-button>
+    <fa-icon [icon]="hamburgerIcon" (click)="open = !open; $event.stopImmediatePropagation()"></fa-icon>
+</button>
+    
+<nav class="menu-container" [class.open]="open">
     <ng-container *ngFor="let section of sections; let i = index">
         <a [routerLink]="['/']" (click)="onClick(section)" class="item text" [replaceUrl]="true" gaEvent="menu_click_{{section}}" gaCategory="navigation">
-            {{section}}
+            <span>{{section}}</span>
         </a>
     </ng-container>
 </nav>
