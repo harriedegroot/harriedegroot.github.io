@@ -8,6 +8,8 @@ import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { ScrollingService } from 'app/services/scrolling.service';
+import { DeviceService } from 'app/services/device.service';
+import { debounceTime, filter } from 'rxjs';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -67,6 +69,11 @@ export class MainComponent implements OnInit {
 
   excludeExperience = ['Mustache Templates'];
 
+  menuBackground: string = 'black';
+  menuFixed: boolean = false;
+  menuOpen: boolean = false;
+  menuHamburger: boolean = true;
+
   @ViewChild(BackgroundComponent, { static: true })
   background!: BackgroundComponent;
 
@@ -82,10 +89,22 @@ export class MainComponent implements OnInit {
   constructor(
     private ga: GoogleAnalyticsService,
     private scrollingService: ScrollingService,
+    private deviceService: DeviceService
   ) {}
 
   ngOnInit(): void {
     this.initAnimations();
+
+    this.menuOpen = !this.deviceService.isMobile;
+    this.scrollingService.scrolling$
+      .pipe(
+        filter(() => !this.deviceService.isMobile),
+        filter((scrolling) => scrolling !== 'idle'),
+        debounceTime(300)
+      )
+      .subscribe(
+        (scrolling) => (this.menuOpen = scrolling === 'up' && !this.menuFixed)
+      );
   }
 
   private initAnimations() {
@@ -149,6 +168,13 @@ export class MainComponent implements OnInit {
         case 'background':
           this.background.enabled = true;
           break;
+        case 'home':
+          if(!this.deviceService.isMobile) {
+            this.menuFixed = false;
+            this.menuOpen = true;
+            this.menuBackground = 'transparent';
+          }
+          break;
         case 'about':
           break;
         case 'experience':
@@ -169,8 +195,13 @@ export class MainComponent implements OnInit {
   onHide(items: string | string[]) {
     for (let item of asArray(items)) {
       switch (item) {
-        case 'home':
+        case 'background':
           this.background.enabled = false;
+          break;
+        case 'home':
+          this.menuFixed = true;
+          this.menuOpen = false;
+          this.menuBackground = 'black';
           break;
         case 'experience':
           this.experience.clear();
@@ -183,7 +214,7 @@ export class MainComponent implements OnInit {
   }
 
   navigateTo(item: string, smooth: boolean = true) {
-    if(smooth) {
+    if (smooth) {
       this.scrollingService.smoothScrollTo(item);
     } else {
       this.scrollingService.scrollTo(item);

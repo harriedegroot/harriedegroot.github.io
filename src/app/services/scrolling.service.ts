@@ -1,17 +1,23 @@
 import { ViewportScroller } from '@angular/common';
-import { HostListener, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import * as _ from 'lodash';
 import {
   debounceTime,
   distinctUntilChanged,
   fromEvent,
+  interval,
   map,
+  merge,
+  Observable,
+  of,
+  pairwise,
   shareReplay,
-  Subject,
+  startWith,
+  switchMap,
+  throttleTime,
 } from 'rxjs';
 
-const SCROLL_DEBOUNCE = 50;
-const CONTINUE_DEBOUNCE = 600;
+export type Scrolling = 'up' | 'down' | 'idle';
 
 @Injectable({
   providedIn: 'root',
@@ -24,43 +30,44 @@ export class ScrollingService {
     return this._scrollTarget ?? null;
   }
 
-  public readonly scrolling$ = new Subject<boolean>();
-  private _isScrolling: boolean = false;
-  public get isScrolling(): boolean {
-    return this._isScrolling;
-  }
-  public set isScrolling(value: boolean) {
-    if (this._isScrolling !== value) {
-      this._isScrolling = value;
-      this.scrolling$.next(value);
-    }
-  }
+  public readonly scrollDirection$: Observable<'up' | 'down'> = fromEvent(window, 'scroll').pipe(
+      map(() => window.pageYOffset),
+      pairwise(),
+      throttleTime(300),
+      map(([y1, y2]) => (y2 < y1 ? "up" : "down")),
+  );
+
+  public readonly noScroll$: Observable<'idle'> = fromEvent(window, 'scroll').pipe(
+    startWith(0),
+    debounceTime(200),
+    map(() => 'idle')
+  );
+
+  public readonly scrolling$: Observable<Scrolling> = merge(this.scrollDirection$, this.noScroll$).pipe(
+    switchMap((e) => e === 'idle' ? interval(200).pipe(map(() => 'idle' as Scrolling)) : of(e)),
+    distinctUntilChanged()
+  )
+
+  public readonly isScrolling$ = this.scrolling$.pipe(
+    map(s => s !== 'idle'),
+    distinctUntilChanged()
+  );
 
   public readonly scrollPosition$ = fromEvent(window, 'scroll').pipe(
-    debounceTime(50),
+    throttleTime(50),
     map(() => this.getScrollPosition()),
     distinctUntilChanged(),
     shareReplay(1)
   );
 
   public readonly scrollPercentage$ = fromEvent(window, 'scroll').pipe(
-    debounceTime(50),
+    throttleTime(50),
     map(() => this.getScrollPercentage()),
     distinctUntilChanged(),
     shareReplay(1)
   );
 
   constructor(private viewportScroller: ViewportScroller) {}
-
-  @HostListener('window:scroll', ['$event'])
-  onScroll() {
-    this.isScrolling = true;
-    this._scrollDebounce?.cancel();
-    this._scrollDebounce = _.debounce(
-      () => (this.isScrolling = false),
-      SCROLL_DEBOUNCE
-    );
-  }
 
   public getScrollPosition(): number {
     return this.viewportScroller.getScrollPosition()[1];

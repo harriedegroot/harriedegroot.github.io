@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { concat } from 'lodash';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { combineLatest, debounceTime, distinctUntilChanged, fromEvent, map, merge, Observable, of, ReplaySubject, shareReplay, withLatestFrom, zip } from 'rxjs';
+import { debounceTime, distinctUntilChanged, fromEvent, map, merge, Observable, of, shareReplay } from 'rxjs';
 
 export interface Size {
   width: number;
@@ -12,6 +11,9 @@ export interface Size {
   providedIn: 'root'
 })
 export class DeviceService {
+
+  public mobileWidth: number = 900;
+  public get isMobile(): boolean { return window.innerWidth < this.mobileWidth; }
 
   public readonly resize$: Observable<Size> = 
     fromEvent(window, 'resize').pipe(
@@ -28,7 +30,11 @@ export class DeviceService {
   ).pipe(shareReplay(1))
 
   public readonly isMobile$ = this.viewportSize$.pipe(
-    map(size => size.width <= 900)
+    map(size => size.width <= this.mobileWidth)
+  )
+
+  public readonly isDesktop$ = this.viewportSize$.pipe(
+    map(size => size.width > this.mobileWidth)
   )
   
   constructor(private deviceDetectorService: DeviceDetectorService) { }

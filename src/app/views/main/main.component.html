@@ -1,8 +1,10 @@
 <app-background class="background"></app-background>
-<app-menu id="main-menu" class="menu" (click)="navigateTo($event, false)"></app-menu>
+<app-menu id="main-menu" class="menu" (click)="navigateTo($event, false)" [background]="menuBackground"
+    [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger"></app-menu>
 <main class="content">
-    
-    <app-section id="home" class="app-section" [fullPage]="true" [title]="'Home'" (shown)="onShow('background')" (hidden)="onHide('background')">
+
+    <app-section id="home" class="app-section" [fullPage]="true" [title]="'Home'" (shown)="onShow(['home','background'])"
+        (hidden)="onHide(['home', 'background'])">
         <app-home [profile]="profile"></app-home>
         <button class="next-section" (click)="navigateTo('about')" mat-stroked-button>
             <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
@@ -14,12 +16,13 @@
         (next)="navigateTo('experience')" (shown)="onShow('about')" (hidden)="onHide('about')">
         <app-about></app-about>
     </app-section>
-    
+
     <h1 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'">Experience</h1>
-    <app-section id="experience" class="app-section" [fullPage]="true" [title]="'Experience'" [background]="'rgba(0, 0, 0, 0.864)'"
-        (next)="navigateTo('skills')" (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
-        <app-experience [minOpacity]="1" [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags" [proficiency]="70"
-            [exclude]="excludeExperience"></app-experience>
+    <app-section id="experience" class="app-section" [fullPage]="true" [title]="'Experience'"
+        [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
+        (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')">
+        <app-experience [minOpacity]="1" [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags"
+            [proficiency]="70" [exclude]="excludeExperience"></app-experience>
     </app-section>
 
     <h1 class="section-title dark">Skills</h1>
@@ -35,7 +38,8 @@
     </app-section>
 
     <h1 class="section-title dark">Personality</h1>
-    <app-section id="personality" class="app-section" [background]="'black'" [fullPage]="false" [title]="'Personality'" [snap]="true" [snapDown]="0">
+    <app-section id="personality" class="app-section" [background]="'black'" [fullPage]="false" [title]="'Personality'"
+        [snap]="true" [snapDown]="0">
         <app-charasteristics></app-charasteristics>
     </app-section>
 

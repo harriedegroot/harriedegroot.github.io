@@ -1,11 +1,13 @@
-<button class="hamburger" mat-icon-button>
-    <fa-icon [icon]="hamburgerIcon" (click)="open = !open; $event.stopImmediatePropagation()"></fa-icon>
-</button>
-    
-<nav class="menu-container" [class.open]="open">
-    <ng-container *ngFor="let section of sections; let i = index">
-        <a [routerLink]="['/']" (click)="onClick(section)" class="item text" [replaceUrl]="true" gaEvent="menu_click_{{section}}" gaCategory="navigation">
-            <span>{{section}}</span>
-        </a>
-    </ng-container>
-</nav>
+<div class="menu" [class.fixed]="fixed" [class.open]="open">
+    <button class="hamburger" mat-icon-button [class.visible]="hamburger" (click)="open=!open;$event.stopImmediatePropagation()">
+        <fa-icon [icon]="hamburgerIcon"></fa-icon>
+    </button>
+        
+    <nav class="menu-container" [class.open]="open" [style.background]="background">
+        <ng-container *ngFor="let section of sections; let i = index">
+            <a [routerLink]="['/']" (click)="onClick(section)" class="item" [replaceUrl]="true" gaEvent="menu_click_{{section}}" gaCategory="navigation">
+                <span class="text">{{section}}</span>
+            </a>
+        </ng-container>
+    </nav>
+</div>
