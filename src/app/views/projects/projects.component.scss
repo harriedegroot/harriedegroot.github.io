@@ -38,6 +38,10 @@ $overlay-color: white;
     padding-bottom: 30px;
 
     pointer-events: none;
+
+    button {
+        pointer-events: all;
+    }
 }
 
 app-timeline {
