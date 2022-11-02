@@ -9,7 +9,6 @@ import { SkillsComponent } from '../skills/skills.component';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { ScrollingService } from 'app/services/scrolling.service';
 import { DeviceService } from 'app/services/device.service';
-import { debounceTime, filter } from 'rxjs';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -52,6 +51,7 @@ function asArray<T>(obj: T | T[]): T[] {
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
+
   profile = PROFILE;
 
   selectedSkillTags = ['Programming Language', 'Software Framework'];
@@ -209,5 +209,15 @@ export class MainComponent implements OnInit {
       this.scrollingService.scrollTo(item);
     }
     this.onShow(item);
+  }
+
+  onSnap(section: string) {
+    switch(section) {
+      case 'home':
+        break;
+      default:
+        this.menuOpen = false;
+        break;
+    }
   }
 }

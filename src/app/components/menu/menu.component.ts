@@ -22,6 +22,8 @@ export class MenuComponent implements OnInit {
     'contact',
   ];
 
+  private _cooldown: boolean = false;
+
   private _open?: boolean = true;
   public get open(): boolean {
     return !!this._open;
@@ -31,6 +33,12 @@ export class MenuComponent implements OnInit {
     if(this._open != value) {
       this._open = value;
       this.openChange.emit(value);
+
+      // block events during cooldown
+      if(this.cooldownTime > 0) {
+        this._cooldown = true;
+        setTimeout(() => this._cooldown = false, this.cooldownTime);
+      }
     }
   }
   @Output() openChange = new EventEmitter<boolean>();
@@ -38,6 +46,7 @@ export class MenuComponent implements OnInit {
   @Input() public fixed: boolean = true;
   @Input() public hamburger: boolean = true;
   @Input() public background: string = 'transparent';
+  @Input() public cooldownTime: number = 1000;
   
   @Output('click') public readonly click$ = new EventEmitter<string>();
 
@@ -46,18 +55,13 @@ export class MenuComponent implements OnInit {
   constructor(private scrollingService: ScrollingService, private deviceService: DeviceService) {}
 
   ngOnInit(): void {
-    this.scrollingService.scrolling$
+    this.scrollingService.scrollDirection$
       .pipe(
+        filter(() => !this._cooldown),
         filter(() => !this.deviceService.isMobile),
-        filter((scrolling) => scrolling !== 'idle'),
         debounceTime(50)
       )
-      .subscribe(
-        (scrolling) => {
-          console.log(scrolling);
-          this.open = scrolling === 'up';
-        }
-      );
+      .subscribe((scrolling) => this.open = scrolling === 'up');
   }
 
   onClick(section: string) {

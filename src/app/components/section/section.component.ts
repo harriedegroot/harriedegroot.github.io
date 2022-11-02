@@ -29,9 +29,10 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.fullPage || !this.visible ? '100vh' : 'auto';
   }
 
-  @Output('shown') public readonly shownEmitter = new EventEmitter<void>();
-  @Output('hidden') public readonly hiddenEmitter = new EventEmitter<void>();
-  @Output('visible') public readonly visibleEmitter = new EventEmitter<boolean>();
+  @Output('shown') public readonly shown$ = new EventEmitter<void>();
+  @Output('hidden') public readonly hidden$ = new EventEmitter<void>();
+  @Output('visible') public readonly visible$ = new EventEmitter<boolean>();
+  @Output('snap') public readonly snap$ = new EventEmitter<string>();
 
   private readonly _nextEmitter = new EventEmitter<void>();
   @Output('next') public get nextEmitter() {
@@ -92,6 +93,8 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
       ease: 'power1.inOut',
       //ease: 'power2',
     });
+
+    this.snap$.emit(this.id);
   }
 
   public isFullScreen(): boolean {
@@ -122,12 +125,12 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
       this._visible = value;
       if (value) {
         this.showTitle();
-        this.shownEmitter.emit();
+        this.shown$.emit();
       } else {
         this._snapTween?.kill();
-        this.hiddenEmitter.emit();
+        this.hidden$.emit();
       }
-      this.visibleEmitter.emit(value);
+      this.visible$.emit(value);
     }
     this._scrollTrigger?.refresh();
   }
