@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { ScrollingService } from 'app/services/scrolling.service';
+import { debounceTime, filter } from 'rxjs';
+import { DeviceService } from 'app/services/device.service';
 
 @Component({
   selector: 'app-menu',
@@ -40,9 +43,21 @@ export class MenuComponent implements OnInit {
 
   hamburgerIcon = faBars as IconProp;
 
-  constructor() {}
+  constructor(private scrollingService: ScrollingService, private deviceService: DeviceService) {}
 
   ngOnInit(): void {
+    this.scrollingService.scrolling$
+      .pipe(
+        filter(() => !this.deviceService.isMobile),
+        filter((scrolling) => scrolling !== 'idle'),
+        debounceTime(50)
+      )
+      .subscribe(
+        (scrolling) => {
+          console.log(scrolling);
+          this.open = scrolling === 'up';
+        }
+      );
   }
 
   onClick(section: string) {

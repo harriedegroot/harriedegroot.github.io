@@ -70,7 +70,7 @@ export class MainComponent implements OnInit {
   excludeExperience = ['Mustache Templates'];
 
   menuBackground: string = 'black';
-  menuFixed: boolean = false;
+  menuFixed: boolean = true;
   menuOpen: boolean = false;
   menuHamburger: boolean = true;
 
@@ -96,15 +96,6 @@ export class MainComponent implements OnInit {
     this.initAnimations();
 
     this.menuOpen = !this.deviceService.isMobile;
-    this.scrollingService.scrolling$
-      .pipe(
-        filter(() => !this.deviceService.isMobile),
-        filter((scrolling) => scrolling !== 'idle'),
-        debounceTime(300)
-      )
-      .subscribe(
-        (scrolling) => (this.menuOpen = scrolling === 'up' && !this.menuFixed)
-      );
   }
 
   private initAnimations() {
@@ -170,7 +161,6 @@ export class MainComponent implements OnInit {
           break;
         case 'home':
           if(!this.deviceService.isMobile) {
-            this.menuFixed = false;
             this.menuOpen = true;
             this.menuBackground = 'transparent';
           }
@@ -199,7 +189,6 @@ export class MainComponent implements OnInit {
           this.background.enabled = false;
           break;
         case 'home':
-          this.menuFixed = true;
           this.menuOpen = false;
           this.menuBackground = 'black';
           break;
