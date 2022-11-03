@@ -17,6 +17,7 @@ export class FooterComponent implements OnInit {
   WhatsAppIcon = faWhatsapp as IconProp;
 
   @Input() public wrap: boolean = false;
+  @Input() public allowHideText: boolean = false;
   @Input() public category: string = "footer";
 
   constructor() { }
