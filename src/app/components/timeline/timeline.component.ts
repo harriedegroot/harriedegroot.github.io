@@ -8,7 +8,7 @@ import {
   QueryList,
 } from '@angular/core';
 import { fadeAnimation } from 'app/helpers/animations';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { TimelineContentComponent } from './timeline-item.component';
 import { TimelineMarkerComponent } from './timeline-marker.component';
 
@@ -20,13 +20,13 @@ export type Side = 'left' | 'right';
   styleUrls: ['./timeline.component.scss'],
   animations: [fadeAnimation]
 })
-export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
+export class TimelineComponent implements AfterViewInit, OnDestroy {
   @Input() side: Side = 'right';
 
   private readonly _register = new Map<number, boolean>();
-  private _initialized: boolean = false;
-  private readonly update$ = new Subject<void>();
   private readonly destroyed$ = new Subject<void>();
+
+  private _initialized: boolean = false;
 
   private _alternate: boolean = true;
   public get alternate(): boolean {
@@ -35,9 +35,7 @@ export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public set alternate(value: boolean) {
     if (this._alternate !== value) {
       this._alternate = value;
-      if (this._initialized) {
-        this.update$.next();
-      }
+      this._update();
     }
   }
 
@@ -48,29 +46,25 @@ export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
   @ContentChildren(TimelineContentComponent)
   public set contents(value: QueryList<TimelineContentComponent> | undefined) {
     this._contents = value;
-    this.loading = true;
     this.register();
-    if (this._initialized) {
-      this.update$.next();
-    }
+    this._update();
   }
 
   @ContentChildren(TimelineMarkerComponent)
-  public markers: QueryList<TimelineMarkerComponent> | undefined;
-
-  public loading: boolean = false;
+  private _markers: QueryList<TimelineMarkerComponent> | undefined;
+  public get markers(): QueryList<TimelineMarkerComponent> | undefined {
+    return this._markers;
+  }
+  public set markers(value: QueryList<TimelineMarkerComponent> | undefined) {
+    this._markers = value;
+    this._update();
+  }
 
   constructor() {}
 
-  ngOnInit() {
-    this.update$
-      .pipe(takeUntil(this.destroyed$), debounceTime(20))
-      .subscribe(() => this._update());
-  }
-
-  ngAfterViewInit(): void {
-    this.update$.next();
+  ngAfterViewInit() {
     this._initialized = true;
+    this._update();
   }
 
   private register() {
@@ -80,6 +74,7 @@ export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _update(): void {
+    if (!this._initialized) return;
     if (!this.contents) return;
     
     if (this.alternate) {
@@ -102,8 +97,6 @@ export class TimelineComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.contents.forEach((content) => (content.alternate = this.alternate));
     this.markers?.forEach((marker) => (marker.alternate = this.alternate));
-
-    this.loading = false;
   }
 
   ngOnDestroy() {

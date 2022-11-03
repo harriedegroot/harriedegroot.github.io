@@ -23,7 +23,7 @@ export class BackgroundComponent implements OnInit {
   public set enabled(value: boolean) {
     this._enabled = value;
     if(value) {
-      this.fadeIn(.1)
+      this.fadeIn(1)
     }
   }
 

@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { toMoment } from 'app/helpers/date';
+import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { timespan, toDate, toMoment } from 'app/helpers/date';
 import { Experience, Project, TimeSpan } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import { timeStamp } from 'console';
@@ -45,25 +45,26 @@ export class ProjectsComponent implements OnInit {
     this._currentYear = undefined;
     this._yearCache.clear();
 
-    const projects =
+    let projects =
       (this.experience || []).map((e) =>
         (e.projects || []).map(
           (p) =>
             ({
               ...p,
               company: p.company ?? e.company,
+              timespan: timespan(p.timespan),
               role: p.role ?? _.first(e.roles ?? []),
             } as Project)
         )
       ) ?? [];
 
-    this.projects = _.flatten(projects);
-    this.projects = _.sortBy(
-      this.projects,
-      [(p) => moment(p.timespan?.to), (p) => moment(p.timespan?.from)],
+    let list = _.flatten(projects);
+    list = _.sortBy(
+      list,
+      [(p) => p.timespan?.to, (p) => p.timespan?.from],
       ['desc']
     );
-    this.projects = _.reverse(this.projects);
+    this.projects = _.reverse(list);
   }
 
   nextYear(idx: number, date?: Date | string): boolean {
