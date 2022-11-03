@@ -15,15 +15,29 @@ export class BackgroundComponent implements OnInit {
   id = 'background_particles';
   particlesOptions?: any;
 
-  @Input() public enabled: boolean = true;
+  private _enabled: boolean = true;
+  public get enabled(): boolean {
+    return this._enabled;
+  }
+  @Input()
+  public set enabled(value: boolean) {
+    this._enabled = value;
+    if(value) {
+      this.fadeIn(.1)
+    }
+  }
 
   constructor() {}
 
   ngOnInit(): void {
-    gsap.to('.particles-container', {
-      opacity: 1,
+    this.fadeIn(8);
+  }
+
+  private fadeIn(delay: number = 0) {
+    gsap.from('.particles-container', {
+      opacity: 0,
       duration: 10,
-      delay: 8,
+      delay: delay,
       onStart: () => this.start()
     });
   }
