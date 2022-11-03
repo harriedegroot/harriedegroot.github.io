@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   headlineCursor: boolean = true;
   locationCursor: boolean = false;
 
-  @Input() public profile?: Profile;
+  @Input() public profile?: Profile | null;
 
   @Input() headline: string[] = [
     'MSc. Artificial Intelligence',

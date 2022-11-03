@@ -27,11 +27,20 @@ const DEFAULT_PERIOD = 5; // last 5 years
 })
 export class ExperienceComponent implements OnInit, OnDestroy {
   @Input() public hiddenTags: string[] = [];
-  @Input() public experience: Experience[] = [];
   @Input() public proficiency: number = 100;
   @Input() public period: number = getYear() - DEFAULT_PERIOD;
   @Input() public exclude: string[] = [];
   @Input() public minOpacity:number = 0.1;
+
+  private _experience: Experience[] | null = null;
+  public get experience(): Experience[] | null {
+    return this._experience;
+  }
+  @Input()
+  public set experience(value: Experience[] | null) {
+    this._experience = value;
+    this.initExperience();
+  }
 
   @Output('proficiency') public readonly onProficiencyChange$ = new EventEmitter<number>();
   @Output('period') public readonly onPeriodChange$ = new EventEmitter<number>();
@@ -56,14 +65,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   constructor(private cdRef: ChangeDetectorRef, private ga: GoogleAnalyticsService) {}
 
   ngOnInit() {
-    //this.refresh();
-
-    // min year
-    const projects = _.flatten(this.experience.map((e) => e.projects));
-    this.minYear =
-      _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
-      this.minYear;
-
     this.onProficiencyChange$.pipe(
       takeUntil(this.destroyed$),
       debounceTime(1000)
@@ -75,7 +76,18 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     ).subscribe(value => this.ga.event("experience_period_change", "experience", "year", value, true));
   }
 
+  private initExperience() {
+    // min year
+    const projects = _.flatten(this.experience?.map((e) => e.projects)) ?? [];
+    this.minYear =
+      _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
+      this.minYear;
+    this.refresh();
+  }
+
   public refresh(animate: boolean = true) {
+    if(!this.experience) return;
+    
     if (animate) {
       this.clear();
     } else {

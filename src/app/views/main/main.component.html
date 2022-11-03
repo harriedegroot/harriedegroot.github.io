@@ -1,7 +1,7 @@
 <app-background class="background"></app-background>
 <app-menu id="main-menu" class="menu" (click)="navigateTo($event, false)" [background]="menuBackground"
     [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger" [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
-<main class="content" *ngIf="profile">
+<main class="content">
 
     <app-section id="home" class="app-section" [fullPage]="true" [title]="'Home'"
         (shown)="onShow(['home','background'])" (hidden)="onHide(['home', 'background'])" (snap)="onSnap('home')">
@@ -21,20 +21,20 @@
     <app-section id="experience" class="app-section" [fullPage]="true" [title]="'Experience'"
         [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
         (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')" (snap)="onSnap('experience')">
-        <app-experience [minOpacity]="1" [experience]="profile.experience || []" [hiddenTags]="hiddenSkillTags"
+        <app-experience [minOpacity]="1" [experience]="profile?.experience || []" [hiddenTags]="hiddenSkillTags"
             [proficiency]="70" [exclude]="excludeExperience"></app-experience>
     </app-section>
 
     <h1 class="section-title dark" translate>skills.title</h1>
     <app-section id="skills" class="app-section" [fullPage]="true" [title]="'Skills'" (shown)="onShow('skills')"
         (hidden)="onHide('skills')" (snap)="onSnap('skills')">
-        <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags"
+        <app-skills id="skills" [experience]="profile?.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags"></app-skills>
     </app-section>
 
     <h1 class="section-title light" translate>projects.title</h1>
     <app-section id="projects" class="app-section" [fullPage]="true" [title]="'Projects'" (snap)="onSnap('projects')">
-        <app-projects [experience]="profile.experience"></app-projects>
+        <app-projects [experience]="profile?.experience"></app-projects>
     </app-section>
 
     <h1 class="section-title dark" translate>personality.title</h1>
