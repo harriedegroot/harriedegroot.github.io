@@ -90,3 +90,9 @@ app-timeline-content {
         }
     }
 }
+
+@media screen and (max-width: $mobile-width) {
+    .timeline-container {
+        margin-top: 15px;
+    }
+}
