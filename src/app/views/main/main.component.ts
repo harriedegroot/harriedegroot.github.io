@@ -230,7 +230,6 @@ export class MainComponent implements OnInit {
     } else {
       this.scrollingService.scrollTo(item);
     }
-    this.onShow(item);
   }
 
   onSnap(section: string) {
