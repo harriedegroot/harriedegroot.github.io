@@ -126,8 +126,8 @@ export interface Interest {
 }
 
 export interface TimeSpan {
-  from: Date;
-  to: Date;
+  from: Date | string;
+  to: Date | string;
 }
 
 export interface Hobby {

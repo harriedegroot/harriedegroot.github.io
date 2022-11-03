@@ -1,3 +1,5 @@
+@import 'variables';
+
 html,
 body {
   margin: 0;
@@ -5,4 +7,12 @@ body {
 
   color: white;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.markdown,
+markdown {
+  strong {
+    color: $accent;
+    font-weight: normal;
+  }
 }

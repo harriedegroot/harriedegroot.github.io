@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { toMoment } from 'app/helpers/date';
 import { Experience, Project, TimeSpan } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
+import { timeStamp } from 'console';
 import * as _ from 'lodash';
 import * as moment from 'moment';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,13 +14,22 @@ import { Observable } from 'rxjs';
 })
 export class ProjectsComponent implements OnInit {
 
-  @Input() public experience?: Experience[];
+  private _experience?: Experience[] | undefined;
+  public get experience(): Experience[] | undefined {
+    return this._experience;
+  }
+  @Input()
+  public set experience(value: Experience[] | undefined) {
+    if(this.experience !== value) {
+      this._experience = value;
+      this.update();
+    }
+  }
 
   public projects?: Project[];
 
   get mobile$(): Observable<boolean> {
     return this.device.isMobile$;
-    //return this.deviceDetectorService.isMobile();
   }
 
   @Input() showAll: boolean = false;
@@ -30,10 +40,6 @@ export class ProjectsComponent implements OnInit {
   constructor(private device: DeviceService) {}
 
   ngOnInit(): void {}
-
-  ngOnChanges() {
-    this.update();
-  }
 
   private update() {
     this._currentYear = undefined;
@@ -54,15 +60,15 @@ export class ProjectsComponent implements OnInit {
     this.projects = _.flatten(projects);
     this.projects = _.sortBy(
       this.projects,
-      [(p) => p.timespan?.to, (p) => p.timespan?.from],
+      [(p) => moment(p.timespan?.to), (p) => moment(p.timespan?.from)],
       ['desc']
     );
     this.projects = _.reverse(this.projects);
   }
 
-  nextYear(idx: number, date?: Date): boolean {
+  nextYear(idx: number, date?: Date | string): boolean {
     if (!this._yearCache.has(idx)) {
-      const year = date?.getFullYear();
+      const year = moment(date).toDate()?.getFullYear();
       if (year && this._currentYear !== year) {
         this._currentYear = year;
         this._yearCache.set(idx, true);
@@ -84,5 +90,9 @@ export class ProjectsComponent implements OnInit {
       years ? `${years} ${years > 1 ? 'yrs' : 'yr' }` : null,
       months ? `${months} ${months > 1 ? 'mos' : 'mo' }` : null
     ].filter(x => x !== null).join(' ');
+  }
+
+  formatDate(date: string|Date|undefined, format: string): string {
+    return toMoment(date).format(format);
   }
 }

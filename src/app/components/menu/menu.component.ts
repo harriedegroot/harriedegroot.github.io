@@ -21,38 +21,45 @@ export class MenuComponent implements OnInit {
     'personality',
     'contact',
   ];
-
+  
   private _cooldown: boolean = false;
-
+  
   private _open?: boolean = true;
   public get open(): boolean {
     return !!this._open;
   }
   @Input()
   public set open(value: boolean) {
-    if(this._open != value) {
+    if (this._open != value) {
       this._open = value;
       this.openChange.emit(value);
-
+      
       // block events during cooldown
-      if(this.cooldownTime > 0) {
+      if (this.cooldownTime > 0) {
         this._cooldown = true;
         setTimeout(() => this._cooldown = false, this.cooldownTime);
       }
     }
   }
   @Output() openChange = new EventEmitter<boolean>();
-
+  
   @Input() public fixed: boolean = true;
   @Input() public hamburger: boolean = true;
   @Input() public background: string = 'transparent';
   @Input() public cooldownTime: number = 1000;
   
+  @Input() selectedLanguage: string = 'en';
+  public get otherLanguage() { return this.selectedLanguage === 'en' ? 'nl' : 'en'; }
+  
   @Output('click') public readonly click$ = new EventEmitter<string>();
+  @Output('lang') public readonly language$ = new EventEmitter<string>();
 
   hamburgerIcon = faBars as IconProp;
 
-  constructor(private scrollingService: ScrollingService, private deviceService: DeviceService) {}
+  constructor(
+    private scrollingService: ScrollingService,
+    private deviceService: DeviceService
+  ) {}
 
   ngOnInit(): void {
     this.scrollingService.scrollDirection$
@@ -64,8 +71,13 @@ export class MenuComponent implements OnInit {
       .subscribe((scrolling) => this.open = scrolling === 'up');
   }
 
-  onClick(section: string) {
+  onItemClick(section: string) {
     this.open = false;
     this.click$.emit(section);
+  }
+
+  onLanguageClick() {
+    this.selectedLanguage = this.otherLanguage;
+    this.language$.emit(this.selectedLanguage);
   }
 }

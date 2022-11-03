@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   @Input() headline: string[] = [
     'MSc. Artificial Intelligence',
-    // 'Freelance Developer',
     'Freelance Full-Stack Developer',
     'Freelance Software Architect',
     'Freelance Software Engineer',

@@ -1,7 +1,7 @@
 @import 'variables';
 
 .container {
-    padding: 30px;
+    padding: 60px 30px 30px 30px;
     // background: $secondary; // NOTE: defined in main template as a section background
 
     .title {
@@ -9,7 +9,6 @@
         align-content: center;
         justify-items: center;
         gap: 20px;
-        //justify-content: center;
     
         h2 {
             color: $text-light;
@@ -28,12 +27,11 @@
                 line-height: 45px;
             }
             .label {
-                width: 70px;
+                width: 85px;
             }
             .value {
-                width: 35px;
+                width: 40px;
             }
-            
 
             mat-slider {
                 flex-grow: 1;

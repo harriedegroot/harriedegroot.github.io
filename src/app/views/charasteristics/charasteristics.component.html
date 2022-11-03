@@ -1,51 +1,42 @@
 <div class="container">
     <div class="charasteristics">
         <div class="charasteristic">
-            <!-- <mat-icon>monitoring</mat-icon> -->
-            <h2>analytical</h2>
+            <h2 translate>personality.analytical</h2>
             <mat-icon>psychology</mat-icon>
-            <p>Good at finding <strong>solutions</strong> in complex domains by looking at things from multiple perspectives and <strong>thinking out-of-the-box</strong></p>
+            <div [innerHtml]="'personality.analytical_text' | translate | markdown"></div>
         </div>
         <div class="charasteristic">
-            <h2>generalist</h2>
+            <h2 translate>personality.generalist</h2>
             <mat-icon>filter_list</mat-icon>
-            <p>Using my expertise and <strong>broad knowledge</strong> across many domains and technologies to <strong>detect patterns</strong> and see the big picture</p>
+            <div [innerHtml]="'personality.generalist_text' | translate | markdown"></div>
         </div>
-        <!-- <div class="charasteristic">
-            <mat-icon>adjust</mat-icon>
-            <h1>accurate</h1>
-        </div> -->
         <div class="charasteristic">
-            <!-- <mat-icon>format_list_numbered</mat-icon> -->
-            <h2>organised</h2>
+            <h2 translate>personality.organised</h2>
             <mat-icon>done</mat-icon>
-            <p>Stay focused on the areas that matter most and <strong>manage priorities</strong> to add value to the business and make future proof decisions</p>
+            <div [innerHtml]="'personality.organised_text' | translate | markdown"></div>
         </div>
         <div class="charasteristic">
-            <h2>responsible</h2>
+            <h2 translate>personality.responsible</h2>
             <mat-icon>person</mat-icon>
-            <!-- <mat-icon>groups</mat-icon> -->
-            <p>Can make difficult choices and keep my <strong>promises</strong> to getting things done</p>
+            <div [innerHtml]="'personality.responsible_text' | translate | markdown"></div>
         </div>
         <div class="charasteristic">
-            <h2>studious</h2>
+            <h2 translate>personality.studious</h2>
             <mat-icon>menu_book</mat-icon>
-            <p>Always embraceing <strong>new technologies</strong> and put them in practice at the appropriate use cases</p>
+            <div [innerHtml]="'personality.studious_text' | translate | markdown"></div>
         </div>
         
         <div class="charasteristic">
-            <h2>critical</h2>
+            <h2 translate>personality.critical</h2>
             <mat-icon>thumb_up</mat-icon>
-            <p>Aiming for the best with an <strong>open mind</strong> ...</p>
+            <div [innerHtml]="'personality.critical_text' | translate | markdown"></div>
         </div>
     </div>
 
     <div class="quote-container">
         <div class="quote">
             <mat-icon>format_quote</mat-icon>
-            <span>mastering a new tool is not the hard part, it's selecting the best tool that gets the job done</span>
-            <!-- <span>mastering a new tool is not the hard part, it's selecting the appropriate tool for the job</span> -->
-            <!-- <span>mastering a new tool is not the hard part, it's deciding what's the best one for the task</span> -->
+            <span [innerHtml]="'personality.quote' | translate | markdown"></span>
         </div>
     </div>
     <app-footer [wrap]="false" [category]="'footer'"></app-footer>

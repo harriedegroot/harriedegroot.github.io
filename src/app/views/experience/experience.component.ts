@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
-import { getMonthDifference } from 'app/helpers/date';
+import { getMonthDifference, toDate } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
 import * as _ from 'lodash';
+import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 
@@ -60,7 +61,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     // min year
     const projects = _.flatten(this.experience.map((e) => e.projects));
     this.minYear =
-      _.min(projects.map((p) => p?.timespan?.from))?.getFullYear() ??
+      _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
       this.minYear;
 
     this.onProficiencyChange$.pipe(
@@ -96,15 +97,15 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
           let { skill, minMax } = skills.get(tech.name) ?? {
             skill: tech,
-            minMax: { min: project.timespan.from, max: project.timespan.to },
+            minMax: { min: toDate(project.timespan.from), max: toDate(project.timespan.to) },
           };
 
           minMax.min =
-            project.timespan.from < minMax.min
-              ? project.timespan.from
+            toDate(project.timespan.from) < minMax.min
+              ? toDate(project.timespan.from)
               : minMax.min;
           minMax.max =
-            project.timespan.to > minMax.max ? project.timespan.to : minMax.max;
+            toDate(project.timespan.to) > minMax.max ? toDate(project.timespan.to) : minMax.max;
           skills.set(tech.name, { skill, minMax });
         }
       }

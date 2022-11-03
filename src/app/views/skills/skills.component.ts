@@ -14,7 +14,7 @@ import * as _ from 'lodash';
 import { wait } from 'app/helpers/wait';
 import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
 import * as moment from 'moment';
-import { getMonthDifference } from 'app/helpers/date';
+import { getMonthDifference, timespan, toDate } from 'app/helpers/date';
 
 interface SkillPoint {
   timespan: TimeSpan;
@@ -162,6 +162,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
         _.flatMap(
           e.projects
             ?.filter((p) => p.timespan && p.technologies?.length)
+            ?.map((p) => { p.timespan = timespan(p.timespan); return p; })
             ?.map((p) =>
               p.technologies?.map((t) => ({
                 timespan: p.timespan,
@@ -184,15 +185,15 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     if (!startDate || !endDate) return;
 
-    let month = startDate.getMonth();
+    let month = toDate(startDate).getMonth();
     let key = 0;
 
     const points = new Map<string, SkillDataPoint>();
 
     let final: SkillPoint[] = [];
-    const finalYear = endDate?.getFullYear();
-    for (let year = startDate.getFullYear(); year <= finalYear; year++) {
-      const maxMonth = year === finalYear ? endDate.getMonth() : 11;
+    const finalYear = toDate(endDate)?.getFullYear();
+    for (let year = toDate(startDate).getFullYear(); year <= finalYear; year++) {
+      const maxMonth = year === finalYear ? toDate(endDate).getMonth() : 11;
       while (month <= maxMonth) {
         const date = new Date(year, month);
         const selection = skills.filter(
@@ -236,8 +237,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
               points.set(skill.name, { ...current, value, date, skill });
             } else {
               const final =
-                year === timespan.to.getFullYear() &&
-                month === timespan.to.getMonth();
+                year === moment(timespan.to).toDate().getFullYear() &&
+                month === moment(timespan.to).toDate().getMonth();
               const value = final ? max : 0;
               points.set(skill.name, { date, name: skill.name, value, skill });
             }

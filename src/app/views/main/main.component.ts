@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { PROFILE } from 'app/data/profile';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import { AboutComponent } from '../about/about.component';
@@ -9,6 +8,11 @@ import { SkillsComponent } from '../skills/skills.component';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { ScrollingService } from 'app/services/scrolling.service';
 import { DeviceService } from 'app/services/device.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Profile } from 'app/models/profile.model';
+import { ProfileService } from 'app/services/profile.service';
+import { DOCUMENT, Location } from '@angular/common';
+import * as moment from 'moment';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -52,7 +56,7 @@ function asArray<T>(obj: T | T[]): T[] {
 })
 export class MainComponent implements OnInit {
 
-  profile = PROFILE;
+  public profile: Profile | null = null;
 
   selectedSkillTags = ['Programming Language', 'Software Framework'];
   hiddenSkillTags = [
@@ -74,23 +78,42 @@ export class MainComponent implements OnInit {
   menuOpen: boolean = false;
   menuHamburger: boolean = true;
 
-  @ViewChild(BackgroundComponent, { static: true })
+  @ViewChild(BackgroundComponent, { static: false })
   background!: BackgroundComponent;
 
-  @ViewChild(AboutComponent, { static: true })
+  @ViewChild(AboutComponent, { static: false })
   about!: AboutComponent;
 
-  @ViewChild(ExperienceComponent, { static: true })
+  @ViewChild(ExperienceComponent, { static: false })
   experience!: ExperienceComponent;
 
-  @ViewChild(SkillsComponent, { static: true })
+  @ViewChild(SkillsComponent, { static: false })
   skills!: SkillsComponent;
 
+  language!: string;
+
   constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private profileService: ProfileService,
     private ga: GoogleAnalyticsService,
     private scrollingService: ScrollingService,
-    private deviceService: DeviceService
-  ) {}
+    private deviceService: DeviceService,
+    private translateService: TranslateService,
+    private location: Location
+  ) {
+    this.language = this.translateService.defaultLang;
+    this.profileService.profile$.subscribe(p => this.profile = p);
+    this.translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
+    this._updateLang(this.language);
+  }
+
+  private _updateLang(lang: string) {
+    this.language = lang;
+    this.document.documentElement.lang = lang; 
+    this.profileService.load(lang);
+    this.location.replaceState("/"+lang);
+    moment.locale(lang);
+  }
 
   ngOnInit(): void {
     this.initAnimations();
@@ -107,7 +130,6 @@ export class MainComponent implements OnInit {
       opacity: 0,
       duration: 0.7,
       delay: 2,
-      // delay: 3.5
     });
 
     const nextSectionDelay = 2;
@@ -219,5 +241,9 @@ export class MainComponent implements OnInit {
         this.menuOpen = false;
         break;
     }
+  }
+
+  setLanguage(lang: string) {
+    this.translateService.use(lang);
   }
 }

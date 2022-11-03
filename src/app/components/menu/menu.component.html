@@ -1,13 +1,20 @@
 <div class="menu" [class.fixed]="fixed" [class.open]="open">
-    <button class="hamburger" mat-icon-button [class.visible]="hamburger" (click)="open=!open;$event.stopImmediatePropagation()">
+    <button class="hamburger button left" mat-icon-button [class.visible]="hamburger"
+        (click)="open=!open;$event.stopImmediatePropagation()" title="select language">
         <fa-icon [icon]="hamburgerIcon"></fa-icon>
     </button>
-        
+
     <nav class="menu-container" [class.open]="open" [style.background]="background">
         <ng-container *ngFor="let section of sections; let i = index">
-            <a [routerLink]="['/']" (click)="onClick(section)" class="item" [replaceUrl]="true" gaEvent="menu_click_{{section}}" gaCategory="navigation">
-                <span class="text">{{section}}</span>
+            <a [routerLink]="['/']" (click)="onItemClick(section)" class="item" [replaceUrl]="true"
+                gaEvent="menu_click_{{section}}" gaCategory="navigation">
+                <span class="text">{{ ('menu.' + section) | translate }}</span>
             </a>
         </ng-container>
     </nav>
+
+    <button class="lang button right" mat-icon-button [class.visible]="hamburger" *ngIf="selectedLanguage"
+        (click)="onLanguageClick();$event.stopImmediatePropagation()" title="menu">
+        <span class="text">{{selectedLanguage}}</span>
+    </button>
 </div>

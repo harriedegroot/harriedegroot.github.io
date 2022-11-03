@@ -55,19 +55,21 @@
                 padding: 0;
             }
     
-            p {
-                max-width: 340px;
-                text-align: center;
-                opacity: 0.8;
-                font-size: larger;
-                font-weight: lighter;
-                line-height: 1.5rem;;
-            }
+            // p {
+            //     max-width: 340px;
+            //     text-align: center;
+            //     opacity: 0.8;
+            //     font-size: larger;
+            //     font-weight: lighter;
+            //     line-height: 1.5rem;;
+            // }
 
-            strong {
-                font-weight: lighter;
-                //color: $accent;
-            }
+            // strong {
+            //     font-weight: lighter;
+            //     //color: $accent;
+            // }
+
+            
         }
     }
 
@@ -98,6 +100,34 @@
     .container {
         .charasteristics {
             gap: 0;
+        }
+    }
+}
+
+:host::ng-deep {
+    .charasteristics .charasteristic {
+        p {
+            font-weight: 200;
+            padding: 0;
+            
+            max-width: 340px;
+            text-align: center;
+            opacity: 0.8;
+            font-size: larger;
+            font-weight: lighter;
+            line-height: 1.5rem;;
+
+        }
+        
+        strong {
+            font-weight: lighter;
+            //color: $accent;
+        }
+    }
+
+    .quote {
+        p {
+            display: inline;
         }
     }
 }

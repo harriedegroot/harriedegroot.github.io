@@ -31,8 +31,37 @@ import { TimelineLabelComponent } from './components/timeline/timeline-label.com
 import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { environment } from 'environments/environment';
-import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
+import {
+  NgxGoogleAnalyticsModule,
+  NgxGoogleAnalyticsRouterModule,
+} from 'ngx-google-analytics';
+import { TranslateModule, TranslateModuleConfig, TranslateLoader } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import * as _ from 'lodash';
+import { MarkdownModule } from 'ngx-markdown';
 
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+const LANGUAGES = ['en', 'nl'];
+const DEFAULT_LANGUAGE = 'en';
+export function getLanguage(): string {
+  const path = _.last(document.location.pathname?.split('/') ?? [])?.toLowerCase();
+  const lang = path || navigator.language.split('-')[0].toLowerCase();
+  return LANGUAGES.includes(lang) ? lang : DEFAULT_LANGUAGE;
+}
+
+const TRANSLATE_CONFIG: TranslateModuleConfig = {
+  defaultLanguage: getLanguage(),
+  loader: {
+    provide: TranslateLoader,
+    useFactory: (createTranslateLoader),
+    deps: [HttpClient]
+  }
+}
 
 @NgModule({
   declarations: [
@@ -56,8 +85,11 @@ import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-go
     ProjectCardComponent,
   ],
   imports: [
+    CommonModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
+    TranslateModule.forRoot(TRANSLATE_CONFIG),
     NgxGoogleAnalyticsModule.forRoot(environment.googleAnalytics),
     NgxGoogleAnalyticsRouterModule,
     BrowserAnimationsModule,
@@ -73,6 +105,7 @@ import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-go
     MatButtonModule,
     MatIconModule,
     MatSliderModule,
+    MarkdownModule.forRoot()
   ],
   bootstrap: [AppComponent],
 })

@@ -36,13 +36,15 @@
             ],
             "stylePreprocessorOptions": {
                "includePaths": ["./","./src/"]
-             },
-             "allowedCommonJsDependencies": [
+            },
+            "allowedCommonJsDependencies": [
               "typed.js",
               "lodash",
               "moment"
-             ],
-            "scripts": []
+            ],
+            "scripts": [
+              "node_modules/marked/marked.min.js"
+            ]
           },
           "configurations": {
             "production": {

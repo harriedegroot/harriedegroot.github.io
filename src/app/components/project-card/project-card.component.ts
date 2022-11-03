@@ -55,7 +55,9 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   get typeLabel(): string {
-    return EmploymentType[this.project.role?.type ?? -1] ?? '';
+    return _.isNumber(this.project.role?.type)
+      ? (EmploymentType[this.project.role?.type ?? -1] ?? '')
+      : this.project.role?.type ?? '';
   }
 
   get showMore(): boolean {

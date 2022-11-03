@@ -2,18 +2,6 @@
     position: relative;
 }
 
-.title {
-    position: absolute;
-    display: none; // TODO: page title
-
-    width: 100%;
-    text-align: center;
-    font-weight: 100;
-    font-size: 2rem;
-    text-transform: uppercase;
-    margin-bottom: 50px;
-}
-
 .next-section {
     position: absolute;
     bottom: 40px;

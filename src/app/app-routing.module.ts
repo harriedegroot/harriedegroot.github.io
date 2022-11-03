@@ -4,6 +4,7 @@ import { MainComponent } from './views/main/main.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
+  { path: ':lang', component: MainComponent },
 ];
 
 const routerConfig: ExtraOptions = {

@@ -5,15 +5,15 @@
                 <ng-container *ngIf="nextYear(i, project.timespan?.to)">
                     <app-timeline-item *ngIf="i > 0" class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
                     <app-timeline-marker class="year-marker">
-                        <span class="year">{{ project.timespan?.to | date:"YYYY" }}</span>
+                        <span class="year">{{ formatDate(project.timespan?.to, "YYYY") }}</span>
                     </app-timeline-marker>
                     <app-timeline-item class="spacer" [indicator]="false" [alternate]="false"></app-timeline-item>
                 </ng-container>
                 <app-timeline-item>
                     <app-timeline-label>
-                        <span>{{ project.timespan?.from | date:"MMM YYYY" }}</span>
+                        <span>{{ formatDate(project.timespan?.from, "MMM YYYY") }}</span>
                         <span> - </span>
-                        <span>{{ project.current ? 'Present' : project.timespan?.to | date:"MMM YYYY" }}</span>
+                        <span>{{ project.current ? ('projects.present' | translate) : formatDate(project.timespan?.to, "MMM YYYY") }}</span>
                         <span> · </span>
                         <span>{{duration(project.timespan)}}</span>
                     </app-timeline-label>
@@ -23,6 +23,6 @@
         </app-timeline>
     </div>
     <div class="overlay" *ngIf="!showAll">
-        <button mat-raised-button color="primary" (click)="showAll = !showAll" gaEvent="projects_show_more" gaCategory="projects">SHOW MORE</button>
+        <button mat-raised-button color="primary" (click)="showAll = !showAll" gaEvent="projects_show_more" gaCategory="projects">{{'projects.show_more' | translate}}</button>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <app-background class="background"></app-background>
 <app-menu id="main-menu" class="menu" (click)="navigateTo($event, false)" [background]="menuBackground"
-    [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger"></app-menu>
-<main class="content">
+    [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger" [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
+<main class="content" *ngIf="profile">
 
     <app-section id="home" class="app-section" [fullPage]="true" [title]="'Home'"
         (shown)="onShow(['home','background'])" (hidden)="onHide(['home', 'background'])" (snap)="onSnap('home')">
@@ -11,13 +11,13 @@
         </button>
     </app-section>
 
-    <h1 class="section-title dark">About</h1>
+    <h1 class="section-title dark" translate>about.title</h1>
     <app-section id="about" class="app-section" background="black" [fullPage]="true" [title]="'About'"
         (next)="navigateTo('experience')" (shown)="onShow('about')" (hidden)="onHide('about')" (snap)="onSnap('about')">
         <app-about></app-about>
     </app-section>
 
-    <h1 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'">Experience</h1>
+    <h1 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'" translate>experience.title</h1>
     <app-section id="experience" class="app-section" [fullPage]="true" [title]="'Experience'"
         [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
         (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')" (snap)="onSnap('experience')">
@@ -25,19 +25,19 @@
             [proficiency]="70" [exclude]="excludeExperience"></app-experience>
     </app-section>
 
-    <h1 class="section-title dark">Skills</h1>
+    <h1 class="section-title dark" translate>skills.title</h1>
     <app-section id="skills" class="app-section" [fullPage]="true" [title]="'Skills'" (shown)="onShow('skills')"
         (hidden)="onHide('skills')" (snap)="onSnap('skills')">
         <app-skills id="skills" [experience]="profile.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags"></app-skills>
     </app-section>
 
-    <h1 class="section-title light">Projects</h1>
+    <h1 class="section-title light" translate>projects.title</h1>
     <app-section id="projects" class="app-section" [fullPage]="true" [title]="'Projects'" (snap)="onSnap('projects')">
         <app-projects [experience]="profile.experience"></app-projects>
     </app-section>
 
-    <h1 class="section-title dark">Personality</h1>
+    <h1 class="section-title dark" translate>personality.title</h1>
     <app-section id="personality" class="app-section" [background]="'black'" [fullPage]="false" [title]="'Personality'"
         [snap]="true" [snapDown]="0" (snap)="onSnap('personality')">
         <app-charasteristics></app-charasteristics>
@@ -46,6 +46,3 @@
     <!-- Contact navigation placeholder -->
     <div id="contact"></div>
 </main>
-<!-- <div>
-    <app-footer id="footer"></app-footer>
-</div> -->
