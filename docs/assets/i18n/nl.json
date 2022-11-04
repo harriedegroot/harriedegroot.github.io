@@ -1,0 +1,52 @@
+{
+    "menu": {
+        "about": "over",
+        "experience": "ervaring",
+        "skills": "skills",
+        "projects": "projecten",
+        "personality": "persoonlijkheid",
+        "contact": "contact"
+    },
+    "home": {  
+    },
+    "about": {
+        "title": "over",
+        "quote1": "Allround **Software Engineer** met een achtergrond in **Artificial Intelligence**. Begonnen als professionele game-ontwikkelaar in 2007. **Games** werden **mobiele apps**. In de loop van de tijd evolueerde dit naar het bouwen van complexe platformonafhankelijke **webapplicaties**.",
+        "quote2": "Hands-on **Software Architect** beschikbaar voor **full-stack**, **back-end** en **front-end** opdrachten. Bekend met een breed scala aan platforms en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar niet gebonden aan een specifieke programmeertaal of framework.",
+        "quote3": "Ik ben een **domotica** liefhebber, zit graag op de **racefiets** en ben vader van drie kinderen. Om de gemeenschap te helpen heb ik enkele **open source** projecten gepubliceerd."
+    },
+    "experience": {
+        "title": "ervaring",
+        "proficiency": "vaardigheid",
+        "last_used": "laatst gebruikt",
+        "year": "jaar",
+        "years": "jaren"
+    },
+    "skills": {
+        "title": "skills"
+    },
+    "projects": {
+        "title": "projecten",
+        "show_more": "TOON MEER",
+        "present": "Huidig"
+    },
+    "personality": {
+        "title": "persoonlijkheid",
+        "analytical": "analytisch",
+        "analytical_text": "Goed in het vinden van **oplossingen** in complexe domeinen door dingen vanuit meerdere perspectieven te bekijken en **out-of-the-box te denken**",
+        "generalist": "generalist",
+        "generalist_text": "Het inzetten van expertise en **brede kennis** over vele domeinen en technologieën. Daarbij **patronen detecteren** en het grote geheel in de gaten kunnen blijven houden",
+        "organised": "georganiseerd",
+        "organised_text": "Blijf gefocust op de zaken die er het meest toe doen en **beheer prioriteiten** om waarde toe te voegen",
+        "responsible": "verantwoordelijk",
+        "responsible_text": "Kan moeilijke keuzes maken, mijn **beloftes** waar maken en dingen voor elkaar krijgen",
+        "studious": "leergierig",
+        "studious_text": "Altijd **nieuwe technologieën** omarmen en in de praktijk brengen bij de juiste use cases",
+        "critical": "kritisch",
+        "critical_text": "Open-minded streven naar het beste resultaat...",
+        "quote": "De beste tool selecteren om de klus te klaren, dat is de kunst"
+    },
+    "contact": {
+        "title": "contact"
+    }
+}
