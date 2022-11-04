@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Engine, MoveDirection, OutMode, ParticlesOptions } from 'tsparticles-engine';
-import { loadFull } from "tsparticles";
+import {
+  Engine,
+  MoveDirection,
+  OutMode,
+} from 'tsparticles-engine';
+import { loadFull } from 'tsparticles';
 import gsap from 'gsap';
 import { fadeAnimation } from 'app/helpers/animations';
 
@@ -8,10 +12,9 @@ import { fadeAnimation } from 'app/helpers/animations';
   selector: 'app-background',
   templateUrl: './background.component.html',
   styleUrls: ['./background.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation],
 })
 export class BackgroundComponent implements OnInit {
-  
   id = 'background_particles';
   particlesOptions?: any;
 
@@ -21,9 +24,11 @@ export class BackgroundComponent implements OnInit {
   }
   @Input()
   public set enabled(value: boolean) {
-    this._enabled = value;
-    if(value) {
-      this.fadeIn(1)
+    if(this._enabled !== value) {
+      this._enabled = value;
+      if(value) {
+        this.fadeIn(2)
+      }
     }
   }
 
@@ -33,17 +38,23 @@ export class BackgroundComponent implements OnInit {
     this.fadeIn(8);
   }
 
+  private _fadeTween?: gsap.core.Tween;
   private fadeIn(delay: number = 0) {
-    gsap.from('.particles-container', {
-      opacity: 0,
-      duration: 10,
-      delay: delay,
-      onStart: () => this.start()
-    });
+    if(!this._fadeTween) {
+      this._fadeTween = gsap.from('.particles-container', {
+        opacity: 0,
+        duration: 10,
+        delay: delay,
+        onStart: () => this.start(),
+      });
+    } else {
+      this._fadeTween.delay(delay);
+      this._fadeTween.restart();
+    }
   }
 
   private start() {
-   this.particlesOptions = {
+    this.particlesOptions = {
       background: {
         color: {
           value: 'white',
@@ -94,10 +105,9 @@ export class BackgroundComponent implements OnInit {
       },
       detectRetina: true,
     };
-  
   }
 
   particlesInit = async (engine: Engine): Promise<void> => {
     await loadFull(engine);
-  }
+  };
 }

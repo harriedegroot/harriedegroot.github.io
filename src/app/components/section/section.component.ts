@@ -10,8 +10,15 @@ import {
   Output,
 } from '@angular/core';
 import { ScrollTrigger } from 'gsap/all';
-import { debounceTime, filter, Subject, Subscription } from 'rxjs';
+import {
+  debounceTime,
+  filter,
+  Subject,
+  Subscription,
+  throttleTime,
+} from 'rxjs';
 import gsap from 'gsap';
+import { ScrollingService } from 'app/services/scrolling.service';
 
 @Component({
   selector: 'app-section',
@@ -61,22 +68,28 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private _snap = new Subject<number>();
   private _snapSubscription?: Subscription;
 
-  @HostListener('wheel', ['$event'])
-  public onScroll(event: WheelEvent) {
-    this._snapTween?.kill();
-  }
-
-  constructor(private el: ElementRef) {}
+  constructor(
+    private el: ElementRef,
+    private scrollingService: ScrollingService
+  ) {}
 
   ngOnInit(): void {
     if (this.snap) {
+      this.scrollingService.scrollDirection$
+        .pipe(throttleTime(500))
+        .subscribe((dir) => {
+          this._snapTween?.kill();
+          this._snapTween = undefined;
+        });
+
       const snapUp = 0.01 * this.snapUp;
       const snapDown = -0.01 * this.snapDown;
       this._snapSubscription = this._snap
         .pipe(
           debounceTime(400),
           filter((percent) => this._visible),
-          filter((percent) =>
+          filter(
+            (percent) =>
               (percent > 0 && percent < snapUp) ||
               (percent < 0 && percent > snapDown)
           )

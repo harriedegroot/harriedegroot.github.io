@@ -202,7 +202,7 @@ export class MainComponent implements OnInit {
 
       if (item !== 'background') {
         this.ga.pageView(item, item);
-        this.ga.event('show_section_' + item, 'navigation');
+          this.ga.event('show_section_' + item, 'navigation');
       }
     }
   }
@@ -232,6 +232,7 @@ export class MainComponent implements OnInit {
       this.scrollingService.smoothScrollTo(item);
     } else {
       this.scrollingService.scrollTo(item);
+      //this.onShow(item);
     }
   }
 
