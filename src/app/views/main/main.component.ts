@@ -248,6 +248,7 @@ export class MainComponent implements OnInit {
         break;
       default:
         this.menuOpen = false;
+        setTimeout(() => this.menuOpen = false, 200);
         break;
     }
   }
