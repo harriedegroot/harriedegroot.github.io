@@ -95,15 +95,18 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public snapTween(percent: number) {
-    if (!this._snapTween) {
-      this._snapTween = gsap.to(window, {
-        duration: 0.3,
-        scrollTo: '#' + this.id,
-        ease: 'power1.inOut',
-      });
-    } else {
-      this._snapTween.restart();
-    }
+    // if (!this._snapTween) {
+    //   this._snapTween = gsap.to(window, {
+    //     duration: 0.3,
+    //     scrollTo: '#' + this.id,
+    //     ease: 'power1.inOut',
+    //   });
+    // } else {
+    //   this._snapTween.restart();
+    // }
+    //console.log('SNAP')
+    
+    this.scrollingService.smoothScrollTo(this.id);
 
     this.snap$.emit(this.id);
   }
@@ -136,7 +139,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this.showTitle();
         this.shown$.emit();
       } else {
-        this._snapTween?.pause();
+        //this._snapTween?.pause();
         this.hidden$.emit();
       }
       this.visible$.emit(value);
