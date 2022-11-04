@@ -3,7 +3,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -77,10 +76,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.snap) {
       this.scrollingService.scrollDirection$
         .pipe(throttleTime(500))
-        .subscribe((dir) => {
-          this._snapTween?.kill();
-          this._snapTween = undefined;
-        });
+        .subscribe((dir) => this._snapTween?.pause());
 
       const snapUp = 0.01 * this.snapUp;
       const snapDown = -0.01 * this.snapDown;
@@ -99,13 +95,15 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public snapTween(percent: number) {
-    this._snapTween?.kill();
-    this._snapTween = gsap.to(window, {
-      duration: 0.3,
-      scrollTo: '#' + this.id,
-      ease: 'power1.inOut',
-      //ease: 'power2',
-    });
+    if (!this._snapTween) {
+      this._snapTween = gsap.to(window, {
+        duration: 0.3,
+        scrollTo: '#' + this.id,
+        ease: 'power1.inOut',
+      });
+    } else {
+      this._snapTween.restart();
+    }
 
     this.snap$.emit(this.id);
   }
@@ -124,12 +122,10 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this._scrollTrigger = ScrollTrigger.create({
-      //markers: true,
       trigger: '#' + this.id,
       start: 'top bottom',
       onToggle: (self) => this._setVisibility(self.isActive),
       onUpdate: (self) => this._snap.next(this.getScrollPercentage()),
-      //onUpdate: (self) => this._snap.next(self.progress),
     });
   }
 
@@ -140,7 +136,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
         this.showTitle();
         this.shown$.emit();
       } else {
-        this._snapTween?.kill();
+        this._snapTween?.pause();
         this.hidden$.emit();
       }
       this.visible$.emit(value);

@@ -166,13 +166,19 @@ export class MainComponent implements OnInit {
       ScrollTrigger.create({
         trigger: elem,
         onEnter: function () {
-          animateFrom(elem);
+          try {
+            animateFrom(elem);
+          } catch {}
         },
         onEnterBack: function () {
+          try {
           animateFrom(elem, -1);
+          } catch {}
         },
         onLeave: function () {
-          hide(elem);
+          try {
+            hide(elem);
+          } catch {}
         },
       });
     });

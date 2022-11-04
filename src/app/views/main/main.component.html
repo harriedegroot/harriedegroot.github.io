@@ -1,5 +1,5 @@
 <app-background class="background"></app-background>
-<app-menu id="main-menu" class="menu" (click)="navigateTo($event, false)" [background]="menuBackground"
+<app-menu id="main-menu" class="menu" (click)="navigateTo($event, true)" [background]="menuBackground"
     [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger" [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
 <main class="content">
 
