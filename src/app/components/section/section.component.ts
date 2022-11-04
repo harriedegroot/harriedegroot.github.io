@@ -82,7 +82,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
       const snapDown = -0.01 * this.snapDown;
       this._snapSubscription = this._snap
         .pipe(
-          debounceTime(400),
+          debounceTime(600),
           filter((percent) => this._visible),
           filter(
             (percent) =>
@@ -104,7 +104,8 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     // } else {
     //   this._snapTween.restart();
     // }
-    //console.log('SNAP')
+    
+    //console.log('SNAP', this.id)
     
     this.scrollingService.smoothScrollTo(this.id);
 
