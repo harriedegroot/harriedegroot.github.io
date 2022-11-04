@@ -115,7 +115,7 @@ export class MainComponent implements OnInit {
     this.language = lang;
     this.document.documentElement.lang = lang; 
     this.profileService.load(lang);
-    this.location.replaceState("/"+lang);
+    //this.location.replaceState("/"+lang);
     moment.locale(lang);
   }
 
