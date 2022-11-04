@@ -120,6 +120,7 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo(0,1);
     this.menuOpen = !this.deviceService.isMobile;
     this.initAnimations();
   }
