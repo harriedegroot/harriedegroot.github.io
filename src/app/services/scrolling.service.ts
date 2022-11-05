@@ -14,7 +14,7 @@ import {
   shareReplay,
   startWith,
   switchMap,
-  throttleTime,
+  throttleTime
 } from 'rxjs';
 
 export type Scrolling = 'up' | 'down' | 'idle';
@@ -54,7 +54,7 @@ export class ScrollingService {
   );
 
   public readonly scrollPosition$ = fromEvent(window, 'scroll').pipe(
-    throttleTime(50),
+    //throttleTime(50),
     map(() => this.getScrollPosition()),
     distinctUntilChanged(),
     shareReplay(1)

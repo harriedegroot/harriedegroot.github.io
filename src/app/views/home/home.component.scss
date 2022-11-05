@@ -118,7 +118,13 @@
 
 #home-footer {
     opacity: 0;
+    top: 70;
     width: 100%;
+
+    &.sticky {
+        position: fixed;
+        bottom: 0;
+    }
 }
 
 @media screen and (max-width: $mobile-width) {
