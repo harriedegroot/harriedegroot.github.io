@@ -101,23 +101,16 @@ export class MainComponent implements OnInit {
     private translateService: TranslateService,
     private location: Location
   ) {
-    this.language = this._initialLanguage();
     this.profileService.profile$.subscribe(p => this._setProfile(p));
     this.translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
-    this._updateLang(this.language);
-  }
-
-  private _initialLanguage() : string {
-    let lang = localStorage.getItem('lang');
-    localStorage.removeItem('lang');
-    return lang ?? this.translateService.defaultLang;
   }
 
   private _setProfile(profile: Profile | null) {
     this.profile = profile;
   }
 
-  private _updateLang(lang: string) {
+  private _updateLang(lang: string): void {
+    if(!lang) return;
     this.language = lang;
     this.document.documentElement.lang = lang; 
     this.profileService.load(lang);
@@ -126,8 +119,14 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initLanguage()
     this.menuOpen = !this.deviceService.isMobile;
     this.initAnimations();
+  }
+
+  private initLanguage() {
+    this._updateLang(localStorage.getItem('lang') ?? this.translateService.defaultLang);
+    localStorage.removeItem('lang');
   }
 
   private initAnimations() {
