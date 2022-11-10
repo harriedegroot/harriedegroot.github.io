@@ -101,10 +101,19 @@ export class MainComponent implements OnInit {
     private translateService: TranslateService,
     private location: Location
   ) {
-    this.language = this.translateService.defaultLang;
+    this.language = this._initialLanguage();
     this.profileService.profile$.subscribe(p => this._setProfile(p));
     this.translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
     this._updateLang(this.language);
+  }
+
+  private _initialLanguage() : string {
+    let path = localStorage.getItem('path');
+    localStorage.removeItem('path');
+
+    return path && this.translateService.getLangs()?.includes(path)
+      ? path 
+      : this.translateService.defaultLang;
   }
 
   private _setProfile(profile: Profile | null) {
