@@ -108,11 +108,11 @@ export class MainComponent implements OnInit {
   }
 
   private _initialLanguage() : string {
-    let path = localStorage.getItem('path');
-    localStorage.removeItem('path');
+    let lang = localStorage.getItem('lang');
+    localStorage.removeItem('lang');
 
-    return path && this.translateService.getLangs()?.includes(path)
-      ? path 
+    return lang && this.translateService.getLangs()?.includes(lang)
+      ? lang 
       : this.translateService.defaultLang;
   }
 
