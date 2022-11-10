@@ -61,7 +61,7 @@ export class ScrollingService {
   );
 
   public readonly scrollPercentage$ = fromEvent(window, 'scroll').pipe(
-    throttleTime(50),
+    //throttleTime(50),
     map(() => this.getScrollPercentage()),
     distinctUntilChanged(),
     shareReplay(1)

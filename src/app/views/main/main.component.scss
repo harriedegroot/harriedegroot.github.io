@@ -7,6 +7,15 @@
     height: 100vh;
     z-index: -1;
 }
+
+#progress {
+    position: fixed;
+    bottom: 0;
+    z-index: 9999;
+    height: 1px;
+    background-color: $accent;
+}
+
 #main-menu {
     position: absolute;
     z-index: 99;
