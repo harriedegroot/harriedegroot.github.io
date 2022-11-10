@@ -110,10 +110,7 @@ export class MainComponent implements OnInit {
   private _initialLanguage() : string {
     let lang = localStorage.getItem('lang');
     localStorage.removeItem('lang');
-
-    return lang && this.translateService.getLangs()?.includes(lang)
-      ? lang 
-      : this.translateService.defaultLang;
+    return lang ?? this.translateService.defaultLang;
   }
 
   private _setProfile(profile: Profile | null) {
