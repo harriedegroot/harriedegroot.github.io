@@ -14,7 +14,9 @@
     </nav>
 
     <button class="lang button right" mat-icon-button [class.visible]="hamburger" *ngIf="selectedLanguage"
+        (mouseover)="hoveringLangButton=true" (mouseout)="hoveringLangButton=false"
         (click)="onLanguageClick();$event.stopImmediatePropagation()" title="menu">
-        <span class="text">{{selectedLanguage}}</span>
+        <span class="text" [class.show]="hoveringLangButton" [class.hide]="!hoveringLangButton">{{ otherLanguage }}</span>
+        <span class="text" [class.show]="!hoveringLangButton" [class.hide]="hoveringLangButton">{{ selectedLanguage }}</span>
     </button>
 </div>

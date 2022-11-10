@@ -1,14 +1,16 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { fadeAnimation } from 'app/helpers/animations';
+import { DeviceService } from 'app/services/device.service';
 import { ScrollingService } from 'app/services/scrolling.service';
 import { debounceTime, filter } from 'rxjs';
-import { DeviceService } from 'app/services/device.service';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
+  animations: [fadeAnimation]
 })
 export class MenuComponent implements OnInit {
   @Input() sections: string[] = [
@@ -55,6 +57,7 @@ export class MenuComponent implements OnInit {
   @Output('lang') public readonly language$ = new EventEmitter<string>();
 
   hamburgerIcon = faBars as IconProp;
+  hoveringLangButton = false;
 
   constructor(
     private scrollingService: ScrollingService,
