@@ -92,6 +92,7 @@ export class MainComponent implements OnInit {
   skills!: SkillsComponent;
 
   language!: string;
+  windowHeight = window.innerHeight;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
