@@ -110,7 +110,7 @@ export class MainComponent implements OnInit {
   }
 
   private _updateLang(lang: string): void {
-    if(!lang) return;
+    if(!lang || this.language === lang) return;
     this.language = lang;
     this.document.documentElement.lang = lang; 
     this.profileService.load(lang);
@@ -125,8 +125,10 @@ export class MainComponent implements OnInit {
   }
 
   private initLanguage() {
-    this._updateLang(localStorage.getItem('lang') ?? this.translateService.defaultLang);
+    const lang = localStorage.getItem('lang') ?? this.translateService.defaultLang;
     localStorage.removeItem('lang');
+    this._updateLang(lang);
+    this.setLanguage(lang);
   }
 
   private initAnimations() {
