@@ -49,8 +49,7 @@ export class ScrollingService {
   )
 
   public readonly isScrolling$ = this.scrolling$.pipe(
-    map(s => s !== 'idle'),
-    distinctUntilChanged()
+    map(s => s !== 'idle')
   );
 
   public readonly scrollPosition$ = fromEvent(window, 'scroll').pipe(

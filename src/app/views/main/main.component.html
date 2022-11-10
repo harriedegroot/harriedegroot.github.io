@@ -1,5 +1,5 @@
 <app-background class="background"></app-background>
-<div id="progress" [style.width.%]="scrollPercentage$ | async"></div>
+<div id="progress" [class.scrolling]="isScrolling$ | async" [style.width.%]="scrollPercentage$ | async"></div>
 <app-menu id="main-menu" class="menu" (click)="navigateTo($event, true)" [background]="menuBackground"
     [fixed]="menuFixed" [(open)]="menuOpen" [hamburger]="menuHamburger" [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
 <main class="content">

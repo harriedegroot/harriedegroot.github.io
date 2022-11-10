@@ -94,6 +94,7 @@ export class MainComponent implements OnInit {
   language!: string;
   windowHeight = window.innerHeight;
   scrollPercentage$ = this.scrollingService.scrollPercentage$;
+  isScrolling$ = this.scrollingService.isScrolling$;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
