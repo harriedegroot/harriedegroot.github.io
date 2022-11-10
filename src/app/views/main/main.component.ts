@@ -1,18 +1,18 @@
+import { DOCUMENT, Location } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import gsap from 'gsap';
-import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
-import { AboutComponent } from '../about/about.component';
-import { BackgroundComponent } from '../../components/background/background.component';
-import { ExperienceComponent } from '../experience/experience.component';
-import { SkillsComponent } from '../skills/skills.component';
-import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { ScrollingService } from 'app/services/scrolling.service';
-import { DeviceService } from 'app/services/device.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Profile } from 'app/models/profile.model';
+import { DeviceService } from 'app/services/device.service';
 import { ProfileService } from 'app/services/profile.service';
-import { DOCUMENT, Location } from '@angular/common';
+import { ScrollingService } from 'app/services/scrolling.service';
+import gsap from 'gsap';
+import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import * as moment from 'moment';
+import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { BackgroundComponent } from '../../components/background/background.component';
+import { AboutComponent } from '../about/about.component';
+import { ExperienceComponent } from '../experience/experience.component';
+import { SkillsComponent } from '../skills/skills.component';
 
 function animateFrom(elem: any, direction: number = 1) {
   direction = direction || 1;
@@ -115,7 +115,7 @@ export class MainComponent implements OnInit {
     this.language = lang;
     this.document.documentElement.lang = lang; 
     this.profileService.load(lang);
-    //this.location.replaceState("/"+lang);
+    this.location.replaceState("/"+lang);
     moment.locale(lang);
   }
 
