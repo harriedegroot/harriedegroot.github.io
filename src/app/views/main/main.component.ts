@@ -101,8 +101,8 @@ export class MainComponent implements OnInit {
     private translateService: TranslateService,
     private location: Location
   ) {
-    this.profileService.profile$.subscribe(p => this._setProfile(p));
-    this.translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
+    profileService.profile$.subscribe(p => this._setProfile(p));
+    translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
   }
 
   private _setProfile(profile: Profile | null) {
@@ -125,10 +125,7 @@ export class MainComponent implements OnInit {
   }
 
   private initLanguage() {
-    const lang = localStorage.getItem('lang') ?? this.translateService.defaultLang;
-    localStorage.removeItem('lang');
-    this._updateLang(lang);
-    this.setLanguage(lang);
+    this._updateLang(this.translateService.defaultLang);
   }
 
   private initAnimations() {

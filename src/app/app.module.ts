@@ -49,8 +49,12 @@ export function createTranslateLoader(http: HttpClient) {
 const LANGUAGES = ['en', 'nl'];
 const DEFAULT_LANGUAGE = 'en';
 export function getLanguage(): string {
-  const path = _.last(document.location.pathname?.split('/') ?? [])?.toLowerCase();
-  const lang = path || navigator.language.split('-')[0].toLowerCase();
+  let lang = localStorage.getItem('lang');
+  localStorage.removeItem('lang');
+  if(!lang) {
+    const path = _.last(document.location.pathname?.split('/') ?? [])?.toLowerCase();
+    lang = path || navigator.language.split('-')[0].toLowerCase();
+  }
   return LANGUAGES.includes(lang) ? lang : DEFAULT_LANGUAGE;
 }
 
