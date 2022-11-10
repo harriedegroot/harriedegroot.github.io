@@ -1,5 +1,6 @@
 import { DOCUMENT, Location } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { Profile } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
@@ -9,6 +10,7 @@ import gsap from 'gsap';
 import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
 import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { filter } from 'rxjs';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
@@ -55,7 +57,6 @@ function asArray<T>(obj: T | T[]): T[] {
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-
   public profile: Profile | null = null;
 
   selectedSkillTags = ['Programming Language', 'Software Framework'];
@@ -99,10 +100,13 @@ export class MainComponent implements OnInit {
     private scrollingService: ScrollingService,
     private deviceService: DeviceService,
     private translateService: TranslateService,
-    private location: Location
+    private location: Location,
+    private title: Title,
+    private meta: Meta
   ) {
-    profileService.profile$.subscribe(p => this._setProfile(p));
-    translateService.onLangChange.subscribe(e => this._updateLang(e.lang));
+    profileService.profile$.subscribe((p) => this._setProfile(p));
+    translateService.onLangChange.subscribe((e) => this._updateLang(e.lang));
+    this.initMeata();
   }
 
   private _setProfile(profile: Profile | null) {
@@ -110,16 +114,33 @@ export class MainComponent implements OnInit {
   }
 
   private _updateLang(lang: string): void {
-    if(!lang || this.language === lang) return;
+    if (!lang || this.language === lang) return;
     this.language = lang;
-    this.document.documentElement.lang = lang; 
+    this.document.documentElement.lang = lang;
     this.profileService.load(lang);
-    this.location.replaceState("/"+lang);
+    this.location.replaceState('/' + lang);
     moment.locale(lang);
   }
 
+  private initMeata() {
+    this.translateService
+      .stream('page.title')
+      .pipe(filter((title) => title && title !== 'page.title'))
+      .subscribe((title) => this.title.setTitle(title));
+
+    this.translateService
+      .stream('page.description')
+      .pipe(filter((desc) => desc && desc !== 'page.description'))
+      .subscribe((desc) =>this.meta.updateTag({ name: 'description', content: desc }));
+    
+    this.translateService
+      .stream('page.keywords')
+      .pipe(filter((keywords) => keywords && keywords !== 'page.keywords'))
+      .subscribe((keywords) =>this.meta.updateTag({ name: 'keywords', content: keywords }));
+  }
+
   ngOnInit(): void {
-    this.initLanguage()
+    this.initLanguage();
     this.menuOpen = !this.deviceService.isMobile;
     this.initAnimations();
   }
@@ -176,7 +197,7 @@ export class MainComponent implements OnInit {
         },
         onEnterBack: function () {
           try {
-          animateFrom(elem, -1);
+            animateFrom(elem, -1);
           } catch {}
         },
         onLeave: function () {
@@ -195,7 +216,7 @@ export class MainComponent implements OnInit {
           this.background.enabled = true;
           break;
         case 'home':
-          if(!this.deviceService.isMobile) {
+          if (!this.deviceService.isMobile) {
             this.menuOpen = true;
             this.menuBackground = 'transparent';
           }
@@ -212,7 +233,7 @@ export class MainComponent implements OnInit {
 
       if (item !== 'background') {
         this.ga.pageView(item, item);
-          this.ga.event('show_section_' + item, 'navigation');
+        this.ga.event('show_section_' + item, 'navigation');
       }
     }
   }
@@ -247,12 +268,12 @@ export class MainComponent implements OnInit {
   }
 
   onSnap(section: string) {
-    switch(section) {
+    switch (section) {
       case 'home':
         break;
       default:
         this.menuOpen = false;
-        setTimeout(() => this.menuOpen = false, 200);
+        setTimeout(() => (this.menuOpen = false), 200);
         break;
     }
   }
