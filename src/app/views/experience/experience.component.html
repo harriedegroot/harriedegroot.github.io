@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="title">
+    <div class="title" [class.floating]="floatingSliders" [class.visible]="slidersVisible" [class.hidden]="!slidersVisible">
         <div class="proficiency">
             <span class="label" translate>experience.proficiency</span>
             <mat-slider [value]="proficiency" [min]="0" [max]="100" (input)="onProficiencyChange($event.value ?? 0)">
@@ -14,7 +14,7 @@
             <span class="value">&gt; {{period}}</span>
         </div>
     </div>
-    <div class="categories">
+    <div class="categories" [class.floating-sliders]="floatingSliders">
         <div *ngFor="let year of years" class="category">
             <h3>{{year}}{{year > 1 ? '+ ' + ('experience.years' | translate) : '+ ' + ('experience.year' | translate)}}</h3>
             <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(year)?.size">

@@ -13,8 +13,7 @@ import { ScrollTrigger } from 'gsap/all';
 import {
   debounceTime,
   filter, Subject,
-  Subscription,
-  throttleTime
+  Subscription
 } from 'rxjs';
 
 export type TitleStyle = 'default' | 'transparent' | 'accent' | 'light' | 'dark';
@@ -63,7 +62,6 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     return this._showNext;
   }
 
-  private _snapTween?: gsap.core.Tween;
   private _snap = new Subject<number>();
   private _snapSubscription?: Subscription;
 
@@ -74,10 +72,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.snap) {
-      this.scrollingService.scrollDirection$
-        .pipe(throttleTime(500))
-        .subscribe((dir) => this._snapTween?.pause());
-
+      
       const snapUp = 0.01 * this.snapUp;
       const snapDown = -0.01 * this.snapDown;
       this._snapSubscription = this._snap
@@ -140,6 +135,5 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this._scrollTrigger?.kill();
     this._snapSubscription?.unsubscribe();
-    this._snapTween?.kill();
   }
 }

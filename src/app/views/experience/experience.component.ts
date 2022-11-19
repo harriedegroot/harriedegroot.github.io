@@ -1,11 +1,20 @@
-import { ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference, toDate } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
+import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
-import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
 
 function getYear(): number {
   const date = new Date();
@@ -30,7 +39,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   @Input() public proficiency: number = 100;
   @Input() public period: number = getYear() - DEFAULT_PERIOD;
   @Input() public exclude: string[] = [];
-  @Input() public minOpacity:number = 0.1;
+  @Input() public minOpacity: number = 0.1;
+  @Input() public floatingSliders: boolean = false;
+  @Input() public slidersVisible: boolean = false;
 
   private _experience: Experience[] | null = null;
   public get experience(): Experience[] | null {
@@ -42,9 +53,11 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.initExperience();
   }
 
-  @Output('proficiency') public readonly onProficiencyChange$ = new EventEmitter<number>();
-  @Output('period') public readonly onPeriodChange$ = new EventEmitter<number>();
-  
+  @Output('proficiency') public readonly onProficiencyChange$ =
+    new EventEmitter<number>();
+  @Output('period') public readonly onPeriodChange$ =
+    new EventEmitter<number>();
+
   public get years(): Uint16Array {
     return new Uint16Array(this.categories.keys())
       .filter((years) => years > 0)
@@ -62,18 +75,47 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   private readonly destroyed$ = new Subject<void>();
 
-  constructor(private cdRef: ChangeDetectorRef, private ga: GoogleAnalyticsService) {}
+  constructor(
+    private el: ElementRef,
+    private cdRef: ChangeDetectorRef,
+    private ga: GoogleAnalyticsService,
+    private deviceService: DeviceService
+  ) {}
 
   ngOnInit() {
-    this.onProficiencyChange$.pipe(
-      takeUntil(this.destroyed$),
-      debounceTime(1000)
-    ).subscribe(value => this.ga.event("experience_proficiency_change", "experience", "proficiency", value, true));
+    fromEvent(window, 'scroll')
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe(() => this._scrollingUpdate());
 
-    this.onPeriodChange$.pipe(
-      takeUntil(this.destroyed$),
-      debounceTime(1000)
-    ).subscribe(value => this.ga.event("experience_period_change", "experience", "year", value, true));
+    this.onProficiencyChange$
+      .pipe(takeUntil(this.destroyed$), debounceTime(1000))
+      .subscribe((value) =>
+        this.ga.event(
+          'experience_proficiency_change',
+          'experience',
+          'proficiency',
+          value,
+          true
+        )
+      );
+
+    this.onPeriodChange$
+      .pipe(takeUntil(this.destroyed$), debounceTime(1000))
+      .subscribe((value) =>
+        this.ga.event(
+          'experience_period_change',
+          'experience',
+          'year',
+          value,
+          true
+        )
+      );
+  }
+
+  public _scrollingUpdate(): void {
+    const rect = this.el.nativeElement.getBoundingClientRect();
+    this.floatingSliders = rect.top < 0;
+    this.slidersVisible = rect.bottom > 130;
   }
 
   private initExperience() {
@@ -86,8 +128,8 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   }
 
   public refresh(animate: boolean = true) {
-    if(!this.experience) return;
-    
+    if (!this.experience) return;
+
     if (animate) {
       this.clear();
     } else {
@@ -109,7 +151,10 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
           let { skill, minMax } = skills.get(tech.name) ?? {
             skill: tech,
-            minMax: { min: toDate(project.timespan.from), max: toDate(project.timespan.to) },
+            minMax: {
+              min: toDate(project.timespan.from),
+              max: toDate(project.timespan.to),
+            },
           };
 
           minMax.min =
@@ -117,7 +162,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
               ? toDate(project.timespan.from)
               : minMax.min;
           minMax.max =
-            toDate(project.timespan.to) > minMax.max ? toDate(project.timespan.to) : minMax.max;
+            toDate(project.timespan.to) > minMax.max
+              ? toDate(project.timespan.to)
+              : minMax.max;
           skills.set(tech.name, { skill, minMax });
         }
       }
@@ -167,18 +214,19 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     }
   }
 
-  
   getSkills(year: number, sort: boolean = true): Iterable<Skill> {
     return (sort ? this.sorted : this.categories).get(year) ?? [];
   }
 
   skillOpacity(skill: Skill) {
-    if(this.minOpacity >= 1) return 1; 
-    return skill ? Math.max(0.01 * (skill.proficiency ?? 100), this.minOpacity) : 0;
+    if (this.minOpacity >= 1) return 1;
+    return skill
+      ? Math.max(0.01 * (skill.proficiency ?? 100), this.minOpacity)
+      : 0;
   }
 
   ngOnDestroy(): void {
-      this.destroyed$.next();
-      this.destroyed$.complete();
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }

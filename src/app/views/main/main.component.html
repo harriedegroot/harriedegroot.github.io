@@ -20,7 +20,7 @@
 
     <app-section name="experience" class="app-section" [fullPage]="true"
         [title]="'experience.title' | translate" [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
-        (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')" (snap)="onSnap('experience')">
+        (shown)="onShow(['background', 'experience'])" (hidden)="onHide(['background', 'experience'])" (snap)="onSnap('experience')">
         <app-experience [minOpacity]="1" [experience]="profile?.experience || []" [hiddenTags]="hiddenSkillTags"
             [proficiency]="70" [exclude]="excludeExperience">
         </app-experience>

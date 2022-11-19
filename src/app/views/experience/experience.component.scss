@@ -14,6 +14,30 @@
             color: $text-light;
             line-height: 45px;
         }
+
+        
+        
+        transition: opacity .4s ease-in;
+        transition: background-color .4s ease-in;
+        opacity: 1;
+        &.floating {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 30px 5px 30px;
+            //padding-top: $title-height;
+            z-index: 9;
+
+            background-color: rgba($color: #000000, $alpha: 0.9);
+
+            &.hidden {
+                background-color: transparent;
+                > * {
+                    opacity: 0;
+                }
+            }
+        }
         
         .period,
         .proficiency {
@@ -40,10 +64,15 @@
     }
     
     .categories {
+        
         display: flex;
         flex-flow: row wrap;
         align-content: flex-start;
         gap: 30px;
+
+        &.floating-sliders {
+            margin-top: 96px;
+        }
 
         .category {
             min-width: 250px;
