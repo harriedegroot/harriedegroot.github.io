@@ -4,6 +4,10 @@
     position: relative;
 }
 
+.container {
+    transition: min-height 2s ease-in-out;
+}
+
 .section-title {
     display: flex;
     justify-content: center;
