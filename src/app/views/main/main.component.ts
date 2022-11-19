@@ -2,6 +2,7 @@ import { DOCUMENT, Location } from '@angular/common';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
+import { MenuComponent } from 'app/components/menu/menu.component';
 import { Profile } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import { ProfileService } from 'app/services/profile.service';
@@ -73,14 +74,13 @@ export class MainComponent implements OnInit {
   ];
 
   excludeExperience = ['Mustache Templates'];
-
   menuBackground: string = 'black';
-  menuFixed: boolean = true;
-  menuOpen: boolean = false;
-  menuHamburger: boolean = true;
-
+  
   @ViewChild(BackgroundComponent, { static: false })
   background!: BackgroundComponent;
+
+  @ViewChild(MenuComponent, { static: false })
+  menu!: MenuComponent;
 
   @ViewChild(AboutComponent, { static: false })
   about!: AboutComponent;
@@ -144,7 +144,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.initLanguage();
-    this.menuOpen = !this.deviceService.isMobile;
     this.initAnimations();
   }
 
@@ -155,13 +154,6 @@ export class MainComponent implements OnInit {
   private initAnimations() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(ScrollToPlugin);
-
-    gsap.from('#main-menu', {
-      top: -50,
-      opacity: 0,
-      duration: 0.7,
-      delay: 2,
-    });
 
     const nextSectionDelay = 2;
     gsap.to('.next-section', {
@@ -220,7 +212,6 @@ export class MainComponent implements OnInit {
           break;
         case 'home':
           if (!this.deviceService.isMobile) {
-            this.menuOpen = true;
             this.menuBackground = 'transparent';
           }
           break;
@@ -248,7 +239,6 @@ export class MainComponent implements OnInit {
           this.background.enabled = false;
           break;
         case 'home':
-          this.menuOpen = false;
           this.menuBackground = 'black';
           break;
         case 'experience':
@@ -266,17 +256,28 @@ export class MainComponent implements OnInit {
       this.scrollingService.smoothScrollTo(item);
     } else {
       this.scrollingService.scrollTo(item);
-      //this.onShow(item);
     }
+    setTimeout(() => {
+      this.menu.hideMenu();
+      this.menu.hideFooter();
+    }, 1000);
   }
 
   onSnap(section: string) {
     switch (section) {
       case 'home':
+        this.menu.showMenu();
+        this.menu.showFooter();
         break;
-      default:
-        this.menuOpen = false;
-        setTimeout(() => (this.menuOpen = false), 200);
+        default:
+        if(!this.deviceService.isMobile) {
+          this.menu.hideMenu();
+          this.menu.hideFooter();
+          setTimeout(() => {
+            this.menu.hideMenu();
+            this.menu.hideFooter();
+          }, 200);
+        }
         break;
     }
   }

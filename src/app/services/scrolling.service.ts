@@ -1,9 +1,9 @@
 import { ViewportScroller } from '@angular/common';
 import { Injectable } from '@angular/core';
-import * as _ from 'lodash';
 import {
   debounceTime,
   distinctUntilChanged,
+  filter,
   fromEvent,
   interval,
   map,
@@ -23,8 +23,7 @@ export type Scrolling = 'up' | 'down' | 'idle';
   providedIn: 'root',
 })
 export class ScrollingService {
-  private _scrollDebounce?: _.DebouncedFunc<() => boolean>;
-
+  
   private _scrollTarget?: string;
   public get scrollTarget(): string | null {
     return this._scrollTarget ?? null;
@@ -51,6 +50,9 @@ export class ScrollingService {
   public readonly isScrolling$ = this.scrolling$.pipe(
     map(s => s !== 'idle')
   );
+
+  public readonly scrollingUp$ = this.scrollDirection$.pipe(filter(dir => dir === 'up'));
+  public readonly scrollingDown$ = this.scrollDirection$.pipe(filter(dir => dir === 'down'));
 
   public readonly scrollPosition$ = fromEvent(window, 'scroll').pipe(
     //throttleTime(50),

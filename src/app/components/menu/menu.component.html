@@ -1,8 +1,9 @@
-<div class="menu" [class.fixed]="fixed" [class.open]="open">
-    <button class="hamburger button left" mat-icon-button [class.visible]="hamburger"
-        (click)="open=!open;$event.stopImmediatePropagation()" title="select language">
-        <fa-icon [icon]="hamburgerIcon"></fa-icon>
-    </button>
+<button id="hamburger" class="hamburger button left" mat-icon-button [class.visible]="hamburger"
+    (click)="onHamburgerClick();$event.stopImmediatePropagation()" title="select language">
+    <fa-icon [icon]="hamburgerIcon"></fa-icon>
+</button>
+<div class="menu" [class.fixed]="fixed" [class.show]="menuShown" [class.hide]="!menuShown"
+    (mouseenter)="hoveringMenu=true" (mouseleave)="hoveringMenu=false">
 
     <nav class="menu-container" [class.open]="open" [style.background]="background">
         <ng-container *ngFor="let section of sections; let i = index">
@@ -13,10 +14,18 @@
         </ng-container>
     </nav>
 
-    <button class="lang button right" mat-icon-button [class.visible]="hamburger" *ngIf="selectedLanguage"
+    <button class="lang button right" mat-icon-button [class.visible]="langButton" *ngIf="selectedLanguage"
         (mouseover)="hoveringLangButton=true" (mouseout)="hoveringLangButton=false"
         (click)="onLanguageClick();$event.stopImmediatePropagation()" title="menu">
-        <span class="text" [class.show]="hoveringLangButton" [class.hide]="!hoveringLangButton">{{ otherLanguage }}</span>
-        <span class="text" [class.show]="!hoveringLangButton" [class.hide]="hoveringLangButton">{{ selectedLanguage }}</span>
+        <span class="text" [class.show]="hoveringLangButton" [class.hide]="!hoveringLangButton">
+            {{ otherLanguage }}
+        </span>
+        <span class="text" [class.show]="!hoveringLangButton" [class.hide]="hoveringLangButton">
+            {{ selectedLanguage }}
+        </span>
     </button>
+
 </div>
+<app-footer *ngIf="footer" id="contact" class="footer" [wrap]="true" [category]="'menu'" [allowHideText]="true"
+    [class.sticky]="true" [class.show]="footerShown" [class.hide]="!footerShown" [class.fixed]="fixed"
+    (mouseenter)="hoveringFooter=true" (mouseleave)="hoveringFooter=false"></app-footer>
