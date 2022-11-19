@@ -33,6 +33,10 @@
         font-weight: 100;
         line-height: 1.7rem;
 
+        &.icon {
+            margin-top: -60px;
+        }
+
         mat-icon {
             // display: none;
             // color: #c2185b;
