@@ -92,7 +92,6 @@ export class MainComponent implements OnInit {
   skills!: SkillsComponent;
 
   language!: string;
-  windowHeight = window.innerHeight;
   scrollPercentage$ = this.scrollingService.scrollPercentage$;
   isScrolling$ = this.scrollingService.isScrolling$;
 

@@ -4,7 +4,7 @@
     [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
 <main class="content">
 
-    <app-section name="home" class="app-section" [fullPage]="true" [style.height.px]="windowHeight"
+    <app-section name="home" class="app-section" [fullPage]="true" 
         (shown)="onShow(['home','background'])" (hidden)="onHide(['home', 'background'])" (snap)="onSnap('home')">
         <app-home [profile]="profile"></app-home>
         <button class="next-section" (click)="navigateTo('about')" mat-stroked-button>
