@@ -6,18 +6,18 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  Output,
+  Output
 } from '@angular/core';
+import { ScrollingService } from 'app/services/scrolling.service';
 import { ScrollTrigger } from 'gsap/all';
 import {
   debounceTime,
-  filter,
-  Subject,
+  filter, Subject,
   Subscription,
-  throttleTime,
+  throttleTime
 } from 'rxjs';
-import gsap from 'gsap';
-import { ScrollingService } from 'app/services/scrolling.service';
+
+export type TitleStyle = 'default' | 'transparent' | 'accent' | 'light' | 'dark';
 
 @Component({
   selector: 'app-section',
@@ -28,8 +28,6 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   private static COUNTER: number = 0;
 
   private _scrollTrigger?: ScrollTrigger;
-  private _idx = ++SectionComponent.COUNTER;
-  readonly id: string = `section_${this._idx}`;
 
   get height() {
     return this.fullPage || !this.visible ? '100vh' : 'auto';
@@ -46,12 +44,14 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     return this._nextEmitter;
   }
 
+  @Input() name!: string;
   @Input() background = 'none';
   @Input() fullPage: boolean = false;
   @Input() title?: string;
   @Input() snap: boolean = true;
   @Input() snapUp: number = 30;
   @Input() snapDown: number = 15;
+  @Input() titleStyle: TitleStyle = 'default';
 
   private _visible: boolean = false;
   public get visible(): boolean {
@@ -95,21 +95,8 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public snapTween(percent: number) {
-    // if (!this._snapTween) {
-    //   this._snapTween = gsap.to(window, {
-    //     duration: 0.3,
-    //     scrollTo: '#' + this.id,
-    //     ease: 'power1.inOut',
-    //   });
-    // } else {
-    //   this._snapTween.restart();
-    // }
-    
-    //console.log('SNAP', this.id)
-    
-    this.scrollingService.smoothScrollTo(this.id);
-
-    this.snap$.emit(this.id);
+    this.scrollingService.smoothScrollTo(this.name);
+    this.snap$.emit(this.name);
   }
 
   public isFullScreen(): boolean {
@@ -126,7 +113,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this._scrollTrigger = ScrollTrigger.create({
-      trigger: '#' + this.id,
+      trigger: '#' + this.name,
       start: 'top bottom',
       onToggle: (self) => this._setVisibility(self.isActive),
       onUpdate: (self) => this._snap.next(this.getScrollPercentage()),
@@ -137,10 +124,8 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this._visible != value) {
       this._visible = value;
       if (value) {
-        this.showTitle();
         this.shown$.emit();
       } else {
-        //this._snapTween?.pause();
         this.hidden$.emit();
       }
       this.visible$.emit(value);
@@ -151,10 +136,6 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   onNextClick() {
     this.nextEmitter.emit();
   }
-
-  public showTitle(animate: boolean = true) {}
-
-  public hideTitle(animate: boolean = true) {}
 
   ngOnDestroy(): void {
     this._scrollTrigger?.kill();

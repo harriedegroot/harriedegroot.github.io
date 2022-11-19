@@ -38,29 +38,6 @@
     display: block;
 } 
 
-.section-title {
-    text-align: center;
-    padding: 25px 0 20px 0;
-    text-transform: uppercase;
-    font-size: xx-large;
-    margin: 0;
-    font-weight: lighter;
-
-    &.transparent {
-        color: $accent;
-    }
-    &.accent {
-        background: $accent;
-    }
-    &.light {
-        color: $accent;
-        background: white;
-    }
-    &.dark {
-        background: black;
-    }
-}
-
 .next-section {
     position: absolute;
     bottom: 80px;

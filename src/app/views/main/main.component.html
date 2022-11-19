@@ -4,7 +4,7 @@
     [selectedLanguage]="language" (lang)="setLanguage($event)"></app-menu>
 <main class="content">
 
-    <app-section id="home" class="app-section" [fullPage]="true" [title]="'Home'" [style.height.px]="windowHeight"
+    <app-section name="home" class="app-section" [fullPage]="true" [style.height.px]="windowHeight"
         (shown)="onShow(['home','background'])" (hidden)="onHide(['home', 'background'])" (snap)="onSnap('home')">
         <app-home [profile]="profile"></app-home>
         <button class="next-section" (click)="navigateTo('about')" mat-stroked-button>
@@ -12,35 +12,35 @@
         </button>
     </app-section>
 
-    <h1 class="section-title dark" translate>about.title</h1>
-    <app-section id="about" class="app-section" background="black" [fullPage]="true" [title]="'About'"
-        (next)="navigateTo('experience')" (shown)="onShow('about')" (hidden)="onHide('about')" (snap)="onSnap('about')">
+    <app-section name="about" class="app-section" background="black" [fullPage]="true"
+        [title]="'about.title' | translate" titleStyle="dark" (next)="navigateTo('experience')"
+        (shown)="onShow('about')" (hidden)="onHide('about')" (snap)="onSnap('about')">
         <app-about></app-about>
     </app-section>
 
-    <h1 class="section-title" [style.background]="'rgba(0, 0, 0, 0.864)'" translate>experience.title</h1>
-    <app-section id="experience" class="app-section" [fullPage]="true" [title]="'Experience'"
-        [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
+    <app-section name="experience" class="app-section" [fullPage]="true"
+        [title]="'experience.title' | translate" [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
         (shown)="onShow(['background', 'experience'])" (hidden)="onHide('background')" (snap)="onSnap('experience')">
         <app-experience [minOpacity]="1" [experience]="profile?.experience || []" [hiddenTags]="hiddenSkillTags"
-            [proficiency]="70" [exclude]="excludeExperience"></app-experience>
+            [proficiency]="70" [exclude]="excludeExperience">
+        </app-experience>
     </app-section>
 
-    <h1 class="section-title dark" translate>skills.title</h1>
-    <app-section id="skills" class="app-section" [fullPage]="true" [title]="'Skills'" (shown)="onShow('skills')"
-        (hidden)="onHide('skills')" (snap)="onSnap('skills')">
+    <app-section name="skills" class="app-section" [fullPage]="true" [title]="'skills.title' | translate"
+        titleStyle="dark" (shown)="onShow('skills')" (hidden)="onHide('skills')" (snap)="onSnap('skills')">
         <app-skills id="skills" [experience]="profile?.experience || []" [selectedTags]="selectedSkillTags"
-            [scrollwheel]="false" [hiddenTags]="hiddenSkillTags"></app-skills>
+            [scrollwheel]="false" [hiddenTags]="hiddenSkillTags">
+        </app-skills>
     </app-section>
 
-    <h1 class="section-title light" translate>projects.title</h1>
-    <app-section id="projects" class="app-section" [fullPage]="true" [title]="'Projects'" (snap)="onSnap('projects')">
+    <app-section name="projects" class="app-section" [fullPage]="true"
+        [title]="'projects.title' | translate" titleStyle="light" (snap)="onSnap('projects')">
         <app-projects [experience]="profile?.experience"></app-projects>
     </app-section>
 
-    <h1 class="section-title dark" translate>personality.title</h1>
-    <app-section id="personality" class="app-section" [background]="'black'" [fullPage]="false" [title]="'Personality'"
-        [snap]="true" [snapDown]="0" (snap)="onSnap('personality')">
+    <app-section name="personality" class="app-section" [background]="'black'" [fullPage]="false"
+        [title]="'personality.title' | translate" titleStyle="dark" [snap]="true" [snapDown]="0"
+        (snap)="onSnap('personality')">
         <app-charasteristics></app-charasteristics>
     </app-section>
 

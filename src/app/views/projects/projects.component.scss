@@ -3,17 +3,19 @@
 $overlay-color: white;
 
 .container {
+    position: relative;
+
     background-color: white;
     color: $text-dark;
-    min-height: 100vh;
-    height: 100%;
+    min-height: calc(100vh - $title-height);
+    height: calc(100% - $title-height);
     
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     
     &.show-more {
-        max-height: 100vh;
+        max-height: calc(100vh - $title-height);
         overflow: hidden;
     }
 }
@@ -46,6 +48,7 @@ $overlay-color: white;
 
 app-timeline {
     max-width: 1000px;
+    max-height: calc(100% - $title-height);
 }
 
 app-timeline-label {

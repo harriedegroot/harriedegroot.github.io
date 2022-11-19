@@ -54,14 +54,12 @@ export class MenuComponent implements OnInit {
   }
   public set hoveringFooter(value) {
     this._hoveringFooter = value;
-    console.log('hovering footer:', value);
   }
   
   constructor(
     private scrollingService: ScrollingService,
     private deviceService: DeviceService
   ) {
-    this.hamburger = this.deviceService.isMobile;
     this.open = !this.deviceService.isMobile;
   }
 
@@ -89,7 +87,7 @@ export class MenuComponent implements OnInit {
     }
   }
   public hideMenu() {
-    if(this.open) return;
+    if(this.open && this.deviceService.isMobile) return;
     if(this.hoveringMenu) return;
 
     if(this.menuShown) {
@@ -120,11 +118,20 @@ export class MenuComponent implements OnInit {
   }
 
   onHamburgerClick() {
-    this.showMenu();
-    this.open = !this.open;
+    if(this.deviceService.isMobile) {
+      this.showMenu();
+      this.open = !this.open;
+    } else {
+      if(this.menuShown) {
+        this.hideMenu();
+      } else {
+        this.showMenu();
+      }
+    }
   }
 
   onItemClick(section: string) {
+    this.hoveringMenu = false;
     this.hideMenu();
     this.hideFooter();
 

@@ -1,6 +1,9 @@
-<section [id]="id" [style.background]="background" [style.minHeight]="fullPage ? '100vh' : 'auto'">
-    <ng-content></ng-content>
-</section>
-<button *ngIf="showNext" class="next-section" (click)="onNextClick()" mat-stroked-button gaEvent="{{title ?? ''}}_next_click" [gaCategory]="title ?? ''">
-    <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
-</button>
+<div [id]="name" class="container" [style.background]="background" [style.minHeight]="fullPage ? '100vh' : 'auto'">
+    <h1 *ngIf="title" class="section-title" class="{{titleStyle}}">{{title}}</h1>
+    <section>
+        <ng-content></ng-content>
+    </section>
+    <button *ngIf="showNext" class="next-section" (click)="onNextClick()" mat-stroked-button gaEvent="{{name}}_next_click" [gaCategory]="name">
+        <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
+    </button>
+</div>

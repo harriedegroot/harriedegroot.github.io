@@ -1,5 +1,35 @@
+@import 'variables';
+
 :host {
     position: relative;
+}
+
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+    height: $title-height;
+
+    text-transform: uppercase;
+    font-size: xx-large;
+    font-weight: lighter;
+
+    &.transparent {
+        color: $accent;
+    }
+    &.accent {
+        background: $accent;
+    }
+    &.light {
+        color: $accent;
+        background: white;
+    }
+    &.dark {
+        background: black;
+    }
 }
 
 .next-section {
