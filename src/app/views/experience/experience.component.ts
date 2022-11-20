@@ -112,7 +112,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   public _scrollingUpdate(): void {
     const rect = this.el.nativeElement.getBoundingClientRect();
-    console.log(rect.bottom)
     this.floatingSliders = rect.top < 0 && rect.bottom > 0;
     this.slidersVisible = rect.bottom > 130;
   }

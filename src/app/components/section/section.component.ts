@@ -12,8 +12,7 @@ import { ScrollingService } from 'app/services/scrolling.service';
 import { ScrollTrigger } from 'gsap/all';
 import {
   debounceTime,
-  filter, Subject,
-  Subscription
+  filter, fromEvent, Subject, takeUntil
 } from 'rxjs';
 
 export type TitleStyle = 'default' | 'transparent' | 'accent' | 'light' | 'dark';
@@ -69,7 +68,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _snap = new Subject<number>();
-  private _snapSubscription?: Subscription;
+  private readonly destroyed$ = new Subject<void>();
 
   constructor(
     private el: ElementRef,
@@ -78,12 +77,14 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.updateHeight();
+    fromEvent(window, 'resize').pipe(takeUntil(this.destroyed$), debounceTime(500)).subscribe(() => this.updateHeight());
     if (this.snap) {
       
       const snapUp = 0.01 * this.snapUp;
       const snapDown = -0.01 * this.snapDown;
-      this._snapSubscription = this._snap
+      this._snap
         .pipe(
+          takeUntil(this.destroyed$),
           debounceTime(600),
           filter((percent) => this.visible),
           filter(
@@ -149,6 +150,8 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this._scrollTrigger?.kill();
-    this._snapSubscription?.unsubscribe();
+    
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 }
