@@ -1,20 +1,16 @@
 import {
-  AfterViewInit,
-  Component,
-  HostListener,
+  AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener,
   Input,
   OnDestroy,
   OnInit,
-  Output,
-  EventEmitter,
-  ChangeDetectorRef
+  Output, ViewChild
 } from '@angular/core';
-import { ECharts, EChartsOption } from 'echarts';
-import * as _ from 'lodash';
+import { getMonthDifference, timespan, toDate } from 'app/helpers/date';
 import { wait } from 'app/helpers/wait';
 import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
+import { ECharts, EChartsOption } from 'echarts';
+import * as _ from 'lodash';
 import * as moment from 'moment';
-import { getMonthDifference, timespan, toDate } from 'app/helpers/date';
 
 interface SkillPoint {
   timespan: TimeSpan;
@@ -60,7 +56,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public hiddenTags: string[] = [];
   @Input('scrollwheel') public scrollwheelEnabled: boolean = true;
   @Input() public invertScroll: boolean = true;
-  
+  @Input() public tagsExpanded: boolean = false;
+
   public get playing(): boolean {
     return this._playing;
   }
@@ -127,6 +124,26 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.forward();
   }
 
+
+  hasMoreTags: boolean = false;
+
+  private _tagsContainerEl?: ElementRef | undefined;
+  public get tagsContainerEl(): ElementRef | undefined {
+    return this._tagsContainerEl;
+  }
+  @ViewChild('tagsContainerEl')
+  public set tagsContainerEl(value: ElementRef | undefined) {
+    if(this._tagsContainerEl != value) {
+      this._tagsContainerEl = value;
+      this._detectMoreTags();
+    }
+  }
+
+  get showMore(): boolean {
+    //if (this.tagsExpanded) return false;
+    return this.hasMoreTags;
+  }
+
   constructor(private cdRef:ChangeDetectorRef) {}
 
   ngOnInit() {
@@ -154,6 +171,15 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this._initSource();
     this._initChart();
+    this._detectMoreTags();
+  }
+
+  private _detectMoreTags() {
+    setTimeout(() => {
+      const el = this.tagsContainerEl?.nativeElement;
+      this.hasMoreTags = el?.scrollHeight > 112;
+      this.cdRef.detectChanges();
+    });
   }
 
   private _initSource(): void {
@@ -174,11 +200,16 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       )
     ).filter((x) => x !== undefined) as any;
 
-    const tags = skills.map((s) => s.skill.tags).filter((x) => x);
-    this.tags = _.uniq(_.flatten(tags)).sort() as string[];
+    const filtered = skills.map((s) => s.skill.tags).filter((x) => x);
+    let tags = _.uniq(_.flatten(filtered)).sort() as string[];
     if (this.hiddenTags) {
-      this.tags = this.tags.filter((x) => !this.hiddenTags.includes(x));
+      tags = tags.filter((x) => !this.hiddenTags.includes(x));
     }
+
+    this.tags = [
+      ...tags.filter(t => this.isTagSelected(t)),
+      ...tags.filter(t => !this.isTagSelected(t)),
+    ]
 
     let startDate = _.min(skills.map((s) => s.timespan.from));
     let endDate = _.max(skills.map((s) => s.timespan.to));
@@ -321,6 +352,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       await wait(this.stepWait);
     }
     this._playing = false;
+    this._detectMoreTags();
     this.cdRef.detectChanges();
   }
 

@@ -1,8 +1,15 @@
-<div class="container" *ngIf="chartOption">
-  <mat-chip-list class="tags" [multiple]="true" [selectable]="false">
-    <mat-chip class="chip" *ngFor="let tag of tags" [selected]="isTagSelected(tag)" (click)="toggleTag(tag)" gaEvent="skills_{{isTagSelected(tag) ? 'disable' : 'enable'}}_tag_{{tag}}" gaCategory="skills">{{tag}}
-    </mat-chip>
-  </mat-chip-list>
+<div class="container" *ngIf="chartOption" [class.expanded]="tagsExpanded">
+  <div class="tags-container" #tagsContainerEl *ngIf="tags">
+    <mat-chip-list class="tags" [multiple]="true" [selectable]="false">
+      <mat-chip class="chip" *ngFor="let tag of tags" [selected]="isTagSelected(tag)" (click)="toggleTag(tag)" gaEvent="skills_{{isTagSelected(tag) ? 'disable' : 'enable'}}_tag_{{tag}}" gaCategory="skills">{{tag}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+  <div class="more-container" *ngIf="showMore">
+    <span class="more" (click)="tagsExpanded = !tagsExpanded">
+      {{ tagsExpanded ? ('...less tags' | translate) : ('...more tags' | translate) }}
+    </span>
+  </div>
   <div echarts [options]="chartOption" class="chart" (chartInit)="onChartInit($event)"></div>
   <div class="timeslider" *ngIf="count > 0">
     <mat-slider class="slider" [value]="currentStep" [min]="firstStep" [max]="count"

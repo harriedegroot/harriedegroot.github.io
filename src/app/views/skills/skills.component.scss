@@ -1,5 +1,7 @@
 @import 'variables';
 
+$transition: .5s ease-in;
+
 .container {
   display: flex;
   position: relative;
@@ -9,6 +11,36 @@
   height: calc(100% - $title-height);
   background: black;
 
+  &.expanded {
+    .tags-container {
+        max-height: 600px;
+    }
+  }
+
+  .tags-container {
+      overflow: hidden;
+      max-height: 100px;
+      transition: $transition;
+      margin-bottom: 5px;
+      
+      .chip {
+          font-size: smaller;
+      }
+  }
+
+  .more-container {
+    height: 30px;
+    margin: 0px 10px 0px 200px;
+    position: relative;
+
+    .more {
+        padding: 5px 0;
+        cursor: pointer;
+        color: $accent;
+        text-decoration: underline;
+    }
+  }
+  
   .tags {
     display: flex;
     margin: 20px 10px 20px 200px;
@@ -40,6 +72,10 @@
 
 @media screen and (max-width: $mobile-width) {
   .container {
+    .more-container {
+      margin: 0px 10px 0px 20px;
+    }
+
     .tags {
       margin: 20px 10px 20px 20px;
     }
