@@ -1,10 +1,11 @@
 {
     "page": {
         "title": "Harrie de Groot | Freelance Software Ontwikkelaar · Heerenveen Friesland",
-        "description": "Freelance Software Engineer met een achtergrond in Artificial Intelligence. Hands-on Software Architect voor full-stack, front-end en back-end projecten.",
-        "keywords": "Freelance, ZZP, Software, Heerenveen, Friesland, Software Engineer, Software Architect, Software Developer, Software Ontwikkelaar, full-stack, back-end, front-end, MSc., A.I., AI, Artificial Intelligence, C#, .NET, TypeScript, Angular"
+        "description": "Freelance Software Engineer met een achtergrond in Artificial Intelligence. Hands-on Software Architect met 15+ jaar ervaring. Beschikbaar voor full-stack, front-end en back-end maatwerk projecten.",
+        "keywords": "Freelance, ZZP, Software, Heerenveen, Friesland, ICT, Software Engineer, Software Architect, Software Developer, Software Ontwikkelaar, programmeur, coder, full-stack, back-end, front-end, 15+ jaar ervaring, maatwerk, MSc., A.I., AI, Artificial Intelligence, C#, .NET, TypeScript, Angular"
     },
     "menu": {
+        "home": "home",
         "about": "over",
         "experience": "ervaring",
         "skills": "skills",
