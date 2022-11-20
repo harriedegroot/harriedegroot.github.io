@@ -1,6 +1,7 @@
 import {
   AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener,
   Input,
+  NgZone,
   OnDestroy,
   OnInit,
   Output, ViewChild
@@ -11,6 +12,7 @@ import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
 import { ECharts, EChartsOption } from 'echarts';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { fromEvent, Subject, takeUntil } from 'rxjs';
 
 interface SkillPoint {
   timespan: TimeSpan;
@@ -41,6 +43,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   private _playing: boolean = false;
   private _onInit: boolean = false;
   private _destroyed: boolean = false;
+  private readonly destroyed$ = new Subject<void>();
 
   @Output('progress') public readonly progressEmitter = new EventEmitter<number>(); 
 
@@ -88,7 +91,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._update();
   }
 
-  @HostListener("wheel", ["$event"])
+  //@HostListener("wheel", ["$event"])
   public onScroll(event: WheelEvent) {
     if(!this.scrollwheelEnabled) return;
     let d = Math.abs(event.deltaX) > 1 ? event.deltaX : event.deltaY;
@@ -144,34 +147,42 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.hasMoreTags;
   }
 
-  constructor(private cdRef:ChangeDetectorRef) {}
+  constructor(private cdRef:ChangeDetectorRef, private zone: NgZone) {}
 
   ngOnInit() {
     this._onInit = true;
     this.currentStep = this.firstStep;
-    this._initialize();
+
+    if(this.scrollwheelEnabled) {
+      fromEvent(window, "wheel")
+        .pipe(takeUntil(this.destroyed$))
+        .subscribe((event) => this.onScroll(event as WheelEvent))
+    }
   }
 
   ngAfterViewInit() {
     if(this.autoPlay) {
+      this._initialize();
       this.play();
     }
   }
 
-  ngOnDestroy(): void {
-    this._destroyed = true;
-  }
-
+  
   public async onChartInit(chart: ECharts) {
     this.chart = chart;
   }
 
+  private _initialized = false;
   private _initialize() {
-    if (!this._onInit) return;
+    if (!this._onInit || !this.experience?.length) return;
+    if(this._initialized) return;
+    this._initialized = true;
 
-    this._initSource();
-    this._initChart();
-    this._detectMoreTags();
+    this.zone.runOutsideAngular(() => {
+      this._initSource();
+      this._initChart();
+      this._detectMoreTags();
+    })
   }
 
   private _detectMoreTags() {
@@ -357,7 +368,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _update(data?: SkillDataPoint[], updateFrequency?: number) {
-    if (!this.chart) return;
+    if (!this.chart || !this._onInit) return;
 
     updateFrequency = updateFrequency ?? this.updateFrequency;
     const date = this._dateMapping.get(this.currentStep) ?? new Date();
@@ -505,5 +516,12 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._redraw = value < this.currentStep;
     this.currentStep = value;
     this._update(undefined, 250);
+  }
+
+  ngOnDestroy(): void {
+    this._destroyed = true;
+    this.destroyed$.next();
+    this.destroyed$.complete();
+
   }
 }
