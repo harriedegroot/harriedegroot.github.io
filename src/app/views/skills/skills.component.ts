@@ -201,7 +201,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     ).filter((x) => x !== undefined) as any;
 
     const filtered = skills.map((s) => s.skill.tags).filter((x) => x);
-    let tags = _.uniq(_.flatten(filtered)).sort() as string[];
+    let tags = _.orderBy(_.uniq(_.flatten(filtered)), i => i?.toLowerCase()) as string[];
     if (this.hiddenTags) {
       tags = tags.filter((x) => !this.hiddenTags.includes(x));
     }
