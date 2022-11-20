@@ -38,6 +38,20 @@
     display: block;
 } 
 
+#contact {
+    background: black;
+    color: white;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    font-size: small;
+    font-style: italic;
+    
+    > span {
+        padding: 0 10px;
+    }
+}
+
 .next-section {
     position: absolute;
     bottom: 80px;
