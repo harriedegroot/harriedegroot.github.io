@@ -33,6 +33,7 @@
 
             &.hidden {
                 background-color: transparent;
+                pointer-events: none;
                 > * {
                     opacity: 0;
                 }
