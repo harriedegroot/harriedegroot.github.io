@@ -269,14 +269,15 @@ export class MainComponent implements OnInit {
         this.menu.showFooter();
         break;
         default:
-        if(!this.deviceService.isMobile) {
+        //if(!this.deviceService.isMobile) {
           this.menu.hideMenu();
           this.menu.hideFooter();
+        
           setTimeout(() => {
             this.menu.hideMenu();
             this.menu.hideFooter();
-          }, 200);
-        }
+          }, 1000);
+        //}
         break;
     }
   }
