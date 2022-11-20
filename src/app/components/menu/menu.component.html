@@ -1,5 +1,5 @@
-<button id="hamburger" class="hamburger button left" mat-icon-button [class.visible]="hamburger"
-    (click)="onHamburgerClick();$event.stopImmediatePropagation()" title="select language">
+<button id="hamburger" class="hamburger button left" mat-icon-button [class.visible]="hamburger" [autofocus]="false"
+    (click)="onHamburgerClick($event)" title="select language">
     <fa-icon [icon]="hamburgerIcon"></fa-icon>
 </button>
 <div class="menu" [class.fixed]="fixed" [class.show]="menuShown" [class.hide]="!menuShown"
@@ -15,12 +15,12 @@
     </nav>
 
     <button class="lang button right" mat-icon-button [class.visible]="langButton" *ngIf="selectedLanguage"
-        (mouseover)="hoveringLangButton=true" (mouseout)="hoveringLangButton=false"
-        (click)="onLanguageClick();$event.stopImmediatePropagation()" title="menu">
-        <span class="text" [class.show]="hoveringLangButton" [class.hide]="!hoveringLangButton">
+        (mouseover)="hoveringLangButton=true" (mouseout)="hoveringLangButton=false" [autofocus]="false"
+        (click)="onLanguageClick($event)" title="menu">
+        <span class="text" [class.show]="showOtherLanguage" [class.hide]="!showOtherLanguage">
             {{ otherLanguage }}
         </span>
-        <span class="text" [class.show]="!hoveringLangButton" [class.hide]="hoveringLangButton">
+        <span class="text" [class.show]="!showOtherLanguage" [class.hide]="showOtherLanguage">
             {{ selectedLanguage }}
         </span>
     </button>

@@ -56,6 +56,10 @@ export class MenuComponent implements OnInit {
     this._hoveringFooter = value;
   }
   
+  public get showOtherLanguage(): boolean {
+    return this.hoveringLangButton && !this.deviceService.isMobile;
+  }
+
   constructor(
     private scrollingService: ScrollingService,
     private deviceService: DeviceService
@@ -117,7 +121,9 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  onHamburgerClick() {
+  onHamburgerClick(event: MouseEvent) {
+    event.stopImmediatePropagation();
+    
     if(this.deviceService.isMobile) {
       this.showMenu();
       this.open = !this.open;
@@ -142,7 +148,9 @@ export class MenuComponent implements OnInit {
     this.click$.emit(section);
   }
 
-  onLanguageClick() {
+  onLanguageClick(event: MouseEvent) {
+    event.stopImmediatePropagation();
+
     this.selectedLanguage = this.otherLanguage;
     this.language$.emit(this.selectedLanguage);
   }
