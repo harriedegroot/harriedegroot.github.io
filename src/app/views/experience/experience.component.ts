@@ -124,17 +124,22 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.minYear =
       _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
       this.minYear;
-    this.refresh();
+    this.refresh(false, true);
   }
 
-  public refresh(animate: boolean = true) {
+  private _displayed:boolean = false;
+  public refresh(animate: boolean = true, force: boolean = false) {
     if (!this.experience) return;
+
+    if(this._displayed && !force) return;
+    this._displayed = true;
 
     if (animate) {
       this.clear();
     } else {
       this.categories.clear();
     }
+  
     const skills = new Map<string, { skill: Skill; minMax: MinMax<Date> }>();
     const enabled = new Set<string>();
     if (this.experience) {
@@ -191,6 +196,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   }
 
   public clear() {
+    this._displayed = false;
     this.categories.clear();
     this.sorted.clear();
     this.cdRef.detectChanges();
@@ -200,7 +206,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     if (this.proficiency !== value) {
       //value = Math.max(value, 1);
       this.proficiency = value;
-      this.refresh(false);
+      this.refresh(false, true);
       this.onProficiencyChange$.emit(value);
     }
   }
@@ -209,7 +215,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     if (!year) return;
     if (this.period !== year) {
       this.period = year;
-      this.refresh(false);
+      this.refresh(false, true);
       this.onPeriodChange$.emit(year);
     }
   }

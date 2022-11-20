@@ -241,7 +241,7 @@ export class MainComponent implements OnInit {
           this.menuBackground = 'black';
           break;
         case 'experience':
-          this.experience.clear();
+          //this.experience.clear();
           break;
         case 'skills':
           this.skills.pause();
