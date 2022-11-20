@@ -11,7 +11,6 @@ import {
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference, toDate } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
-import { DeviceService } from 'app/services/device.service';
 import * as _ from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
@@ -79,7 +78,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     private el: ElementRef,
     private cdRef: ChangeDetectorRef,
     private ga: GoogleAnalyticsService,
-    private deviceService: DeviceService
   ) {}
 
   ngOnInit() {
@@ -114,7 +112,8 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   public _scrollingUpdate(): void {
     const rect = this.el.nativeElement.getBoundingClientRect();
-    this.floatingSliders = rect.top < 0;
+    console.log(rect.bottom)
+    this.floatingSliders = rect.top < 0 && rect.bottom > 0;
     this.slidersVisible = rect.bottom > 130;
   }
 
