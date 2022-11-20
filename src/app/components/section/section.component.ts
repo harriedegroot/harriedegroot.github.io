@@ -28,9 +28,10 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _scrollTrigger?: ScrollTrigger;
 
-  get height() {
-    return this.fullPage || !this.visible ? `${window.innerHeight}px` : 'auto';
-  }
+  // get height() {
+  //   return this.fullPage || !this.visible ? `${window.innerHeight}px` : 'auto';
+  // }
+  public height: string = 'auto';
 
   @Output('shown') public readonly shown$ = new EventEmitter<void>();
   @Output('hidden') public readonly hidden$ = new EventEmitter<void>();
@@ -46,6 +47,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() name!: string;
   @Input() background = 'none';
   @Input() fullPage: boolean = false;
+  @Input() heightSource: 'window' | 'viewport' = 'viewport';
   @Input() title?: string;
   @Input() snap: boolean = true;
   @Input() snapUp: number = 30;
@@ -53,6 +55,10 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() titleStyle: TitleStyle = 'default';
 
   private _visible: boolean = false;
+  public set visible(value: boolean) {
+    this._visible = value;
+    this.updateHeight();
+  }
   public get visible(): boolean {
     return this._visible;
   }
@@ -71,6 +77,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.updateHeight();
     if (this.snap) {
       
       const snapUp = 0.01 * this.snapUp;
@@ -78,7 +85,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
       this._snapSubscription = this._snap
         .pipe(
           debounceTime(600),
-          filter((percent) => this._visible),
+          filter((percent) => this.visible),
           filter(
             (percent) =>
               (percent > 0 && percent < snapUp) ||
@@ -86,6 +93,14 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
           )
         )
         .subscribe((percent) => this.snapTween(percent));
+    }
+  }
+
+  public updateHeight() {
+    if(this.fullPage) {
+      this.height = this.heightSource === 'window' ? `${window.innerHeight}px` : '100vh';
+    } else {
+      this.height = 'auto';
     }
   }
 
