@@ -49,9 +49,15 @@ export class DeviceService {
     map((size) => size.width > this.mobileWidth)
   );
 
-  public orientation$: Observable<Orientation> = this.resize$.pipe(
+  public orientation$: Observable<Orientation> = merge(
+    of({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    }),
+    this.resize$
+  ).pipe(
     map((size) => (size.width > size.height ? 'horizontal' : 'vertical')),
-    distinctUntilChanged(),
+    distinctUntilChanged()
   );
 
   constructor(private deviceDetectorService: DeviceDetectorService) {}
