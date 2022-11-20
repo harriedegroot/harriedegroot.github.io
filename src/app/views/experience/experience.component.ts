@@ -122,15 +122,23 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     this.minYear =
       _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
       this.minYear;
-    this.refresh(false, true);
+
+    this.refresh(false);
   }
 
-  private _displayed:boolean = false;
-  public refresh(animate: boolean = true, force: boolean = false) {
-    if (!this.experience) return;
+  private _showed = false;
+  public show(delay: number = 0): void {
+    if(this._showed) return;
+    this._showed = true;
+    if(delay > 0) {
+      setTimeout(() => this.refresh(), delay);
+    } else {
+      this.refresh();
+    }
+  }
 
-    if(this._displayed && !force) return;
-    this._displayed = true;
+  public refresh(animate: boolean = true) {
+    if (!this._showed || !this.experience) return;
 
     if (animate) {
       this.clear();
@@ -194,7 +202,6 @@ export class ExperienceComponent implements OnInit, OnDestroy {
   }
 
   public clear() {
-    this._displayed = false;
     this.categories.clear();
     this.sorted.clear();
     this.cdRef.detectChanges();
@@ -204,7 +211,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     if (this.proficiency !== value) {
       //value = Math.max(value, 1);
       this.proficiency = value;
-      this.refresh(false, true);
+      this.refresh(false);
       this.onProficiencyChange$.emit(value);
     }
   }
@@ -213,7 +220,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     if (!year) return;
     if (this.period !== year) {
       this.period = year;
-      this.refresh(false, true);
+      this.refresh(false);
       this.onPeriodChange$.emit(year);
     }
   }

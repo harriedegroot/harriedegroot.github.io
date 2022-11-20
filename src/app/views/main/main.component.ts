@@ -52,6 +52,8 @@ function asArray<T>(obj: T | T[]): T[] {
   return Array.isArray(obj) ? (obj as T[]) : [obj as T];
 }
 
+const EXPERIENCE_DELAY = 700;
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -217,7 +219,7 @@ export class MainComponent implements OnInit {
         case 'about':
           break;
         case 'experience':
-          this.experience.refresh();
+          this.experience.show(EXPERIENCE_DELAY);
           break;
         case 'skills':
           this.skills.play();
@@ -251,6 +253,19 @@ export class MainComponent implements OnInit {
   }
 
   navigateTo(item: string, smooth: boolean = true) {
+    // show experience to set the correct height
+    switch(item) {
+      case 'home':
+      case 'about':
+        break;
+      case 'experience':
+        this.experience.show(EXPERIENCE_DELAY);
+        break;
+      default:
+        this.experience.show();
+        break;
+    }
+    
     if (smooth) {
       this.scrollingService.smoothScrollTo(item);
     } else {
