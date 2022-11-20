@@ -8,11 +8,12 @@ import {
   OnInit,
   Output
 } from '@angular/core';
+import { DeviceService } from 'app/services/device.service';
 import { ScrollingService } from 'app/services/scrolling.service';
 import { ScrollTrigger } from 'gsap/all';
 import {
   debounceTime,
-  filter, fromEvent, Subject, takeUntil
+  filter, Subject, takeUntil
 } from 'rxjs';
 
 export type TitleStyle = 'default' | 'transparent' | 'accent' | 'light' | 'dark';
@@ -72,12 +73,13 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(
     private el: ElementRef,
-    private scrollingService: ScrollingService
+    private scrollingService: ScrollingService,
+    private deviceService: DeviceService
   ) {}
 
   ngOnInit(): void {
     this.updateHeight();
-    fromEvent(window, 'resize').pipe(takeUntil(this.destroyed$), debounceTime(500)).subscribe(() => this.updateHeight());
+    this.deviceService.orientation$.pipe(takeUntil(this.destroyed$)).subscribe(() => this.updateHeight());
     if (this.snap) {
       
       const snapUp = 0.01 * this.snapUp;
