@@ -13,14 +13,14 @@
     </app-section>
 
     <app-section name="about" class="app-section" background="black" [fullPage]="true"
-        [title]="'about.title' | translate" titleStyle="dark" (next)="navigateTo('experience')"
-        (shown)="onShow('about')" (hidden)="onHide('about')" (snap)="onSnap('about')">
+        [title]="'about.title' | translate" titleStyle="dark" (shown)="onShow('about')" (hidden)="onHide('about')"
+        (snap)="onSnap('about')">
         <app-about></app-about>
     </app-section>
 
-    <app-section name="experience" class="app-section" [fullPage]="true"
-        [title]="'experience.title' | translate" [background]="'rgba(0, 0, 0, 0.864)'" (next)="navigateTo('skills')"
-        (shown)="onShow(['background', 'experience'])" (hidden)="onHide(['background', 'experience'])" (snap)="onSnap('experience')">
+    <app-section name="experience" class="app-section" [fullPage]="true" [title]="'experience.title' | translate"
+        [background]="'rgba(0, 0, 0, 0.864)'" (shown)="onShow(['background', 'experience'])"
+        (hidden)="onHide(['background', 'experience'])" (snap)="onSnap('experience')">
         <app-experience [minOpacity]="1" [experience]="profile?.experience || []" [hiddenTags]="hiddenSkillTags"
             [proficiency]="70" [exclude]="excludeExperience">
         </app-experience>
@@ -33,8 +33,8 @@
         </app-skills>
     </app-section>
 
-    <app-section name="projects" class="app-section" [fullPage]="true"
-        [title]="'projects.title' | translate" titleStyle="light" (snap)="onSnap('projects')">
+    <app-section name="projects" class="app-section" [fullPage]="true" [title]="'projects.title' | translate"
+        titleStyle="light" (snap)="onSnap('projects')">
         <app-projects [experience]="profile?.experience"></app-projects>
     </app-section>
 

@@ -5,6 +5,7 @@
         "keywords": "Freelance, Software, Heerenveen, Friesland, Netherlands, Software Engineer, Software Architect, Software Developer, full-stack, back-end, front-end, MSc., A.I., AI, Artificial Intelligence, C#, .NET, TypeScript, Angular"
     },
     "menu": {
+        "home": "home",
         "about": "about",
         "experience": "experience",
         "skills": "skills",
