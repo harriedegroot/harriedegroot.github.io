@@ -99,6 +99,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   public updateHeight() {
     if(this.fullPage) {
       this.height = this.heightSource === 'window' ? `${window.innerHeight}px` : '100vh';
+      this.heightSource = 'viewport'; // note: allow window height only once
     } else {
       this.height = 'auto';
     }

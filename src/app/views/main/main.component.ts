@@ -3,6 +3,7 @@ import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuComponent } from 'app/components/menu/menu.component';
+import { fadeAnimation } from 'app/helpers/animations';
 import { Profile } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import { ProfileService } from 'app/services/profile.service';
@@ -11,7 +12,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { filter } from 'rxjs';
+import { filter, take } from 'rxjs';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
@@ -27,6 +28,7 @@ const EXPERIENCE_DELAY = 700;
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
+  animations: [fadeAnimation]
 })
 export class MainComponent implements OnInit {
   public profile: Profile | null = null;
@@ -46,6 +48,7 @@ export class MainComponent implements OnInit {
 
   excludeExperience = ['Mustache Templates'];
   menuBackground: string = 'black';
+  nextSectionVisible: boolean = true;
   
   @ViewChild(BackgroundComponent, { static: false })
   background!: BackgroundComponent;
@@ -115,6 +118,8 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.initLanguage();
+
+    this.scrollingService.scrollPosition$.pipe(filter(p => p > 100), take(1)).subscribe((pos) => this.nextSectionVisible = false);
   }
 
   private initLanguage() {
