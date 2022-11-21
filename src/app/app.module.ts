@@ -33,6 +33,7 @@ import { TimelineContentComponent } from './components/timeline/timeline-item.co
 import { TimelineLabelComponent } from './components/timeline/timeline-label.component';
 import { TimelineMarkerComponent } from './components/timeline/timeline-marker.component';
 import { TimelineComponent } from './components/timeline/timeline.component';
+import { VisibleDirective } from './directives/visible.directive';
 import { AboutComponent } from './views/about/about.component';
 import { CharasteristicsComponent } from './views/charasteristics/charasteristics.component';
 import { ExperienceComponent } from './views/experience/experience.component';
@@ -87,6 +88,7 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
     TimelineLabelComponent,
     TimelineMarkerComponent,
     ProjectCardComponent,
+    VisibleDirective,
   ],
   imports: [
     CommonModule,

@@ -8,7 +8,7 @@ import { DeviceService } from 'app/services/device.service';
 import { ProfileService } from 'app/services/profile.service';
 import { ScrollingService } from 'app/services/scrolling.service';
 import gsap from 'gsap';
-import { ScrollToPlugin, ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/all';
 import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { filter } from 'rxjs';
@@ -16,37 +16,6 @@ import { BackgroundComponent } from '../../components/background/background.comp
 import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
-
-function animateFrom(elem: any, direction: number = 1) {
-  direction = direction || 1;
-  var x = 0,
-    y = direction * 100;
-  if (elem.classList.contains('from-left')) {
-    x = -100;
-    y = 0;
-  } else if (elem.classList.contains('from-right')) {
-    x = 100;
-    y = 0;
-  }
-  elem.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
-  elem.style.opacity = '0';
-  gsap.fromTo(
-    elem,
-    { x: x, y: y, autoAlpha: 0 },
-    {
-      duration: 1.25,
-      x: 0,
-      y: 0,
-      autoAlpha: 1,
-      ease: 'expo',
-      overwrite: 'auto',
-    }
-  );
-}
-
-function hide(elem: any) {
-  gsap.set(elem, { autoAlpha: 0 });
-}
 
 function asArray<T>(obj: T | T[]): T[] {
   return Array.isArray(obj) ? (obj as T[]) : [obj as T];
@@ -96,7 +65,7 @@ export class MainComponent implements OnInit {
   language!: string;
   scrollPercentage$ = this.scrollingService.scrollPercentage$;
   isScrolling$ = this.scrollingService.isScrolling$;
-
+  
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private profileService: ProfileService,
@@ -144,65 +113,12 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    gsap.registerPlugin(ScrollTrigger);
     this.initLanguage();
-    this.initAnimations();
   }
 
   private initLanguage() {
     this._updateLang(this.translateService.defaultLang);
-  }
-
-  private initAnimations() {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(ScrollToPlugin);
-
-    const nextSectionDelay = 2;
-    gsap.to('.next-section', {
-      opacity: 0.4,
-      duration: 1,
-      delay: nextSectionDelay + 0.8,
-    });
-
-    gsap.from('.next-section', {
-      y: -70,
-      duration: 1,
-      ease: 'bounce',
-      delay: nextSectionDelay + 1,
-    });
-
-    var tl = gsap.timeline({
-      repeat: -1,
-      repeatDelay: 0,
-      delay: nextSectionDelay + 1.5,
-      yoyo: true,
-    });
-    tl.to('.next-section', {
-      y: -30,
-      duration: 2,
-      ease: 'inOut',
-    });
-
-    gsap.utils.toArray('.quote').forEach(function (elem: any) {
-      hide(elem);
-      ScrollTrigger.create({
-        trigger: elem,
-        onEnter: function () {
-          try {
-            animateFrom(elem);
-          } catch {}
-        },
-        onEnterBack: function () {
-          try {
-            animateFrom(elem, -1);
-          } catch {}
-        },
-        onLeave: function () {
-          try {
-            hide(elem);
-          } catch {}
-        },
-      });
-    });
   }
 
   onShow(items: string | string[]) {

@@ -34,7 +34,7 @@
     </div>
 
     <div class="quote-container">
-        <div class="quote">
+        <div class="quote" visible [once]="true">
             <mat-icon>format_quote</mat-icon>
             <span [innerHtml]="'personality.quote' | translate | markdown"></span>
         </div>

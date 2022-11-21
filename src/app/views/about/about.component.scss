@@ -1,6 +1,7 @@
 @import 'variables';
+@import 'mixins';
 
-.container {   
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,6 +26,7 @@
             height: 80px;
         }
     }
+
     .quote {
         width: 100%;
         max-width: 652px;
@@ -35,6 +37,11 @@
 
         &.icon {
             margin-top: -60px;
+        }
+
+        opacity: 0;
+        &.visible {
+            @include reveal();
         }
 
         mat-icon {
@@ -54,6 +61,7 @@
 
 :host::ng-deep {
     .quote {
+
         p,
         markdown {
             display: inline;

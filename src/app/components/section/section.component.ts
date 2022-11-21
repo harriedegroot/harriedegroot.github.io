@@ -28,9 +28,6 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _scrollTrigger?: ScrollTrigger;
 
-  // get height() {
-  //   return this.fullPage || !this.visible ? `${window.innerHeight}px` : 'auto';
-  // }
   public height: string = 'auto';
 
   @Output('shown') public readonly shown$ = new EventEmitter<void>();

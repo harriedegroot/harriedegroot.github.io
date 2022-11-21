@@ -1,0 +1,19 @@
+@mixin reveal($transform: translateY(50px)) {
+    animation: fading 0.6s ease-out 0s both, translate 0.8s ease-out 0s both;
+    @keyframes fading {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    @keyframes translate {
+        0% { transform: $transform; }
+        100% { transform: none; }
+    }
+}
+
+@mixin fadeIn($time: 0.6s, $from: 0, $to: 1, $delay: 0s, $ease: ease-in) {
+    animation: fade-in $time $ease $delay both;
+    @keyframes fade-in {
+        0% { opacity: $from; }
+        100% { opacity: $to; }
+    }
+}
