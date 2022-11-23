@@ -4,6 +4,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MenuComponent } from 'app/components/menu/menu.component';
 import { fadeAnimation } from 'app/helpers/animations';
+import { asArray } from 'app/helpers/array';
 import { Profile } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import { ProfileService } from 'app/services/profile.service';
@@ -18,17 +19,13 @@ import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
 import { SkillsComponent } from '../skills/skills.component';
 
-function asArray<T>(obj: T | T[]): T[] {
-  return Array.isArray(obj) ? (obj as T[]) : [obj as T];
-}
-
 const EXPERIENCE_DELAY = 700;
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation],
 })
 export class MainComponent implements OnInit {
   public profile: Profile | null = null;
@@ -50,7 +47,7 @@ export class MainComponent implements OnInit {
   menuBackground: string = 'black';
   nextSectionVisible: boolean = true;
   year = new Date().getFullYear();
-  
+
   @ViewChild(BackgroundComponent, { static: false })
   background!: BackgroundComponent;
 
@@ -70,7 +67,7 @@ export class MainComponent implements OnInit {
   scrollPercentage$ = this.scrollingService.scrollPercentage$;
   isScrolling$ = this.scrollingService.isScrolling$;
   isMobile = this.deviceService.isMobile;
-  
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private profileService: ProfileService,
@@ -109,19 +106,28 @@ export class MainComponent implements OnInit {
     this.translateService
       .stream('page.description')
       .pipe(filter((desc) => desc && desc !== 'page.description'))
-      .subscribe((desc) =>this.meta.updateTag({ name: 'description', content: desc }));
-    
+      .subscribe((desc) =>
+        this.meta.updateTag({ name: 'description', content: desc })
+      );
+
     this.translateService
       .stream('page.keywords')
       .pipe(filter((keywords) => keywords && keywords !== 'page.keywords'))
-      .subscribe((keywords) =>this.meta.updateTag({ name: 'keywords', content: keywords }));
+      .subscribe((keywords) =>
+        this.meta.updateTag({ name: 'keywords', content: keywords })
+      );
   }
 
   ngOnInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.initLanguage();
 
-    this.scrollingService.scrollPosition$.pipe(filter(p => p > 100), take(1)).subscribe((pos) => this.nextSectionVisible = false);
+    this.scrollingService.scrollPosition$
+      .pipe(
+        filter((p) => p > 100),
+        take(1)
+      )
+      .subscribe((pos) => (this.nextSectionVisible = false));
   }
 
   private initLanguage() {
@@ -176,8 +182,7 @@ export class MainComponent implements OnInit {
   }
 
   navigateTo(item: string, smooth: boolean = true) {
-    // show experience to set the correct height
-    switch(item) {
+    switch (item) {
       case 'home':
       case 'about':
         break;
@@ -185,10 +190,11 @@ export class MainComponent implements OnInit {
         this.experience.show(EXPERIENCE_DELAY);
         break;
       default:
+        // show experience to set the correct height
         this.experience.show();
         break;
     }
-    
+
     if (smooth) {
       this.scrollingService.smoothScrollTo(item);
     } else {
@@ -206,16 +212,14 @@ export class MainComponent implements OnInit {
         this.menu.showMenu();
         this.menu.showFooter();
         break;
-        default:
-        //if(!this.deviceService.isMobile) {
+      default:
+        this.menu.hideMenu();
+        this.menu.hideFooter();
+
+        setTimeout(() => {
           this.menu.hideMenu();
           this.menu.hideFooter();
-        
-          setTimeout(() => {
-            this.menu.hideMenu();
-            this.menu.hideFooter();
-          }, 1000);
-        //}
+        }, 1000);
         break;
     }
   }

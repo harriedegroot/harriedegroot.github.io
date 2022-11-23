@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { fadeAnimation } from 'app/helpers/animations';
+import gsap from 'gsap';
+import { loadFull } from 'tsparticles';
 import {
   Engine,
   MoveDirection,
-  OutMode,
+  OutMode
 } from 'tsparticles-engine';
-import { loadFull } from 'tsparticles';
-import gsap from 'gsap';
-import { fadeAnimation } from 'app/helpers/animations';
 
 @Component({
   selector: 'app-background',
@@ -35,7 +35,7 @@ export class BackgroundComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.fadeIn(8);
+    this.fadeIn(4);
   }
 
   private _fadeTween?: gsap.core.Tween;
