@@ -69,6 +69,7 @@ export class MainComponent implements OnInit {
   language!: string;
   scrollPercentage$ = this.scrollingService.scrollPercentage$;
   isScrolling$ = this.scrollingService.isScrolling$;
+  isMobile = this.deviceService.isMobile;
   
   constructor(
     @Inject(DOCUMENT) private document: Document,

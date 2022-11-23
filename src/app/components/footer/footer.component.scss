@@ -37,11 +37,13 @@
             text-decoration: none;
             white-space: nowrap;
 
-            &:hover,
+            &:hover {
+                color: $text-light;
+                text-decoration: underline;
+            }
             &:visited {
                 color: $text-light;
                 text-decoration: none;
-                text-decoration: underline;
             }
         }
     }
