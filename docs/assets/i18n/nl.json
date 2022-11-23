@@ -1,7 +1,7 @@
 {
     "page": {
         "title": "Harrie de Groot | Freelance Software Ontwikkelaar · Heerenveen Friesland",
-        "description": "Freelance Software Engineer met een achtergrond in Artificial Intelligence. Hands-on Software Architect met 15+ jaar ervaring. Beschikbaar voor full-stack, front-end en back-end maatwerk projecten.",
+        "description": "Freelance Software Engineer met een achtergrond in Kunstmatige Intelligentie. Hands-on Software Architect met 15+ jaar ervaring. Beschikbaar voor full-stack, front-end en back-end maatwerk projecten.",
         "keywords": "Freelance, ZZP, Software, Heerenveen, Friesland, ICT, Software Engineer, Software Architect, Software Developer, Software Ontwikkelaar, programmeur, coder, full-stack, back-end, front-end, 15+ jaar ervaring, maatwerk, MSc., A.I., AI, Artificial Intelligence, C#, .NET, TypeScript, Angular"
     },
     "menu": {
@@ -17,9 +17,9 @@
     },
     "about": {
         "title": "over",
-        "quote1": "Allround **Software Engineer** met een achtergrond in **Artificial Intelligence**. Professionele games-ontwikkelaar sinds 2007. **Games** werden **mobiele apps**. Sindsdien is dit geëvolueerd naar het bouwen van complexe platformonafhankelijke **web-applicaties**.",
-        "quote2": "Hands-on **Software Architect** beschikbaar voor **full-stack**, **back-end** en **front-end** opdrachten. Bekend met een breed scala aan platformen en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar zeker niet gebonden aan een specifieke programmeertaal of framework.",
-        "quote3": "**Domotica** liefhebber, die graag een rondje maakt op de **racefiets**. Vader van drie kinderen. Ten behoeve van de gemeenschap heb ik enkele **open source** projecten gepubliceerd."
+        "quote1": "Ervaren all-round **Software Engineer** met een achtergrond in **Kunstmatige Intelligentie**. Professionele games-ontwikkelaar sinds 2007. **Games** werden **mobiele apps**. Uiteindelijk is dit geëvolueerd naar het ontwikkelen van complexe platformonafhankelijke **web-applicaties**.",
+        "quote2": "Hands-on **Software Architect** voor **full-stack**, **back-end** en **front-end** opdrachten. Bekend met een breed scala aan platformen en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar zeker niet gebonden aan een specifieke programmeertaal of framework.",
+        "quote3": "Ik ben een **Domotica** liefhebber, die graag een rondje maakt op de **racefiets**. Vader van drie kinderen. In mijn vrije tijd heb ik enkele **open-source** projecten gepubliceerd."
     },
     "experience": {
         "title": "ervaring",
@@ -41,7 +41,7 @@
         "analytical": "analytisch",
         "analytical_text": "Goed in het vinden van **oplossingen** in complexe domeinen door dingen vanuit meerdere perspectieven te bekijken en **out-of-the-box te denken**",
         "generalist": "generalist",
-        "generalist_text": "Toepassen van expertise en **brede kennis** over vele domeinen en technologieën, daarbij **Patronen detecteren** en het grote geheel altijd in de gaten blijven houden",
+        "generalist_text": "Toepassen van expertise en **brede kennis** over vele domeinen en technologieën, daarbij **patronen detecteren** en het grote geheel altijd in de gaten blijven houden",
         "organised": "georganiseerd",
         "organised_text": "Gefocust blijven op de zaken die er het meest toe doen en **prioriteiten beheren** om waarde toe te voegen",
         "responsible": "verantwoordelijk",
@@ -53,6 +53,7 @@
         "quote": "De beste tool selecteren om de klus te klaren, dat is de uitdaging"
     },
     "contact": {
-        "title": "contact"
+        "title": "contact",
+        "text": "Harrie.DEV - Freelance Software Ontwikkelaar · Heerenveen Friesland"
     }
 }

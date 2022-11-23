@@ -1,4 +1,4 @@
-@mixin reveal($transform: translateY(50px)) {
+@mixin reveal($transform: translateY(30px)) {
     animation: fading 0.6s ease-out 0s both, translate 0.8s ease-out 0s both;
     @keyframes fading {
         0% { opacity: 0; }
