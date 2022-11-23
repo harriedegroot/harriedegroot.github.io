@@ -41,9 +41,12 @@
     display: block;
 }
 
-#contact {
-    background: black;
-    color: white;
+#contact-bar {
+    display: block;
+    padding-top: 20px;
+}
+
+#footer-info {
     text-align: center;
     padding: 15px;
     font-size: small;

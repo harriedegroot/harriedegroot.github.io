@@ -38,18 +38,22 @@
         <app-projects [experience]="profile?.experience"></app-projects>
     </app-section>
 
-    <app-section name="personality" class="app-section" [background]="'black'" [fullPage]="false"
+    <app-section name="personality" class="app-section" [background]="'black'"
         [title]="'personality.title' | translate" titleStyle="dark" [snap]="true" [snapDown]="0"
         (snap)="onSnap('personality')">
         <app-charasteristics></app-charasteristics>
     </app-section>
 
-    <!-- Contact navigation placeholder -->
-    <div id="contact">
-        <div class="kvk">
-            <span>KvK · 85525774</span>
-            <span>BTW · NL003428895B83</span>
+    <app-section id="footer" name="contact" class="app-section" [background]="'black'" [fullPage]="false" [snap]="false" [title]="'contact.title' | translate"
+        (snap)="onSnap('contact')">
+        <app-footer id="contact-bar" [wrap]="false" [category]="'footer'"></app-footer>
+        
+        <div id="footer-info">
+            <div class="kvk">
+                <span>KvK · 85525774</span>
+                <span>BTW · NL003428895B83</span>
+            </div>
+            <div class="text">@ {{year}} · {{ 'contact.text' | translate }}</div>
         </div>
-        <div class="text">@ {{year}} · {{ 'contact.text' | translate }}</div>
-    </div>
+    </app-section>
 </main>
