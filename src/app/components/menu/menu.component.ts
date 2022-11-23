@@ -127,11 +127,18 @@ export class MenuComponent implements OnInit {
     if(this.deviceService.isMobile) {
       this.showMenu();
       this.open = !this.open;
+      if(this.open) {
+        this.showFooter();
+      } else {
+        this.hideFooter();
+      }
     } else {
       if(this.menuShown) {
         this.hideMenu();
+        this.hideFooter();
       } else {
         this.showMenu();
+        this.showFooter();
       }
     }
   }
