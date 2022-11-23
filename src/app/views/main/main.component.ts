@@ -49,6 +49,7 @@ export class MainComponent implements OnInit {
   excludeExperience = ['Mustache Templates'];
   menuBackground: string = 'black';
   nextSectionVisible: boolean = true;
+  year = new Date().getFullYear();
   
   @ViewChild(BackgroundComponent, { static: false })
   background!: BackgroundComponent;

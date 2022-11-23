@@ -49,10 +49,22 @@
     font-size: small;
     font-style: italic;
 
-    >span {
-        padding: 0 10px;
+    .kvk {
+        opacity: 0.6;
+    }
+
+    .text {
+        opacity: 0.2;
+    }
+
+    > div {
+        margin-bottom: 15px;
+        > span {
+            padding: 0 10px;
+        }
     }
 }
+
 
 .next-section {
     position: absolute;
