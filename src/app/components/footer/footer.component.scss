@@ -1,64 +1,12 @@
-@import 'variables';
 
-.footer {
-    
-    display: flex;
-    gap: 3px;
+:host {
+    background: black;
+    display: block;
+    padding: 30px 10px;
 
-    width: 100%;
-    font-size: 1.25em;
-    background-color: $background-dark;
-    color: $text-light;
-
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: space-evenly;
-
-    &.wrap {
-        flex-flow: row wrap;
-    }
-    
-    line-height: 45px;
-
-    section {
-        display: block;
-        margin: 5px 0;
-        a {
-            padding: 5px 20px;
-
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-
-            color: $text-light;
-            text-decoration: none;
-            white-space: nowrap;
-
-            &:hover {
-                color: $text-light;
-                text-decoration: underline;
-            }
-            &:visited {
-                color: $text-light;
-                text-decoration: none;
-            }
-        }
-    }
 }
-
-@media screen and (max-width: $mobile-width) {
-    .footer {
-        justify-content: center;
-        flex-direction: column;
-
-        &.allowHideText {
-            justify-content: space-evenly;
-            a > span {
-                display: none;
-            }
-        }
-    }
+.text {
+    text-align: center;
+    opacity: 0.2;
+    font-size: smaller;
 }

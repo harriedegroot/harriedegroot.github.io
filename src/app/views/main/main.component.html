@@ -35,34 +35,15 @@
         <app-projects [experience]="profile?.experience"></app-projects>
     </app-section>
 
-    <app-section name="personality" class="app-section" [background]="'black'"
-        [title]="'personality.title' | translate" titleStyle="dark" [snap]="true" [snapDown]="0"
-        (snap)="onSnap('personality')">
+    <app-section name="personality" class="app-section" [background]="'black'" [title]="'personality.title' | translate"
+        titleStyle="dark" [snap]="true" [snapDown]="0" (snap)="onSnap('personality')">
         <app-charasteristics></app-charasteristics>
     </app-section>
 
-    <app-section id="footer" name="contact" class="app-section" [background]="'black'" [fullPage]="false" [snap]="isMobile" [title]="'contact.title' | translate"
-        (snap)="onSnap('contact')" [snapDown]="0">
-
-        <app-footer id="contact-bar" [wrap]="false" [category]="'footer'"></app-footer>
-
-        <a id="address-link" href="https://goo.gl/maps/bVBDbHnLFLgR2v1n8" target="_blank">
-            <div id="address" class="footer-info">
-                <mat-icon>maps</mat-icon>
-                <span>Aletta Jacobsweg 18</span>
-                <span> · </span>
-                <span>8448 SC</span>
-                <span> · </span>
-                <span>Heerenveen</span>
-            </div>
-        </a>
-
-        <div class="footer-info">
-            <div class="kvk">
-                <span>KvK · 85525774</span>
-                <span>BTW · NL003428895B83</span>
-            </div>
-            <div class="text">@ {{year}} · {{ 'contact.text' | translate }}</div>
-        </div>
+    <app-section name="contact" class="app-section" [background]="'black'" [fullPage]="false"
+        [snap]="isMobile" [title]="'contact.title' | translate" (snap)="onSnap('contact')" [snapDown]="0">
+        <app-contact></app-contact>
     </app-section>
+
 </main>
+<app-footer id="footer"></app-footer>

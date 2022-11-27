@@ -25,6 +25,7 @@ import { NgxTypedJsModule } from 'ngx-typed-js';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackgroundComponent } from './components/background/background.component';
+import { ContactBarComponent } from './components/contact-bar/contact-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
@@ -36,6 +37,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { VisibleDirective } from './directives/visible.directive';
 import { AboutComponent } from './views/about/about.component';
 import { CharasteristicsComponent } from './views/charasteristics/charasteristics.component';
+import { ContactComponent } from './views/contact/contact.component';
 import { ExperienceComponent } from './views/experience/experience.component';
 import { HomeComponent } from './views/home/home.component';
 import { MainComponent } from './views/main/main.component';
@@ -85,6 +87,8 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
     TimelineMarkerComponent,
     ProjectCardComponent,
     VisibleDirective,
+    ContactComponent,
+    ContactBarComponent,
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { faGithub, faLinkedin, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -10,16 +7,8 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 })
 export class FooterComponent implements OnInit {
 
-  emailIcon = faEnvelope as IconProp;
-  phoneIcon = faPhone as IconProp;
-  LinkedInIcon = faLinkedin as IconProp;
-  GitHubIcon = faGithub as IconProp;
-  WhatsAppIcon = faWhatsapp as IconProp;
-
-  @Input() public wrap: boolean = false;
-  @Input() public allowHideText: boolean = false;
-  @Input() public category: string = "footer";
-
+  year = new Date().getFullYear();
+  
   constructor() { }
 
   ngOnInit(): void {
