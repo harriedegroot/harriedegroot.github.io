@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'mixins';
 
 .content {
     position: absolute;
@@ -14,8 +15,9 @@
     .container {
         display: flex;
         align-items: center;
-        height: 100%;
         flex-grow: 1;
+        flex-flow: column nowrap;
+        justify-content: space-evenly;
 
         .contact {
             display: flex;
@@ -81,12 +83,6 @@
                     }
 
                     border-radius: 7px;
-                    // transition: border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
-                    // &:hover {
-                    //     border-radius: 7px;
-                    //     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-                    //     transform: scale(1.1) !important;
-                    // }
                 }
 
                 .typed {
@@ -109,6 +105,34 @@
                         font-size: 28px;
                         font-weight: 300;
                     }
+                }
+            }
+        }
+
+        .next-section {
+            color: $text-tertairy;
+            font-size: 38px;
+            font-weight: 100;
+            text-align: center;
+            
+            transition: opacity .2s ease-in;
+            &.hidden {
+                opacity: 0;
+            }
+
+            &.visible {
+                .icon {
+                    @include fadeIn(0.5s, 0, 0.4, 3.5s);
+                    
+                    display: block;
+                    transform: scale(2);
+                    margin: 0 auto;
+                }
+            
+                animation: yo-yo 2s ease-out 4s infinite alternate;
+                @keyframes yo-yo {
+                    0% { transform: translateY(0); }
+                    100% { transform: translateY(-15px); }
                 }
             }
         }
@@ -136,5 +160,11 @@
         .location {
             font-size: 24px !important;
         }
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .next-section {
+        display: none;
     }
 }

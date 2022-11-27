@@ -13,7 +13,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import * as moment from 'moment';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
-import { filter, take } from 'rxjs';
+import { filter } from 'rxjs';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
@@ -45,7 +45,6 @@ export class MainComponent implements OnInit {
 
   excludeExperience = ['Mustache Templates'];
   menuBackground: string = 'black';
-  nextSectionVisible: boolean = true;
   year = new Date().getFullYear();
 
   @ViewChild(BackgroundComponent, { static: false })
@@ -121,13 +120,6 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     gsap.registerPlugin(ScrollTrigger);
     this.initLanguage();
-
-    this.scrollingService.scrollPosition$
-      .pipe(
-        filter((p) => p > 100),
-        take(1)
-      )
-      .subscribe((pos) => (this.nextSectionVisible = false));
   }
 
   private initLanguage() {

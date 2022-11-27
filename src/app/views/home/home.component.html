@@ -26,5 +26,8 @@
                 </div>
             </div>
         </section>
+        <button class="next-section" (click)="onNextSection()" mat-stroked-button [class.visible]="nextSectionVisible" [class.hidden]="!nextSectionVisible">
+            <mat-icon class="icon" fontIcon="keyboard_double_arrow_down">keyboard_double_arrow_down</mat-icon>
+        </button>
     </div>
 </div>

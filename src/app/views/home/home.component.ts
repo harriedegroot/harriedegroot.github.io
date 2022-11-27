@@ -1,7 +1,9 @@
-import { Component, Input, NgZone, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, NgZone, OnInit, Output } from '@angular/core';
 
 import { Profile } from 'app/models/profile.model';
+import { ScrollingService } from 'app/services/scrolling.service';
 import { gsap } from 'gsap';
+import { filter, take } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +11,7 @@ import { gsap } from 'gsap';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+
   headlineCursor: boolean = true;
   locationCursor: boolean = false;
 
@@ -28,7 +31,10 @@ export class HomeComponent implements OnInit {
   @Input() public sticky: boolean = true;
   visible: boolean = true;
 
-  constructor(private zone: NgZone) {}
+  @Output('next') public readonly next$ = new EventEmitter<void>();
+  nextSectionVisible: boolean = true;
+
+  constructor(private zone: NgZone,  private scrollingService: ScrollingService) {}
 
   ngOnInit(): void {
     setTimeout(
@@ -56,5 +62,16 @@ export class HomeComponent implements OnInit {
       duration: 0.5,
       delay: 2,
     });
+
+    this.scrollingService.scrollPosition$
+      .pipe(
+        filter((p) => p > 100),
+        take(1)
+      )
+      .subscribe((pos) => (this.nextSectionVisible = false));
+  }
+
+  onNextSection() {
+    this.next$.emit();
   }
 }
