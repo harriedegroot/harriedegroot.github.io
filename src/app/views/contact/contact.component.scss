@@ -1,46 +1,16 @@
 @import 'variables';
 
+$footer-height: 120px;
+$company-info-height: 25px;
+
 #contact-bar {
-    display: block;
-    padding-top: 10px;
-}
 
-#address-link {
-    color: $text-light;
-    text-decoration: none;
-    white-space: nowrap;
-
-    &:hover,
-    &:focus,
-    &:visited {
-        color: $text-light;
-        text-decoration: none;
-    }
-}
-
-#address {
-    font-size: large;
-    font-weight: lighter;
+    min-height: calc(100vh - ($title-height + $footer-height + $company-info-height));
+    height: calc(100% - ($title-height + $footer-height + $company-info-height));
 
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 20px;
-
-    >* {
-        padding: 0 5px;
-    }
-
-    >span {
-        border-bottom: 1px solid transparent;
-    }
-
-    &:hover {
-        >span {
-            border-bottom: 1px solid $text-light;
-        }
-    }
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .company-info {
@@ -50,20 +20,6 @@
     font-style: italic;
     opacity: 0.6;
     font-size: small;
-}
 
-@media screen and (max-width: $mobile-width) {
-    #address {
-        flex-flow: column wrap;
-
-        mat-icon {
-            margin: 0 20px 20px 20px;
-        }
-
-        &:hover {
-            >span {
-                border-bottom: 1px solid transparent;
-            }
-        }
-    }
+    height: $company-info-height;
 }

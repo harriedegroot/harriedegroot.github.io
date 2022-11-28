@@ -1,63 +1,169 @@
 @import 'variables';
+@import 'mixins';
 
-.bar {
-    
-    display: flex;
-    gap: 3px;
+.container {
 
-    width: 100%;
-    font-size: 1.25em;
-    background-color: $background-dark;
-    color: $text-light;
+    &.cards {
 
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: stretch;
-    justify-content: space-evenly;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        flex-grow: 1;
+        margin: 10px;
 
-    &.wrap {
-        flex-flow: row wrap;
-    }
-    
-    line-height: 45px;
+        .bar {
+            flex-flow: row wrap;
+            justify-content: space-evenly;
 
-    section {
-        display: block;
-        margin: 5px 0;
-        a {
-            padding: 5px 20px;
+            flex-grow: 1;
+            gap: 30px;
+            max-width: 1000px;
+            background: none;
 
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+            section {
 
-            color: $text-light;
-            text-decoration: none;
-            white-space: nowrap;
+                display: flex;
+                justify-content: space-evenly;
+                flex-flow: column wrap;
+                overflow: hidden;
 
-            &:hover {
-                color: $text-light;
-                text-decoration: underline;
+                background: black;
+                border-radius: 7px;
+
+                width: 100%;
+                max-width: 455px;
+                padding: 10px;
+                margin: 0;
+
+                .title,
+                .account {
+                    display: block;
+                }
+
+                .platform {
+                    display: none;
+                }
+
+                .title {
+                    font-size: 28px;
+                    font-weight: 100;
+                    padding: 10px 0;
+
+                    color: $accent;
+                    width: 100%;
+                    text-align: center;
+                }
+
+                >a {
+                    display: flex;
+                    flex-flow: column nowrap;
+                    width: 100%;
+                    padding: 0;
+
+                    fa-icon {
+                        font-size: 50px;
+                    }
+
+                    >span {
+                        margin-bottom: 10px;
+                    }
+                }
             }
-            &:visited {
+        }
+    }
+
+    .bar {
+
+        display: flex;
+        gap: 3px;
+
+        width: 100%;
+        font-size: 1.25em;
+        background-color: $background-dark;
+        color: $text-light;
+
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: stretch;
+        justify-content: space-evenly;
+
+        line-height: 45px;
+
+        &.wrap {
+            flex-flow: row wrap;
+        }
+
+        section {
+            display: block;
+            margin: 5px 0;
+
+            .title,
+            .account {
+                display: none;
+            }
+
+            a {
+                padding: 5px 20px;
+
+                display: flex;
+                flex-flow: row nowrap;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+
                 color: $text-light;
                 text-decoration: none;
+                white-space: nowrap;
+
+                &:hover {
+                    color: $text-light;
+                    text-decoration: underline;
+                }
+
+                &:visited {
+                    color: $text-light;
+                    text-decoration: none;
+                }
             }
         }
     }
 }
 
 @media screen and (max-width: $mobile-width) {
-    .bar {
-        justify-content: center;
-        flex-direction: column;
+    .container {
+        .bar {
+            justify-content: center;
+            flex-direction: column;
 
-        &.allowHideText {
-            justify-content: space-evenly;
-            a > span {
-                display: none;
+            &.allowHideText {
+                justify-content: space-evenly;
+
+                a>span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .address {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+
+        >span {
+            display: block;
+            max-height: 22px;
+        }
+
+        padding-bottom: 20px;
+    }
+
+    .container {
+        &.cards {
+            .bar {
+                gap: 7px;
             }
         }
     }

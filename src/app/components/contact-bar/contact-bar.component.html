@@ -1,36 +1,60 @@
-<div class="bar" [class.wrap]="wrap" [class.allowHideText]="allowHideText">
-    <section class="email">
-        <a href="mailto:info@harriedegroot.com" target="_blank" [gaCategory]="category"
-            gaEvent="{{category}}_click_email">
-            <fa-icon [icon]="emailIcon"></fa-icon>
-            <span>info@harriedegroot.com</span>
-        </a>
-    </section>
-    <section class="mobile">
-        <a href="tel:0031652437812" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_phone">
-            <fa-icon [icon]="phoneIcon"></fa-icon>
-            <span>+31 (0)6 52 43 78 12</span>
-        </a>
-    </section>
-    <section class="Whatsapp">
-        <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank" [gaCategory]="category"
-            gaEvent="{{category}}_click_whatsapp">
-            <fa-icon [icon]="WhatsAppIcon"></fa-icon>
-            <span>WhatsApp</span>
-        </a>
-    </section>
-    <section class="LinkedIn">
-        <a href="https://linkedin.com/in/harriedegroot" target="_blank" [gaCategory]="category"
-            gaEvent="{{category}}_click_linkedin">
-            <fa-icon [icon]="LinkedInIcon"></fa-icon>
-            <span>LinkedIn</span>
-        </a>
-    </section>
-    <section class="GitHub">
-        <a href="https://github.com/harriedegroot" target="_blank" [gaCategory]="category"
-            gaEvent="{{category}}_click_github">
-            <fa-icon [icon]="GitHubIcon"></fa-icon>
-            <span>GitHub</span>
-        </a>
-    </section>
+<div class="container" [class.cards]="cards">
+    <div class="bar" [class.wrap]="wrap" [class.allowHideText]="allowHideText">
+        <section class="email">
+            <h4 class="title" translate>E-mail</h4>
+            <a href="mailto:info@harriedegroot.com" target="_blank" [gaCategory]="category"
+                gaEvent="{{category}}_click_email">
+                <fa-icon [icon]="emailIcon"></fa-icon>
+                <span>info@harriedegroot.com</span>
+            </a>
+        </section>
+        <section class="mobile">
+            <h4 class="title" translate>Phone</h4>
+            <a href="tel:0031652437812" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_phone">
+                <fa-icon [icon]="phoneIcon"></fa-icon>
+                <span>+31 (0)6 52 43 78 12</span>
+            </a>
+        </section>
+        <section class="Whatsapp">
+            <h4 class="title" translate>WhatsApp</h4>
+            <a href="https://api.whatsapp.com/send?phone=31652437812" target="_blank" [gaCategory]="category"
+                gaEvent="{{category}}_click_whatsapp">
+                <fa-icon [icon]="WhatsAppIcon"></fa-icon>
+                <span class="platform">WhatsApp</span>
+                <span class="account">Harrie de Groot</span>
+            </a>
+        </section>
+        <section class="address" *ngIf="showAddress">
+            <h4 class="title" translate>Address</h4>
+            <a class="address-link" href="https://goo.gl/maps/bVBDbHnLFLgR2v1n8" target="_blank">
+                <fa-icon [icon]="MapsIcon"></fa-icon>
+                <span class="address">
+                    <span>Aletta Jacobsweg 18</span>
+                    <span> · </span>
+                    <span>8448 SC</span>
+                    <span> · </span>
+                    <span>Heerenveen</span>
+                </span>
+            </a>
+        </section>
+        <section class="LinkedIn">
+            <h4 class="title" translate>LinkedIn</h4>
+            <a href="https://linkedin.com/in/harriedegroot" target="_blank" [gaCategory]="category"
+                gaEvent="{{category}}_click_linkedin">
+                <fa-icon [icon]="LinkedInIcon"></fa-icon>
+                <span class="platform">LinkedIn</span>
+                <span class="account">linkedin.com/in/harriedegroot</span>
+            </a>
+        </section>
+        <section class="GitHub">
+            <h4 class="title" translate>GitHub</h4>
+            <a href="https://github.com/harriedegroot" target="_blank" [gaCategory]="category"
+                gaEvent="{{category}}_click_github">
+                <fa-icon [icon]="GitHubIcon"></fa-icon>
+                <span class="platform">GitHub</span>
+                <span class="account">github.com/harriedegroot</span>
+            </a>
+        </section>
+        
+    </div>
 </div>
