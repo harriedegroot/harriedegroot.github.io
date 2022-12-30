@@ -16,9 +16,9 @@
     "home": {},
     "about": {
         "title": "about",
-        "quote1": "All-round **Software Engineer** with a background in **Artificial Intelligence**. Started as professional game developer in 2007. **Games** became **mobile apps**. Over time, this evolved into building complex cross-platform **web applications**.",
-        "quote2": "Hands-on **Software Architect** for **full-stack**, **back-end** and **front-end** opportunities. Familiar with a wide variety of platforms and technologies. Specialised in **C# .NET** and **Angular Typescript**, but not attached to a single framework or programming language.",
-        "quote3": "I'm a **domotics** enthousiast, **cycling** addict and father of three. Published some **open source** projects to help the community."
+        "quote1": "All-round **Software Engineer** with a background in **Artificial Intelligence**. Started as a professional game developer in 2007. **Games** became **mobile apps**. Over time, this evolved into building complex cross-platform **web applications**.",
+        "quote2": "Hands-on **Software Architect** for **full-stack**, **back-end** and **front-end** projects. Experienced with a wide variety of platforms and technologies. Capable of quickly learning and utilizing new technologies. Specialised in **C# .NET** and **Angular Typescript**, but not attached to a single framework or programming language. Committed to delivering valuable and **high-quality** solutions.",
+        "quote3": "I'm a **domotics** enthousiast, **cycling** addict and father of three who likes contributing to the community through **open source** projects and by sharing knowledge and expertise to help others."
     },
     "experience": {
         "title": "experience",
@@ -38,18 +38,18 @@
     "personality": {
         "title": "personality",
         "analytical": "analytical",
-        "analytical_text": "Skilled at finding **solutions** in complex domains by looking at things from multiple perspectives and **thinking out-of-the-box**",
+        "analytical_text": "Skilled at finding **solutions** in complex domains by approaching them from multiple perspectives and **thinking out-of-the-box**",
         "generalist": "generalist",
         "generalist_text": "Using my expertise and **broad knowledge** across many domains and technologies to **detect patterns** and see the big picture",
         "organised": "organised",
-        "organised_text": "Stay focused on the areas that matter most and **manage priorities** to add value to the business and make future proof decisions",
+        "organised_text": "Stay focused on driving value for the business by managing priorities and make future-proof decisions to ensure long-term success",
         "responsible": "responsible",
-        "responsible_text": "Can make difficult choices and keep my **promises** to getting things done",
+        "responsible_text": "Can make difficult choices and deliver on commitments as a reliable team member who contributes to the organization's success",
         "studious": "studious",
-        "studious_text": "Always embracing **new technologies** and put them in practice at the appropriate use cases",
+        "studious_text": "Always embracing new technologies and apply them in appropriate use cases to deliver innovative solutions",
         "critical": "critical",
-        "critical_text": "Aiming for the best with an **open mind** ...",
-        "quote": "mastering a new tool is not the hard part, it's selecting the best tool that gets the job done"
+        "critical_text": "Critical thinker who always aims for the best and approaches challenges with an open mind to deliver exceptional results",
+        "quote": "Mastering a new tool is not the hard part, it's selecting the best tool that gets the job done"
     },
     "contact": {
         "title": "Contact",
