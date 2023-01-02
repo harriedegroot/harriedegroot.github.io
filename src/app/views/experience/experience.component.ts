@@ -11,7 +11,7 @@ import {
 import { fadeAnimation, listAnimation } from 'app/helpers/animations';
 import { getMonthDifference, toDate } from 'app/helpers/date';
 import { Experience, Project, Skill } from 'app/models/profile.model';
-import * as _ from 'lodash';
+import { flatten, min, reverse, sortBy } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { debounceTime, fromEvent, Subject, takeUntil } from 'rxjs';
 
@@ -118,9 +118,9 @@ export class ExperienceComponent implements OnInit, OnDestroy {
 
   private initExperience() {
     // min year
-    const projects = _.flatten(this.experience?.map((e) => e.projects)) ?? [];
+    const projects = flatten(this.experience?.map((e) => e.projects)) ?? [];
     this.minYear =
-      _.min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
+      min(projects.map((p) => toDate(p?.timespan?.from)))?.getFullYear() ??
       this.minYear;
 
     this.refresh(false);
@@ -149,7 +149,7 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     const skills = new Map<string, { skill: Skill; minMax: MinMax<Date> }>();
     const enabled = new Set<string>();
     if (this.experience) {
-      const projects = _.flatten(this.experience.map((e) => e.projects));
+      const projects = flatten(this.experience.map((e) => e.projects));
       for (let project of projects) {
         if (!project || !project.timespan) continue;
         for (let tech of project.technologies ?? []) {
@@ -194,8 +194,8 @@ export class ExperienceComponent implements OnInit, OnDestroy {
     }
 
     this.categories.forEach((value, key) => {
-      const sorted = _.sortBy(Array.from(value), (skill) => skill.proficiency);
-      return this.sorted.set(key, _.reverse(sorted));
+      const sorted = sortBy(Array.from(value), (skill) => skill.proficiency);
+      return this.sorted.set(key, reverse(sorted));
     });
 
     this.cdRef.detectChanges();

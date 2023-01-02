@@ -4,15 +4,15 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
-import { faLocationPin, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faArrowUpRightFromSquare, faLocationPin } from '@fortawesome/free-solid-svg-icons';
 import { EmploymentType, Project, Skill } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
-import * as _ from 'lodash';
-import { Subject, takeUntil } from 'rxjs';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { isNumber, reverse, sortBy } from 'lodash';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-project-card',
@@ -45,17 +45,17 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   private _technologies?: Skill[];
   get technologies(): Skill[] {
     if (!this._technologies && this.project?.technologies) {
-      this._technologies = _.sortBy(
+      this._technologies = sortBy(
         this.project.technologies,
         (s) => s.proficiency
       );
-      this._technologies = _.reverse(this._technologies);
+      this._technologies = reverse(this._technologies);
     }
     return this._technologies ?? [];
   }
 
   get typeLabel(): string {
-    return _.isNumber(this.project.role?.type)
+    return isNumber(this.project.role?.type)
       ? (EmploymentType[this.project.role?.type ?? -1] ?? '')
       : this.project.role?.type ?? '';
   }

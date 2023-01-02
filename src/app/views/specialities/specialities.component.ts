@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EChartsOption, SeriesOption } from 'echarts';
-import * as _ from 'lodash';
+import { cloneDeep } from 'lodash';
 
 const GAUGE: SeriesOption = {
   type: 'gauge',
@@ -122,7 +122,7 @@ export class SpecialitiesComponent implements OnInit {
 
 
   getGaugeOptions(specialty: any): EChartsOption {
-    const serie = _.cloneDeep(GAUGE);
+    const serie = cloneDeep(GAUGE);
     serie.data = [specialty];
     return { series: [serie]};
   }

@@ -1,9 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { timespan, toDate, toMoment } from 'app/helpers/date';
+import { Component, Input, OnInit } from '@angular/core';
+import { timespan, toMoment } from 'app/helpers/date';
 import { Experience, Project, TimeSpan } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
-import { timeStamp } from 'console';
-import * as _ from 'lodash';
+import { first, flatten, reverse, sortBy } from 'lodash';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 
@@ -53,18 +52,18 @@ export class ProjectsComponent implements OnInit {
               ...p,
               company: p.company ?? e.company,
               timespan: timespan(p.timespan),
-              role: p.role ?? _.first(e.roles ?? []),
+              role: p.role ?? first(e.roles ?? []),
             } as Project)
         )
       ) ?? [];
 
-    let list = _.flatten(projects);
-    list = _.sortBy(
+    let list = flatten(projects);
+    list = sortBy(
       list,
       [(p) => p.timespan?.to, (p) => p.timespan?.from],
       ['desc']
     );
-    this.projects = _.reverse(list);
+    this.projects = reverse(list);
   }
 
   nextYear(idx: number, date?: Date | string): boolean {

@@ -10,7 +10,7 @@ import { getMonthDifference, timespan, toDate } from 'app/helpers/date';
 import { wait } from 'app/helpers/wait';
 import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
 import { ECharts, EChartsOption } from 'echarts';
-import * as _ from 'lodash';
+import { flatMap, flatten, isNil, max, maxBy, min, orderBy, uniq } from 'lodash';
 import * as moment from 'moment';
 import { fromEvent, Subject, takeUntil } from 'rxjs';
 
@@ -194,9 +194,9 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private _initSource(): void {
-    const skills: SkillPoint[] = _.flatten(
+    const skills: SkillPoint[] = flatten(
       this._experience?.map((e) =>
-        _.flatMap(
+        flatMap(
           e.projects
             ?.filter((p) => p.timespan && p.technologies?.length)
             ?.map((p) => { p.timespan = timespan(p.timespan); return p; })
@@ -212,7 +212,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     ).filter((x) => x !== undefined) as any;
 
     const filtered = skills.map((s) => s.skill.tags).filter((x) => x);
-    let tags = _.orderBy(_.uniq(_.flatten(filtered)), i => i?.toLowerCase()) as string[];
+    let tags = orderBy(uniq(flatten(filtered)), i => i?.toLowerCase()) as string[];
     if (this.hiddenTags) {
       tags = tags.filter((x) => !this.hiddenTags.includes(x));
     }
@@ -222,8 +222,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       ...tags.filter(t => !this.isTagSelected(t)),
     ]
 
-    let startDate = _.min(skills.map((s) => s.timespan.from));
-    let endDate = _.max(skills.map((s) => s.timespan.to));
+    let startDate = min(skills.map((s) => s.timespan.from));
+    let endDate = max(skills.map((s) => s.timespan.to));
 
     if (!startDate || !endDate) return;
 
@@ -342,7 +342,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     }
 
-    date = date ?? _.maxBy(data, 'date')?.date;
+    date = date ?? maxBy(data, 'date')?.date;
     return data.filter(
       (d) =>
         d.value > 0 ||
@@ -510,7 +510,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public onSliderChange(value?: number | null) {
-    if (_.isNil(value)) return;
+    if (isNil(value)) return;
 
     this.pause();
     this._redraw = value < this.currentStep;
@@ -522,6 +522,5 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._destroyed = true;
     this.destroyed$.next();
     this.destroyed$.complete();
-
   }
 }

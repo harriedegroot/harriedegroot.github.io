@@ -1,5 +1,5 @@
 import { TimeSpan } from "app/models/profile.model";
-import * as _ from "lodash";
+import { isDate } from "lodash";
 import * as moment from "moment";
 
 export function toMoment(value: Date | string | null | undefined): moment.Moment {
@@ -8,7 +8,7 @@ export function toMoment(value: Date | string | null | undefined): moment.Moment
 }
 
 export function toDate(value: Date | string | null | undefined): Date {
-  if(_.isDate(value)) return value;
+  if(isDate(value)) return value;
   if(!value || value === 'NOW') return new Date();
   return new Date(value);
 }
