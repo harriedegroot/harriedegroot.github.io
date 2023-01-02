@@ -130,10 +130,7 @@
                 }
             
                 animation: yo-yo 2s ease-out 4s infinite alternate;
-                @keyframes yo-yo {
-                    0% { transform: translateY(0); }
-                    100% { transform: translateY(-15px); }
-                }
+                @include yoyo;
             }
         }
     }

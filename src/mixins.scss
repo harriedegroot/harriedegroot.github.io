@@ -17,3 +17,10 @@
         100% { opacity: $to; }
     }
 }
+
+@mixin yoyo() {
+    @keyframes yo-yo {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-15px); }
+    }
+}
