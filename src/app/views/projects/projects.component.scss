@@ -88,7 +88,7 @@ app-timeline-content {
 :host::ng-deep {
     .left {
         app-project-card {
-            .mat-chip-listbox-wrapper {
+            .mdc-evolution-chip-set__chips {
                 justify-content: flex-end;
             }
         }
