@@ -1,7 +1,7 @@
 <div class="container" [class.cards]="cards">
     <div class="bar" [class.wrap]="wrap" [class.allowHideText]="allowHideText">
         <section class="email">
-            <h4 class="title" translate>E-mail</h4>
+            <h4 class="title" translate>contact.email</h4>
             <a href="mailto:info@harriedegroot.com" target="_blank" [gaCategory]="category"
                 gaEvent="{{category}}_click_email">
                 <fa-icon [icon]="emailIcon"></fa-icon>
@@ -9,7 +9,7 @@
             </a>
         </section>
         <section class="mobile">
-            <h4 class="title" translate>Phone</h4>
+            <h4 class="title" translate>contact.phone</h4>
             <a href="tel:0031652437812" target="_blank" [gaCategory]="category" gaEvent="{{category}}_click_phone">
                 <fa-icon [icon]="phoneIcon"></fa-icon>
                 <span>+31 (0)6 52 43 78 12</span>
@@ -25,7 +25,7 @@
             </a>
         </section>
         <section class="address" *ngIf="showAddress">
-            <h4 class="title" translate>Address</h4>
+            <h4 class="title" translate>contact.address</h4>
             <a class="address-link" href="https://goo.gl/maps/bVBDbHnLFLgR2v1n8" target="_blank">
                 <fa-icon [icon]="MapsIcon"></fa-icon>
                 <span class="address">

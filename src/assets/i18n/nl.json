@@ -54,6 +54,9 @@
     },
     "contact": {
         "title": "Contact",
-        "text": "Harrie.DEV - Freelance Software Ontwikkelaar · Heerenveen Friesland"
+        "text": "Harrie.DEV - Freelance Software Ontwikkelaar · Heerenveen Friesland",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "address": "Adres"
     }
 }
