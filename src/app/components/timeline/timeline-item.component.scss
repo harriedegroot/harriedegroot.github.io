@@ -62,6 +62,13 @@ $timeline-content-bottom: 20px;
         position: absolute;
         top: $timeline-indicator-border-width;
     }
+
+    &.left fa-icon {
+        transform: translate(7px, 3px) scale(1.5, 1.2);
+    }
+    &.right fa-icon {
+        transform: translate(-7px, 3px) scale(1.5, 1.2);
+    }
 }
 
 .content-container {
