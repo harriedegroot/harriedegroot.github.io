@@ -18,8 +18,8 @@
     "about": {
         "title": "over",
         "quote1": "Ervaren all-round **Software Engineer** met een achtergrond in **Kunstmatige Intelligentie**. Professionele games-ontwikkelaar sinds 2007. **Games** werden **mobiele apps**. Uiteindelijk is dit geëvolueerd naar het ontwikkelen van complexe platformonafhankelijke **web-applicaties**.",
-        "quote2": "Hands-on **Software Architect** voor **full-stack**, **back-end** en **front-end** opdrachten. Bekend met een breed scala aan platformen en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar zeker niet gebonden aan een specifieke programmeertaal of framework.",
-        "quote3": "Ik ben een **Domotica** liefhebber, die graag een rondje maakt op de **racefiets**. Vader van drie kinderen. In mijn vrije tijd heb ik enkele **open-source** projecten gepubliceerd."
+        "quote2": "Hands-on **Software Architect** voor **full-stack**, **back-end** en **front-end** opdrachten. Ervaring met een breed scala aan platformen en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar zeker niet gebonden aan een specifieke programmeertaal of framework.",
+        "quote3": "Ik ben een **Domotica** liefhebber, die graag een rondje maakt op de **racefiets**. Vader van drie kinderen. In mijn vrije tijd heb ik enkele **open-source** projecten gepubliceerd en probeer ik anderen te helpen door mijn kennis en ervaring te delen."
     },
     "experience": {
         "title": "ervaring",
@@ -43,13 +43,13 @@
         "generalist": "generalist",
         "generalist_text": "Toepassen van expertise en **brede kennis** over vele domeinen en technologieën, daarbij **patronen detecteren** en het grote geheel altijd in de gaten blijven houden",
         "organised": "georganiseerd",
-        "organised_text": "Gefocust blijven op de zaken die er het meest toe doen en **prioriteiten beheren** om waarde toe te voegen",
+        "organised_text": "Gefocust blijven op de zaken die er het meest toe doen door **prioriteiten** te **beheren** en keuzes te maken die waarde toevoegen voor de lange termijn",
         "responsible": "verantwoordelijk",
-        "responsible_text": "Moeilijke keuzes kunnen maken, **beloftes** waar maken en problemen oplossen",
+        "responsible_text": "Als betrouwbaar teamlid moeilijke keuzes kunnen maken, **beloftes** waar maken en problemen oplossen",
         "studious": "leergierig",
-        "studious_text": "Altijd **nieuwe technologieën** omarmen en in de praktijk brengen bij passende use-cases",
+        "studious_text": "Altijd **nieuwe technologieën** omarmen en in de praktijk brengen bij passende use-cases voor innovative oplossingen.",
         "critical": "kritisch",
-        "critical_text": "Open-minded streven naar het beste resultaat...",
+        "critical_text": "Pakt uitdagingen aan door altijd open-minded te streven naar het beste resultaat",
         "quote": "De beste tool selecteren om de klus te klaren, dat is de uitdaging"
     },
     "contact": {
