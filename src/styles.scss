@@ -16,3 +16,21 @@ markdown {
     font-weight: normal;
   }
 }
+
+
+.mat-mdc-slider {
+  .mdc-slider__track--inactive {
+    background-color: white !important;
+  }
+  .mdc-slider__track--active_fill {
+    border-color: white !important;
+  }
+  .mdc-slider__thumb-knob {
+    background-color: white !important;
+    border-color: white !important;
+  }
+
+  .mdc-slider__tick-mark--inactive {
+    background-color: rgba(255, 255, 255, .5) !important;
+  }
+}

@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { fadeAnimation } from 'app/helpers/animations';
 import { DeviceService } from 'app/services/device.service';
 import { ScrollingService } from 'app/services/scrolling.service';
@@ -38,7 +36,6 @@ export class MenuComponent implements OnInit {
   @Output('click') public readonly click$ = new EventEmitter<string>();
   @Output('lang') public readonly language$ = new EventEmitter<string>();
 
-  hamburgerIcon = faBars as IconProp;
   hoveringLangButton = false;
   
   private _hoveringMenu = false;

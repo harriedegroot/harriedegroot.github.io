@@ -1,6 +1,6 @@
 <button id="hamburger" class="hamburger button left" mat-icon-button [class.visible]="hamburger" [autofocus]="false"
-    (click)="onHamburgerClick($event)" title="select language">
-    <fa-icon [icon]="hamburgerIcon"></fa-icon>
+    (click)="onHamburgerClick($event)" title="menu">
+    <mat-icon>menu</mat-icon>
 </button>
 <div class="menu" [class.fixed]="fixed" [class.show]="menuShown" [class.hide]="!menuShown"
     (mouseenter)="hoveringMenu=true" (mouseleave)="hoveringMenu=false">
@@ -14,15 +14,17 @@
         </ng-container>
     </nav>
 
-    <button class="lang button right" mat-icon-button [class.visible]="langButton" *ngIf="selectedLanguage"
+    <button class="lang button right" mat-button [class.visible]="langButton" *ngIf="selectedLanguage"
         (mouseover)="hoveringLangButton=true" (mouseout)="hoveringLangButton=false" [autofocus]="false"
-        (click)="onLanguageClick($event)" title="menu">
-        <span class="text" [class.show]="showOtherLanguage" [class.hide]="!showOtherLanguage">
-            {{ otherLanguage }}
-        </span>
-        <span class="text" [class.show]="!showOtherLanguage" [class.hide]="showOtherLanguage">
-            {{ selectedLanguage }}
-        </span>
+        (click)="onLanguageClick($event)" title="select language">
+        <div class="text-container">
+            <span class="text" [class.show]="showOtherLanguage" [class.hide]="!showOtherLanguage">
+                {{ otherLanguage }}
+            </span>
+            <span class="text" [class.show]="!showOtherLanguage" [class.hide]="showOtherLanguage">
+                {{ selectedLanguage }}
+            </span>
+        </div>
     </button>
 
 </div>

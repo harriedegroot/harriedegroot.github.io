@@ -2,14 +2,15 @@
     <div class="title" [class.floating]="floatingSliders" [class.visible]="slidersVisible" [class.hidden]="!slidersVisible">
         <div class="proficiency">
             <span class="label" translate>experience.proficiency</span>
-            <mat-slider [value]="proficiency" [min]="0" [max]="100" (input)="onProficiencyChange($event.value ?? 0)">
+            <mat-slider [min]="0" [max]="100" discrete>
+                <input matSliderThumb [value]="proficiency" (valueChange)="onProficiencyChange($event)">
             </mat-slider>
             <span class="value">{{proficiency}}</span>
         </div>
         <div class="period">
             <span class="label" translate>experience.last_used</span>
-            <mat-slider [tickInterval]="1" [value]="period" [min]="minYear" [max]="maxYear"
-                (input)="onPeriodChange($event.value)" tickInterval="auto">
+            <mat-slider [min]="minYear" [max]="maxYear" showTickMarks discrete [step]="1">
+                <input matSliderThumb [value]="period" (valueChange)="onPeriodChange($event)">
             </mat-slider>
             <span class="value">&gt; {{period}}</span>
         </div>
@@ -17,19 +18,19 @@
     <div class="categories" [class.floating-sliders]="floatingSliders">
         <div *ngFor="let year of years" class="category">
             <h3>{{year}}{{year > 1 ? '+ ' + ('experience.years' | translate) : '+ ' + ('experience.year' | translate)}}</h3>
-            <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(year)?.size">
+            <mat-chip-listbox class="skills" [selectable]="false" [@listAnimation]="categories.get(year)?.size">
                 <mat-chip class="chip" *ngFor="let skill of getSkills(year)" [style.opacity]="skillOpacity(skill)">
                     {{skill.name}}
                 </mat-chip>
-            </mat-chip-list>
+            </mat-chip-listbox>
         </div>
         <div *ngIf="categories.get(0)" class="category">
             <h3>&lt;1 <span translate>experience.year</span></h3>
-            <mat-chip-list class="skills" [selectable]="false" [@listAnimation]="categories.get(0)?.size">
+            <mat-chip-listbox class="skills" [selectable]="false" [@listAnimation]="categories.get(0)?.size">
                 <mat-chip class="chip" *ngFor="let skill of getSkills(0)" [style.opacity]="skillOpacity(skill)">
                     {{skill.name}}
                 </mat-chip>
-            </mat-chip-list>
+            </mat-chip-listbox>
         </div>
     </div>
 </div>

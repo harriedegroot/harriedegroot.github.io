@@ -25,10 +25,10 @@
     </div>
 
     <div class="technologies" #technologiesEl *ngIf="technologies">
-        <mat-chip-list *ngIf="chips" class="chips" [multiple]="true" [selectable]="false">
+        <mat-chip-listbox *ngIf="chips" class="chips" [multiple]="true" [selectable]="false">
             <mat-chip class="chip" *ngFor="let tag of technologies" [style.opacity]=".01*(tag.proficiency ?? 100)">
                 {{tag.name}}</mat-chip>
-        </mat-chip-list>
+        </mat-chip-listbox>
     </div>
 
     <span class="more" *ngIf="showMore">...see more</span>

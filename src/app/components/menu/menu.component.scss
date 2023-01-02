@@ -50,13 +50,22 @@ $menu-width: 600px;
 
 .button {
     position: absolute;
-    top: 10px;
-    
+    top: 6px;
+  
+    .text-container {
+        position: relative;
+        width: 50px;
+        height: 7px;
+    }
+
     &.lang {
         .text {
             position: absolute;
-            top: 1px;
-            left: 11px;
+            
+            font-size: 16px; 
+            font-weight: 100;
+            color: $menu-text-color;
+            text-transform: uppercase;
         
             &.show {
                 opacity: 1;
@@ -73,21 +82,17 @@ $menu-width: 600px;
     }
 
     color: $menu-text-color;
-    text-transform: uppercase;
-    font-weight: 100;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    z-index: 999;
-
     &.left {
-        left: 10px;
+        left: 8px;
     }
 
     &.right {
-        right: 10px;
+        right: 8px;
     }
 
     transition: opacity .4s ease-in;

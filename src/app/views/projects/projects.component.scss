@@ -26,6 +26,7 @@ $overlay-color: white;
 
 .overlay {
     position: absolute;
+    z-index: 10;
     left: 0;
     right: 0;
     bottom: 0;
@@ -87,7 +88,7 @@ app-timeline-content {
 :host::ng-deep {
     .left {
         app-project-card {
-            .mat-chip-list-wrapper {
+            .mat-chip-listbox-wrapper {
                 justify-content: flex-end;
             }
         }

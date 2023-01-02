@@ -1,9 +1,9 @@
 <div class="container" *ngIf="chartOption" [class.expanded]="tagsExpanded">
   <div class="tags-container" #tagsContainerEl *ngIf="tags">
-    <mat-chip-list class="tags" [multiple]="true" [selectable]="false">
-      <mat-chip class="chip" *ngFor="let tag of tags" [selected]="isTagSelected(tag)" (click)="toggleTag(tag)" gaEvent="skills_{{isTagSelected(tag) ? 'disable' : 'enable'}}_tag_{{tag}}" gaCategory="skills">{{tag}}
-      </mat-chip>
-    </mat-chip-list>
+    <mat-chip-listbox class="tags" [multiple]="true" [selectable]="false">
+      <mat-chip-option class="chip" *ngFor="let tag of tags" [selected]="isTagSelected(tag)" (click)="toggleTag(tag)" gaEvent="skills_{{isTagSelected(tag) ? 'disable' : 'enable'}}_tag_{{tag}}" gaCategory="skills">{{tag}}
+      </mat-chip-option>
+    </mat-chip-listbox>
   </div>
   <div class="more-container" *ngIf="showMore">
     <span class="more" (click)="tagsExpanded = !tagsExpanded">
@@ -12,8 +12,8 @@
   </div>
   <div echarts [options]="chartOption" class="chart" (chartInit)="onChartInit($event)"></div>
   <div class="timeslider" *ngIf="count > 0">
-    <mat-slider class="slider" [value]="currentStep" [min]="firstStep" [max]="count"
-      (input)="onSliderChange($event.value)">
+    <mat-slider class="slider" [min]="firstStep" [max]="count">
+      <input matSliderThumb [value]="currentStep" (valueChange)="onSliderChange($event)">
     </mat-slider>
     <button mat-icon-button (click)="skip()">
       <mat-icon>{{ currentStep === count ? 'fast_rewind' : 'fast_forward' }}</mat-icon>
