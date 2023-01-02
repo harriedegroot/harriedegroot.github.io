@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -59,6 +58,4 @@ export class DeviceService {
     map((size) => (size.width > size.height ? 'horizontal' : 'vertical')),
     distinctUntilChanged()
   );
-
-  constructor(private deviceDetectorService: DeviceDetectorService) {}
 }
