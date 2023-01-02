@@ -1,7 +1,7 @@
 @import 'variables';
 
 $footer-height: 120px;
-$company-info-height: 25px;
+$company-info-height: auto;
 
 #contact-bar {
 
@@ -14,6 +14,12 @@ $company-info-height: 25px;
 }
 
 .company-info {
+
+    background-color: rgba(255,255,255,.05);
+    color: $text-light;
+
+    margin-top: 20px;
+
     text-align: center;
     padding: 15px;
 
