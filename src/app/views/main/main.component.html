@@ -15,6 +15,12 @@
         <app-about></app-about>
     </app-section>
 
+    <app-section name="services" class="app-section" background="white" [fullPage]="true"
+        [title]="'services.title' | translate" titleStyle="light" (shown)="onShow('services')" (hidden)="onHide('services')"
+        (snap)="onSnap('services')">
+        <app-services></app-services>
+    </app-section>
+
     <app-section name="experience" class="app-section" [fullPage]="true" [title]="'experience.title' | translate"
         [background]="'rgba(0, 0, 0, 0.864)'" (shown)="onShow(['background', 'experience'])"
         (hidden)="onHide(['background', 'experience'])" (snap)="onSnap('experience')">

@@ -13,6 +13,7 @@ export class MenuComponent implements OnInit {
   @Input() sections: string[] = [
     //'home',
     'about',
+    'services',
     'experience',
     'skills',
     'projects',
