@@ -28,4 +28,8 @@ $company-info-height: auto;
     font-size: small;
 
     height: $company-info-height;
+
+    >* {
+        margin: 10px;
+    }
 }
