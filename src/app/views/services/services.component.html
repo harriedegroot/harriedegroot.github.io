@@ -3,97 +3,33 @@
     <div class="usps">
         <div class="usp">
             <span class="number">15+</span>
-            <span class="text">Years Experience</span>
+            <span class="text" translate>services.years_experience</span>
         </div>
         <div class="usp">
             <span class="number">33</span>
-            <span class="text">Completed Projects</span>
+            <span class="text" translate>services.completed_projects</span>
         </div>
         <div class="usp">
             <span class="number"><mat-icon>all_inclusive</mat-icon></span>
-            <span class="text">Lines of Code</span>
+            <span class="text" translate>services.lines_of_code</span>
         </div>
         <div class="usp">
             <span class="number">100%</span>
-            <span class="text">Customer Satisfaction</span>
+            <span class="text" translate>services.customer_satisfaction</span>
         </div>
     </div>
-
-    <!-- <h3 class="headline" translate>services.headline</h3> -->
-
     <div class="subjects">
-        <div class="card">
+        <div class="subject" *ngFor="let subject of 'services.subjects' | translate">
             <div class="content">
-                <mat-icon class="icon cloud">cloud_queue</mat-icon>
-                <mat-icon class="icon">devices</mat-icon>
-                <!-- <p markdown class="text">Lorum ipsum dolar sit amet</p> -->
+                <mat-icon class="icon" *ngFor="let icon of subject.icons">{{icon}}</mat-icon>
             </div>
-            <h4 class="header">Software Architecture / Solution Design</h4>
-        </div>
-        <div class="card">
-            <div class="content">
-                <mat-icon class="icon">data_object</mat-icon>
-                <!-- <mat-icon class="icon">superscript</mat-icon> -->
-                <!-- <p markdown class="text">Build software</p> -->
-            </div>
-            <h4 class="header">Software Development</h4>
-        </div>
-        <div class="card">
-            <div class="content">
-                <mat-icon class="icon">question_answer</mat-icon>
-                <!-- <mat-icon class="icon">question_answer</mat-icon> -->
-                <!-- <p markdown class="text">Helps by chosing</p> -->
-            </div>
-            <h4 class="header">Technical Consulting</h4>
+            <h4 class="header">{{subject.header}}</h4>
         </div>
     </div>
-
-    <!-- <h2 class="sub-title" translate>Specialisations</h2> -->
-
     <div class="cards">
-        <div class="card">
-            <h4 class="header">Web applications</h4>
-            <div class="content">
-                <mat-icon class="icon">web</mat-icon>
-                <p markdown>I can help you **design** and **build** a web application to meet your unique business needs. Whether you need a web application from scratch, integration with APIs, or an enterprise cloud platform, I have the **skills** and **experience** to deliver **high-quality solutions** no matter the complexity.</p>
-            </div>
+        <div class="card" *ngFor="let card of 'services.cards' | translate">
+            <h4 class="header"><mat-icon class="icon">{{card.icon}}</mat-icon>{{card.title}}</h4>
+            <div class="content" [innerHtml]="card.content | markdown"></div>
         </div>
-        <div class="card">
-            <h4 class="header">System Integrations</h4>
-            <div class="content">
-                <mat-icon class="icon">webhook</mat-icon>
-                <p markdown>Need to **integrate different systems** or technologies, such as web applications and databases or third-party APIs? Connect internal systems, build an **API** for your app or integrate with external applications, I **connect** them **seamlessly** and **efficiently** using protocols like REST, SOAP, GraphQL, WebHooks, MessageBus and Socket Connections. </p>
-            </div>
-        </div>
-        <div class="card">
-            <h4 class="header">Custom software</h4>
-            <div class="content">
-                <mat-icon class="icon">insert_chart_outlined</mat-icon>        
-                <p markdown>Do you have special needs that are **not met by off-the-shelf** software? I developed many **domain-specific solutions** like business software extensions, low-code frameworks, dashboards for data analysis and much more. Whether you need a **simple tool** or a **complex, integrated system**, I can provide the software to meet your custom requirements.</p>
-            </div>
-        </div>
-        <div class="card">
-            <h4 class="header">Domotics · IoT</h4>
-            <div class="content">
-                <mat-icon class="icon">sensors</mat-icon>
-                <p markdown>Are your devices and systems connected to the **Internet of Things**? I have created **domotics** solutions like a Bluetooth integration for BluFi setup on the Raspberry PI, drivers for smart home devices or a smart Hub for devices communicating over MQTT. I can link **physical devices** with your applications, allowing you to create seamless, **connected experiences** for your users.</p>
-            </div>
-        </div>
-        <div class="card">
-            <h4 class="header">Mobile apps</h4>
-            <div class="content">
-                <mat-icon class="icon">phone_iphone</mat-icon>
-                <p markdown>Want to reach your customers on the go? I have multiple years of experience with both **hybrid cross-platform** and **native** mobile app development for iOS and Android. I also worked on the core of the mobile App building platforms AppMachine and Impress.ly. Lets work together to determine the **best approach** to build an app for your target audience.</p>
-            </div>
-        </div>
-        <div class="card">
-            <h4 class="header">Miscellaneous</h4>
-            <div class="content">
-                <mat-icon class="icon">terminal</mat-icon>
-                <p markdown>Looking to **optimize** your operations, create **innovative experiences**, or solve a **unique problem**? Feel free to contact me to discuss your project and see how I can help you succeed. Some examples from other fields I worked on in the past are: A.I. Algorithms for warehouse optimization, a low-code platform for business apps, lots of games, a Social Media Inbox, APIs for domain registration and **many other projects**.</p>
-            </div>
-        </div>
-        
     </div>
-
 </div>
