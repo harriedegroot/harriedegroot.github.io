@@ -10,7 +10,7 @@
 .container {
     min-height: calc(100vh - $title-height);
     height: calc(100% - $title-height);
-
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -22,6 +22,8 @@
         //gap: 30px;
         height: 100%;
         flex-grow: 1;
+        max-width: 1600px;
+        margin: 0 auto;
 
         .charasteristic {
             display: flex;

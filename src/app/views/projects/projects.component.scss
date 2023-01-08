@@ -13,6 +13,9 @@ $overlay-color: white;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+
+    max-width: 1600px;
+    margin: 0 auto;
     
     &.show-more {
         max-height: calc(100vh - $title-height);

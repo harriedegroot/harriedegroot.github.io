@@ -29,7 +29,7 @@
         </app-experience>
     </app-section>
 
-    <app-section name="skills" class="app-section" [fullPage]="true" [title]="'skills.title' | translate"
+    <app-section name="skills" class="app-section" [fullPage]="true" [title]="'skills.title' | translate" [background]="'black'"
         titleStyle="dark" (shown)="onShow('skills')" (hidden)="onHide('skills')" (snap)="onSnap('skills')">
         <app-skills id="skills" [experience]="profile?.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags">

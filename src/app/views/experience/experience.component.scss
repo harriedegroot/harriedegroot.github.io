@@ -4,6 +4,9 @@
     padding: 30px;
     // background: $secondary; // NOTE: defined in main template as a section background
 
+    max-width: 1600px;
+    margin: 0 auto;
+
     .title {
         //display: flex;
         align-content: center;

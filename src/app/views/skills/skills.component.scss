@@ -9,7 +9,10 @@ $transition: .5s ease-in;
   justify-items: stretch;
   min-height: calc(100vh - $title-height);
   height: calc(100% - $title-height);
-  background: black;
+  //background: black;
+
+  max-width: 1600px;
+  margin: 0 auto;
 
   &.expanded {
     .tags-container {
