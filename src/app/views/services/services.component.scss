@@ -2,9 +2,6 @@
 
 .container {
     position: relative;
-
-    color: $text-dark;
-
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
@@ -13,11 +10,10 @@
     margin: 0 auto;
     padding: 20px;
 
-    .sub-title {
-        margin-top: 5px;
-        color: $accent;
-        font-weight: 100;
-    }
+    min-height: calc(100vh - $title-height - 40px);
+    height: calc(100% - $title-height - 40px);
+
+    color: $text-dark;
 
     .usps {
         width: 100%;
@@ -68,7 +64,6 @@
         border-radius: 7px;
         overflow: hidden;
 
-
         .subject {
             position: relative;
             display: flex;
@@ -81,6 +76,8 @@
             width: 100%;
             max-width: 340px;
             padding: 5px 5px 20px 5px;
+
+
 
             .header {
                 color: $text-dark;
@@ -102,22 +99,29 @@
                 color: $accent;
             }
         }
-
     }
 
     .cards {
         display: flex;
         flex-flow: row wrap;
         justify-content: stretch;
+        align-items: stretch;
         gap: 15px;
-        margin-bottom: 30px;
+        flex-grow: 1;
+        margin: 0 auto;
 
         .card {
-            display: block;
+            display: flex;
+            flex-flow: column nowrap;
+
+            align-items: center;
+            flex: 1 0 25%;
+
             position: relative;
             width: 100%;
-            max-width: 390px;
-            
+            max-width: 600px;
+            min-width: 350px;
+
             border-radius: 7px;
             overflow: hidden;
 
@@ -129,6 +133,7 @@
                 font-weight: 100;
                 font-size: larger;
                 text-align: center;
+                width: 100%;
 
                 mat-icon {
                     position: absolute;
@@ -155,7 +160,7 @@
                 flex-flow: column nowrap;
                 align-items: center;
                 padding: 15px 20px 7px 20px;
-                
+
                 height: 100%;
 
                 border-bottom-left-radius: 7px;
@@ -169,4 +174,86 @@
             }
         }
     }
+}
+
+
+
+@media screen and (max-width: 1100px) {
+    .container {
+        .usps {
+            max-width: 700px;
+        }
+
+        .subjects {
+            .subject {
+                .icon {
+                    font-size: 40px;
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .header {
+                    font-size: 14px;
+                }
+
+                max-width: 200px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .container {
+
+        .subjects {
+            .subject {
+                .icon {
+                    font-size: 40px;
+                    width: 50px;
+                    height: 50px;
+                }
+
+                .header {
+                    font-size: 10px;
+                }
+
+                max-width: 100px;
+            }
+        }
+
+        .cards {
+            .card {
+                max-width: 760px;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+
+        .subjects {
+            .subject {
+                .icon {
+                    font-size: 40px;
+                    width: 60px;
+                    height: 60px;
+                }
+
+                .header {
+                    font-size: 14px;
+                }
+
+                max-width: 500px;
+            }
+        }
+
+        .cards {
+            .card {
+                min-width: 200px;
+            }
+        }
+    }
+
 }
