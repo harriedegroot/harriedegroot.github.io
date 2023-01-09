@@ -7,6 +7,7 @@
     "menu": {
         "home": "home",
         "about": "over",
+        "services": "diensten",
         "experience": "ervaring",
         "skills": "skills",
         "projects": "projecten",
@@ -20,6 +21,59 @@
         "quote1": "Ervaren all-round **Software Engineer** met een achtergrond in **Kunstmatige Intelligentie**. Begonnen als professionele games-ontwikkelaar in 2007. **Games** werden **mobiele apps**. Uiteindelijk is dit geëvolueerd naar het ontwikkelen van complexe platformonafhankelijke **web-applicaties**.",
         "quote2": "Hands-on **Software Architect** voor **full-stack**, **back-end** en **front-end** opdrachten. Ervaring met een breed scala aan platformen en technologieën. Gespecialiseerd in **C# .NET** en **Angular Typescript**, maar niet gebonden aan een specifieke programmeertaal of framework.",
         "quote3": "Ik ben een **Domotica** liefhebber, die graag een rondje maakt op de **racefiets**. Vader van drie kinderen. In mijn vrije tijd heb ik enkele **open-source** projecten gepubliceerd en probeer ik anderen te helpen door mijn kennis en ervaring te delen."
+    },
+    "services": {
+        "title": "Diensten",
+        "years_experience": "Jaren Ervaring",
+        "completed_projects": "Voltooide Projecten",
+        "lines_of_code": "Regels Code",
+        "customer_satisfaction": "Klanttevredenheid",
+        "subjects": [
+            {
+                "icons": ["cloud_queue", "devices"],
+                "header": "Software-architectuur / Project Ontwerp"
+            },
+            {
+                "icons": ["data_object"],
+                "header": "Software ontwikkeling"
+            },
+            {
+                "icons": ["question_answer"],
+                "header": "Technisch advies"
+            }
+        ],
+        "cards": [
+            {
+                "icon": "web",
+                "title": "Web applicaties",
+                "content": "Ik kan u helpen met het **ontwerpen** en **bouwen** van een web applicatie die volledig voldoet aan uw specifieke wensen. Of u nu een geheel nieuwe web applicatie, integratie met API's of een enterprise cloud-platform nodig heeft, ik heb de **vaardigheden** en **ervaring** om **hoogwaardige oplossingen** te leveren, ongeacht de complexiteit."
+            },
+            {
+                "icon": "webhook",
+                "title": "Systeemintegraties",
+                "content": "Wilt u **verschillende systemen** of technologieën integreren, zoals web applicaties en databases of API's van derden? Interne systemen verbinden, een **API** bouwen voor uw app of integratie met externe applicaties, ik zorg voor een **naadloze** en **efficiënte koppeling** met behulp van protocollen zoals REST, SOAP, GraphQL, WebHooks, MessageBus en Socket verbindingen."
+            },
+            {
+                "icon": "insert_chart_outlined",
+                "title": "Maatwerk software",
+                "content": "Heeft u **speciale wensen** waaraan niet wordt voldaan door kant-en-klare software? Ik heb veel **domeinspecifieke oplossingen** ontwikkeld, zoals extensies voor bedrijfssoftware, low-code frameworks, dashboards voor data-analyse en nog veel meer. Of u nu een **eenvoudige tool** of een **complex, geïntegreerd systeem** nodig heeft, ik kan de software leveren die aan uw specifieke eisen voldoet."
+            },
+            {
+                "icon": "sensors",
+                "title": "Domotica · IoT",
+                "content": "Zijn uw apparaten en systemen verbonden met het **Internet of Things**? Ik heb **domotica** oplossingen gemaakt, zoals een Bluetooth integratie voor BluFi-installatie op de Raspberry PI, stuurprogramma's voor smart-home apparaten of een slimme hub voor apparaten die communiceren via MQTT. Ik kan **fysieke apparaten** koppelen aan uw applicaties, zodat u naadloze, **altijd verbonden** ervaringen kunt creëren voor uw gebruikers."
+            },
+            {
+                "icon": "phone_iphone",
+                "title": "Mobiele apps",
+                "content": "Wilt u uw klanten onderweg bedienen? Ik heb vele jaren ervaring met ontwikkeling van zowel **hybride cross-platform** als **native** mobiele apps voor iOS en Android. Ook heb ik in het verleden gewerkt aan de core van de app-bouw platformen AppMachine en Impress.ly. Ik help u graag om de **beste aanpak** te bepalen voor het bouwen van een app die aansluit bij uw doelgroep."
+            },
+            {
+                "icon": "terminal",
+                "title": "Diversen",
+                "content": "Wilt u uw proces  **optimaliseren**, **innovatieve oplossingen** creëren of een **uniek probleem** oplossen? Neem gerust contact met mij op om uw project te bespreken en te bepalen hoe we waarde kunnen toevoegen. Enkele voorbeelden uit diverse vakgebieden waar ik in het verleden aan heb gewerkt zijn: A.I. Algoritmen voor magazijnoptimalisatie, een low-code platform voor zakelijke apps, meerdere games, een Social Media Inbox, API's voor domeinregistratie en **vele andere projecten**."
+            }
+        ]
     },
     "experience": {
         "title": "ervaring",
