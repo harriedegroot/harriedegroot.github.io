@@ -17,9 +17,11 @@ import { filter } from 'rxjs';
 import { BackgroundComponent } from '../../components/background/background.component';
 import { AboutComponent } from '../about/about.component';
 import { ExperienceComponent } from '../experience/experience.component';
+import { ServicesComponent } from '../services/services.component';
 import { SkillsComponent } from '../skills/skills.component';
 
 const EXPERIENCE_DELAY = 700;
+const SERVICES_DELAY = .7;
 
 @Component({
   selector: 'app-main',
@@ -54,6 +56,9 @@ export class MainComponent implements OnInit {
 
   @ViewChild(AboutComponent, { static: false })
   about!: AboutComponent;
+
+  @ViewChild(ServicesComponent, { static: false })
+  services!: ServicesComponent;
 
   @ViewChild(ExperienceComponent, { static: false })
   experience!: ExperienceComponent;
@@ -137,6 +142,9 @@ export class MainComponent implements OnInit {
           }
           break;
         case 'about':
+          break;
+        case 'services':
+          this.services.show(SERVICES_DELAY);
           break;
         case 'experience':
           this.experience.show(EXPERIENCE_DELAY);
