@@ -28,8 +28,11 @@
     </div>
     <div class="cards">
         <div class="card" *ngFor="let card of 'services.cards' | translate">
-            <h4 class="header"><mat-icon class="icon">{{card.icon}}</mat-icon>{{card.title}}</h4>
-            <div class="content" [innerHtml]="card.content | markdown"></div>
+            <h4 class="header">{{card.title}}</h4>
+            <div class="content">
+                <mat-icon class="icon">{{card.icon}}</mat-icon>
+                <div class="markdown" [innerHtml]="card.content | markdown"></div>
+            </div>
         </div>
     </div>
 </div>
