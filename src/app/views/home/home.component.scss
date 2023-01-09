@@ -6,7 +6,7 @@
     color: $text-secondary;
     height: 100%;
     width: 100%;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,6 +36,7 @@
                 justify-content: center;
 
                 transition: border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
+
                 &:hover {
                     border-radius: 7px;
                     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -98,7 +99,7 @@
                         display: block;
                         font-size: 27px;
                         line-height: 28px;
-                        font-weight: normal;    
+                        font-weight: normal;
                     }
 
                     .location {
@@ -116,8 +117,9 @@
             font-size: 38px;
             font-weight: 100;
             text-align: center;
-            
+
             transition: opacity .2s ease-in;
+
             &.hidden {
                 opacity: 0;
             }
@@ -125,12 +127,12 @@
             &.visible {
                 .icon {
                     @include fadeIn(0.5s, 0, 0.4, 3.5s);
-                    
+
                     display: block;
                     transform: scale(3);
                     margin: 0 auto;
                 }
-            
+
                 animation: yo-yo 2s ease-out 4s infinite alternate;
                 @include yoyo;
             }
@@ -144,20 +146,33 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 420px) {
 
-    .firstname,
-    .middlename,
-    .sirname {
-        font-size: 28px !important;
-    }
+    .content {
+        .container {
+            .contact {
+                .info {
+                    .name {
+                        border-radius: 0;
+                        width: 100vw;
 
-    .typed {
-        margin-left: 20px !important;
+                        .firstname,
+                        .middlename,
+                        .sirname {
+                            font-size: 28px !important;
+                        }
+                    }
 
-        .headline,
-        .location {
-            font-size: 24px !important;
+                    .typed {
+                        margin-left: 20px !important;
+
+                        .headline,
+                        .location {
+                            font-size: 24px !important;
+                        }
+                    }
+                }
+            }
         }
     }
 }
