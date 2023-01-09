@@ -1,0 +1,13 @@
+<svg style="display:none">
+	<defs>
+		<symbol id="loopingPath" viewBox="0 0 147.5 68">
+			<title>infinite</title>
+  		<path #path d="M94.65,14a27.5,27.5,0,1,1-.17,39.88L52.93,14.06a27.5,27.5,0,1,0,.12,39.77Z" fill="none" stroke-miterlimit="10"/>
+		</symbol>
+	</defs>
+</svg>
+
+<svg #spinner class="loading-spinner">
+	<use id="background" xlink:href="#loopingPath"/>
+	<use id="master" [class.animate]="animate" xlink:href="#loopingPath"/>
+</svg>

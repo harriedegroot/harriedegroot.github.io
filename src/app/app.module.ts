@@ -45,6 +45,7 @@ import { ProjectsComponent } from './views/projects/projects.component';
 import { SkillsComponent } from './views/skills/skills.component';
 import { SpecialitiesComponent } from './views/specialities/specialities.component';
 import { ServicesComponent } from './views/services/services.component';
+import { InfiniteLoopComponent } from './components/infinite-loop/infinite-loop.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -91,6 +92,7 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
     ContactComponent,
     ContactBarComponent,
     ServicesComponent,
+    InfiniteLoopComponent,
   ],
   imports: [
     CommonModule,

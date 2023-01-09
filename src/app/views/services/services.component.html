@@ -10,7 +10,10 @@
             <span class="text" translate>services.completed_projects</span>
         </div>
         <div class="usp">
-            <span class="number"><mat-icon>all_inclusive</mat-icon></span>
+            <span class="number">
+                <!-- <mat-icon>all_inclusive</mat-icon> -->
+                <app-infinite-loop [fill]="infiniteFill" [animate]="infiniteFill < 100"></app-infinite-loop>
+            </span>
             <span class="text" translate>services.lines_of_code</span>
         </div>
         <div class="usp">

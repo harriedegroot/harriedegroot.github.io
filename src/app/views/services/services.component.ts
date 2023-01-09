@@ -12,15 +12,16 @@ import { take } from 'rxjs';
 export class ServicesComponent {
   public yearsExperience: number = 1;
   public projects: number = 1;
+  public infiniteFill: number = 0;
   public customerSatisfaction: number = 1;
 
   constructor(private cdRef: ChangeDetectorRef, private zone: NgZone, private profileService: ProfileService) {}
 
   ngOnInit() {
-    this.profileService.profile$.pipe(take(1)).subscribe(profile => this.animate());
+    this.profileService.profile$.pipe(take(1)).subscribe(profile => this.start());
   }
     
-  private animate() {
+  private start() {
     const delay = 2;
     const yearExperience = 15;
     const projects = sum(this.profileService.profile?.experience?.map(e => e.projects?.length ?? 0)) ?? [0];
@@ -47,6 +48,18 @@ export class ServicesComponent {
       delay,
       onUpdate: () => {
         this.projects = Math.round(targetProjects.val);
+        this.cdRef.detectChanges();
+      },
+    });
+
+    const infinitePercent = { val: this.infiniteFill };
+    gsap.to(infinitePercent, {
+      duration: 10,
+      val: 100,
+      ease: 'linear',
+      delay,
+      onUpdate: () => {
+        this.infiniteFill = Math.round(infinitePercent.val);
         this.cdRef.detectChanges();
       },
     });
