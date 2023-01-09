@@ -16,6 +16,7 @@ export class ServicesComponent {
   public customerSatisfaction: number = 1;
 
   private _delay: number = -1;
+  private _shown: boolean = false;
 
   constructor(private cdRef: ChangeDetectorRef, private profileService: ProfileService) {}
 
@@ -24,12 +25,13 @@ export class ServicesComponent {
   }
     
   public show(delay: number = 2) {
+    this._delay = delay;
     
     const profile = this.profileService.profile;
-    if(!profile) return;
-
-    if(this._delay !== -1) return;
-    this._delay = delay;
+    if(!profile)  return;
+    
+    if(this._shown) return;
+    this._shown = true;
 
     const yearExperience = 15;
     const projects = sum(profile?.experience?.map(e => e.projects?.length ?? 0)) ?? [0];
@@ -50,7 +52,7 @@ export class ServicesComponent {
 
     const targetProjects = { val: this.projects };
     gsap.to(targetProjects, {
-      duration: 7,
+      duration: 6,
       val: projects,
       ease,
       delay,
@@ -62,7 +64,7 @@ export class ServicesComponent {
 
     const infinitePercent = { val: this.infiniteFill };
     gsap.to(infinitePercent, {
-      duration: 10,
+      duration: 8,
       val: 100,
       ease: 'linear',
       delay,
@@ -74,7 +76,7 @@ export class ServicesComponent {
 
     const targetPercent = { val: this.customerSatisfaction };
     gsap.to(targetPercent, {
-      duration: 10,
+      duration: 8,
       val: customerSatisfaction,
       ease,
       delay,
