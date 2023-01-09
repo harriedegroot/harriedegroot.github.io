@@ -25,13 +25,14 @@ export class ServicesComponent {
     const yearExperience = 15;
     const projects = sum(this.profileService.profile?.experience?.map(e => e.projects?.length ?? 0)) ?? [0];
     const customerSatisfaction = 100;
+    const ease = "circ"; //'slowmo'
 
     const targetYears = { val: this.yearsExperience };
     gsap.to(targetYears, {
       duration: 4,
       val: yearExperience,
-      ease: 'slowmo',
-      delay: delay,
+      ease,
+      delay,
       onUpdate: () => {
         this.yearsExperience = Math.round(targetYears.val);
         this.cdRef.detectChanges();
@@ -42,8 +43,8 @@ export class ServicesComponent {
     gsap.to(targetProjects, {
       duration: 7,
       val: projects,
-      ease: 'slowmo',
-      delay: delay,
+      ease,
+      delay,
       onUpdate: () => {
         this.projects = Math.round(targetProjects.val);
         this.cdRef.detectChanges();
@@ -54,8 +55,8 @@ export class ServicesComponent {
     gsap.to(targetPercent, {
       duration: 10,
       val: customerSatisfaction,
-      ease: 'slowmo',
-      delay: delay,
+      ease,
+      delay,
       onUpdate: () => {
         this.customerSatisfaction = Math.round(targetPercent.val);
         this.cdRef.detectChanges();
