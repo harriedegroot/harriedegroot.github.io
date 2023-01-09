@@ -94,6 +94,10 @@
     .container {
         .charasteristics {
             gap: 0;
+
+            .charasteristic {
+                min-width: 200px;
+            }
         }
     }
 }

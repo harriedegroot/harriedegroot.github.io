@@ -157,18 +157,20 @@
                         width: 100vw;
 
                         .firstname,
-                        .middlename,
                         .sirname {
-                            font-size: 28px !important;
+                            font-size: 40px;
+                        }
+                        .middlename {
+                            font-size: 28px;
                         }
                     }
 
                     .typed {
-                        margin-left: 20px !important;
+                        margin-left: 20px;
 
                         .headline,
                         .location {
-                            font-size: 24px !important;
+                            font-size: 24px;
                         }
                     }
                 }
