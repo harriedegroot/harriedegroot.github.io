@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
@@ -27,6 +29,7 @@ import { AppComponent } from './app.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { ContactBarComponent } from './components/contact-bar/contact-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { InfiniteLoopComponent } from './components/infinite-loop/infinite-loop.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { ProjectCardComponent } from './components/project-card/project-card.component';
 import { SectionComponent } from './components/section/section.component';
@@ -42,10 +45,9 @@ import { ExperienceComponent } from './views/experience/experience.component';
 import { HomeComponent } from './views/home/home.component';
 import { MainComponent } from './views/main/main.component';
 import { ProjectsComponent } from './views/projects/projects.component';
+import { ServicesComponent } from './views/services/services.component';
 import { SkillsComponent } from './views/skills/skills.component';
 import { SpecialitiesComponent } from './views/specialities/specialities.component';
-import { ServicesComponent } from './views/services/services.component';
-import { InfiniteLoopComponent } from './components/infinite-loop/infinite-loop.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -115,7 +117,9 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
     MatButtonModule,
     MatIconModule,
     MatSliderModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
   ],
   bootstrap: [AppComponent],
 })
