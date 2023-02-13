@@ -11,6 +11,7 @@ const routerConfig: ExtraOptions = {
   //useHash: true,
   anchorScrolling: "enabled",
   onSameUrlNavigation: "reload",
+  initialNavigation: 'enabledBlocking'
   //scrollPositionRestoration: "disabled"
 }
 

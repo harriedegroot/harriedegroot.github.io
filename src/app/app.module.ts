@@ -99,7 +99,7 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
   imports: [
     CommonModule,
     HttpClientModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     TranslateModule.forRoot(TRANSLATE_CONFIG),
     NgxGoogleAnalyticsModule.forRoot(environment.googleAnalytics),
