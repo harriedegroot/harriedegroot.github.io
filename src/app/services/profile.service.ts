@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { collection, doc, Firestore, setDoc } from '@angular/fire/firestore';
 import { Profile } from 'app/models/profile.model';
+import { getDoc } from 'firebase/firestore';
 import { ReplaySubject } from 'rxjs';
 
 @Injectable({
@@ -25,10 +27,28 @@ export class ProfileService {
     }
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Firestore) { }
 
-  public load(lang: string = 'en'): void {
-    const url = `${this.path}${this.prefix}${lang}${this.extension}`;
-    this.http.get<Profile>(url).subscribe(p => this.profile = p);
+  public async load(lang: string = 'en'): Promise<void> {
+    // const url = `${this.path}${this.prefix}${lang}${this.extension}`;
+    // this.http.get<Profile>(url)
+    //   .pipe(tap(p => this.saveToFireStore(p, `harriedegroot-${lang}`)))
+    //   .subscribe(p => this.profile = p);
+    const id = `harriedegroot-${lang}`;
+    this.profile = await this.loadFromFireStore(id);
+  }
+
+  async loadFromFireStore(id: string): Promise<Profile | null> {
+    const container = collection(this.store, 'profiles');
+    const docRef = doc<Profile>(container, id);
+    const docData = await getDoc(docRef);
+    return docData.data() ?? null;
+  }
+
+
+  async saveToFireStore(profile: Profile, id: string): Promise<void> {
+    const container = collection(this.store, 'profiles');
+    const document = doc(container, id);
+    return setDoc(document, profile);
   }
 }
