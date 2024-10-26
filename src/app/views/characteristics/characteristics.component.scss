@@ -15,7 +15,7 @@
     flex-direction: column;
     justify-content: space-between;
     
-    .charasteristics {
+    .characteristics {
         display: flex;
         flex-flow: row wrap;
         align-content: space-around;
@@ -92,7 +92,7 @@
 
 @media screen and (max-width: 500px) {
     .container {
-        .charasteristics {
+        .characteristics {
             gap: 0;
 
             .charasteristic {
@@ -103,7 +103,7 @@
 }
 
 :host::ng-deep {
-    .charasteristics .charasteristic {
+    .characteristics .charasteristic {
         p {
             font-weight: 200;
             padding: 0;

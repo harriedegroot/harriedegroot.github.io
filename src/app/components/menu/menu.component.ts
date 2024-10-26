@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
     'experience',
     'skills',
     'projects',
-    //'charasteristics',
+    //'characteristics',
     'personality',
     'contact',
   ];

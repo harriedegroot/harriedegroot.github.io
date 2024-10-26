@@ -12,7 +12,7 @@ export interface Profile {
   headline?: string;
   about?: string;
   description?: string;
-  charasteristics?: Charasteristic[];
+  characteristics?: Charasteristic[];
   specialities?: Skill[];
   experience?: Experience[];
   skills?: Skill[];

@@ -36,7 +36,7 @@ import { TimelineMarkerComponent } from './components/timeline/timeline-marker.c
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { VisibleDirective } from './directives/visible.directive';
 import { AboutComponent } from './views/about/about.component';
-import { CharasteristicsComponent } from './views/charasteristics/charasteristics.component';
+import { CharacteristicsComponent } from './views/characteristics/characteristics.component';
 import { ContactComponent } from './views/contact/contact.component';
 import { ExperienceComponent } from './views/experience/experience.component';
 import { HomeComponent } from './views/home/home.component';
@@ -78,7 +78,7 @@ const TRANSLATE_CONFIG: TranslateModuleConfig = {
     BackgroundComponent,
     AboutComponent,
     SpecialitiesComponent,
-    CharasteristicsComponent,
+    CharacteristicsComponent,
     ProjectsComponent,
     SectionComponent,
     FooterComponent,
