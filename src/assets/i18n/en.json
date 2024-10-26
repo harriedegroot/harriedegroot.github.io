@@ -76,13 +76,15 @@
     },
     "experience": {
         "title": "experience",
+        "description": "change proficiency sliders and see how skills have evolved over time",
         "proficiency": "proficiency",
         "last_used": "last used",
         "year": "year",
         "years": "years"
     },
     "skills": {
-        "title": "skills"
+        "title": "skills over time",
+        "description": "select your categories of interest and play with the time slider"
     },
     "projects": {
         "title": "projects",
@@ -103,7 +105,7 @@
         "studious_text": "Always embracing new technologies and apply them in appropriate use cases to deliver innovative solutions",
         "critical": "critical",
         "critical_text": "Critical thinker who always aims for the best and approaches challenges with an open mind to deliver exceptional results",
-        "quote": "Mastering a new tool is not the hard part, it's selecting the best tool that gets the job done"
+        "quote": "Mastering a new tool is not the hard part, it's selecting the best tool for the job"
     },
     "contact": {
         "title": "Contact",

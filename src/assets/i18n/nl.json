@@ -77,13 +77,15 @@
     },
     "experience": {
         "title": "ervaring",
+        "description": "gebruik de sliders om de verandering in de loop der jaren te bekijken",
         "proficiency": "vaardigheid",
         "last_used": "laatst gebruikt",
         "year": "jaar",
         "years": "jaren"
     },
     "skills": {
-        "title": "skills"
+        "title": "skills",
+        "description": "kies de gewenste categorieën en speel met de tijdlijn"
     },
     "projects": {
         "title": "projecten",
