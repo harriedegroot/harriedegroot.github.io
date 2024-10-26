@@ -84,7 +84,11 @@
     },
     "skills": {
         "title": "skills",
-        "description": "select your categories of interest and play with the time slider"
+        "description": "select categories and play with the time slider",
+        "categories": {
+            "less": "...less categories",
+            "more": "...more categories"
+        }
     },
     "projects": {
         "title": "projects",

@@ -85,7 +85,11 @@
     },
     "skills": {
         "title": "Vaardigheden",
-        "description": "kies de gewenste categorieën en speel met de tijdlijn"
+        "description": "selecteer categorieën en speel met de tijdlijn",
+        "categories": {
+            "less": "...minder categorieën",
+            "more": "...meer categorieën"
+        }
     },
     "projects": {
         "title": "projecten",
