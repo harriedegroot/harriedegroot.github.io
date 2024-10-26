@@ -7,7 +7,7 @@
   </div>
   <div class="more-container" *ngIf="showMore">
     <span class="more" (click)="tagsExpanded = !tagsExpanded">
-      {{ tagsExpanded ? ('...less categories' | translate) : ('...more categories' | translate) }}
+      {{ tagsExpanded ? ('skills.categories.less' | translate) : ('skills.categories.more' | translate) }}
     </span>
   </div>
   <div echarts [options]="chartOption" class="chart" (chartInit)="onChartInit($event)"></div>
