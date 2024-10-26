@@ -79,7 +79,7 @@
             "projects": [
                 {
                     "name": "Vattenfall.nl - SalesFlow",
-                    "description": "Onderdeel van het internationale team voor de Vattenfall.nl SalesFlow (publiek domein).",
+                    "description": "Onderdeel van het internationale team voor de implementatie van de Vattenfall.nl SalesFlow voor het publieke domein.",
                     "responsibility": "De softwarearchitectuur vernieuwd, verbeterd en geherstructureerd. Veel nieuwe functionaliteiten geïmplementeerd. Waarborging door uitgebreide unit- en regressietesten. Technische ondersteuning bij de overstap naar een CXO A/B-test first aanpak. Coaching en opleiding van junior en medior ontwikkelaars.",
                     "website": "https://www.vattenfall.nl",
                     "current": true,
