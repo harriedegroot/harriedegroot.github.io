@@ -33,7 +33,7 @@ export class ServicesComponent {
     if(this._shown) return;
     this._shown = true;
 
-    const yearExperience = 15;
+    const yearExperience = new Date().getFullYear() - 2007;
     const projects = sum(profile?.experience?.map(e => e.projects?.length ?? 0)) ?? [0];
     const customerSatisfaction = 100;
     const ease = "circ"; //'slowmo'

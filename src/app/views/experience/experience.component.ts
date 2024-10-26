@@ -25,7 +25,8 @@ interface MinMax<T> {
   max: T;
 }
 
-const DEFAULT_PERIOD = 5; // last 5 years
+const DEFAULT_PERIOD = 4; // last 4 years
+const DEFAULT_PROFICIENCY = 70; // 70%
 
 @Component({
   selector: 'app-experience',
@@ -35,7 +36,7 @@ const DEFAULT_PERIOD = 5; // last 5 years
 })
 export class ExperienceComponent implements OnInit, OnDestroy {
   @Input() public hiddenTags: string[] = [];
-  @Input() public proficiency: number = 100;
+  @Input() public proficiency: number = DEFAULT_PROFICIENCY;
   @Input() public period: number = getYear() - DEFAULT_PERIOD;
   @Input() public exclude: string[] = [];
   @Input() public minOpacity: number = 0.1;

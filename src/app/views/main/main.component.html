@@ -16,21 +16,23 @@
     </app-section>
 
     <app-section name="services" class="app-section" background="white" [fullPage]="true"
-        [title]="'services.title' | translate" titleStyle="light" (shown)="onShow('services')" (hidden)="onHide('services')"
-        (snap)="onSnap('services')">
+        [title]="'services.title' | translate" titleStyle="light" (shown)="onShow('services')"
+        (hidden)="onHide('services')" (snap)="onSnap('services')">
         <app-services></app-services>
     </app-section>
 
     <app-section name="experience" class="app-section" [fullPage]="true" [title]="'experience.title' | translate"
-        [background]="'rgba(0, 0, 0, 0.864)'" (shown)="onShow(['background', 'experience'])"
-        (hidden)="onHide(['background', 'experience'])" (snap)="onSnap('experience')">
+        [description]="'experience.description' | translate" [background]="'rgba(0, 0, 0, 0.864)'"
+        (shown)="onShow(['background', 'experience'])" (hidden)="onHide(['background', 'experience'])"
+        (snap)="onSnap('experience')">
         <app-experience [minOpacity]="1" [experience]="profile?.experience || []" [hiddenTags]="hiddenSkillTags"
-            [proficiency]="70" [exclude]="excludeExperience">
+            [exclude]="excludeExperience">
         </app-experience>
     </app-section>
 
-    <app-section name="skills" class="app-section" [fullPage]="true" [title]="'skills.title' | translate" [background]="'black'"
-        titleStyle="dark" (shown)="onShow('skills')" (hidden)="onHide('skills')" (snap)="onSnap('skills')">
+    <app-section name="skills" class="app-section" [fullPage]="true" [title]="'skills.title' | translate"
+        [description]="'skills.description' | translate" [background]="'black'" titleStyle="dark"
+        (shown)="onShow('skills')" (hidden)="onHide('skills')" (snap)="onSnap('skills')">
         <app-skills id="skills" [experience]="profile?.experience || []" [selectedTags]="selectedSkillTags"
             [scrollwheel]="false" [hiddenTags]="hiddenSkillTags">
         </app-skills>

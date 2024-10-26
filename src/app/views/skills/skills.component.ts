@@ -185,10 +185,11 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     })
   }
 
-  private _detectMoreTags() {
+  @HostListener('window:resize')
+  private _detectMoreTags(): void {
     setTimeout(() => {
       const el = this.tagsContainerEl?.nativeElement;
-      this.hasMoreTags = el?.scrollHeight > 112;
+      this.hasMoreTags = el?.scrollHeight > 120;
       this.cdRef.detectChanges();
     });
   }
