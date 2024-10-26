@@ -433,7 +433,12 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     return this._selectedTags.has(tag);
   }
 
+  private _firstClick = true;
   public toggleTag(tag: string) {
+    if(this._firstClick) {
+      this.selectedTags = [];
+      this._firstClick = false;
+    }
     if (this._selectedTags.has(tag)) {
       this._selectedTags.delete(tag);
     } else {
