@@ -76,13 +76,15 @@
     },
     "experience": {
         "title": "experience",
+        "description": "change proficiency sliders and see how skills have evolved over time",
         "proficiency": "proficiency",
         "last_used": "last used",
         "year": "year",
         "years": "years"
     },
     "skills": {
-        "title": "skills"
+        "title": "skills",
+        "description": "select your categories of interest and play with the time slider"
     },
     "projects": {
         "title": "projects",

@@ -25,8 +25,8 @@
         }
     },
     "title": "Freelance Software Ontwikkelaar",
-    "headline": "Freelance Software Engineer | C# | .NET | TS | NodeJS | Azure | MSc AI",
-    "about": "Freelance ontwikkelaar beschikbaar voor full-stack of back-end mogelijkheden. Ik hou van de hands-on Architect-rol. Bekend met een breed scala aan platforms, programmeertalen en technologieën. Ervaren C#.NET en Typescript-ontwikkelaar.",
+    "headline": "Freelance Software Engineer | C# | .NET | Angular | TS | NodeJS | Azure | MSc AI",
+    "about": "Senior Freelance Engineer and Full-Stack Developer available for both Front-End and Back-End opportunities. Excels in hands-on pragmatic Solution Architect and development roles. With extensive experience in C#.NET and Angular TypeScript, proficient across a wide variety of platforms, programming languages, and technologies.",
     "description": "{markdown}",
     "characteristics": [
         {
@@ -55,7 +55,7 @@
         {
             "company": {
                 "name": "Vattenfall",
-                "description": "Fossil-free living within one generation",
+                "description": "Leading European energy company, working on Fossil freedom",
                 "location": {
                     "city": "Amsterdam",
                     "country": "Netherlands"
@@ -78,9 +78,10 @@
             ],
             "projects": [
                 {
-                    "name": "Vattenfall.nl - SalesFlow",
-                    "description": "Part of the international team implementing the Vattenfall.nl SalesFlow integration.",
-                    "website": "https://www.vattenfall.nl",
+                    "name": "Vattenfall - SalesFlow",
+                    "description": "Part of the international team implementing the Vattenfall.nl SalesFlow (public domain).",
+                    "responsibility": "Designed, enhanced and refactored the software architecture. Build many new features. Ensured application security through comprehensive unit and regression testing. Developed tools and technical requirements to transition the team to a CXO A/B testing-first approach. Coached and trained some junior & medior developers.",
+                    "website": "https://www.vattenfall.nl/energie/bestellen",
                     "current": true,
                     "timespan": {
                         "from": "2022-08-01",
@@ -88,14 +89,7 @@
                     },
                     "technologies": [
                         {
-                            "name": "App development",
-                            "proficiency": 100,
-                            "tags": [
-                                "Software Development"
-                            ]
-                        },
-                        {
-                            "name": "Software Architect",
+                            "name": "Solution Design",
                             "proficiency": 100,
                             "tags": [
                                 "Software Development"
@@ -123,21 +117,7 @@
                             ]
                         },
                         {
-                            "name": ".NET 6",
-                            "proficiency": 100,
-                            "tags": [
-                                "Software Framework"
-                            ]
-                        },
-                        {
                             "name": ".NET",
-                            "proficiency": 100,
-                            "tags": [
-                                "Software Framework"
-                            ]
-                        },
-                        {
-                            "name": ".NET Core",
                             "proficiency": 100,
                             "tags": [
                                 "Software Framework"
@@ -147,19 +127,51 @@
                             "name": "Typescript",
                             "proficiency": 100,
                             "tags": [
-                                "Programming Language"
+                                "Programming Language",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "Angular",
                             "proficiency": 100,
                             "tags": [
-                                "Software Framework"
+                                "Software Framework",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Unit Testing",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Mono Repo",
+                            "proficiency": 80,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Cypress",
+                            "proficiency": 75,
+                            "tags": [
+                                "Software Development",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "A/B testing - CXO",
+                            "proficiency": 85,
+                            "tags": [
+                                "Software Development",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "CosmosDB",
-                            "proficiency": 10,
+                            "proficiency": 20,
                             "tags": [
                                 "Database",
                                 "Data"
@@ -167,7 +179,7 @@
                         },
                         {
                             "name": "Azure DevOps",
-                            "proficiency": 30,
+                            "proficiency": 40,
                             "tags": [
                                 "Azure",
                                 "Software Architecture",
@@ -179,7 +191,79 @@
                             "name": "Angular NX",
                             "proficiency": 50,
                             "tags": [
-                                "Development Tool"
+                                "Development Tool",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "AutoMapper",
+                            "proficiency": 65,
+                            "tags": [
+                                "Software Library",
+                                "Software Architecture"
+                            ]
+                        },
+                        {
+                            "name": "Azure",
+                            "proficiency": 60,
+                            "tags": [
+                                "Azure",
+                                "Software Architecture",
+                                "DevOps"
+                            ]
+                        },
+                        {
+                            "name": "Azure App Service",
+                            "proficiency": 50,
+                            "tags": [
+                                "Azure",
+                                "DevOps"
+                            ]
+                        },
+                        {
+                            "name": "Azure pipelines",
+                            "proficiency": 70,
+                            "tags": [
+                                "CI/CD",
+                                "Azure",
+                                "Development Tool",
+                                "DevOps"
+                            ]
+                        },
+                        {
+                            "name": "Azure DevOps",
+                            "proficiency": 85,
+                            "tags": [
+                                "CI/CD",
+                                "Azure",
+                                "DevOps",
+                                "Project Management"
+                            ]
+                        },
+                        {
+                            "name": "Ngxs",
+                            "proficiency": 90,
+                            "tags": [
+                                "Software Library",
+                                "Software Architecture",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Redux",
+                            "proficiency": 70,
+                            "tags": [
+                                "Software Architecture",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Tailwind CSS",
+                            "proficiency": 15,
+                            "tags": [
+                                "Software Library",
+                                "Software Framework",
+                                "Web Development"
                             ]
                         }
                     ]
@@ -213,7 +297,8 @@
             "projects": [
                 {
                     "name": "Wiertsema - Geo ICT",
-                    "description": "Web-based GIS platform to facilitate efficient data analysis.",
+                    "description": "Web-based GIS platform to facilitate efficient data analysis and reporting for geotechnical engineering.",
+                    "responsibility": "Consulted on the software architecture and developed front-end and back-end modules for the Geo ICT platform.",
                     "website": "https://www.wiertsema.nl",
                     "current": true,
                     "timespan": {
@@ -230,6 +315,13 @@
                         },
                         {
                             "name": "Software Architect",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Solution Design",
                             "proficiency": 100,
                             "tags": [
                                 "Software Development"
@@ -257,13 +349,6 @@
                             ]
                         },
                         {
-                            "name": ".NET 6",
-                            "proficiency": 100,
-                            "tags": [
-                                "Software Framework"
-                            ]
-                        },
-                        {
                             "name": ".NET",
                             "proficiency": 100,
                             "tags": [
@@ -271,36 +356,42 @@
                             ]
                         },
                         {
-                            "name": ".NET Core",
-                            "proficiency": 100,
+                            "name": "Entity Framework Core",
+                            "description": "Entity Framework Core",
+                            "proficiency": 90,
                             "tags": [
-                                "Software Framework"
+                                "Software Framework",
+                                "Data"
                             ]
                         },
                         {
                             "name": "Typescript",
                             "proficiency": 100,
                             "tags": [
-                                "Programming Language"
+                                "Programming Language",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "Angular",
                             "proficiency": 100,
                             "tags": [
-                                "Software Framework"
+                                "Software Framework",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "Angular Material",
                             "proficiency": 90,
                             "tags": [
-                                "Software Framework"
+                                "Software Framework",
+                                "Software Library",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "PostgreSQL",
-                            "proficiency": 10,
+                            "proficiency": 20,
                             "tags": [
                                 "Database",
                                 "Data"
@@ -324,7 +415,7 @@
                         },
                         {
                             "name": "Docker",
-                            "proficiency": 70,
+                            "proficiency": 50,
                             "tags": [
                                 "Azure",
                                 "Software Architecture",
@@ -334,9 +425,10 @@
                         },
                         {
                             "name": "ECharts",
-                            "proficiency": 50,
+                            "proficiency": 70,
                             "tags": [
-                                "Software Library"
+                                "Software Library",
+                                "Web Development"
                             ]
                         },
                         {
@@ -356,6 +448,439 @@
                                 "MessageBus",
                                 "Software Architecture",
                                 "Data"
+                            ]
+                        },
+                        {
+                            "name": "RabbitMQ",
+                            "proficiency": 45,
+                            "tags": [
+                                "MessageBus",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "Dapper",
+                            "proficiency": 50,
+                            "tags": [
+                                "Data",
+                                "Software Library",
+                                "Database"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Wiertsema - GeoMonitoring",
+                    "description": "Software for managing and monitoring sensors and real-time sensor data.",
+                    "responsibility": "Consulted on the software architecture and developed the front-end and back-end modules. Designed and implemented the UI, API's, data management, streaming services (MQTT), data storage (Mongo timeseries + PostgreSQL) and processing worker architecture build on C#.NET and RabbitMQ.",
+                    "website": "https://www.wiertsema.nl/ons-werk/geomonitoring",
+                    "current": true,
+                    "timespan": {
+                        "from": "2022-11-30",
+                        "to": "NOW"
+                    },
+                    "technologies": [
+                        {
+                            "name": "App development",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Software Architect",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Solution Design",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "front-end",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "back-end",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "C#",
+                            "proficiency": 100,
+                            "tags": [
+                                "Programming Language"
+                            ]
+                        },
+                        {
+                            "name": ".NET",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Framework"
+                            ]
+                        },
+                        {
+                            "name": "Entity Framework Core",
+                            "description": "Entity Framework Core",
+                            "proficiency": 90,
+                            "tags": [
+                                "Software Framework",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "Typescript",
+                            "proficiency": 100,
+                            "tags": [
+                                "Programming Language",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Framework",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular Material",
+                            "proficiency": 90,
+                            "tags": [
+                                "Software Framework",
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "PostgreSQL",
+                            "proficiency": 20,
+                            "tags": [
+                                "Database",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "MongoDB",
+                            "proficiency": 50,
+                            "tags": [
+                                "Database",
+                                "NoSQL",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "Python",
+                            "proficiency": 20,
+                            "tags": [
+                                "Programming Language"
+                            ]
+                        },
+                        {
+                            "name": "Docker",
+                            "proficiency": 50,
+                            "tags": [
+                                "Azure",
+                                "Software Architecture",
+                                "Development Tool",
+                                "DevOps"
+                            ]
+                        },
+                        {
+                            "name": "ECharts",
+                            "proficiency": 70,
+                            "tags": [
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "GitHub",
+                            "description": "Git - Source Control",
+                            "proficiency": 90,
+                            "tags": [
+                                "CI/CD",
+                                "DevOps",
+                                "Project Management"
+                            ]
+                        },
+                        {
+                            "name": "MQTT",
+                            "proficiency": 100,
+                            "tags": [
+                                "MessageBus",
+                                "Software Architecture",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "RabbitMQ",
+                            "proficiency": 45,
+                            "tags": [
+                                "MessageBus",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "Dapper",
+                            "proficiency": 50,
+                            "tags": [
+                                "Data",
+                                "Software Library",
+                                "Database"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Wiertsema - Foundation Advice",
+                    "description": "Calculation & Reporting Tools for load-bearing capacity of foundations.",
+                    "responsibility": "Developed the front-end and API's for the Foundation Advice module. Build the tools to assist in the calculation and reporting using Angular, C#.Net and Python.",
+                    "website": "https://www.wiertsema.nl/ons-werk/advies/woning-en-utiliteitsbouw/funderingsadvies",
+                    "current": false,
+                    "timespan": {
+                        "from": "2022-09-01",
+                        "to": "2022-11-30"
+                    },
+                    "technologies": [
+                        {
+                            "name": "App development",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Software Architect",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Solution Design",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "front-end",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "back-end",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "C#",
+                            "proficiency": 100,
+                            "tags": [
+                                "Programming Language"
+                            ]
+                        },
+                        {
+                            "name": ".NET",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Framework"
+                            ]
+                        },
+                        {
+                            "name": "Dapper",
+                            "proficiency": 50,
+                            "tags": [
+                                "Data",
+                                "Software Library",
+                                "Database"
+                            ]
+                        },
+                        {
+                            "name": "Typescript",
+                            "proficiency": 100,
+                            "tags": [
+                                "Programming Language",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Framework",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular Material",
+                            "proficiency": 90,
+                            "tags": [
+                                "Software Framework",
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "PostgreSQL",
+                            "proficiency": 20,
+                            "tags": [
+                                "Database",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "MongoDB",
+                            "proficiency": 50,
+                            "tags": [
+                                "Database",
+                                "NoSQL",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "Python",
+                            "proficiency": 20,
+                            "tags": [
+                                "Programming Language"
+                            ]
+                        },
+                        {
+                            "name": "Docker",
+                            "proficiency": 50,
+                            "tags": [
+                                "Azure",
+                                "Software Architecture",
+                                "Development Tool",
+                                "DevOps"
+                            ]
+                        },
+                        {
+                            "name": "ECharts",
+                            "proficiency": 70,
+                            "tags": [
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "GitHub",
+                            "description": "Git - Source Control",
+                            "proficiency": 90,
+                            "tags": [
+                                "CI/CD",
+                                "DevOps",
+                                "Project Management"
+                            ]
+                        },
+                        {
+                            "name": "MQTT",
+                            "proficiency": 100,
+                            "tags": [
+                                "MessageBus",
+                                "Software Architecture",
+                                "Data"
+                            ]
+                        },
+                        {
+                            "name": "RabbitMQ",
+                            "proficiency": 45,
+                            "tags": [
+                                "MessageBus",
+                                "Data"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "Wiertsema - Insights",
+                    "description": "Charting and tools for BRO data insights and analyses.",
+                    "responsibility": "Developed the front-end of the Insights platform. Designed and created a flexible and scalable architecture for BRO & lab data analysis and charting tools using Angular Material and ECharts.",
+                    "website": "https://www.wiertsema.nl",
+                    "current": false,
+                    "timespan": {
+                        "from": "2022-04-01",
+                        "to": "2022-09-01"
+                    },
+                    "technologies": [
+                        {
+                            "name": "App development",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Solution Design",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "front-end",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
+                            "name": "Typescript",
+                            "proficiency": 100,
+                            "tags": [
+                                "Programming Language",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Framework",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "Angular Material",
+                            "proficiency": 90,
+                            "tags": [
+                                "Software Framework",
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "ECharts",
+                            "proficiency": 70,
+                            "tags": [
+                                "Software Library",
+                                "Web Development"
+                            ]
+                        },
+                        {
+                            "name": "GitHub",
+                            "description": "Git - Source Control",
+                            "proficiency": 90,
+                            "tags": [
+                                "CI/CD",
+                                "DevOps",
+                                "Project Management"
                             ]
                         }
                     ]
@@ -420,14 +945,16 @@
                         {
                             "name": "JavaScript",
                             "proficiency": 90,
-                            "min": 50,
+                            "min": 60,
                             "tags": [
-                                "Programming Language"
+                                "Programming Language",
+                                "Web Development"
                             ]
                         },
                         {
                             "name": "NodeJS",
                             "proficiency": 80,
+                            "min": 50,
                             "tags": [
                                 "Software Framework"
                             ]
@@ -436,7 +963,8 @@
                             "name": "React",
                             "proficiency": 50,
                             "tags": [
-                                "Software Framework"
+                                "Software Framework",
+                                "Web Development"
                             ]
                         },
                         {
@@ -451,7 +979,8 @@
                             "name": "Redux",
                             "proficiency": 70,
                             "tags": [
-                                "Software Architecture"
+                                "Software Architecture",
+                                "Web Development"
                             ]
                         },
                         {
@@ -569,6 +1098,13 @@
                             ]
                         },
                         {
+                            "name": "Solution Design",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
                             "name": "C#",
                             "proficiency": 100,
                             "tags": [
@@ -578,6 +1114,7 @@
                         {
                             "name": ".NET Core",
                             "proficiency": 100,
+                            "min": 50,
                             "tags": [
                                 "Software Framework"
                             ]
@@ -654,7 +1191,8 @@
                             "name": "Azure App Service",
                             "proficiency": 85,
                             "tags": [
-                                "Azure"
+                                "Azure",
+                                "DevOps"
                             ]
                         },
                         {
@@ -757,8 +1295,7 @@
                             "name": "Telerik Kendo",
                             "proficiency": 100,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         },
                         {
@@ -836,8 +1373,7 @@
                             "proficiency": 70,
                             "tags": [
                                 "Software Library",
-                                "Software Architecture",
-                                "back-end"
+                                "Software Architecture"
                             ]
                         },
                         {
@@ -862,16 +1398,14 @@
                             "name": "Mustache Templates",
                             "proficiency": 75,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         },
                         {
                             "name": "MathJS",
                             "proficiency": 75,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         },
                         {
@@ -1001,8 +1535,7 @@
                             "proficiency": 70,
                             "tags": [
                                 "Software Library",
-                                "Software Architecture",
-                                "back-end"
+                                "Software Architecture"
                             ]
                         },
                         {
@@ -1033,8 +1566,7 @@
                             "name": "Bryntum Web Components",
                             "proficiency": 60,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         }
                     ]
@@ -1051,6 +1583,7 @@
                         {
                             "name": "Ionic Framework",
                             "proficiency": 20,
+                            "min": 10,
                             "tags": [
                                 "Software Framework",
                                 "Mobile Development",
@@ -1219,18 +1752,16 @@
                         {
                             "name": "jQuery",
                             "proficiency": 80,
-                            "min": 20,
+                            "min": 10,
                             "tags": [
-                                "Software Framework",
-                                "front-end"
+                                "Software Framework"
                             ]
                         },
                         {
                             "name": "Telerik ASP.NET MVC",
                             "proficiency": 60,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         },
                         {
@@ -1245,8 +1776,7 @@
                             "name": "Bootstrap",
                             "proficiency": 70,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         }
                     ]
@@ -1485,6 +2015,13 @@
                             ]
                         },
                         {
+                            "name": "Solution Design",
+                            "proficiency": 100,
+                            "tags": [
+                                "Software Development"
+                            ]
+                        },
+                        {
                             "name": "C#",
                             "proficiency": 100,
                             "tags": [
@@ -1550,7 +2087,7 @@
                         {
                             "name": "JavaScript",
                             "proficiency": 80,
-                            "min": 50,
+                            "min": 30,
                             "tags": [
                                 "Programming Language"
                             ]
@@ -1656,7 +2193,7 @@
                         {
                             "name": "ASP.NET MVC",
                             "proficiency": 50,
-                            "min": 20,
+                            "min": 10,
                             "tags": [
                                 "Software Framework"
                             ]
@@ -1690,7 +2227,6 @@
                             "proficiency": 50,
                             "tags": [
                                 "Software Framework",
-                                "front-end",
                                 "Mobile Development",
                                 "Android",
                                 "iOS"
@@ -1700,8 +2236,7 @@
                             "name": "Bootstrap",
                             "proficiency": 60,
                             "tags": [
-                                "Software Library",
-                                "front-end"
+                                "Software Library"
                             ]
                         }
                     ]
@@ -1754,7 +2289,7 @@
                         {
                             "name": ".NET Framework",
                             "proficiency": 50,
-                            "min": 30,
+                            "min": 10,
                             "tags": [
                                 "Software Framework"
                             ]
