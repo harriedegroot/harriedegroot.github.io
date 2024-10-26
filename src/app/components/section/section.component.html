@@ -1,5 +1,6 @@
 <div [id]="name" class="container" [style.background]="background" [style.minHeight]="height">
     <h1 *ngIf="title" class="section-title" class="{{titleStyle}}">{{title}}</h1>
+    <h2 *ngIf="description" class="section-description" class="{{titleStyle}}">{{description}}</h2>
     <section>
         <ng-content></ng-content>
     </section>

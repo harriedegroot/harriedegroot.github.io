@@ -36,6 +36,22 @@
     }
 }
 
+.section-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $title-height - 20px;
+    
+    font-size: medium;
+    font-weight: lighter;
+    font-style: italic;
+    color: $text-secondary;
+}
+
 .next-section {
     position: absolute;
     bottom: 40px;

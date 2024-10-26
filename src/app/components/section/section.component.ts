@@ -46,6 +46,7 @@ export class SectionComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() fullPage: boolean = false;
   @Input() heightSource: 'window' | 'viewport' = 'viewport';
   @Input() title?: string;
+  @Input() description?: string;
   @Input() snap: boolean = true;
   @Input() snapUp: number = 30;
   @Input() snapDown: number = 15;
