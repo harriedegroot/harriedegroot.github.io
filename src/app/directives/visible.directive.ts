@@ -1,44 +1,67 @@
 import {
-    Directive,
-    ElementRef,
-    Input,
-    OnDestroy,
-    Output,
-    Renderer2
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  Output,
+  Renderer2,
+  EventEmitter,
 } from '@angular/core';
 import {
-    distinctUntilChanged,
-    filter,
-    fromEvent,
-    map,
-    shareReplay,
-    Subject,
-    take,
-    takeUntil
+  delay,
+  distinctUntilChanged,
+  shareReplay,
+  startWith,
+  Subject,
+  take,
+  takeUntil,
 } from 'rxjs';
 
 @Directive({ selector: '[visible]' })
 export class VisibleDirective implements OnDestroy {
   protected readonly destroyed$ = new Subject<void>();
+  protected readonly _intersecting$ = new Subject<boolean>();
+  private observer?: IntersectionObserver;
 
   @Input() public visibleClass: string = 'visible';
   @Input() public hiddenClass: string = 'hidden';
   @Input() public toggleClasses: boolean = true;
   @Input() public once: boolean = false;
+  @Input() public delay: number = 0; // delay in ms
 
-  @Output('visible') visible$ = fromEvent(window, 'scroll').pipe(
+  @Output('visible') visible$ = this._intersecting$.pipe(
+    startWith(false),
     takeUntil(this.destroyed$),
-    map(() => this.isVisible()),
     distinctUntilChanged(),
     shareReplay(1)
   );
 
-  @Output() show$ = this.visible$.pipe(filter((value) => value === true));
-  @Output() hide$ = this.visible$.pipe(filter((value) => value === false));
+  @Output() public readonly show$ = new EventEmitter<void>();
+  @Output() public readonly hide$ = new EventEmitter<void>();
 
   constructor(protected el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit(): void {
+    this.visible$
+      .pipe(takeUntil(this.destroyed$), delay(this.delay))
+      .subscribe((value) => {
+        if (value) {
+          this.show$.emit();
+        } else {
+          this.hide$.emit();
+        }
+      });
+
+    this.observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          this._intersecting$.next(entry.isIntersecting);
+        });
+      },
+      { threshold: [0] }
+    );
+    this.observer.observe(this.el.nativeElement);
+
     if (this.toggleClasses) {
       if (this.once) {
         this.show$
@@ -51,6 +74,7 @@ export class VisibleDirective implements OnDestroy {
       }
     }
   }
+
   private _toggleClasses(visible: boolean): void {
     const nativeElement = this.el.nativeElement;
     if (visible) {
@@ -62,18 +86,8 @@ export class VisibleDirective implements OnDestroy {
     }
   }
 
-  public isVisible(): boolean {
-    const rect = this.el.nativeElement.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  }
-
   ngOnDestroy(): void {
+    this.observer?.disconnect();
     this.destroyed$.next();
     this.destroyed$.complete();
   }

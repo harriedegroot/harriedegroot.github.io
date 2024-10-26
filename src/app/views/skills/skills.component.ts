@@ -1,16 +1,31 @@
 import {
-  AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, HostListener,
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
   Input,
   NgZone,
   OnDestroy,
   OnInit,
-  Output, ViewChild
+  Output,
+  ViewChild,
 } from '@angular/core';
 import { getMonthDifference, timespan, toDate } from 'app/helpers/date';
 import { wait } from 'app/helpers/wait';
 import { Experience, Skill, TimeSpan } from 'app/models/profile.model';
 import { ECharts, EChartsOption } from 'echarts';
-import { flatMap, flatten, isNil, max, maxBy, min, orderBy, uniq } from 'lodash';
+import {
+  flatMap,
+  flatten,
+  isNil,
+  max,
+  maxBy,
+  min,
+  orderBy,
+  uniq,
+} from 'lodash';
 import * as moment from 'moment';
 import { fromEvent, Subject, takeUntil } from 'rxjs';
 
@@ -45,7 +60,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   private _destroyed: boolean = false;
   private readonly destroyed$ = new Subject<void>();
 
-  @Output('progress') public readonly progressEmitter = new EventEmitter<number>(); 
+  @Output('progress') public readonly progressEmitter =
+    new EventEmitter<number>();
 
   @Input() public autoPlay: boolean = false;
   @Input() public increaseSpeed: number = 5; // % per month
@@ -70,7 +86,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public get progress(): number {
-    return this.currentStep  / (this.count - this.firstStep) * 100;
+    return (this.currentStep / (this.count - this.firstStep)) * 100;
   }
 
   private _experience!: Experience[];
@@ -93,13 +109,13 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //@HostListener("wheel", ["$event"])
   public onScroll(event: WheelEvent) {
-    if(!this.scrollwheelEnabled) return;
+    if (!this.scrollwheelEnabled) return;
     let d = Math.abs(event.deltaX) > 1 ? event.deltaX : event.deltaY;
-    if(this.invertScroll) {
+    if (this.invertScroll) {
       d *= -1;
     }
 
-    if(d < 0) {
+    if (d < 0) {
       this.next();
     } else {
       this.previous();
@@ -127,7 +143,6 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.forward();
   }
 
-
   hasMoreTags: boolean = false;
 
   private _tagsContainerEl?: ElementRef | undefined;
@@ -136,7 +151,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   @ViewChild('tagsContainerEl')
   public set tagsContainerEl(value: ElementRef | undefined) {
-    if(this._tagsContainerEl != value) {
+    if (this._tagsContainerEl != value) {
       this._tagsContainerEl = value;
       this._detectMoreTags();
     }
@@ -147,27 +162,26 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.hasMoreTags;
   }
 
-  constructor(private cdRef:ChangeDetectorRef, private zone: NgZone) {}
+  constructor(private cdRef: ChangeDetectorRef, private zone: NgZone) {}
 
   ngOnInit() {
     this._onInit = true;
     this.currentStep = this.firstStep;
 
-    if(this.scrollwheelEnabled) {
-      fromEvent(window, "wheel")
+    if (this.scrollwheelEnabled) {
+      fromEvent(window, 'wheel')
         .pipe(takeUntil(this.destroyed$))
-        .subscribe((event) => this.onScroll(event as WheelEvent))
+        .subscribe((event) => this.onScroll(event as WheelEvent));
     }
   }
 
   ngAfterViewInit() {
-    if(this.autoPlay) {
+    if (this.autoPlay) {
       this._initialize();
       this.play();
     }
   }
 
-  
   public async onChartInit(chart: ECharts) {
     this.chart = chart;
   }
@@ -175,14 +189,14 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   private _initialized = false;
   private _initialize() {
     if (!this._onInit || !this.experience?.length) return;
-    if(this._initialized) return;
+    if (this._initialized) return;
     this._initialized = true;
 
     this.zone.runOutsideAngular(() => {
       this._initSource();
       this._initChart();
       this._detectMoreTags();
-    })
+    });
   }
 
   @HostListener('window:resize')
@@ -200,7 +214,10 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
         flatMap(
           e.projects
             ?.filter((p) => p.timespan && p.technologies?.length)
-            ?.map((p) => { p.timespan = timespan(p.timespan); return p; })
+            ?.map((p) => {
+              p.timespan = timespan(p.timespan);
+              return p;
+            })
             ?.map((p) =>
               p.technologies?.map((t) => ({
                 timespan: p.timespan,
@@ -213,15 +230,17 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     ).filter((x) => x !== undefined) as any;
 
     const filtered = skills.map((s) => s.skill.tags).filter((x) => x);
-    let tags = orderBy(uniq(flatten(filtered)), i => i?.toLowerCase()) as string[];
+    let tags = orderBy(uniq(flatten(filtered)), (i) =>
+      i?.toLowerCase()
+    ) as string[];
     if (this.hiddenTags) {
       tags = tags.filter((x) => !this.hiddenTags.includes(x));
     }
 
     this.tags = [
-      ...tags.filter(t => this.isTagSelected(t)),
-      ...tags.filter(t => !this.isTagSelected(t)),
-    ]
+      ...tags.filter((t) => this.isTagSelected(t)),
+      ...tags.filter((t) => !this.isTagSelected(t)),
+    ];
 
     let startDate = min(skills.map((s) => s.timespan.from));
     let endDate = max(skills.map((s) => s.timespan.to));
@@ -235,7 +254,11 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     let final: SkillPoint[] = [];
     const finalYear = toDate(endDate)?.getFullYear();
-    for (let year = toDate(startDate).getFullYear(); year <= finalYear; year++) {
+    for (
+      let year = toDate(startDate).getFullYear();
+      year <= finalYear;
+      year++
+    ) {
       const maxMonth = year === finalYear ? toDate(endDate).getMonth() : 11;
       while (month <= maxMonth) {
         const date = new Date(year, month);
@@ -411,8 +434,8 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
             right: 20,
             bottom: 0,
             style: {
-              text: moment(date).format('MMMM YYYY'),              
-              font: 'bolder 3vw sans-serif', 
+              text: moment(date).format('MMMM YYYY'),
+              font: 'bolder 3vw sans-serif',
               fill: 'rgba(100, 100, 100, 0.75)',
             },
             z: 100,
@@ -435,7 +458,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private _firstClick = true;
   public toggleTag(tag: string) {
-    if(this._firstClick) {
+    if (this._firstClick) {
       this.selectedTags = [];
       this._firstClick = false;
     }
@@ -447,7 +470,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     this._redraw = true;
     this._update();
 
-    if(this.playing) {
+    if (this.playing) {
       //this.rewind(true);
     } else {
       this.forward();
@@ -455,14 +478,16 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public play() {
-    if (this._playing) return;
-    if (this.currentStep === this.count) {
-      this._redraw = true;
-      this.currentStep = this.firstStep;
-    }
-    this._playing = true;
-    this.cdRef.detectChanges();
-    this._animate();
+    setTimeout(() => { // bug fix for not playing when entering from menu item click
+      if (this._playing) return;
+      if (this.currentStep === this.count) {
+        this._redraw = true;
+        this.currentStep = this.firstStep;
+      }
+      this._playing = true;
+      this.cdRef.detectChanges();
+      this._animate();
+    }, 100);
   }
 
   public pause() {
@@ -481,7 +506,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public previous(pause: boolean = true) {
-    if(this.currentStep === this.firstStep) return;
+    if (this.currentStep === this.firstStep) return;
     if (pause) {
       this.pause();
     }
@@ -491,7 +516,7 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public next(pause: boolean = true) {
-    if(this.currentStep === this.count) return;
+    if (this.currentStep === this.count) return;
     if (pause) {
       this.pause();
     }
