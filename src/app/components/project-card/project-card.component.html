@@ -1,4 +1,4 @@
-<div class="container" [class.expanded]="expanded" (click)="expanded = true" gaEvent="{{expanded ? 'project_hide_details' : 'project_show_details'}}" gaCategory="project">
+<div class="container" [class.expanded]="expanded || !short" (click)="expanded = true; short = false" gaEvent="{{expanded ? 'project_hide_details' : 'project_show_details'}}" gaCategory="project">
     <div class="header">
         <h2 class="project-name">{{project.name }}</h2>
     </div>
@@ -14,9 +14,11 @@
         <span class="country" *ngIf="project.company?.location?.country">{{project.company?.location?.country}}</span>
     </div>
 
-    <div class="content">
-        <p class="description">{{project.description}}</p>
-        <p class="responsibility">{{project.responsibility}}</p>
+    <div class="content" [class.short]="short">
+        <div class="info">
+            <p class="description">{{project.description}}</p>
+            <p class="responsibility">{{project.responsibility}}</p>
+        </div>
         <button class="goto" mat-stroked-button *ngIf="project.website" color="primary"
             (click)="goto(project.website);$event.stopImmediatePropagation()">
             <fa-icon class="external-icon" [icon]="iconExternal"></fa-icon>

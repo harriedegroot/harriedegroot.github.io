@@ -17,7 +17,7 @@
                         <span> · </span>
                         <span>{{duration(project.timespan)}}</span>
                     </app-timeline-label>
-                    <app-project-card [project]="project"></app-project-card>
+                    <app-project-card [project]="project" [short]="!showAll"></app-project-card>
                 </app-timeline-item>
             </ng-container>
         </app-timeline>

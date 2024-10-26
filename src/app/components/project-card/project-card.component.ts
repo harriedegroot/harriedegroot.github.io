@@ -4,10 +4,13 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faArrowUpRightFromSquare, faLocationPin } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowUpRightFromSquare,
+  faLocationPin,
+} from '@fortawesome/free-solid-svg-icons';
 import { EmploymentType, Project, Skill } from 'app/models/profile.model';
 import { DeviceService } from 'app/services/device.service';
 import { isNumber, reverse, sortBy } from 'lodash';
@@ -26,6 +29,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   @Input() skills: boolean = true;
   @Input() chips: boolean = true;
   @Input() expanded: boolean = false;
+  @Input() short: boolean = false;
 
   private _technologiesEl?: ElementRef | undefined;
   public get technologiesEl(): ElementRef | undefined {
@@ -33,7 +37,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
   @ViewChild('technologiesEl')
   public set technologiesEl(value: ElementRef | undefined) {
-    if(this._technologiesEl != value) {
+    if (this._technologiesEl != value) {
       this._technologiesEl = value;
       this._detectMoreTech();
     }
@@ -56,17 +60,18 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
 
   get typeLabel(): string {
     return isNumber(this.project.role?.type)
-      ? (EmploymentType[this.project.role?.type ?? -1] ?? '')
+      ? EmploymentType[this.project.role?.type ?? -1] ?? ''
       : this.project.role?.type ?? '';
   }
 
   get showMore(): boolean {
+    if (!this.short) return false;
     if (this.expanded) return false;
     return this.hasMoreTechnologies; // || !!this.project?.website;
   }
 
   hasMoreTechnologies: boolean = false;
-  
+
   private readonly destroyed$ = new Subject<void>();
 
   constructor(device: DeviceService, private ga: GoogleAnalyticsService) {
@@ -85,7 +90,7 @@ export class ProjectCardComponent implements OnInit, OnDestroy {
   }
 
   goto(url: string) {
-    this.ga.event("open_project", "project", )
+    this.ga.event('open_project', 'project');
     window.open(url, '_blank');
   }
 

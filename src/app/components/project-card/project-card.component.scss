@@ -106,6 +106,7 @@ $transition: .5s ease-in;
                 display: inline-block;
             }
         }
+
         .technologies {
             max-height: 600px;
         }
@@ -115,6 +116,34 @@ $transition: .5s ease-in;
 mat-chip:hover {
     opacity: 1 !important;
     background: $accent;
+}
+
+.content.short {
+    
+    .info {
+        max-height: 70px;
+        overflow: hidden;
+        transition: max-height 1s ease-in;
+        position: relative;
+        margin-bottom: 10px;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+        }
+    }
+
+    .info:hover {
+        max-height: 9999px;
+        &::after {
+            background: none;
+        }
+    }
 }
 
 
