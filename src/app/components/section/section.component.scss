@@ -44,12 +44,15 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: $title-height - 20px;
+    top: $title-height - 15px;
+    padding: 0 15px;
     
     font-size: medium;
     font-weight: lighter;
     font-style: italic;
+    text-align: center;
     color: $text-secondary;
+    line-height: 20px;
 }
 
 .next-section {

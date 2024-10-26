@@ -9,7 +9,7 @@
         "about": "over",
         "services": "diensten",
         "experience": "ervaring",
-        "skills": "skills",
+        "skills": "vaardigheden",
         "projects": "projecten",
         "personality": "persoonlijkheid",
         "contact": "contact"
@@ -84,7 +84,7 @@
         "years": "jaren"
     },
     "skills": {
-        "title": "skills",
+        "title": "Vaardigheden",
         "description": "kies de gewenste categorieën en speel met de tijdlijn"
     },
     "projects": {
