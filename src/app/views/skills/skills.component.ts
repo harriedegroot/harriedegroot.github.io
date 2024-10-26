@@ -446,6 +446,12 @@ export class SkillsComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this._redraw = true;
     this._update();
+
+    if(this.playing) {
+      //this.rewind(true);
+    } else {
+      this.forward();
+    }
   }
 
   public play() {
